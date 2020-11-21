@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>UniFood</title>
+    <title>UNIFOOD</title>
 </head>
 <body>
 <a href="login.jsp">HELLO WORLD</a>
