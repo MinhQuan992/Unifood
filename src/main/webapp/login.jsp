@@ -19,14 +19,16 @@
 
 <article>
     <img id="logo" src="Images/LOGO.png">
-    <form id="frmLogin" method="get" action="">
+    <form id="frmLogin" method="post" action="${pageContext.request.contextPath}/Login">
         <h1 id="form-title">ĐĂNG NHẬP TÀI KHOẢN</h1>
-        <i class="fas fa-user"></i>
-        <input class="txtInfo" type="text" placeholder="Tên đăng nhập">
+        <i class="fas fa-user" style="font-size: 170%"></i>
+        &nbsp;
+        <input class="txtInfo" type="text" name="username" placeholder="Tên đăng nhập">
         <br>
         <br>
-        <i class="fas fa-lock"></i>
-        <input class="txtInfo" type="password" placeholder="Mật khẩu">
+        <i class="fas fa-lock" style="font-size: 170%"></i>
+        &nbsp;
+        <input class="txtInfo" type="password" name="password" placeholder="Mật khẩu">
         <br>
         <br>
         <a id="link-forgot" href="">Quên mật khẩu?</a>
