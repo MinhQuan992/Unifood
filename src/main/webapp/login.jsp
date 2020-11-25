@@ -23,15 +23,15 @@
         <h1 id="form-title">ĐĂNG NHẬP TÀI KHOẢN</h1>
         <i class="fas fa-user" style="font-size: 170%"></i>
         &nbsp;
-        <input class="txtInfo" type="text" name="username" placeholder="Tên đăng nhập">
+        <input class="txtInfo" type="text" name="username" placeholder="Tên đăng nhập" required>
         <br>
         <br>
         <i class="fas fa-lock" style="font-size: 170%"></i>
         &nbsp;
-        <input class="txtInfo" type="password" name="password" placeholder="Mật khẩu">
+        <input class="txtInfo" type="password" name="password" placeholder="Mật khẩu" required>
         <br>
         <br>
-        <a id="link-forgot" href="">Quên mật khẩu?</a>
+        <a id="link-forgot" href="${pageContext.request.contextPath}/reset-password.jsp">Quên mật khẩu?</a>
         <br>
         <br>
         <input id="btnLogin" type="submit" value="ĐĂNG NHẬP">
