@@ -13,6 +13,7 @@
 </head>
 <body>
 <a href="login.jsp">HELLO WORLD</a>
+<a href="${pageContext.request.contextPath}/Product/ProductDetail.jsp">ProductDetail</a>
 <br>
 <c:if test="${not empty loginFailed}">
     <c:choose>
