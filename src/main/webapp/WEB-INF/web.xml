@@ -12,4 +12,14 @@
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/Login</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditInfoController</servlet-name>
+        <servlet-class>com.mvc.controller.EditInfoController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditInfoController</servlet-name>
+        <url-pattern>/EditInfo</url-pattern>
+    </servlet-mapping>
+
 </web-app>
