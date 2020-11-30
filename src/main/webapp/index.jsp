@@ -36,6 +36,10 @@
             <c:out value="${email}"/>
         </c:otherwise>
     </c:choose>
+    <form method="post" action="${pageContext.request.contextPath}/EditInfo">
+        <input type="hidden" id="userId" name="userId" value="${userID}">
+        <input type="submit" value="Edit Info">
+    </form>
 </c:if>
 </body>
 </html>

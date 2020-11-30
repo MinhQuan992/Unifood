@@ -26,8 +26,8 @@ public class LoginDao {
 
             while (resultSet.next())
             {
-                String dbusername = resultSet.getString("TenDangNhap");
-                String dbpassword = resultSet.getString("MatKhau");
+                String dbusername = resultSet.getString("TenDangNhap").trim();
+                String dbpassword = resultSet.getString("MatKhau").trim();
 
                 if (username.equals(dbusername) && password.equals(dbpassword))
                 {
@@ -37,9 +37,9 @@ public class LoginDao {
                     userBean.setBirthDate(resultSet.getDate("NgaySinh"));
                     userBean.setAddress(resultSet.getNString("DiaChi"));
                     userBean.setPhone(resultSet.getString("DienThoai"));
-                    userBean.setEmail(resultSet.getString("Email"));
-                    userBean.setUsername(resultSet.getString("TenDangNhap"));
-                    userBean.setPassword(resultSet.getString("MatKhau"));
+                    userBean.setEmail(resultSet.getString("Email").trim());
+                    userBean.setUsername(resultSet.getString("TenDangNhap").trim());
+                    userBean.setPassword(resultSet.getString("MatKhau").trim());
 
                     statement.close();
                     connection.close();
@@ -48,9 +48,10 @@ public class LoginDao {
                 }
             }
         }
-        catch (Exception exception)
+        catch (Exception e)
         {
-            exception.printStackTrace();
+            e.printStackTrace();
+            // username = e.getMessage();
         }
 
         return false;
