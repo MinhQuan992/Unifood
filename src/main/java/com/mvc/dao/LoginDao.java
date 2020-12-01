@@ -47,9 +47,10 @@ public class LoginDao {
                 }
             }
         }
-        catch (Exception exception)
+        catch (Exception e)
         {
-            exception.printStackTrace();
+            e.printStackTrace();
+            // username = e.getMessage();
         }
 
         return false;

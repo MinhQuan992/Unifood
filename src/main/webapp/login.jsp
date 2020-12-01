@@ -36,7 +36,7 @@
         <br>
         <input id="btnLogin" type="submit" value="ĐĂNG NHẬP">
     </form>
-    <p id="message-signup">Bạn chưa có tài khoản? <a id="link-signup" href="">Đăng kí ngay!</a></p>
+    <p id="message-signup">Bạn chưa có tài khoản? <a id="link-signup" href="${pageContext.request.contextPath}/signup.jsp">Đăng kí ngay!</a></p>
 </article>
 </body>
 </html>
