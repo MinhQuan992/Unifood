@@ -15,13 +15,13 @@ import java.io.IOException;
 @WebServlet(name = "LoginController")
 public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
+        String email = request.getParameter("email");
         String password = request.getParameter("password");
 
         LoginBean loginBean = new LoginBean();
         UserBean userBean = new UserBean();
 
-        loginBean.setUsername(username);
+        loginBean.setEmail(email);
         loginBean.setPassword(password);
 
         LoginDao loginDao = new LoginDao();

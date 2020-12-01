@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>UNIFOOD</title>
+    <title>Đặt lại mật khẩu | Unifood</title>
 </head>
 <body>
 <div align="center">

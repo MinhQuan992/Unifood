@@ -8,7 +8,7 @@ public class CustomerServices {
     public String resetCustomerPassword(String email)
     {
         UserDao userDao = new UserDao();
-        UserBean userBean = userDao.findUser(email, "ByEmail");
+        UserBean userBean = userDao.findUser(email);
 
         String randomPassword = RandomStringUtils.randomAlphanumeric(10);
 

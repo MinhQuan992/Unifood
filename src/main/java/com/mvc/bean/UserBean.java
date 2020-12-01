@@ -3,7 +3,7 @@ package com.mvc.bean;
 import java.util.Date;
 
 public class UserBean {
-    private String userID, fullName, gender, address, phone, email, username, password;
+    private String userID, fullName, gender, address, phone, email, password;
     private Date birthDate;
 
     public String getUserID() {
@@ -62,14 +62,6 @@ public class UserBean {
         this.email = email;
     }
 
-    public String getUsername() {
-        return username;
-    }
-
-    public void setUsername(String username) {
-        this.username = username;
-    }
-
     public String getPassword() {
         return password;
     }
@@ -77,6 +69,5 @@ public class UserBean {
     public void setPassword(String password) {
         this.password = password;
     }
-
 
 }

@@ -8,7 +8,7 @@ public class UserDao {
     private PreparedStatement statement = null;
     private Connection connection = null;
 
-    public UserBean findUser(String identifiedString, String method)
+    public UserBean findUser(String email)
     {
         UserBean userBean = new UserBean();
         String sqlString = null;
@@ -17,22 +17,9 @@ public class UserDao {
         {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(dbURL);
-
-            if (method.equals("ByUsername"))
-            {
-                sqlString = "SELECT * FROM NGUOIDUNG WHERE TenDangNhap = ?";
-            }
-            else if (method.equals("ByUserID"))
-            {
-                sqlString = "SELECT * FROM NGUOIDUNG WHERE MaNguoiDung = ?";
-            }
-            else if (method.equals("ByEmail"))
-            {
-                sqlString = "SELECT * FROM NGUOIDUNG WHERE Email = ?";
-            }
-
+            sqlString = "SELECT * FROM NGUOIDUNG WHERE Email = ?";
             statement = connection.prepareStatement(sqlString);
-            statement.setString(1, identifiedString);
+            statement.setString(1, email);
 
             ResultSet resultSet = statement.executeQuery();
 
@@ -45,7 +32,6 @@ public class UserDao {
                 userBean.setAddress(resultSet.getNString("DiaChi"));
                 userBean.setPhone(resultSet.getString("DienThoai"));
                 userBean.setEmail(resultSet.getString("Email"));
-                userBean.setUsername(resultSet.getString("TenDangNhap"));
                 userBean.setPassword(resultSet.getString("MatKhau"));
             }
 
@@ -66,20 +52,18 @@ public class UserDao {
         String address = userBean.getAddress();
         String phone = userBean.getPhone();
         String email = userBean.getEmail();
-        String username = userBean.getUsername();
         String password = userBean.getPassword();
 
         try
         {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
             connection = DriverManager.getConnection(dbURL);
-            statement = connection.prepareStatement("UPDATE NGUOIDUNG SET DiaChi = ?, DienThoai = ?, Email = ?, TenDangNhap = ?, MatKhau = ? WHERE MaNguoiDung = ?");
+            statement = connection.prepareStatement("UPDATE NGUOIDUNG SET DiaChi = ?, DienThoai = ?, Email = ?, MatKhau = ? WHERE MaNguoiDung = ?");
             statement.setString(1, address);
             statement.setString(2, phone);
             statement.setString(3, email);
-            statement.setString(4, username);
-            statement.setString(5, password);
-            statement.setString(6, userID);
+            statement.setString(4, password);
+            statement.setString(5, userID);
             statement.executeUpdate();
 
             statement.close();
