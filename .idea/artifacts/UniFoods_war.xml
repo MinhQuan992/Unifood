@@ -9,6 +9,22 @@
     </properties>
     <root id="archive" name="UniFoods-1.0-SNAPSHOT.war">
       <element id="artifact" artifact-name="UniFoods:war exploded" />
+      <element id="directory" name="WEB-INF">
+        <element id="directory" name="lib">
+          <element id="library" level="project" name="taglibs-standard-impl-1.2.5" />
+          <element id="library" level="project" name="taglibs-standard-jstlel-1.2.5" />
+          <element id="library" level="project" name="taglibs-standard-spec-1.2.5" />
+          <element id="library" level="project" name="javax.servlet:jstl:1.2" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/mssql-jdbc-8.4.1.jre8.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/javax.mail.jar" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/javax.activation-1.2.0.jar" />
+          <element id="library" level="project" name="Java EE 6-Java EE 6" />
+          <element id="file-copy" path="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/commons-lang3-3.11.jar" />
+        </element>
+        <element id="directory" name="classes">
+          <element id="jpa-descriptors" facet="UniFoods/jpa/JPA" />
+        </element>
+      </element>
     </root>
   </artifact>
 </component>

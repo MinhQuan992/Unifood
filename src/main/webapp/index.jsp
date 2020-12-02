@@ -13,14 +13,14 @@
 </head>
 <body>
 <a href="login.jsp">HELLO WORLD</a>
-<a href="${pageContext.request.contextPath}/Product/ProductDetail.jsp">ProductDetail</a>
+<a href="${pageContext.request.contextPath}/Page/ProductDetail.jsp">ProductDetail</a>
+<a href="${pageContext.request.contextPath}/Product?ItemCode=MN10100005">Test</a>
 <br>
 <c:if test="${not empty loginFailed}">
     <c:choose>
         <c:when test="${loginFailed == true}">
             Login failed
         </c:when>
-        
         <c:otherwise>
             <c:out value="${userID}"/>
             <br>

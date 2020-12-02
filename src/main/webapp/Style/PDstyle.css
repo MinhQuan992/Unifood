@@ -12,15 +12,15 @@
 }
 
 .PDmain {
-    width: 1000px;
-    height: 800px;
+    width: 1400px;
+    height: 1800px;
     max-height: 1900px;
     max-width: 1200px;
     min-height: 600px;
     min-width: 800px;
     display: grid;
-    grid-template-rows: 40% 60%;
-    grid-template-columns: 50% 50%;
+    grid-template-rows: 20% 80%;
+    grid-template-columns: 60% 50%;
 }
 
 .PDBox{
@@ -97,10 +97,8 @@
 .PD-main-menu-option-quantity-dec-button,
 .PD-main-menu-option-quantity-inc-button,
 .PD-extra-option-quantity-dec-button,
-.PD-extra-option-quantity-inc-button
-{
-    width: 30px;
-    height: 30px;
+.PD-extra-option-quantity-inc-button {
+    font-family: "Courier New";
     border-radius: 30px;
     font-size: 24px;
     color: white;

@@ -11,7 +11,6 @@ public class LoginDao {
         String password = loginBean.getPassword();
 
         String dbURL = "jdbc:sqlserver://localhost;integratedSecurity=True;databaseName=UNIFOOD";
-
         PreparedStatement statement = null;
         Connection connection = null;
         try
@@ -45,8 +44,6 @@ public class LoginDao {
                     statement.close();
                     connection.close();
 
-                    System.out.println("Connection OK!");
-
                     return true;
                 }
             }
@@ -54,7 +51,6 @@ public class LoginDao {
         catch (Exception exception)
         {
             exception.printStackTrace();
-            System.out.println("Connection not OK!");
         }
 
         return false;
