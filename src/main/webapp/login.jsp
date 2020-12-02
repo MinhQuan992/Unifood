@@ -21,7 +21,7 @@
     <img id="logo" src="Images/LOGO.png">
     <form id="frmLogin" method="post" action="${pageContext.request.contextPath}/Login">
         <h1 id="form-title">ĐĂNG NHẬP TÀI KHOẢN</h1>
-        <i class="fas fa-envelope" style="font-size: 170%"></i>
+        <i class="fas fa-envelope" style="font-size: 155%"></i>
         &nbsp;
         <input class="txtInfo" type="text" name="email" placeholder="Email" required>
         <br>

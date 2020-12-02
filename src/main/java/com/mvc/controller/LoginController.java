@@ -32,7 +32,7 @@ public class LoginController extends HttpServlet {
             request.setAttribute("userID", userBean.getUserID());
             request.setAttribute("fullName", userBean.getFullName());
             request.setAttribute("gender", userBean.getGender());
-            request.setAttribute("birthDate", userBean.getBirthDate());
+            request.setAttribute("birthdate", userBean.getBirthdate());
             request.setAttribute("address", userBean.getAddress());
             request.setAttribute("phone", userBean.getPhone());
             request.setAttribute("email", userBean.getEmail());

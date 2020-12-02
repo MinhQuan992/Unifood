@@ -27,7 +27,7 @@
             <br>
             <c:out value="${gender}"/>
             <br>
-            <c:out value="${birthDate}"/>
+            <c:out value="${birthdate}"/>
             <br>
             <c:out value="${address}"/>
             <br>

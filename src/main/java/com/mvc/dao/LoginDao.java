@@ -34,7 +34,7 @@ public class LoginDao {
                     userBean.setUserID(resultSet.getString("MaNguoiDung"));
                     userBean.setFullName(resultSet.getNString("HoVaTen"));
                     userBean.setGender(resultSet.getNString("GioiTinh"));
-                    userBean.setBirthDate(resultSet.getDate("NgaySinh"));
+                    userBean.setBirthdate(resultSet.getDate("NgaySinh"));
                     userBean.setAddress(resultSet.getNString("DiaChi"));
                     userBean.setPhone(resultSet.getString("DienThoai"));
                     userBean.setEmail(resultSet.getString("Email"));
@@ -50,7 +50,6 @@ public class LoginDao {
         catch (Exception e)
         {
             e.printStackTrace();
-            // username = e.getMessage();
         }
 
         return false;

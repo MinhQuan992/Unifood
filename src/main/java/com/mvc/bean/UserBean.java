@@ -4,7 +4,7 @@ import java.util.Date;
 
 public class UserBean {
     private String userID, fullName, gender, address, phone, email, password;
-    private Date birthDate;
+    private Date birthdate;
 
     public String getUserID() {
         return userID;
@@ -30,12 +30,12 @@ public class UserBean {
         this.gender = gender;
     }
 
-    public Date getBirthDate() {
-        return birthDate;
+    public Date getBirthdate() {
+        return birthdate;
     }
 
-    public void setBirthDate(Date birthDate) {
-        this.birthDate = birthDate;
+    public void setBirthdate(Date birthdate) {
+        this.birthdate = birthdate;
     }
 
     public String getAddress() {

@@ -37,14 +37,14 @@ public class ResetPasswordController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String recipient = request.getParameter("reset-email");
-        String subject = "Mật khẩu của bạn đã được đặt lại";
+        String subject = "Mat khau cua ban da duoc dat lai";
 
         CustomerServices customerServices = new CustomerServices();
         String newPassword = customerServices.resetCustomerPassword(recipient);
 
-        String content = "Xin chào, đây là mật khẩu mới của bạn đã được hệ thống tạo ra ngẫu nhiên: " + newPassword;
-        content += "\nChú ý: vì lí do bảo mật, bạn phải đổi mật khẩu ngay sau khi đăng nhập.";
-        content += "\nĐội ngũ hỗ trợ UNIFOOD";
+        String content = "Xin chao, day la mat khau moi cua ban da duoc he thong tao ra ngau nhien: " + newPassword;
+        content += "\nChu y: vi li do bao mat, ban phai doi mat khau ngay sau khi dang nhap.";
+        content += "\nDoi ngu ho tro UNIFOOD";
 
         String message = "";
 
