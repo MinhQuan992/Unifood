@@ -15,7 +15,7 @@
 </head>
 <body>
     <c:if test="${not empty authorize}">
-        <form method="get" action="/EditInfo">
+        <form method="get" action="${pageContext.request.contextPath}/EditInfo">
             <h2>Edit User Infomation</h2>
 
             <input type="hidden" id="UserId" name="UserId" value="${userID}">
@@ -25,7 +25,7 @@
                     User Name:
                 </th></tr>
                 <tr><td>
-                    <input type="text" id="userName" name="userName" value="${userName}"><br>
+                    <input type="text" id="userName" name="userName" value="${userName}">
                     <p><c:out value="${error_userName}"></c:out></p>
                 </td></tr>
 
@@ -33,7 +33,7 @@
                     New Password:
                 </th></tr>
                 <tr><td>
-                    <input type="password" id="password" name="password"><br>
+                    <input type="password" id="newPassword" name="newPassword" value="${newPassword}">
                     <p><c:out value="${error_password}"></c:out></p>
                 </td></tr>
 
@@ -41,7 +41,7 @@
                     Reenter new Password:
                 </th></tr>
                 <tr><td>
-                    <input type="password" id="rePassword" name="rePassword"><br>
+                    <input type="password" id="rePassword" name="rePassword" value="${rePassword}">
                     <p><c:out value="${error_rePassword}"></c:out></p>
                 </td></tr>
 
@@ -49,7 +49,7 @@
                     Full name:
                 </th></tr>
                 <tr><td>
-                    <input type="text" id="fullName" name="fullName" value="${fullName}"><br>
+                    <input type="text" id="fullName" name="fullName" value="${fullName}">
                     <p><c:out value="${error_fullName}"></c:out></p>
                 </td></tr>
 
@@ -57,7 +57,7 @@
                     Gender:
                 </th></tr>
                 <tr><td>
-                    <input type="text" id="gender" name="gender" value="${gender}"><br>
+                    <input type="text" id="gender" name="gender" value="${gender}">
                     <p><c:out value="${error_gender}"></c:out></p>
                 </td></tr>
 
@@ -65,7 +65,7 @@
                     Birth Date:
                 </th></tr>
                 <tr><td>
-                    <input type="date" id="birthDate" name="birthDate" value="${birthDate}"><br>
+                    <input type="date" id="birthDate" name="birthDate" value="${birthDate}">
                     <p><c:out value="${error_birthDate}"></c:out></p>
                 </td></tr>
 
@@ -73,7 +73,7 @@
                     Address:
                 </th></tr>
                 <tr><td>
-                    <input type="text" id="address" name="address" value="${address}"><br>
+                    <input type="text" id="address" name="address" value="${address}">
                     <p><c:out value="${error_address}"></c:out></p>
                 </td></tr>
 
@@ -81,7 +81,7 @@
                     Phone Number:
                 </th></tr>
                 <tr><td>
-                    <input type="text" id="phone" name="phone" value="${phone}"><br>
+                    <input type="text" id="phone" name="phone" value="${phone}">
                     <p><c:out value="${error_phone}"></c:out></p>
                 </td></tr>
 
@@ -89,7 +89,7 @@
                     Email:
                 </th></tr>
                 <tr><td>
-                    <input type="text" id="email" name="email" value="${email}"><br>
+                    <input type="text" id="email" name="email" value="${email}">
                     <p><c:out value="${error_email}"></c:out></p>
                 </td></tr>
 
