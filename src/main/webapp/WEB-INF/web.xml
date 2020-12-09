@@ -22,6 +22,15 @@
         <url-pattern>/EditInfo</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>ManageWarehouseController</servlet-name>
+        <servlet-class>com.mvc.controller.ManageWarehouseController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManageWarehouseController</servlet-name>
+        <url-pattern>/ManageWarehouse</url-pattern>
+    </servlet-mapping>
+
     <context-param>
         <param-name>host</param-name>
         <param-value>smtp.gmail.com</param-value>

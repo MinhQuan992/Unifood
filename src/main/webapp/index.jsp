@@ -6,6 +6,7 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -40,6 +41,12 @@
         <input type="hidden" id="userId" name="userId" value="${userID}">
         <input type="submit" value="Edit Info">
     </form>
+    <c:if test="${fn:contains('OL', userId)}">
+        <form method="post" action="${pageContext.request.contextPath}/ManageWarehouse">
+            <input type="hidden" id="managerId", name="userId" value="${userID}">
+            <input type="submit" value="Manage Warehouse">
+        </form>
+    </c:if>
 </c:if>
 </body>
 </html>

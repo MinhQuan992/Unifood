@@ -5,5 +5,25 @@
              version="2.2">
     <persistence-unit name="default">
 
+        <class>com.mvc.entities.KhohangEntity</class>
+        <class>com.mvc.entities.SanphamEntity</class>
+        <class>com.mvc.entities.NhomsanphamEntity</class>
+        <class>com.mvc.entities.DathangEntity</class>
+        <class>com.mvc.entities.DonhangEntity</class>
+        <class>com.mvc.entities.DonvigiaohangEntity</class>
+        <class>com.mvc.entities.GiohangEntity</class>
+        <class>com.mvc.entities.MagiamgiaEntity</class>
+        <class>com.mvc.entities.NguoidungEntity</class>
+        <class>com.mvc.entities.VGioHangKhongCoTrongDonHangEntity</class>
+        <properties>
+            <property name="toplink.jdbc.url" value="jdbc:sqlserver://localhost;database=UNIFOOD"/>
+            <property name="toplink.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <property name="hibernate.connection.url" value="jdbc:sqlserver://localhost;database=UNIFOOD"/>
+            <property name="hibernate.connection.driver_class" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <property name="openjpa.ConnectionURL" value="jdbc:sqlserver://localhost;database=UNIFOOD"/>
+            <property name="openjpa.ConnectionDriverName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <property name="eclipselink.jdbc.url" value="jdbc:sqlserver://localhost;database=UNIFOOD"/>
+            <property name="eclipselink.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+        </properties>
     </persistence-unit>
 </persistence>
