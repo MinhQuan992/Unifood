@@ -19,7 +19,7 @@
 
 <article>
     <img id="logo" src="Images/LOGO.png">
-    <form id="frmLogin" method="post" action="${pageContext.request.contextPath}/Login">
+    <form id="frmLogin" method="post" action="${pageContext.request.contextPath}/login">
         <h1 id="form-title">ĐĂNG NHẬP TÀI KHOẢN</h1>
         <i class="fas fa-envelope" style="font-size: 155%"></i>
         &nbsp;
