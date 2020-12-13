@@ -44,35 +44,36 @@ public class ResetPasswordController extends HttpServlet {
 
         if (user != null)
         {
-            String subject = "Mat khau cua ban da duoc dat lai";
             String randomPassword = RandomStringUtils.randomAlphanumeric(8);
-
             user.setMatKhau(randomPassword);
-            userDao.updateUser(user);
-
-            String content = "Xin chao, day la mat khau moi cua ban da duoc he thong tao ra ngau nhien: " + randomPassword;
-            content += "\nChu y: vi li do bao mat, ban phai doi mat khau ngay sau khi dang nhap.";
-            content += "\nDoi ngu ho tro UNIFOOD";
-
             String message = "";
+            boolean canExecute = userDao.updateUser(user);
+            if (canExecute)
+            {
+                String subject = "Mat khau cua ban da duoc dat lai";
+                String content = "Xin chao, day la mat khau moi cua ban da duoc he thong tao ra ngau nhien: " + randomPassword;
+                content += "\nChu y: vi li do bao mat, ban phai doi mat khau ngay sau khi dang nhap.";
+                content += "\nDoi ngu ho tro UNIFOOD";
 
-            try
-            {
-                EmailUtility.sendEmail(host, port, socketFactoryClass, auth, email, name, pass,
-                        recipient, subject, content);
-                message = "Mật khẩu của bạn đã thay đổi, hãy kiểm tra email của bạn!";
+                try
+                {
+                    EmailUtility.sendEmail(host, port, socketFactoryClass, auth, email, name, pass,
+                            recipient, subject, content);
+                    message = "Mật khẩu của bạn đã thay đổi, hãy kiểm tra email của bạn!";
+                }
+                catch (Exception ex)
+                {
+                    ex.printStackTrace();
+                    message = "Có lỗi xảy ra: " + ex.getMessage();
+                }
             }
-            catch (Exception ex)
+            else
             {
-                ex.printStackTrace();
-                message = "Có lỗi xảy ra: " + ex.getMessage();
+                message = "Có lỗi xảy ra";
             }
-            finally
-            {
-                request.setAttribute("wrongEmail",false);
-                request.setAttribute("message", message);
-                request.getRequestDispatcher("/message.jsp").forward(request, response);
-            }
+            request.setAttribute("wrongEmail",false);
+            request.setAttribute("message", message);
+            request.getRequestDispatcher("/message.jsp").forward(request, response);
         }
         else
         {

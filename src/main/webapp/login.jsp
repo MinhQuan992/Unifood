@@ -5,6 +5,7 @@
   Time: 9:12 PM
   To change this template use File | Settings | File Templates.
 --%>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -13,6 +14,20 @@
     <script src="https://kit.fontawesome.com/9636dbf883.js" crossorigin="anonymous"></script>
 </head>
 <body id="login-page">
+<c:if test="${not empty signupSuccess}">
+    <c:if test="${signupSuccess == true}">
+        <script type="text/javascript">
+            alert("Tạo tài khoản thành công, mời bạn đăng nhập để tiếp tục!")
+        </script>
+    </c:if>
+</c:if>
+<c:if test="${not empty loginFailed}">
+    <c:if test="${loginFailed == true}">
+        <script type="text/javascript">
+            alert("Tên đăng nhập hoặc mật khẩu sai!")
+        </script>
+    </c:if>
+</c:if>
 <header>
 
 </header>

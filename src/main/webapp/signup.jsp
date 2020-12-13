@@ -14,7 +14,7 @@
 <body>
 <div align="center">
     <h1>ĐĂNG KÝ TÀI KHOẢN</h1>
-    <form id="" method="post" action="">
+    <form id="" method="post" action="${pageContext.request.contextPath}/signup">
         <table>
             <tr>
                 <td>Họ và tên:</td>
@@ -30,19 +30,19 @@
                         </c:otherwise>
                     </c:choose>
 
-                    <c:if test="${not empty nameError}">
-                        style="border-color: red"
+                    <c:if test="${not empty fullnameError}">
+                           style="border-color: red"
                     </c:if>
                     required>
                 </td>
-                <td><c:out value="${nameError}"/></td>
+                <td><c:out value="${fullnameError}"/></td>
             </tr>
 
             <tr>
                 <td>Giới tính:</td>
                 <td>
                     <label>
-                        <input type="radio" name="userGender" value="Nam" <c:if test="${userGender == 'Nam'}">checked</c:if>>
+                        <input type="radio" name="userGender" value="Nam" <c:if test="${empty userGender || userGender == 'Nam'}">checked</c:if>>
                     </label>Nam
                     &nbsp;&nbsp;&nbsp;&nbsp;
                     <label>
@@ -64,8 +64,13 @@
                             value="2000-01-01"
                         </c:otherwise>
                     </c:choose>
+
+                    <c:if test="${not empty birthdateError}">
+                            style="border-color: red"
+                    </c:if>
                     >
                 </td>
+                <td><c:out value="${birthdateError}"/></td>
             </tr>
 
             <tr>
@@ -81,8 +86,13 @@
                             value="<c:out value="${userAddress}"/>"
                         </c:otherwise>
                     </c:choose>
+
+                    <c:if test="${not empty addressError}">
+                           style="border-color: red"
+                    </c:if>
                     required>
                 </td>
+                <td><c:out value="${addressError}"/></td>
             </tr>
 
             <tr>
@@ -98,11 +108,11 @@
                            value="<c:out value="${userPhone}"/>"
                         </c:otherwise>
                     </c:choose>
-                    required>
 
                     <c:if test="${not empty phoneError}">
                         style="border-color: red"
                     </c:if>
+                    required>
                 </td>
                 <td><c:out value="${phoneError}"/></td>
             </tr>
@@ -110,7 +120,7 @@
             <tr>
                 <td>Email:</td>
                 <td>
-                    <input type="text" name="userEmail"
+                    <input type="email" name="userEmail"
                     <c:choose>
                         <c:when test="${empty userEmail}">
                            placeholder="Nhập địa chỉ email"
@@ -120,11 +130,11 @@
                            value="<c:out value="${userEmail}"/>"
                         </c:otherwise>
                     </c:choose>
-                    required>
 
                     <c:if test="${not empty emailError}">
                         style="border-color: red"
                     </c:if>
+                    required>
                 </td>
                 <td><c:out value="${emailError}"/></td>
             </tr>
@@ -132,21 +142,11 @@
             <tr>
                 <td>Mật khẩu:</td>
                 <td>
-                    <input type="password" name="password"
-                    <c:choose>
-                        <c:when test="${empty password}">
-                           placeholder="Nhập mật khẩu độ dài từ 8 đến 50 kí tự"
-                        </c:when>
-
-                        <c:otherwise>
-                           value="<c:out value="${password}"/>"
-                        </c:otherwise>
-                    </c:choose>
-                    required>
-
+                    <input type="password" name="password" placeholder="Nhập mật khẩu độ dài từ 8 đến 50 kí tự"
                     <c:if test="${not empty passwordError}">
                         style="border-color: red"
                     </c:if>
+                    required>
                 </td>
                 <td><c:out value="${passwordError}"/></td>
             </tr>
@@ -154,21 +154,11 @@
             <tr>
                 <td>Nhập lại mật khẩu:</td>
                 <td>
-                    <input type="password" name="retypePassword"
-                    <c:choose>
-                        <c:when test="${empty retypePassword}">
-                           placeholder="Nhập lại mật khẩu"
-                        </c:when>
-
-                        <c:otherwise>
-                           value="<c:out value="${retypePassword}"/>"
-                        </c:otherwise>
-                    </c:choose>
-                    required>
-
+                    <input type="password" name="retypePassword" placeholder="Nhập lại mật khẩu"
                     <c:if test="${not empty retypePasswordError}">
                         style="border-color: red"
                     </c:if>
+                    required>
                 </td>
                 <td><c:out value="${retypePasswordError}"/></td>
             </tr>
