@@ -19,6 +19,7 @@ public class LoginController extends HttpServlet {
 
         UserDao userDao = new UserDao();
         NguoidungEntity user = userDao.getUserByEmail(email);
+        String url;
 
         if (user != null)
         {
@@ -33,18 +34,19 @@ public class LoginController extends HttpServlet {
                 request.setAttribute("phone", user.getDienThoai());
                 request.setAttribute("email", user.getEmail());
                 request.setAttribute("loginFailed", false);
+                url = "/index.jsp";
             }
             else
             {
                 request.setAttribute("loginFailed", true);
+                url = "/login.jsp";
             }
         }
         else
         {
             request.setAttribute("loginFailed", true);
+            url = "/login.jsp";
         }
-
-        String url = "/index.jsp";
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
         dispatcher.forward(request, response);
