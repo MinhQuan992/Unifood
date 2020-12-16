@@ -1,8 +1,7 @@
 package com.mvc.controller;
 
-import com.mvc.bean.LoginBean;
-import com.mvc.bean.UserBean;
-import com.mvc.dao.LoginDao;
+import com.mvc.dao.UserDao;
+import com.mvc.entities.NguoidungEntity;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,31 +11,33 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "LoginController")
+@WebServlet(name = "LoginController", urlPatterns = {"/Login"})
 public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String username = request.getParameter("username");
+        String email = request.getParameter("email");
         String password = request.getParameter("password");
 
-        LoginBean loginBean = new LoginBean();
-        UserBean userBean = new UserBean();
+        UserDao userDao = new UserDao();
+        NguoidungEntity user = userDao.getUserByEmail(email);
 
-        loginBean.setUsername(username);
-        loginBean.setPassword(password);
-
-        LoginDao loginDao = new LoginDao();
-        boolean authorize = loginDao.authorizeLogin(loginBean, userBean);
-
-        if (authorize)
+        if (user != null)
         {
-            request.setAttribute("userID", userBean.getUserID());
-            request.setAttribute("fullName", userBean.getFullName());
-            request.setAttribute("gender", userBean.getGender());
-            request.setAttribute("birthDate", userBean.getBirthDate());
-            request.setAttribute("address", userBean.getAddress());
-            request.setAttribute("phone", userBean.getPhone());
-            request.setAttribute("email", userBean.getEmail());
-            request.setAttribute("loginFailed", false);
+            String dbPassword = user.getMatKhau();
+            if (password.equals(dbPassword))
+            {
+                request.setAttribute("userID", user.getMaNguoiDung());
+                request.setAttribute("fullName", user.getHoVaTen());
+                request.setAttribute("gender", user.getGioiTinh());
+                request.setAttribute("birthDate", user.getNgaySinh());
+                request.setAttribute("address", user.getDiaChi());
+                request.setAttribute("phone", user.getDienThoai());
+                request.setAttribute("email", user.getEmail());
+                request.setAttribute("loginFailed", false);
+            }
+            else
+            {
+                request.setAttribute("loginFailed", true);
+            }
         }
         else
         {

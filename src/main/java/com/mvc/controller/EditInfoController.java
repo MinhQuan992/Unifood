@@ -1,7 +1,7 @@
 package com.mvc.controller;
 
-import com.mvc.bean.UserBean;
 import com.mvc.dao.EditInfoDao;
+import com.mvc.entities.NguoidungEntity;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,7 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -20,25 +21,18 @@ import java.util.regex.Pattern;
 public class EditInfoController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String userId = request.getParameter("userId");
+        NguoidungEntity user = EditInfoDao.authorizeEditInfo(request.getParameter("userId"));
 
-        UserBean userBean = new UserBean();
-        userBean.setUserID(userId);
-
-        EditInfoDao editInfoDao = new EditInfoDao();
-        boolean authorize = editInfoDao.authorizeEditInfo(userBean);
-
-        if (authorize)
+        if (user != null)
         {
-            request.setAttribute("userID", userBean.getUserID());
-            request.setAttribute("userName", userBean.getUsername());
-            request.setAttribute("password", userBean.getPassword());
-            request.setAttribute("fullName", userBean.getFullName());
-            request.setAttribute("gender", userBean.getGender());
-            request.setAttribute("birthDate", userBean.getBirthDate());
-            request.setAttribute("address", userBean.getAddress());
-            request.setAttribute("phone", userBean.getPhone());
-            request.setAttribute("email", userBean.getEmail());
+            request.setAttribute("userID", user.getMaNguoiDung());
+            request.setAttribute("password", user.getMatKhau());
+            request.setAttribute("fullName", user.getHoVaTen());
+            request.setAttribute("gender", user.getGioiTinh());
+            request.setAttribute("birthDate", user.getNgaySinh().toString());
+            request.setAttribute("address", user.getDiaChi());
+            request.setAttribute("phone", user.getDienThoai());
+            request.setAttribute("email", user.getEmail());
             request.setAttribute("authorize", true);
         }
 
@@ -55,7 +49,6 @@ public class EditInfoController extends HttpServlet {
         Pattern emailPattern = Pattern.compile("\\A(?:[a-z0-9!#$%&'*+=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\\Z");
 
         String userId = request.getParameter("UserId");
-        String userName = request.getParameter("userName");
         String password = request.getParameter("newPassword");
         String rePassword = request.getParameter("rePassword");
         String fullName = request.getParameter("fullName");
@@ -68,111 +61,86 @@ public class EditInfoController extends HttpServlet {
         Matcher phoneMatcher = phonePattern.matcher(phone);
         Matcher emailMatcher = emailPattern.matcher(email);
 
-        String error_userName = "";
-        if (userName.equals("")) {
-            error_userName = "Must not be empty.";
-        } else if (specialCharsPattern.matcher(userName).find()) {
-            error_userName = "Must not contain any special characters !@#$%^&*()?\"':{}|<>";
-        }
+        Map<String, String> errors = new HashMap<String, String>();
 
-        String error_password = "";
         if (specialCharsPattern.matcher(password).find()) {
-            error_password = "Must not contain any special characters !@#$%^&*()?\"':{}|<>";
+            errors.put("password", "Must not contain any special characters !@#$%^&*()?\"':{}|<>");
         }
 
-        String error_rePassword = "";
         if (!rePassword.equals(password)) {
-            error_rePassword = "Not match with password";
+            errors.put("rePassword", "Not match with new password");
         } else if (specialCharsPattern.matcher(rePassword).find()) {
-            error_rePassword = "Must not contain any special characters !@#$%^&*()?\"':{}|<>";
+            errors.put("rePassword", "Must not contain any special characters !@#$%^&*()?\"':{}|<>");
         }
 
-        String error_fullName = "";
         if (fullName.equals("")) {
-            error_fullName = "Must not be empty";
+            errors.put("fullName", "Must not be empty");
         } else if (specialCharsPattern.matcher(fullName).find()) {
-            error_fullName = "Must not contain any special characters !@#$%^&*()?\"':{}|<>";
+            errors.put("fullName", "Must not contain any special characters !@#$%^&*()?\"':{}|<>");
         }
 
-        String error_gender = "";
         if (!(gender.equals("Nam") || gender.equals("Nữ"))) {
-            error_gender = "Must be either 'Nam' or 'Nữ'";
+            errors.put("gender", "Must be either 'Nam' or 'Nữ'.");
         }
 
-        String error_birthDate = "";
-        Date birthDate = new Date();
+        java.sql.Date birthDate = null;
         try {
-            birthDate = new SimpleDateFormat("yyyy-MM-dd").parse(birthDateStr);
-            Date today = Calendar.getInstance().getTime();
-            if (birthDate.after(today)) {
+            java.util.Date birth = new SimpleDateFormat("yyyy-MM-dd").parse(birthDateStr);
+            java.util.Date today = Calendar.getInstance().getTime();
+            if (birth.after(today)) {
                 throw new Exception("Birthdate not valid.");
             }
+            birthDate = new java.sql.Date(birth.getTime());
         } catch (Exception e) {
-            error_birthDate = e.getMessage();
+            errors.put("birthDate", e.getMessage());
         }
 
-        String error_address = "";
         if (specialCharsPattern.matcher(address).find()) {
-            error_address = "Must not contain any special characters !@#$%^&*()?\"':{}|<>";
+            errors.put("address", "Must not contain any special characters !@#$%^&*()?\"':{}|<>");
         }
 
-        String error_phone = "";
         if (!phoneMatcher.find()) {
-            error_phone = "Must be a 10-digit number.";
+            errors.put("phone", "Must be a 10-digit number.");
         } else {
             phone = phoneMatcher.group();
         }
 
-        String error_email = "";
         if (!emailMatcher.find()) {
-            error_email = "Must be a valid email address.";
+            errors.put("email", "Must be a valid email address.");
         } else {
             email = emailMatcher.group();
         }
 
         String status = "";
-        if (error_address.equals("") && error_birthDate.equals("") && error_email.equals("")
-                && error_fullName.equals("") && error_gender.equals("") && error_password.equals("")
-                && error_phone.equals("") && error_rePassword.equals("") && error_userName.equals(""))
+        if (errors.isEmpty())
         {
-            UserBean userBean = new UserBean();
-            userBean.setUserID(userId);
-            userBean.setAddress(address);
-            userBean.setBirthDate(birthDate);
-            userBean.setEmail(email);
-            userBean.setFullName(fullName);
-            userBean.setGender(gender);
-            userBean.setPassword(password);
-            userBean.setPhone(phone);
-            userBean.setUsername(userName);
+            NguoidungEntity user = new NguoidungEntity();
+            user.setMaNguoiDung(userId);
+            user.setDiaChi(address);
+            user.setNgaySinh(birthDate);
+            user.setEmail(email);
+            user.setHoVaTen(fullName);
+            user.setGioiTinh(gender);
+            user.setMatKhau(password);
+            user.setDienThoai(phone);
 
-            EditInfoDao editInfoDao = new EditInfoDao();
-            status = editInfoDao.updateUserInfo(userBean);
-            if (status.equals("")) {
+            status = EditInfoDao.updateUserInfo(user);
+            if (status == null) {
                 status = "Updated on " + Calendar.getInstance().getTime().toString();
             }
         }
 
+        request.setAttribute("error", errors);
         request.setAttribute("authorize", true);
         request.setAttribute("userID", userId);
-        request.setAttribute("userName", userName);
-        request.setAttribute("error_userName", error_userName);
         request.setAttribute("newPassword", password);
-        request.setAttribute("error_password", error_password);
         request.setAttribute("rePassword", rePassword);
-        request.setAttribute("error_rePassword", error_rePassword);
         request.setAttribute("fullName", fullName);
-        request.setAttribute("error_fullName", error_fullName);
         request.setAttribute("gender", gender);
-        request.setAttribute("error_gender", error_gender);
         request.setAttribute("birthDate", birthDateStr);
-        request.setAttribute("error_birthDate", error_birthDate);
         request.setAttribute("address", address);
-        request.setAttribute("error_address", error_address);
         request.setAttribute("phone", phone);
-        request.setAttribute("error_phone", error_phone);
         request.setAttribute("email", email);
-        request.setAttribute("error_email", error_email);
         request.setAttribute("status", status);
 
         String url = "/editInfo.jsp";

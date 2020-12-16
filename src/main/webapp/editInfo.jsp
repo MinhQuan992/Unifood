@@ -16,88 +16,84 @@
 <body>
 <c:if test="${not empty authorize}">
     <div class="container col-md-8 col-md-offset-3" style="overflow: auto">
-        <h1>Edit User Information</h1>
-        <form method="get" action="${pageContext.request.contextPath}/EditInfo">
-            <input type="hidden" id="UserId" name="UserId" value="${userID}">
-
-            <div class="form-group">
-                <label for="userName">User Name:</label>
-                <input type="text"
-                       class="form-control" id="userName"
-                       name="userName" value="${userName}" required>
-                <p style="color: red"><c:out value="${error_userName}"></c:out></p>
+        <div class="jumbotron">
+            <div class="page-header">
+                <h1>Thay đổi thông tin người dùng</h1>
+                <p class="text-info"><c:out value="${status}"></c:out></p>
             </div>
+            <form method="get" action="${pageContext.request.contextPath}/EditInfo">
+                <input type="hidden" id="UserId" name="UserId" value="${userID}">
 
-            <div class="form-group">
-                <label for="newPassword">New Password:</label>
-                <input type="password"
-                       class="form-control" id="newPassword"
-                       name="newPassword" value="${newPassword}" required>
-                <p style="color: red"><c:out value="${error_password}"></c:out></p>
-            </div>
+                <div class="form-group">
+                    <label for="fullName">Full Name:</label>
+                    <input type="text"
+                           class="form-control" id="fullName"
+                           name="fullName" value="${fullName}">
+                    <p style="color: red"><c:out value="${error.fullName}"></c:out></p>
+                </div>
 
-            <div class="form-group">
-                <label for="rePassword">Reenter new Password:</label>
-                <input type="password"
-                       class="form-control" id="rePassword"
-                       name="rePassword" value="${rePassword}" required>
-                <p style="color: red"><c:out value="${error_rePassword}"></c:out></p>
-            </div>
+                <div class="form-group">
+                    <label for="newPassword">New Password:</label>
+                    <input type="password"
+                           class="form-control" id="newPassword"
+                           name="newPassword" value="${newPassword}" required>
+                    <p style="color: red"><c:out value="${error.password}"></c:out></p>
+                </div>
 
-            <div class="form-group">
-                <label for="fullName">Full Name:</label>
-                <input type="text"
-                       class="form-control" id="fullName"
-                       name="fullName" value="${fullName}">
-                <p style="color: red"><c:out value="${error_fullName}"></c:out></p>
-            </div>
+                <div class="form-group">
+                    <label for="rePassword">Reenter new Password:</label>
+                    <input type="password"
+                           class="form-control" id="rePassword"
+                           name="rePassword" value="${rePassword}" required>
+                    <p style="color: red"><c:out value="${error.rePassword}"></c:out></p>
+                </div>
 
-            <div class="form-group">
-                <label for="gender">Gender:</label>
-                <input type="text"
-                       class="form-control" id="gender"
-                       name="gender" value="${gender}">
-                <p style="color: red"><c:out value="${error_gender}"></c:out></p>
-            </div>
+                <div class="form-group">
+                    <label for="gender">Gender:</label>
+                    <input type="text"
+                           class="form-control" id="gender"
+                           name="gender" value="${gender}">
+                    <p style="color: red"><c:out value="${error.gender}"></c:out></p>
+                </div>
 
-            <div class="form-group">
-                <label for="birthDate">Birth Date:</label>
-                <input type="date"
-                       class="form-control" id="birthDate"
-                       name="birthDate" value="${birthDate}">
-                <p style="color: red"><c:out value="${error_birthDate}"></c:out></p>
-            </div>
+                <div class="form-group">
+                    <label for="birthDate">Birth Date:</label>
+                    <input type="date"
+                           class="form-control" id="birthDate"
+                           name="birthDate" value="${birthDate}">
+                    <p style="color: red"><c:out value="${error.birthDate}"></c:out></p>
+                </div>
 
-            <div class="form-group">
-                <label for="address">Address:</label>
-                <input type="text"
-                       class="form-control" id="address"
-                       name="address" value="${address}">
-                <p style="color: red"><c:out value="${error_address}"></c:out></p>
-            </div>
+                <div class="form-group">
+                    <label for="address">Address:</label>
+                    <input type="text"
+                           class="form-control" id="address"
+                           name="address" value="${address}">
+                    <p style="color: red"><c:out value="${error.address}"></c:out></p>
+                </div>
 
-            <div class="form-group">
-                <label for="phone">Phone Number:</label>
-                <input type="text"
-                       class="form-control" id="phone"
-                       name="phone" value="${phone}">
-                <p style="color: red"><c:out value="${error_phone}"></c:out></p>
-            </div>
+                <div class="form-group">
+                    <label for="phone">Phone Number:</label>
+                    <input type="text"
+                           class="form-control" id="phone"
+                           name="phone" value="${phone}">
+                    <p style="color: red"><c:out value="${error.phone}"></c:out></p>
+                </div>
 
-            <div class="form-group">
-                <label for="email">Email:</label>
-                <input type="text"
-                       class="form-control" id="email"
-                       name="email" value="${email}">
-                <p style="color: red"><c:out value="${error_email}"></c:out></p>
-            </div>
+                <div class="form-group">
+                    <label for="email">Email:</label>
+                    <input type="text"
+                           class="form-control" id="email"
+                           name="email" value="${email}">
+                    <p style="color: red"><c:out value="${error.email}"></c:out></p>
+                </div>
 
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">Confirm changes</button>
-                <p><c:out value="${status}"></c:out></p>
-            </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Confirm changes</button>
+                </div>
 
-        </form>
+            </form>
+        </div>
     </div>
 </c:if>
 <c:if test="${empty authorize}">

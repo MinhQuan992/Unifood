@@ -1,7 +1,6 @@
 package com.mvc.entities;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 @Table(name = "KHOHANG", schema = "dbo", catalog = "UNIFOOD")
@@ -9,10 +8,9 @@ public class KhohangEntity {
     private String maKho;
     private String tenKho;
     private String diaChi;
-    private Collection<SanphamEntity> sanphamsByMaKho;
 
     @Id
-    @Column(name = "MaKho")
+    @Column(name = "MaKho", columnDefinition = "VARCHAR(10)", nullable = false)
     public String getMaKho() {
         return maKho;
     }
@@ -22,7 +20,7 @@ public class KhohangEntity {
     }
 
     @Basic
-    @Column(name = "TenKho")
+    @Column(name = "TenKho", columnDefinition = "NVARCHAR(50)")
     public String getTenKho() {
         return tenKho;
     }
@@ -32,7 +30,7 @@ public class KhohangEntity {
     }
 
     @Basic
-    @Column(name = "DiaChi")
+    @Column(name = "DiaChi", columnDefinition = "NVARCHAR(100)")
     public String getDiaChi() {
         return diaChi;
     }
@@ -61,14 +59,5 @@ public class KhohangEntity {
         result = 31 * result + (tenKho != null ? tenKho.hashCode() : 0);
         result = 31 * result + (diaChi != null ? diaChi.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "khohangByMaKho")
-    public Collection<SanphamEntity> getSanphamsByMaKho() {
-        return sanphamsByMaKho;
-    }
-
-    public void setSanphamsByMaKho(Collection<SanphamEntity> sanphamsByMaKho) {
-        this.sanphamsByMaKho = sanphamsByMaKho;
     }
 }

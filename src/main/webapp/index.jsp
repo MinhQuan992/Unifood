@@ -35,15 +35,15 @@
             <c:out value="${phone}"/>
             <br>
             <c:out value="${email}"/>
+            <br>
         </c:otherwise>
     </c:choose>
     <form method="post" action="${pageContext.request.contextPath}/EditInfo">
         <input type="hidden" id="userId" name="userId" value="${userID}">
         <input type="submit" value="Edit Info">
     </form>
-    <c:if test="${fn:contains('OL', userId)}">
+    <c:if test="${fn:contains('QL', userId)}">
         <form method="post" action="${pageContext.request.contextPath}/ManageWarehouse">
-            <input type="hidden" id="managerId", name="userId" value="${userID}">
             <input type="submit" value="Manage Warehouse">
         </form>
     </c:if>

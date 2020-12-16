@@ -2,7 +2,6 @@ package com.mvc.entities;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.Collection;
 
 @Entity
 @Table(name = "NGUOIDUNG", schema = "dbo", catalog = "UNIFOOD")
@@ -14,12 +13,10 @@ public class NguoidungEntity {
     private String diaChi;
     private String dienThoai;
     private String email;
-    private String tenDangNhap;
     private String matKhau;
-    private Collection<GiohangEntity> giohangsByMaNguoiDung;
 
     @Id
-    @Column(name = "MaNguoiDung")
+    @Column(name = "MaNguoiDung", columnDefinition = "VARCHAR(9)")
     public String getMaNguoiDung() {
         return maNguoiDung;
     }
@@ -29,7 +26,7 @@ public class NguoidungEntity {
     }
 
     @Basic
-    @Column(name = "HoVaTen")
+    @Column(name = "HoVaTen", columnDefinition = "NVARCHAR(50)")
     public String getHoVaTen() {
         return hoVaTen;
     }
@@ -39,7 +36,7 @@ public class NguoidungEntity {
     }
 
     @Basic
-    @Column(name = "GioiTinh")
+    @Column(name = "GioiTinh", columnDefinition = "NVARCHAR(3)")
     public String getGioiTinh() {
         return gioiTinh;
     }
@@ -49,7 +46,7 @@ public class NguoidungEntity {
     }
 
     @Basic
-    @Column(name = "NgaySinh")
+    @Column(name = "NgaySinh", columnDefinition = "DATE")
     public Date getNgaySinh() {
         return ngaySinh;
     }
@@ -59,7 +56,7 @@ public class NguoidungEntity {
     }
 
     @Basic
-    @Column(name = "DiaChi")
+    @Column(name = "DiaChi", columnDefinition = "NVARCHAR(150)")
     public String getDiaChi() {
         return diaChi;
     }
@@ -69,7 +66,7 @@ public class NguoidungEntity {
     }
 
     @Basic
-    @Column(name = "DienThoai")
+    @Column(name = "DienThoai", columnDefinition = "VARCHAR(10)", unique = true)
     public String getDienThoai() {
         return dienThoai;
     }
@@ -79,7 +76,7 @@ public class NguoidungEntity {
     }
 
     @Basic
-    @Column(name = "Email")
+    @Column(name = "Email", columnDefinition = "VARCHAR(30)", unique = true)
     public String getEmail() {
         return email;
     }
@@ -89,17 +86,7 @@ public class NguoidungEntity {
     }
 
     @Basic
-    @Column(name = "TenDangNhap")
-    public String getTenDangNhap() {
-        return tenDangNhap;
-    }
-
-    public void setTenDangNhap(String tenDangNhap) {
-        this.tenDangNhap = tenDangNhap;
-    }
-
-    @Basic
-    @Column(name = "MatKhau")
+    @Column(name = "MatKhau", columnDefinition = "VARCHAR(50)")
     public String getMatKhau() {
         return matKhau;
     }
@@ -122,7 +109,6 @@ public class NguoidungEntity {
         if (diaChi != null ? !diaChi.equals(that.diaChi) : that.diaChi != null) return false;
         if (dienThoai != null ? !dienThoai.equals(that.dienThoai) : that.dienThoai != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
-        if (tenDangNhap != null ? !tenDangNhap.equals(that.tenDangNhap) : that.tenDangNhap != null) return false;
         if (matKhau != null ? !matKhau.equals(that.matKhau) : that.matKhau != null) return false;
 
         return true;
@@ -137,17 +123,7 @@ public class NguoidungEntity {
         result = 31 * result + (diaChi != null ? diaChi.hashCode() : 0);
         result = 31 * result + (dienThoai != null ? dienThoai.hashCode() : 0);
         result = 31 * result + (email != null ? email.hashCode() : 0);
-        result = 31 * result + (tenDangNhap != null ? tenDangNhap.hashCode() : 0);
         result = 31 * result + (matKhau != null ? matKhau.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "nguoidungByMaNguoiDung")
-    public Collection<GiohangEntity> getGiohangsByMaNguoiDung() {
-        return giohangsByMaNguoiDung;
-    }
-
-    public void setGiohangsByMaNguoiDung(Collection<GiohangEntity> giohangsByMaNguoiDung) {
-        this.giohangsByMaNguoiDung = giohangsByMaNguoiDung;
     }
 }

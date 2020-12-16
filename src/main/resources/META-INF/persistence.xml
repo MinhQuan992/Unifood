@@ -4,17 +4,17 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.2">
     <persistence-unit name="default">
-
-        <class>com.mvc.entities.KhohangEntity</class>
-        <class>com.mvc.entities.SanphamEntity</class>
-        <class>com.mvc.entities.NhomsanphamEntity</class>
+        <class>com.mvc.entities.AnkemEntity</class>
         <class>com.mvc.entities.DathangEntity</class>
         <class>com.mvc.entities.DonhangEntity</class>
         <class>com.mvc.entities.DonvigiaohangEntity</class>
         <class>com.mvc.entities.GiohangEntity</class>
+        <class>com.mvc.entities.KhohangEntity</class>
         <class>com.mvc.entities.MagiamgiaEntity</class>
         <class>com.mvc.entities.NguoidungEntity</class>
-        <class>com.mvc.entities.VGioHangKhongCoTrongDonHangEntity</class>
+        <class>com.mvc.entities.NhomsanphamEntity</class>
+        <class>com.mvc.entities.SanphamEntity</class>
+
         <properties>
             <property name="toplink.jdbc.url" value="jdbc:sqlserver://localhost;database=UNIFOOD"/>
             <property name="toplink.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>

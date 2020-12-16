@@ -25,7 +25,7 @@ public class EmailUtility {
         props.put("mail.smtp.auth", auth);
         props.put("mail.smtp.port", port);
         //Get Session
-        Authenticator authenticator = new javax.mail.Authenticator()
+        Authenticator authenticator = new Authenticator()
         {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(senderEmail, password);

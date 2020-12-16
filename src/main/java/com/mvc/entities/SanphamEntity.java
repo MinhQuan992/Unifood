@@ -1,7 +1,6 @@
 package com.mvc.entities;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 @Table(name = "SANPHAM", schema = "dbo", catalog = "UNIFOOD")
@@ -14,12 +13,10 @@ public class SanphamEntity {
     private String anhMinhHoa;
     private Short maNhom;
     private String maKho;
-    private Collection<DathangEntity> dathangsByMaSanPham;
-    private NhomsanphamEntity nhomsanphamByMaNhom;
-    private KhohangEntity khohangByMaKho;
+    private String moTa;
 
     @Id
-    @Column(name = "MaSanPham")
+    @Column(name = "MaSanPham", columnDefinition = "VARCHAR(10)")
     public String getMaSanPham() {
         return maSanPham;
     }
@@ -29,7 +26,7 @@ public class SanphamEntity {
     }
 
     @Basic
-    @Column(name = "TenSanPham")
+    @Column(name = "TenSanPham", columnDefinition = "NVARCHAR(100)")
     public String getTenSanPham() {
         return tenSanPham;
     }
@@ -39,7 +36,7 @@ public class SanphamEntity {
     }
 
     @Basic
-    @Column(name = "DonViTinh")
+    @Column(name = "DonViTinh", columnDefinition = "NVARCHAR(10)")
     public String getDonViTinh() {
         return donViTinh;
     }
@@ -49,7 +46,7 @@ public class SanphamEntity {
     }
 
     @Basic
-    @Column(name = "DonGia")
+    @Column(name = "DonGia", columnDefinition = "INT")
     public Integer getDonGia() {
         return donGia;
     }
@@ -59,7 +56,7 @@ public class SanphamEntity {
     }
 
     @Basic
-    @Column(name = "SoLuong")
+    @Column(name = "SoLuong", columnDefinition = "INT")
     public Integer getSoLuong() {
         return soLuong;
     }
@@ -69,13 +66,43 @@ public class SanphamEntity {
     }
 
     @Basic
-    @Column(name = "AnhMinhHoa")
+    @Column(name = "AnhMinhHoa", columnDefinition = "VARCHAR(100)")
     public String getAnhMinhHoa() {
         return anhMinhHoa;
     }
 
     public void setAnhMinhHoa(String anhMinhHoa) {
         this.anhMinhHoa = anhMinhHoa;
+    }
+
+    @Basic
+    @Column(name = "MaNhom", columnDefinition = "SMALLINT")
+    public Short getMaNhom() {
+        return maNhom;
+    }
+
+    public void setMaNhom(Short maNhom) {
+        this.maNhom = maNhom;
+    }
+
+    @Basic
+    @Column(name = "MaKho", columnDefinition = "VARCHAR(10)")
+    public String getMaKho() {
+        return maKho;
+    }
+
+    public void setMaKho(String maKho) {
+        this.maKho = maKho;
+    }
+
+    @Basic
+    @Column(name = "MoTa", columnDefinition = "NVARCHAR(1500)")
+    public String getMoTa() {
+        return moTa;
+    }
+
+    public void setMoTa(String moTa) {
+        this.moTa = moTa;
     }
 
     @Override
@@ -91,6 +118,9 @@ public class SanphamEntity {
         if (donGia != null ? !donGia.equals(that.donGia) : that.donGia != null) return false;
         if (soLuong != null ? !soLuong.equals(that.soLuong) : that.soLuong != null) return false;
         if (anhMinhHoa != null ? !anhMinhHoa.equals(that.anhMinhHoa) : that.anhMinhHoa != null) return false;
+        if (maNhom != null ? !maNhom.equals(that.maNhom) : that.maNhom != null) return false;
+        if (maKho != null ? !maKho.equals(that.maKho) : that.maKho != null) return false;
+        if (moTa != null ? !moTa.equals(that.moTa) : that.moTa != null) return false;
 
         return true;
     }
@@ -103,55 +133,9 @@ public class SanphamEntity {
         result = 31 * result + (donGia != null ? donGia.hashCode() : 0);
         result = 31 * result + (soLuong != null ? soLuong.hashCode() : 0);
         result = 31 * result + (anhMinhHoa != null ? anhMinhHoa.hashCode() : 0);
+        result = 31 * result + (maNhom != null ? maNhom.hashCode() : 0);
+        result = 31 * result + (maKho != null ? maKho.hashCode() : 0);
+        result = 31 * result + (moTa != null ? moTa.hashCode() : 0);
         return result;
-    }
-
-    @Basic
-    @Column(name = "MaNhom")
-    public Short getMaNhom() {
-        return maNhom;
-    }
-
-    public void setMaNhom(Short maNhom) {
-        this.maNhom = maNhom;
-    }
-
-    @Basic
-    @Column(name = "MaKho")
-    public String getMaKho() {
-        return maKho;
-    }
-
-    public void setMaKho(String maKho) {
-        this.maKho = maKho;
-    }
-
-    @OneToMany(mappedBy = "sanphamByMaSanPham")
-    public Collection<DathangEntity> getDathangsByMaSanPham() {
-        return dathangsByMaSanPham;
-    }
-
-    public void setDathangsByMaSanPham(Collection<DathangEntity> dathangsByMaSanPham) {
-        this.dathangsByMaSanPham = dathangsByMaSanPham;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "MaNhom", referencedColumnName = "MaNhom")
-    public NhomsanphamEntity getNhomsanphamByMaNhom() {
-        return nhomsanphamByMaNhom;
-    }
-
-    public void setNhomsanphamByMaNhom(NhomsanphamEntity nhomsanphamByMaNhom) {
-        this.nhomsanphamByMaNhom = nhomsanphamByMaNhom;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "MaKho", referencedColumnName = "MaKho")
-    public KhohangEntity getKhohangByMaKho() {
-        return khohangByMaKho;
-    }
-
-    public void setKhohangByMaKho(KhohangEntity khohangByMaKho) {
-        this.khohangByMaKho = khohangByMaKho;
     }
 }
