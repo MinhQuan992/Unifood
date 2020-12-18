@@ -17,7 +17,25 @@ public class ManageWarehouseDao {
     //private PreparedStatement statement = null;
     //private Connection connection = null;
 
-    public static List<KhohangEntity> GetWarehouse()
+    public static KhohangEntity GetWarehouse(String maKho)
+    {
+        KhohangEntity kh = null;
+        Transaction transaction = null;
+        try (Session session = HibernateUtility.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            kh = session.get(KhohangEntity.class, maKho);
+            transaction.commit();
+        }
+        catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return kh;
+    }
+
+    public static List<KhohangEntity> GetWarehouses()
     {
         List<KhohangEntity> list = null;
 
@@ -38,6 +56,24 @@ public class ManageWarehouseDao {
             session.close();
         }
         return list;
+    }
+
+    public static SanphamEntity GetItem(String maSanPham)
+    {
+        SanphamEntity sp = null;
+        Transaction transaction = null;
+        try (Session session = HibernateUtility.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            sp = session.get(SanphamEntity.class, maSanPham);
+            transaction.commit();
+        }
+        catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return sp;
     }
 
     public static List<SanphamEntity> GetItemsInWarehouse(KhohangEntity kh)

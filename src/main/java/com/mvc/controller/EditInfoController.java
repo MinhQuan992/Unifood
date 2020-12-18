@@ -80,7 +80,7 @@ public class EditInfoController extends HttpServlet {
         }
 
         if (!(gender.equals("Nam") || gender.equals("Nữ"))) {
-            errors.put("gender", "Must be either 'Nam' or 'Nữ'.");
+            errors.put("gender", "Must be either 'Nam' or 'Nữ'");
         }
 
         java.sql.Date birthDate = null;
@@ -88,7 +88,7 @@ public class EditInfoController extends HttpServlet {
             java.util.Date birth = new SimpleDateFormat("yyyy-MM-dd").parse(birthDateStr);
             java.util.Date today = Calendar.getInstance().getTime();
             if (birth.after(today)) {
-                throw new Exception("Birthdate not valid.");
+                throw new Exception("Birthdate not valid");
             }
             birthDate = new java.sql.Date(birth.getTime());
         } catch (Exception e) {
@@ -100,13 +100,13 @@ public class EditInfoController extends HttpServlet {
         }
 
         if (!phoneMatcher.find()) {
-            errors.put("phone", "Must be a 10-digit number.");
+            errors.put("phone", "Must be a 10-digit number");
         } else {
             phone = phoneMatcher.group();
         }
 
         if (!emailMatcher.find()) {
-            errors.put("email", "Must be a valid email address.");
+            errors.put("email", "Must be a valid email address");
         } else {
             email = emailMatcher.group();
         }

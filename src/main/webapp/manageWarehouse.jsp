@@ -68,7 +68,7 @@
                                 <input type="hidden" name="MaKho" value="<%= k.getMaKho() %>">
                                 <input type="submit" class="btn btn-danger" value="Xóa kho hàng" onclick="
                                         if (0 < <%= listSP.size() %>) {
-                                        alert('Không thể xóa kho hàng <%= k.getMaKho() %>khi vẫn còn sản phẩm trong kho.');
+                                        alert('Không thể xóa kho hàng <%= k.getMaKho() %> khi vẫn còn sản phẩm trong kho.');
                                         return false;
                                         } else {
                                         return confirm('Bạn có chắc chắn muốn xóa kho hàng <%= k.getMaKho() %>?');
@@ -96,7 +96,8 @@
                         <th class="text-center">Số lượng</th>
                         <th class="text-center">Ảnh minh họa</th>
                         <th class="text-center">Mã nhóm</th>
-                        <th colspan="2"></th>
+                        <th class="text-center">Mô tả</th>
+                        <th></th>
                     </tr>
                     </thead>
                     <tbody>
@@ -118,6 +119,8 @@
                                                      onerror="this.onerror=null; this.src='311151.jpg'"></td>
                         <td><%= sp.getMaNhom() %>
                         </td>
+                        <td><%= sp.getMoTa() %>
+                        </td>
                         <td>
                             <form method="get" action="${pageContext.request.contextPath}/ManageWarehouse">
                                 <input type="hidden" name="Type" value="EditItem">
@@ -125,8 +128,6 @@
                                 <input type="hidden" name="MaSanPham" value="<%= sp.getMaSanPham() %>">
                                 <input type="submit" class="btn btn-info" value="Sửa">
                             </form>
-                        </td>
-                        <td>
                             <form method="get" action="${pageContext.request.contextPath}/ManageWarehouse">
                                 <input type="hidden" name="Type" value="DeleteItem">
                                 <input type="hidden" name="MaKho" value="<%= k.getMaKho() %>">
