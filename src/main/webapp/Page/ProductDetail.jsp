@@ -63,7 +63,7 @@
             <div >
                 <form class="PD-main-menu-form" name="PDMainMenuForm" action="#" method="post">
                     <input class="PD-main-menu-submit-button" type="submit" value="ĐẶT HÀNG" name="DatHang" id="Submit-button-1">
-                    <input type="text" class="PD-main-menu-total-price" id="PD-main-menu-total-price" value="${requestScope.Item.donGia}">
+                    <input type="text" style="border: none; height: auto; padding: 0px 0px; font-size: 24px" class="PD-main-menu-total-price" id="PD-main-menu-total-price" value="${requestScope.Item.donGia}">
                 </form>
             </div>
         </div>
