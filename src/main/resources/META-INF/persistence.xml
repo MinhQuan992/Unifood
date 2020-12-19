@@ -4,6 +4,31 @@
              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_2.xsd"
              version="2.2">
     <persistence-unit name="default">
-
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <class>com.mvc.entities.AnkemEntity</class>
+        <class>com.mvc.entities.DathangEntity</class>
+        <class>com.mvc.entities.DonhangEntity</class>
+        <class>com.mvc.entities.DonvigiaohangEntity</class>
+        <class>com.mvc.entities.GiohangEntity</class>
+        <class>com.mvc.entities.KhohangEntity</class>
+        <class>com.mvc.entities.MagiamgiaEntity</class>
+        <class>com.mvc.entities.NhomsanphamEntity</class>
+        <class>com.mvc.entities.SanphamEntity</class>
+        <class>com.mvc.entities.NguoidungEntity</class>
+        <exclude-unlisted-classes>false</exclude-unlisted-classes>
+        <properties>
+            <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
+            <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost;integratedSecurity=True;databaseName=UNIFOOD"/>
+            <property name="toplink.jdbc.url" value="jdbc:sqlserver://localhost\SQLEXPRESS:1433;database=UNIFOOD"/>
+            <property name="toplink.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <property name="hibernate.connection.url"
+                      value="jdbc:sqlserver://localhost\SQLEXPRESS:1433;database=UNIFOOD"/>
+            <property name="hibernate.connection.driver_class" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <property name="openjpa.ConnectionURL" value="jdbc:sqlserver://localhost\SQLEXPRESS:1433;database=UNIFOOD"/>
+            <property name="openjpa.ConnectionDriverName" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+            <property name="eclipselink.jdbc.url" value="jdbc:sqlserver://localhost\SQLEXPRESS:1433;database=UNIFOOD"/>
+            <property name="eclipselink.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
+        </properties>
     </persistence-unit>
 </persistence>

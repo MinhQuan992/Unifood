@@ -1,0 +1,29 @@
+<component name="libraryTable">
+  <library name="cloud.altemista.fwk.mail:cloud-altemistafwk-core-mail-javamail:3.1.0.RELEASE" type="repository">
+    <properties maven-id="cloud.altemista.fwk.mail:cloud-altemistafwk-core-mail-javamail:3.1.0.RELEASE" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/cloud/altemista/fwk/mail/cloud-altemistafwk-core-mail-javamail/3.1.0.RELEASE/cloud-altemistafwk-core-mail-javamail-3.1.0.RELEASE.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/cloud/altemista/fwk/framework/cloud-altemistafwk-common/3.1.0.RELEASE/cloud-altemistafwk-common-3.1.0.RELEASE.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/terasoluna/gfw/terasoluna-gfw-common/5.5.0.RELEASE/terasoluna-gfw-common-5.5.0.RELEASE.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/google/guava/guava/20.0/guava-20.0.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-lang3/3.9/commons-lang3-3.9.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/commons-io/commons-io/2.6/commons-io-2.6.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/apache/commons/commons-collections4/4.1/commons-collections4-4.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/jcl-over-slf4j/1.7.30/jcl-over-slf4j-1.7.30.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/slf4j/slf4j-api/1.7.30/slf4j-api-1.7.30.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/cloud/altemista/fwk/mail/cloud-altemistafwk-core-mail/3.1.0.RELEASE/cloud-altemistafwk-core-mail-3.1.0.RELEASE.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context-support/5.2.3.RELEASE/spring-context-support-5.2.3.RELEASE.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-beans/5.2.3.RELEASE/spring-beans-5.2.3.RELEASE.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-context/5.2.3.RELEASE/spring-context-5.2.3.RELEASE.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-aop/5.2.3.RELEASE/spring-aop-5.2.3.RELEASE.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-expression/5.2.3.RELEASE/spring-expression-5.2.3.RELEASE.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-core/5.2.3.RELEASE/spring-core-5.2.3.RELEASE.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/org/springframework/spring-jcl/5.2.3.RELEASE/spring-jcl-5.2.3.RELEASE.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/javax/mail/javax.mail-api/1.6.2/javax.mail-api-1.6.2.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/com/sun/mail/javax.mail/1.6.1/javax.mail-1.6.1.jar!/" />
+      <root url="jar://$MAVEN_REPOSITORY$/javax/activation/activation/1.1/activation-1.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

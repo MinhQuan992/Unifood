@@ -9,18 +9,19 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>UNIFOOD</title>
+    <title>Trang chủ | Unifood</title>
 </head>
 <body>
 <a href="login.jsp">HELLO WORLD</a>
-<a href="${pageContext.request.contextPath}/Page/ProductDetail.jsp">ProductDetail</a>
-<a href="${pageContext.request.contextPath}/Product?ItemCode=MN10100005">Test</a>
+<a href="${pageContext.request.contextPath}/Product?ItemCode=MN10100005">Product detail</a>
+<a href="${pageContext.request.contextPath}/Page/Cart.jsp">Shopping cart</a>
 <br>
 <c:if test="${not empty loginFailed}">
     <c:choose>
         <c:when test="${loginFailed == true}">
             Login failed
         </c:when>
+        
         <c:otherwise>
             <c:out value="${userID}"/>
             <br>
@@ -28,7 +29,7 @@
             <br>
             <c:out value="${gender}"/>
             <br>
-            <c:out value="${birthDate}"/>
+            <c:out value="${birthdate}"/>
             <br>
             <c:out value="${address}"/>
             <br>

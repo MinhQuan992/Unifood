@@ -1,118 +1,128 @@
-package com.mvc.dao;
-import java.sql.*;
-import java.util.*;
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
 
-import com.mvc.bean.GroupItemBean;
-import com.mvc.bean.ItemBean;
+package com.mvc.dao;
+
+import com.mvc.entities.NhomsanphamEntity;
+import com.mvc.entities.SanphamEntity;
+import com.mvc.utility.HibernateUtility;
+import java.util.List;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 public class GroupItemDao {
-    private String dbURL = "jdbc:sqlserver://localhost;integratedSecurity=True;databaseName=UNIFOOD";
-    private PreparedStatement statement = null;
-    private Connection connection = null;
+    public GroupItemDao() {
+    }
 
-    public boolean getGroupItemData(GroupItemBean group)
-    {
-        try
-        {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            connection = DriverManager.getConnection(dbURL);
-            PreparedStatement statement = connection.prepareStatement("select  * from dbo.NhomSanPham where MaNhom = ?");
-            statement.setInt(1,group.getGroupCode());
+    public NhomsanphamEntity getGroupItemData(short groupId) {
+        NhomsanphamEntity group = null;
+        Transaction transaction = null;
+        Session session = HibernateUtility.getSessionFactory().openSession();
 
-            ResultSet result = statement.executeQuery();
-            while (result.next())
-            {
-                String groupName = result.getNString("TenNhom");
-                group.setGroupName(groupName);
+        try {
+            transaction = session.beginTransaction();
+            Query<?> query = session.createQuery("FROM NhomsanphamEntity Group WHERE Group.maNhom=:GroupID");
+            query.setParameter("GroupID", groupId);
+            group = (NhomsanphamEntity)query.uniqueResult();
+            transaction.commit();
+        } catch (Exception var9) {
+            if (transaction != null) {
+                transaction.rollback();
             }
-            statement.close();
-            connection.close();
-            System.out.println("Access to Group OK!!");
-            return true;
+
+            var9.printStackTrace();
+        } finally {
+            session.close();
         }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Access to Group FAIL!!");
-            return false;
-        }
+
+        return group;
     }
 
-    public List<ItemBean> getAllGroupItem(GroupItemBean group)
-    {
-        List <ItemBean> itemList = new ArrayList<ItemBean>();
-        try
-        {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            connection = DriverManager.getConnection(dbURL);
-            PreparedStatement statement = connection.prepareStatement("select * from dbo.SanPham where MaNhom = ?");
-            statement.setInt(1,group.getGroupCode());
-            ResultSet result = statement.executeQuery();
-            ItemBean item = new ItemBean();
-            ItemDao itemDao = new ItemDao();
-            while (result.next())
-            {
-                String itemCode = result.getString("MaSanPham");
-                item.setItemCode(itemCode);
-                itemDao.GetItemData(item);
-                itemList.add(item);
+    public List<SanphamEntity> getAllGroupItem(NhomsanphamEntity group) {
+        List<SanphamEntity> listItem = null;
+        Transaction transaction = null;
+        Session session = HibernateUtility.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            Query<SanphamEntity> query = session.createQuery("SELECT Item FROM SanphamEntity Item, NhomsanphamEntity Group WHERE Group.maNhom=:GroupID");
+            query.setParameter("GroupID", group.getMaNhom());
+            listItem = query.getResultList();
+            transaction.commit();
+        } catch (Exception var9) {
+            if (transaction != null) {
+                transaction.rollback();
             }
-            statement.close();
-            connection.close();
-            System.out.println("Access to Group OK!!");
-            return itemList;
+            var9.printStackTrace();
+        } finally {
+            session.close();
         }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Access to Group FAIL!!");
-            return itemList;
-        }
+
+        return listItem;
     }
 
-    public boolean insertGroupItemData(GroupItemBean group)
-    {
-        try
-        {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            connection = DriverManager.getConnection(dbURL);
-            PreparedStatement statement = connection.prepareStatement("insert into dbo.NhomSanPham values (?,?)");
-            statement.setInt(1,group.getGroupCode());
-            statement.setNString(2, group.getGroupName());
-            statement.executeQuery();
-            statement.close();
-            connection.close();
-            System.out.println("Access to Group OK!!");
-            return true;
+    public boolean insertGroupItemData(NhomsanphamEntity group) {
+        Transaction transaction = null;
+        Session session = HibernateUtility.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+            session.save(group);
+            transaction.commit();
+        } catch (Exception var8) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+
+            var8.printStackTrace();
+        } finally {
+            session.close();
         }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Access to Group FAIL!!");
-            return false;
-        }
+
+        return true;
     }
 
-    public boolean updateGroupItemData(GroupItemBean group)
-    {
-        try
-        {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            connection = DriverManager.getConnection(dbURL);
-            PreparedStatement statement = connection.prepareStatement("UPDATE dbo.NhomSanPham set TenNhom = ? where MaNhom = ?");
-            statement.setNString(1,group.getGroupName());
-            statement.setInt(2,group.getGroupCode());
-            statement.executeQuery();
-            statement.close();
-            connection.close();
-            System.out.println("Access to Group OK!!");
-            return true;
+    public boolean updateGroupItemData(NhomsanphamEntity group) {
+        Transaction transaction = null;
+        Session session = HibernateUtility.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+            session.update(group);
+            transaction.commit();
+        } catch (Exception var8) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+
+            var8.printStackTrace();
+        } finally {
+            session.close();
         }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Access to Group FAIL!!");
-            return false;
+
+        return true;
+    }
+
+    public boolean deleteGroupItemData(NhomsanphamEntity group) {
+        Transaction transaction = null;
+        Session session = HibernateUtility.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+            session.delete(group);
+            transaction.commit();
+        } catch (Exception var8) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+
+            var8.printStackTrace();
+        } finally {
+            session.close();
         }
+
+        return true;
     }
 }

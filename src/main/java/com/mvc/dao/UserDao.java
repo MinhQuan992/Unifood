@@ -1,93 +1,148 @@
 package com.mvc.dao;
 
-import com.mvc.bean.UserBean;
-import java.sql.*;
+import com.mvc.entities.NguoidungEntity;
+import com.mvc.utility.HibernateUtility;
+
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
+
+import java.util.List;
 
 public class UserDao {
-    private String dbURL = "jdbc:sqlserver://localhost;integratedSecurity=True;databaseName=UNIFOOD";
-    private PreparedStatement statement = null;
-    private Connection connection = null;
-
-    public UserBean findUser(String identifiedString, String method)
+    public boolean saveUser(NguoidungEntity user)
     {
-        UserBean userBean = new UserBean();
-        String sqlString = null;
-
-        try
+        Transaction transaction = null;
+        try (Session session = HibernateUtility.getSessionFactory().openSession())
         {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            connection = DriverManager.getConnection(dbURL);
-
-            if (method.equals("ByUsername"))
-            {
-                sqlString = "SELECT * FROM NGUOIDUNG WHERE TenDangNhap = ?";
-            }
-            else if (method.equals("ByUserID"))
-            {
-                sqlString = "SELECT * FROM NGUOIDUNG WHERE MaNguoiDung = ?";
-            }
-            else if (method.equals("ByEmail"))
-            {
-                sqlString = "SELECT * FROM NGUOIDUNG WHERE Email = ?";
-            }
-
-            statement = connection.prepareStatement(sqlString);
-            statement.setString(1, identifiedString);
-
-            ResultSet resultSet = statement.executeQuery();
-
-            while (resultSet.next())
-            {
-                userBean.setUserID(resultSet.getString("MaNguoiDung"));
-                userBean.setFullName(resultSet.getNString("HoVaTen"));
-                userBean.setGender(resultSet.getNString("GioiTinh"));
-                userBean.setBirthDate(resultSet.getDate("NgaySinh"));
-                userBean.setAddress(resultSet.getNString("DiaChi"));
-                userBean.setPhone(resultSet.getString("DienThoai"));
-                userBean.setEmail(resultSet.getString("Email"));
-                userBean.setUsername(resultSet.getString("TenDangNhap"));
-                userBean.setPassword(resultSet.getString("MatKhau"));
-            }
-
-            statement.close();
-            connection.close();
+            transaction = session.beginTransaction();
+            session.save(user);
+            transaction.commit();
+            System.out.println("Save user successfully");
+            return true; //Save user successfully
         }
-        catch (Exception exception)
+        catch (Exception e)
         {
-            exception.printStackTrace();
+            if (transaction != null)
+            {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return false; //Can not save user
         }
-
-        return userBean;
     }
 
-    public void updateUser(UserBean userBean)
+    public boolean updateUser(NguoidungEntity user)
     {
-        String userID = userBean.getUserID();
-        String address = userBean.getAddress();
-        String phone = userBean.getPhone();
-        String email = userBean.getEmail();
-        String username = userBean.getUsername();
-        String password = userBean.getPassword();
-
-        try
+        Transaction transaction = null;
+        try (Session session = HibernateUtility.getSessionFactory().openSession())
         {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            connection = DriverManager.getConnection(dbURL);
-            statement = connection.prepareStatement("UPDATE NGUOIDUNG SET DiaChi = ?, DienThoai = ?, Email = ?, TenDangNhap = ?, MatKhau = ? WHERE MaNguoiDung = ?");
-            statement.setString(1, address);
-            statement.setString(2, phone);
-            statement.setString(3, email);
-            statement.setString(4, username);
-            statement.setString(5, password);
-            statement.setString(6, userID);
-            statement.executeUpdate();
-
-            statement.close();
-            connection.close();
+            transaction = session.beginTransaction();
+            session.update(user);
+            transaction.commit();
+            System.out.println("Update user successfully");
+            return true;
         }
-        catch (Exception exception)
+        catch (Exception e)
         {
-            exception.printStackTrace();
+            if (transaction != null)
+            {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return false;
         }
+    }
+
+    public boolean deleteUser(String userID)
+    {
+        Transaction transaction = null;
+        try (Session session = HibernateUtility.getSessionFactory().openSession())
+        {
+            transaction = session.beginTransaction();
+            NguoidungEntity user = session.get(NguoidungEntity.class, userID);
+            if (user != null)
+            {
+                session.delete(user);
+                System.out.println("Delete user successfully");
+            }
+            transaction.commit();
+            return true;
+        }
+        catch (Exception e)
+        {
+            if (transaction != null)
+            {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public NguoidungEntity getUserByID(String userID)
+    {
+        Transaction transaction = null;
+        NguoidungEntity user = null;
+        try (Session session = HibernateUtility.getSessionFactory().openSession())
+        {
+            transaction = session.beginTransaction();
+            user = session.get(NguoidungEntity.class, userID);
+            transaction.commit();
+        }
+        catch (Exception e)
+        {
+            if (transaction != null)
+            {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return user;
+    }
+
+    public NguoidungEntity getUserByEmail(String email)
+    {
+        Transaction transaction = null;
+        NguoidungEntity user = null;
+        try (Session session = HibernateUtility.getSessionFactory().openSession())
+        {
+            transaction = session.beginTransaction();
+            Query<?> query = session.createQuery("FROM NguoidungEntity WHERE email=:email");
+            query.setParameter("email", email);
+            user = (NguoidungEntity) query.uniqueResult();
+            transaction.commit();
+        }
+        catch (Exception e)
+        {
+            if (transaction != null)
+            {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return user;
+    }
+
+    @SuppressWarnings("unchecked")
+    public List< NguoidungEntity > getAllUser()
+    {
+        Transaction transaction = null;
+        List < NguoidungEntity > listOfUser = null;
+        try (Session session = HibernateUtility.getSessionFactory().openSession())
+        {
+            transaction = session.beginTransaction();
+            listOfUser = session.createQuery("FROM NguoidungEntity").getResultList();
+            transaction.commit();
+        }
+        catch (Exception e)
+        {
+            if (transaction != null)
+            {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return listOfUser;
     }
 }

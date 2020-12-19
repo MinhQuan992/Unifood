@@ -1,7 +1,9 @@
 package com.mvc.controller;
 
-import com.mvc.services.CustomerServices;
+import com.mvc.dao.UserDao;
+import com.mvc.entities.NguoidungEntity;
 import com.mvc.utility.EmailUtility;
+import org.apache.commons.lang3.RandomStringUtils;
 
 import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
@@ -11,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "ResetPasswordController", urlPatterns = {"/ResetPassword"})
+@WebServlet(name = "ResetPasswordController", urlPatterns = {"/resetPassword"})
 public class ResetPasswordController extends HttpServlet {
     private static final long serialVersionUID = 1L;
 
@@ -37,32 +39,46 @@ public class ResetPasswordController extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String recipient = request.getParameter("reset-email");
-        String subject = "Mật khẩu của bạn đã được đặt lại";
+        UserDao userDao = new UserDao();
+        NguoidungEntity user = userDao.getUserByEmail(recipient);
 
-        CustomerServices customerServices = new CustomerServices();
-        String newPassword = customerServices.resetCustomerPassword(recipient);
-
-        String content = "Xin chào, đây là mật khẩu mới của bạn đã được hệ thống tạo ra ngẫu nhiên: " + newPassword;
-        content += "\nChú ý: vì lí do bảo mật, bạn phải đổi mật khẩu ngay sau khi đăng nhập.";
-        content += "\nĐội ngũ hỗ trợ UNIFOOD";
-
-        String message = "";
-
-        try
+        if (user != null)
         {
-            EmailUtility.sendEmail(host, port, socketFactoryClass, auth, email, name, pass,
-                    recipient, subject, content);
-            message = "Mật khẩu của bạn đã thay đổi, hãy kiểm tra email của bạn!";
-        }
-        catch (Exception ex)
-        {
-            ex.printStackTrace();
-            message = "Có lỗi xảy ra: " + ex.getMessage();
-        }
-        finally
-        {
+            String randomPassword = RandomStringUtils.randomAlphanumeric(8);
+            user.setMatKhau(randomPassword);
+            String message = "";
+            boolean canExecute = userDao.updateUser(user);
+            if (canExecute)
+            {
+                String subject = "Mat khau cua ban da duoc dat lai";
+                String content = "Xin chao, day la mat khau moi cua ban da duoc he thong tao ra ngau nhien: " + randomPassword;
+                content += "\nChu y: vi li do bao mat, ban phai doi mat khau ngay sau khi dang nhap.";
+                content += "\nDoi ngu ho tro UNIFOOD";
+
+                try
+                {
+                    EmailUtility.sendEmail(host, port, socketFactoryClass, auth, email, name, pass,
+                            recipient, subject, content);
+                    message = "Mật khẩu của bạn đã thay đổi, hãy kiểm tra email của bạn!";
+                }
+                catch (Exception ex)
+                {
+                    ex.printStackTrace();
+                    message = "Có lỗi xảy ra: " + ex.getMessage();
+                }
+            }
+            else
+            {
+                message = "Có lỗi xảy ra";
+            }
+            request.setAttribute("wrongEmail",false);
             request.setAttribute("message", message);
             request.getRequestDispatcher("/message.jsp").forward(request, response);
+        }
+        else
+        {
+            request.setAttribute("wrongEmail",true);
+            request.getRequestDispatcher("/reset-password.jsp").forward(request, response);
         }
     }
 

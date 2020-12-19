@@ -10,10 +10,6 @@
       </list>
     </option>
   </component>
-  <component name="ProjectResources">
-    <resource url="http://java.sun.com/jsp/jstl/core" location="$PROJECT_DIR$/src/main/webapp/WEB-INF/lib/taglibs-standard-impl-1.2.5.jar!/META-INF/c.tld" />
-    <resource url="http://maven.apache.org/xsd/maven-4.0.0.xsd" location="$USER_HOME$/AppData/Local/JetBrains/IntelliJIdea2020.2/extResources/e1f42d95_maven-4.0.0.xsd" />
-  </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_14" default="false" project-jdk-name="openjdk-15" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
   </component>

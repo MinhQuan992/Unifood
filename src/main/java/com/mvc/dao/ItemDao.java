@@ -1,219 +1,173 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by FernFlower decompiler)
+//
+
 package com.mvc.dao;
 
-import java.sql.*;
-
-import com.mvc.bean.GroupItemBean;
-import com.mvc.bean.ItemBean;
-import com.mvc.bean.ListItemBean;
-
-import javax.mail.FetchProfile;
-import javax.persistence.criteria.CriteriaBuilder;
+import com.mvc.entities.AnkemEntity;
+import com.mvc.entities.NhomsanphamEntity;
+import com.mvc.entities.SanphamEntity;
+import com.mvc.utility.HibernateUtility;
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+import org.hibernate.query.Query;
 
 public class ItemDao {
-    private String dbURL = "jdbc:sqlserver://localhost;integratedSecurity=True;databaseName=UNIFOOD";
-    private PreparedStatement statement = null;
-    private Connection connection = null;
-
-    public boolean GetItemData(ItemBean item)
-    {
-        try
-        {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            connection = DriverManager.getConnection(dbURL);
-            PreparedStatement statement = connection.prepareStatement("select  * from dbo.SanPham where MaSanPham = ?");
-            statement.setString(1,item.getItemCode());
-
-            ResultSet result = statement.executeQuery();
-            while (result.next())
-            {
-                String itemName = result.getNString("TenSanPham");
-                String itemPrice = result.getString("DonGia");
-                String maximumQuantity = result.getString("SoLuong");
-                String itemImage = result.getString("AnhMinhHoa");
-                String itemStorage = result.getString("MaKho");
-                String itemUnit = result.getNString("DonViTinh");
-                String itemGroup = result.getString("MaNhom");
-                String itemDescription = result.getNString("MoTa");
-
-                item.setItemImage(itemImage);
-                item.setItemName(itemName);
-                item.setItemPrice(Integer.parseInt(itemPrice));
-                item.setMaximumQuantity(Integer.parseInt(maximumQuantity));
-                item.setItemGroup(Integer.parseInt(itemGroup));
-                item.setItemStorage(itemStorage);
-                item.setItemUnit(itemUnit);
-                item.setItemDescription(itemDescription);
-                System.out.println(itemDescription);
-            }
-            statement.close();
-            connection.close();
-            System.out.println("Access to Product OK!!");
-            return true;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Access to Product FAIL!!");
-            return false;
-        }
+    public ItemDao() {
     }
 
-    public boolean updateItemQuantity(ItemBean item)
-    {
-        try
-        {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            connection = DriverManager.getConnection(dbURL);
-            PreparedStatement statement =   connection.prepareStatement("UPDATE dbo.SanPham" +
-                                                                            "SET Soluong = ?" +
-                                                                            "WHERE MaSanPham = ?");
-            int newQuantity = item.getMaximumQuantity() - item.getItemQuantity();
-            statement.setString(1,Integer.toString(newQuantity));
-            statement.setString(2,item.getItemCode());
+    public SanphamEntity GetItemData(String itemCode) {
+        SanphamEntity item = null;
+        Transaction transaction = null;
+        Session session = HibernateUtility.getSessionFactory().openSession();
 
-            statement.executeQuery();
-            statement.close();
-            connection.close();
-
-            System.out.println("Access to Product OK!!");
-            return true;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Access to Product FAIL!!");
-            return false;
-        }
-    }
-
-    public boolean updateItemData(ItemBean item)
-    {
         try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            connection = DriverManager.getConnection(dbURL);
-            PreparedStatement statement = connection.prepareStatement(
-                    "UPDATE dbo.SanPham " +
-                    "SET Soluong = ?," +
-                        "TenSanPham = ?," +
-                        "DonGia = ?," +
-                        "AnhMinhHoa = ?,"+
-                        "DonViTinh= ?," +
-                        "MaKho = ?," +
-                        "MaNhom = ?," +
-                        "MoTa = ?" +
-                    "WHERE MaSanPham = ?");
-            statement.setString(1,Integer.toString(item.getMaximumQuantity()));
-            statement.setNString(2,item.getItemName());
-            statement.setString(3,Integer.toString(item.getItemPrice()));
-            statement.setString(4,item.getItemImage());
-            statement.setNString(5,item.getItemUnit());
-            statement.setString(6,item.getItemStorage());
-            statement.setString(7,Integer.toString(item.getItemGroup()));
-            statement.setNString(8,item.getItemDescription());
-            statement.setString(9,item.getItemCode());
-
-            statement.executeQuery();
-            statement.close();
-            connection.close();
-
-            System.out.println("Access to Product OK!!");
-            return true;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Access to Product FAIL!!");
-            return false;
-        }
-    }
-
-    public boolean insertItemData(ItemBean item)
-    {
-        try
-        {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            connection = DriverManager.getConnection(dbURL);
-            PreparedStatement statement = connection.prepareStatement("INSERT INTO SANPHAM VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?)");
-            statement.setString(1,item.getItemCode());
-            statement.setNString(2,item.getItemName());
-            statement.setNString(3,item.getItemUnit());
-            statement.setString(4,Integer.toString(item.getItemPrice()));
-            statement.setString(5,Integer.toString(item.getMaximumQuantity()));
-            statement.setString(6,item.getItemImage());
-            statement.setString(7,Integer.toString(item.getItemGroup()));
-            statement.setString(8,item.getItemStorage());
-            statement.setNString(9,item.getItemDescription());
-
-            statement.executeQuery();
-            statement.close();
-            connection.close();
-
-            System.out.println("Access to Product OK!!");
-            return true;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Access to Product FAIL!!");
-            return false;
-        }
-    }
-
-    public boolean deleteItemData(ItemBean item)
-    {
-        try
-        {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            connection = DriverManager.getConnection(dbURL);
-            PreparedStatement statement = connection.prepareStatement("DELETE FROM dbo.SanPham WHERE MaSanPham = ?");
-            statement.setString(1,item.getItemCode());
-            statement.executeQuery();
-            statement.close();
-            connection.close();
-
-            System.out.println("Access to Product OK!!");
-            return true;
-        }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Access to Product FAIL!!");
-            return false;
-        }
-    }
-
-    public Boolean getListDependenceItems(ItemBean mainItem, GroupItemBean group, ListItemBean listItem)
-    {
-        try
-        {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            connection = DriverManager.getConnection(dbURL);
-            PreparedStatement statement = connection.prepareStatement("select ANKEM.MaDoAnKem " +
-                    "from SANPHAM, NHOMSANPHAM, ANKEM " +
-                    "where dbo.ANKEM.MaMonAnChinh = ? " +
-                            "and MaSanPham = ANKEM.MaDoAnKem " +
-                            "and NHOMSANPHAM.MaNhom = dbo.SANPHAM.MaNhom " +
-                            "and NHOMSANPHAM.MaNhom = ?");
-            statement.setString(1,mainItem.getItemCode());
-            statement.setInt(2,group.getGroupCode());
-            ResultSet result = statement.executeQuery();
-            while (result.next())
-            {
-                String itemCode = result.getString("MaDoAnKem");
-                ItemBean item = new ItemBean(itemCode);
-                this.GetItemData(item);
-                listItem.addItemToList(item);
+            System.out.println("This session was created completely");
+            transaction = session.beginTransaction();
+            Query<?> query = session.createQuery("FROM SanphamEntity Item WHERE Item.maSanPham=:itemcode");
+            query.setParameter("itemcode", itemCode);
+            item = (SanphamEntity)query.uniqueResult();
+            transaction.commit();
+        } catch (Exception var9) {
+            System.out.println("This session was failed");
+            if (transaction != null) {
+                transaction.rollback();
             }
-            statement.close();
-            connection.close();
-            System.out.println("Access to Product OK!!");
+
+            var9.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return item;
+    }
+
+    public boolean updateItemQuantity(SanphamEntity item, int Amount) {
+        Transaction transaction = null;
+        int newQuantity = item.getSoLuong() - Amount;
+        if (newQuantity < 0) {
+            return false;
+        } else {
+            Session session = HibernateUtility.getSessionFactory().openSession();
+
+            try {
+                transaction = session.beginTransaction();
+                item.setSoLuong(newQuantity);
+                session.update(item);
+                transaction.commit();
+            } catch (Exception var10) {
+                if (transaction != null) {
+                    transaction.rollback();
+                }
+
+                var10.printStackTrace();
+            } finally {
+                session.close();
+            }
+
             return true;
         }
-        catch (Exception e)
-        {
-            System.out.println(e.getMessage());
-            System.out.println("Access to Product FAIL!!");
-            return false;
+    }
+
+    public boolean updateItemData(SanphamEntity item) {
+        Transaction transaction = null;
+        Session session = HibernateUtility.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+            session.update(item);
+            transaction.commit();
+        } catch (Exception var8) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+
+            var8.printStackTrace();
+        } finally {
+            session.close();
         }
+
+        return true;
+    }
+
+    public boolean insertItemData(SanphamEntity item) {
+        Transaction transaction = null;
+        Session session = HibernateUtility.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+            session.save(item);
+            transaction.commit();
+        } catch (Exception var8) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+
+            var8.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return true;
+    }
+
+    public boolean deleteItemData(SanphamEntity item) {
+        Transaction transaction = null;
+        Session session = HibernateUtility.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+            session.delete(item);
+            transaction.commit();
+        } catch (Exception var8) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+
+            var8.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return true;
+    }
+
+    public List<SanphamEntity> getListDependenceItems(SanphamEntity mainItem, NhomsanphamEntity group) {
+        List<SanphamEntity> listItem = null;
+        SanphamEntity item = null;
+        Transaction transaction = null;
+        Session session = HibernateUtility.getSessionFactory().openSession();
+
+        try {
+            transaction = session.beginTransaction();
+            listItem = new ArrayList();
+            DependDao denpendDao = new DependDao();
+            List<AnkemEntity> dependList = denpendDao.getDependItemData(mainItem.getMaSanPham());
+            Iterator var9 = dependList.iterator();
+
+            while(var9.hasNext()) {
+                AnkemEntity ak = (AnkemEntity)var9.next();
+                SanphamEntity sp = this.GetItemData(ak.getMaDoAnKem());
+                if (sp.getMaNhom() == group.getMaNhom()) {
+                    listItem.add(sp);
+                }
+            }
+
+            transaction.commit();
+        } catch (Exception var15) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+
+            var15.printStackTrace();
+        } finally {
+            session.close();
+        }
+
+        return listItem;
     }
 }
