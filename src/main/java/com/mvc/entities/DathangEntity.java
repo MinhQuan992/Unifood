@@ -12,6 +12,16 @@ public class DathangEntity {
     private Integer donGia;
     private String ghiChu;
 
+    public DathangEntity(int cartCode, String itemCode)
+    {
+        this.maGio = cartCode;
+        this.maSanPham = itemCode;
+        this.soLuong = 0;
+        this.ghiChu = "";
+    }
+
+    public DathangEntity() {}
+
     @Id
     @Column(name = "MaGio", nullable = false)
     public int getMaGio() {

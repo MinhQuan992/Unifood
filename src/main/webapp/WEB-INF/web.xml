@@ -43,9 +43,17 @@
         <servlet-name>ItemController</servlet-name>
         <servlet-class>com.mvc.controller.ItemController</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>ItemController</servlet-name>
         <url-pattern>/Product</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OrderController</servlet-name>
+        <servlet-class>com.mvc.controller.OrderController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderController</servlet-name>
+        <url-pattern>/Order</url-pattern>
     </servlet-mapping>
 </web-app>

@@ -13,7 +13,8 @@ public class UserDao {
     public boolean saveUser(NguoidungEntity user)
     {
         Transaction transaction = null;
-        try (Session session = HibernateUtility.getSessionFactory().openSession())
+        Session session = HibernateUtility.getSessionFactory().openSession();
+        try
         {
             transaction = session.beginTransaction();
             session.save(user);
@@ -29,6 +30,9 @@ public class UserDao {
             }
             e.printStackTrace();
             return false; //Can not save user
+        }
+        finally {
+            session.close();
         }
     }
 
@@ -105,8 +109,8 @@ public class UserDao {
     {
         Transaction transaction = null;
         NguoidungEntity user = null;
-        try (Session session = HibernateUtility.getSessionFactory().openSession())
-        {
+        Session session = HibernateUtility.getSessionFactory().openSession();
+        try {
             transaction = session.beginTransaction();
             Query<?> query = session.createQuery("FROM NguoidungEntity WHERE email=:email");
             query.setParameter("email", email);
@@ -120,6 +124,9 @@ public class UserDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        }
+        finally {
+            session.close();
         }
         return user;
     }

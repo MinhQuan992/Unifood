@@ -1,8 +1,18 @@
+body{
+    margin: 10px 10px 10px 10px;
+    min-width: 800px;
+    min-height: 600px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-content: center;
+}
 
 .main {
     margin: 10px 10px 10px 10px;
     padding: 10px 10px 10px 10px;
     height: 1200px;
+    width: 1400px;
     min-width: 800px;
     min-height: 600px;
     display: flex;
