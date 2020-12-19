@@ -18,9 +18,6 @@
     </c:when>
 
     <c:otherwise>
-        <form method="post" action="${pageContext.request.contextPath}/signout">
-            <input type="submit" value="SIGN OUT">
-        </form>
         <c:out value="${userID}"/>
         <br>
         <c:out value="${fullName}"/>
@@ -37,7 +34,7 @@
 
         <c:choose>
             <c:when test="${userType == 'Customer'}">
-                <form method="post" action="${pageContext.request.contextPath}/order">
+                <form method="post" action="${pageContext.request.contextPath}/orders">
                     <input type="submit" value="Đơn hàng của tôi">
                 </form>
             </c:when>
@@ -48,6 +45,10 @@
                 </form>
             </c:otherwise>
         </c:choose>
+
+        <form method="post" action="${pageContext.request.contextPath}/signout">
+            <input type="submit" value="SIGN OUT">
+        </form>
     </c:otherwise>
 </c:choose>
 </body>

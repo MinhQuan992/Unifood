@@ -14,7 +14,7 @@
 <body>
 <c:choose>
     <c:when test="${empty orders}">
-        <h1>Bạn chưa có đơn hàng nào</h1>
+        <h1>Bạn chưa có đơn hàng nào!</h1>
     </c:when>
 
     <c:otherwise>
@@ -43,7 +43,7 @@
                             <td>Chưa thanh toán</td>
                         </c:otherwise>
                     </c:choose>
-                    <td><c:out value="${order.tongGiaTri}"/></td>
+                    <td><p><c:out value="${order.tongGiaTri}"/><span> VND</span></p></td>
                     <td>
                         <form method="post" action="${pageContext.request.contextPath}/orderDetail">
                             <input type="hidden" name="maDon" value="${order.maDon}">
@@ -62,6 +62,6 @@
         </table>
     </c:otherwise>
 </c:choose>
-<a href="${pageContext.request.contextPath}/index.jsp">Về trang chủ</a>
+<a href="${pageContext.request.contextPath}/index.jsp">TRANG CHỦ</a>
 </body>
 </html>

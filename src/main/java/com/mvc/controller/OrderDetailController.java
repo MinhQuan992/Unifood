@@ -15,6 +15,10 @@ import java.util.List;
 @WebServlet(name = "OrderDetailController", urlPatterns = {"/orderDetail"})
 public class OrderDetailController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
+
         int orderID = Integer.parseInt(request.getParameter("maDon"));
         String orderStatus = request.getParameter("ttDonHang");
         String paymentStatus = request.getParameter("ttThanhToan");
@@ -22,6 +26,21 @@ public class OrderDetailController extends HttpServlet {
         String shipDate = request.getParameter("ngayGiaoHang");
         String payDate = request.getParameter("ngayThanhToan");
         String totalCost = request.getParameter("tongGiaTri");
+
+        if (!placeOrderDate.equals(""))
+        {
+            placeOrderDate = formatDate(placeOrderDate);
+        }
+
+        if (!shipDate.equals(""))
+        {
+            shipDate = formatDate(shipDate);
+        }
+
+        if (!payDate.equals(""))
+        {
+            payDate = formatDate(payDate);
+        }
 
         ViewOrderDetailDao viewOrderDetailDao = new ViewOrderDetailDao();
         List<ViewChiTietDonHangEntity> orderDetail = viewOrderDetailDao.getOrderDetail(orderID);
@@ -40,7 +59,7 @@ public class OrderDetailController extends HttpServlet {
         request.setAttribute("placeOrderDate", placeOrderDate);
         request.setAttribute("shipDate", shipDate);
         request.setAttribute("payDate", payDate);
-        request.setAttribute("totalCost", totalCost);
+        request.setAttribute("totalCost", totalCost + " VND");
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/order-detail.jsp");
         dispatcher.forward(request, response);
@@ -48,5 +67,14 @@ public class OrderDetailController extends HttpServlet {
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+    }
+
+    private String formatDate(String date)
+    {
+        String year = date.substring(0,4);
+        String month = date.substring(5,7);
+        String day = date.substring(8,10);
+
+        return day + "-" + month + "-" + year;
     }
 }

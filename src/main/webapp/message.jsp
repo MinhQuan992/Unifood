@@ -17,7 +17,7 @@
         <h1 style="text-align: center"><c:out value="${message}"/></h1>
     </c:if>
 
-    <a href="signin.jsp">Về trang đăng nhập</a>
+    <a href="${pageContext.request.contextPath}/signin.jsp">ĐĂNG NHẬP</a>
 </div>
 </body>
 </html>

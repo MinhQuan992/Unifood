@@ -189,7 +189,7 @@
         <input type="submit" value="ĐĂNG KÝ">
     </form>
 
-    <a href="${pageContext.request.contextPath}/index.jsp">Về trang chủ</a>
+    <a href="${pageContext.request.contextPath}/index.jsp">TRANG CHỦ</a>
 </div>
 </body>
 </html>

@@ -36,14 +36,4 @@ public class ViewOrderDetailDao {
         }
         return orderDetail;
     }
-
-    public static void main(String[] args)
-    {
-        ViewOrderDetailDao viewOrderDetailDao = new ViewOrderDetailDao();
-        List<ViewChiTietDonHangEntity> orderDetail = viewOrderDetailDao.getOrderDetail(2000000);
-        for (ViewChiTietDonHangEntity chiTiet : orderDetail)
-        {
-            System.out.println(chiTiet.getMaSanPham());
-        }
-    }
 }
