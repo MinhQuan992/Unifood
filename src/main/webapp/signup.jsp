@@ -12,6 +12,28 @@
     <title>Đăng ký | Unifood</title>
 </head>
 <body>
+<%
+    String userType = (String) request.getSession().getAttribute("userType");
+    if (userType == null)
+    {
+        request.getSession().setAttribute("userType", "Customer");
+    }
+%>
+<c:if test="${not empty signupSuccess}">
+    <c:choose>
+        <c:when test="${signupSuccess == true}">
+            <script type="text/javascript">
+                alert("Thêm quản lí thành công!")
+            </script>
+        </c:when>
+
+        <c:otherwise>
+            <script type="text/javascript">
+                alert("Không thể tạo tài khoản, mời bạn thử lại!")
+            </script>
+        </c:otherwise>
+    </c:choose>
+</c:if>
 <div align="center">
     <h1>ĐĂNG KÝ TÀI KHOẢN</h1>
     <form id="" method="post" action="${pageContext.request.contextPath}/signup">
@@ -166,6 +188,8 @@
 
         <input type="submit" value="ĐĂNG KÝ">
     </form>
+
+    <a href="${pageContext.request.contextPath}/index.jsp">Về trang chủ</a>
 </div>
 </body>
 </html>

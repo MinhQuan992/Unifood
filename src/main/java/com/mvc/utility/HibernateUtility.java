@@ -1,6 +1,8 @@
 package com.mvc.utility;
 
 import com.mvc.entities.NguoidungEntity;
+import com.mvc.entities.ViewChiTietDonHangEntity;
+import com.mvc.entities.ViewDonHangEntity;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -29,10 +31,12 @@ public class HibernateUtility {
 
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
 
-                settings.put(Environment.HBM2DDL_AUTO, "create-drop");
+                settings.put(Environment.HBM2DDL_AUTO, "none");
 
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(NguoidungEntity.class);
+                configuration.addAnnotatedClass(ViewDonHangEntity.class);
+                configuration.addAnnotatedClass(ViewChiTietDonHangEntity.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();

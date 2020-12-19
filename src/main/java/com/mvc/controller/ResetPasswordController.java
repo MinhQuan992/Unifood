@@ -52,7 +52,7 @@ public class ResetPasswordController extends HttpServlet {
             {
                 String subject = "Mat khau cua ban da duoc dat lai";
                 String content = "Xin chao, day la mat khau moi cua ban da duoc he thong tao ra ngau nhien: " + randomPassword;
-                content += "\nChu y: vi li do bao mat, ban phai doi mat khau ngay sau khi dang nhap.";
+                content += "\nChu y: Vi li do bao mat, ban phai doi mat khau ngay sau khi dang nhap.";
                 content += "\nDoi ngu ho tro UNIFOOD";
 
                 try

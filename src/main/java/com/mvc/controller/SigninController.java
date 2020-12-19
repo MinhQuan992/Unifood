@@ -11,8 +11,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "LoginController", urlPatterns = {"/login"})
-public class LoginController extends HttpServlet {
+@WebServlet(name = "SigninController", urlPatterns = {"/signin"})
+public class SigninController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String email = request.getParameter("email");
         String password = request.getParameter("password");
@@ -24,28 +24,41 @@ public class LoginController extends HttpServlet {
         if (user != null)
         {
             String dbPassword = user.getMatKhau();
+
             if (password.equals(dbPassword))
             {
-                request.setAttribute("userID", user.getMaNguoiDung());
-                request.setAttribute("fullName", user.getHoVaTen());
-                request.setAttribute("gender", user.getGioiTinh());
-                request.setAttribute("birthdate", user.getNgaySinh());
-                request.setAttribute("address", user.getDiaChi());
-                request.setAttribute("phone", user.getDienThoai());
-                request.setAttribute("email", user.getEmail());
-                request.setAttribute("loginFailed", false);
+                String userID = user.getMaNguoiDung();
+
+                if (userID.startsWith("KH"))
+                {
+                    request.getSession().setAttribute("userType", "Customer");
+                }
+                else
+                {
+                    request.getSession().setAttribute("userType", "Manager");
+                }
+
+                request.getSession().setAttribute("userID", userID);
+                request.getSession().setAttribute("fullName", user.getHoVaTen());
+                request.getSession().setAttribute("gender", user.getGioiTinh());
+                request.getSession().setAttribute("birthdate", user.getNgaySinh());
+                request.getSession().setAttribute("address", user.getDiaChi());
+                request.getSession().setAttribute("phone", user.getDienThoai());
+                request.getSession().setAttribute("email", user.getEmail());
+                request.getSession().setAttribute("signinSuccess", true);
+
                 url = "/index.jsp";
             }
             else
             {
-                request.setAttribute("loginFailed", true);
-                url = "/login.jsp";
+                request.setAttribute("signinFailed", true);
+                url = "/signin.jsp";
             }
         }
         else
         {
-            request.setAttribute("loginFailed", true);
-            url = "/login.jsp";
+            request.setAttribute("signinFailed", true);
+            url = "/signin.jsp";
         }
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);

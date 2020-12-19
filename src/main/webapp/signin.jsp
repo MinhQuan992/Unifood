@@ -14,27 +14,23 @@
     <script src="https://kit.fontawesome.com/9636dbf883.js" crossorigin="anonymous"></script>
 </head>
 <body id="login-page">
-<c:if test="${not empty signupSuccess}">
-    <c:if test="${signupSuccess == true}">
-        <script type="text/javascript">
-            alert("Tạo tài khoản thành công, mời bạn đăng nhập để tiếp tục!")
-        </script>
-    </c:if>
+<c:if test="${not empty signupSuccess && signupSuccess == true}">
+    <script type="text/javascript">
+        alert("Tạo tài khoản thành công, mời bạn đăng nhập để tiếp tục!")
+    </script>
 </c:if>
-<c:if test="${not empty loginFailed}">
-    <c:if test="${loginFailed == true}">
-        <script type="text/javascript">
-            alert("Tên đăng nhập hoặc mật khẩu sai!")
-        </script>
-    </c:if>
+<c:if test="${not empty signinFailed}">
+    <script type="text/javascript">
+        alert("Tên đăng nhập hoặc mật khẩu sai!")
+    </script>
 </c:if>
 <header>
-
+<a href="${pageContext.request.contextPath}/index.jsp">TRANG CHỦ</a>
 </header>
 
 <article>
     <img id="logo" src="Images/LOGO.png">
-    <form id="frmLogin" method="post" action="${pageContext.request.contextPath}/login">
+    <form id="frmLogin" method="post" action="${pageContext.request.contextPath}/signin">
         <h1 id="form-title">ĐĂNG NHẬP TÀI KHOẢN</h1>
         <i class="fas fa-envelope" style="font-size: 155%"></i>
         &nbsp;

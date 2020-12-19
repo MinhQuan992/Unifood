@@ -17,7 +17,7 @@
         <h1 style="text-align: center"><c:out value="${message}"/></h1>
     </c:if>
 
-    <a href="login.jsp">Về trang đăng nhập</a>
+    <a href="signin.jsp">Về trang đăng nhập</a>
 </div>
 </body>
 </html>
