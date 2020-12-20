@@ -2,6 +2,10 @@ package com.mvc.entities;
 
 import javax.persistence.*;
 import java.sql.Date;
+<<<<<<< HEAD
+=======
+import java.util.Objects;
+>>>>>>> origin/master
 
 @Entity
 @Table(name = "NGUOIDUNG", schema = "dbo", catalog = "UNIFOOD")
@@ -15,7 +19,17 @@ public class NguoidungEntity {
     private String email;
     private String matKhau;
 
+<<<<<<< HEAD
     public NguoidungEntity(String userID, String fullName, String gender, Date birthdate, String address, String phone, String email, String password) {
+=======
+    public NguoidungEntity()
+    {
+
+    }
+
+    public NguoidungEntity(String userID, String fullName, String gender, Date birthdate, String address, String phone, String email, String password)
+    {
+>>>>>>> origin/master
         this.maNguoiDung = userID;
         this.hoVaTen = fullName;
         this.gioiTinh = gender;
@@ -26,12 +40,17 @@ public class NguoidungEntity {
         this.matKhau = password;
     }
 
+<<<<<<< HEAD
     public NguoidungEntity() {
 
     }
 
     @Id
     @Column(name = "MaNguoiDung", nullable = false, length = 9)
+=======
+    @Id
+    @Column(name = "MaNguoiDung")
+>>>>>>> origin/master
     public String getMaNguoiDung() {
         return maNguoiDung;
     }
@@ -41,7 +60,11 @@ public class NguoidungEntity {
     }
 
     @Basic
+<<<<<<< HEAD
     @Column(name = "HoVaTen", nullable = true, length = 50)
+=======
+    @Column(name = "HoVaTen")
+>>>>>>> origin/master
     public String getHoVaTen() {
         return hoVaTen;
     }
@@ -51,7 +74,11 @@ public class NguoidungEntity {
     }
 
     @Basic
+<<<<<<< HEAD
     @Column(name = "GioiTinh", nullable = true, length = 3)
+=======
+    @Column(name = "GioiTinh")
+>>>>>>> origin/master
     public String getGioiTinh() {
         return gioiTinh;
     }
@@ -61,7 +88,11 @@ public class NguoidungEntity {
     }
 
     @Basic
+<<<<<<< HEAD
     @Column(name = "NgaySinh", nullable = true)
+=======
+    @Column(name = "NgaySinh")
+>>>>>>> origin/master
     public Date getNgaySinh() {
         return ngaySinh;
     }
@@ -71,7 +102,11 @@ public class NguoidungEntity {
     }
 
     @Basic
+<<<<<<< HEAD
     @Column(name = "DiaChi", nullable = true, length = 150)
+=======
+    @Column(name = "DiaChi")
+>>>>>>> origin/master
     public String getDiaChi() {
         return diaChi;
     }
@@ -81,7 +116,11 @@ public class NguoidungEntity {
     }
 
     @Basic
+<<<<<<< HEAD
     @Column(name = "DienThoai", nullable = true, length = 10)
+=======
+    @Column(name = "DienThoai")
+>>>>>>> origin/master
     public String getDienThoai() {
         return dienThoai;
     }
@@ -91,7 +130,11 @@ public class NguoidungEntity {
     }
 
     @Basic
+<<<<<<< HEAD
     @Column(name = "Email", nullable = true, length = 30)
+=======
+    @Column(name = "Email")
+>>>>>>> origin/master
     public String getEmail() {
         return email;
     }
@@ -101,7 +144,11 @@ public class NguoidungEntity {
     }
 
     @Basic
+<<<<<<< HEAD
     @Column(name = "MatKhau", nullable = true, length = 50)
+=======
+    @Column(name = "MatKhau")
+>>>>>>> origin/master
     public String getMatKhau() {
         return matKhau;
     }
@@ -117,6 +164,7 @@ public class NguoidungEntity {
 
         NguoidungEntity that = (NguoidungEntity) o;
 
+<<<<<<< HEAD
         if (maNguoiDung != null ? !maNguoiDung.equals(that.maNguoiDung) : that.maNguoiDung != null) return false;
         if (hoVaTen != null ? !hoVaTen.equals(that.hoVaTen) : that.hoVaTen != null) return false;
         if (gioiTinh != null ? !gioiTinh.equals(that.gioiTinh) : that.gioiTinh != null) return false;
@@ -125,6 +173,16 @@ public class NguoidungEntity {
         if (dienThoai != null ? !dienThoai.equals(that.dienThoai) : that.dienThoai != null) return false;
         if (email != null ? !email.equals(that.email) : that.email != null) return false;
         if (matKhau != null ? !matKhau.equals(that.matKhau) : that.matKhau != null) return false;
+=======
+        if (!Objects.equals(maNguoiDung, that.maNguoiDung)) return false;
+        if (!Objects.equals(hoVaTen, that.hoVaTen)) return false;
+        if (!Objects.equals(gioiTinh, that.gioiTinh)) return false;
+        if (!Objects.equals(ngaySinh, that.ngaySinh)) return false;
+        if (!Objects.equals(diaChi, that.diaChi)) return false;
+        if (!Objects.equals(dienThoai, that.dienThoai)) return false;
+        if (!Objects.equals(email, that.email)) return false;
+        if (!Objects.equals(matKhau, that.matKhau)) return false;
+>>>>>>> origin/master
 
         return true;
     }

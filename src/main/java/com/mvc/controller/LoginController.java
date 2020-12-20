@@ -1,10 +1,8 @@
 package com.mvc.controller;
 
-import com.mvc.dao.CartDao;
-import com.mvc.dao.UserDao;
-import com.mvc.entities.GiohangEntity;
-import com.mvc.entities.NguoidungEntity;
-import org.hibernate.Session;
+import com.mvc.bean.LoginBean;
+import com.mvc.bean.UserBean;
+import com.mvc.dao.LoginDao;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -12,51 +10,40 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
 import java.io.IOException;
 
-@WebServlet(name = "LoginController", urlPatterns = {"/login"})
+@WebServlet(name = "LoginController")
 public class LoginController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        String email = request.getParameter("email");
+        String username = request.getParameter("username");
         String password = request.getParameter("password");
-        HttpSession session  =request.getSession();
 
-        UserDao userDao = new UserDao();
-        NguoidungEntity user = userDao.getUserByEmail(email);
-        String url;
+        LoginBean loginBean = new LoginBean();
+        UserBean userBean = new UserBean();
 
-        if (user != null)
+        loginBean.setUsername(username);
+        loginBean.setPassword(password);
+
+        LoginDao loginDao = new LoginDao();
+        boolean authorize = loginDao.authorizeLogin(loginBean, userBean);
+
+        if (authorize)
         {
-            String dbPassword = user.getMatKhau();
-            if (password.equals(dbPassword))
-            {
-                session.setAttribute("User",user);
-                CartDao cartDao = new CartDao();
-                GiohangEntity cart = cartDao.GetCartData(user);
-                if (cart==null) cart=cartDao.GetNewCart(user);
-                session.setAttribute("ShoppingCart",cart);
-                request.setAttribute("userID", user.getMaNguoiDung());
-                request.setAttribute("fullName", user.getHoVaTen());
-                request.setAttribute("gender", user.getGioiTinh());
-                request.setAttribute("birthdate", user.getNgaySinh());
-                request.setAttribute("address", user.getDiaChi());
-                request.setAttribute("phone", user.getDienThoai());
-                request.setAttribute("email", user.getEmail());
-                request.setAttribute("loginFailed", false);
-                url = "/index.jsp";
-            }
-            else
-            {
-                request.setAttribute("loginFailed", true);
-                url = "/login.jsp";
-            }
+            request.setAttribute("userID", userBean.getUserID());
+            request.setAttribute("fullName", userBean.getFullName());
+            request.setAttribute("gender", userBean.getGender());
+            request.setAttribute("birthDate", userBean.getBirthDate());
+            request.setAttribute("address", userBean.getAddress());
+            request.setAttribute("phone", userBean.getPhone());
+            request.setAttribute("email", userBean.getEmail());
+            request.setAttribute("loginFailed", false);
         }
         else
         {
             request.setAttribute("loginFailed", true);
-            url = "/login.jsp";
         }
+
+        String url = "/index.jsp";
 
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
         dispatcher.forward(request, response);

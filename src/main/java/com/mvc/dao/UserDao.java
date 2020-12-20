@@ -31,7 +31,8 @@ public class UserDao {
             e.printStackTrace();
             return false; //Can not save user
         }
-        finally {
+        finally
+        {
             session.close();
         }
     }
@@ -39,7 +40,8 @@ public class UserDao {
     public boolean updateUser(NguoidungEntity user)
     {
         Transaction transaction = null;
-        try (Session session = HibernateUtility.getSessionFactory().openSession())
+        Session session = HibernateUtility.getSessionFactory().openSession();
+        try
         {
             transaction = session.beginTransaction();
             session.update(user);
@@ -56,12 +58,17 @@ public class UserDao {
             e.printStackTrace();
             return false;
         }
+        finally
+        {
+            session.close();
+        }
     }
 
     public boolean deleteUser(String userID)
     {
         Transaction transaction = null;
-        try (Session session = HibernateUtility.getSessionFactory().openSession())
+        Session session = HibernateUtility.getSessionFactory().openSession();
+        try
         {
             transaction = session.beginTransaction();
             NguoidungEntity user = session.get(NguoidungEntity.class, userID);
@@ -82,13 +89,18 @@ public class UserDao {
             e.printStackTrace();
             return false;
         }
+        finally
+        {
+            session.close();
+        }
     }
 
     public NguoidungEntity getUserByID(String userID)
     {
         Transaction transaction = null;
         NguoidungEntity user = null;
-        try (Session session = HibernateUtility.getSessionFactory().openSession())
+        Session session = HibernateUtility.getSessionFactory().openSession();
+        try
         {
             transaction = session.beginTransaction();
             user = session.get(NguoidungEntity.class, userID);
@@ -102,6 +114,10 @@ public class UserDao {
             }
             e.printStackTrace();
         }
+        finally
+        {
+            session.close();
+        }
         return user;
     }
 
@@ -110,11 +126,12 @@ public class UserDao {
         Transaction transaction = null;
         NguoidungEntity user = null;
         Session session = HibernateUtility.getSessionFactory().openSession();
-        try {
+        try
+        {
             transaction = session.beginTransaction();
-            Query<?> query = session.createQuery("FROM NguoidungEntity WHERE email=:email");
+            Query<NguoidungEntity> query = session.createQuery("FROM NguoidungEntity WHERE email=:email");
             query.setParameter("email", email);
-            user = (NguoidungEntity) query.uniqueResult();
+            user = query.uniqueResult();
             transaction.commit();
         }
         catch (Exception e)
@@ -125,18 +142,20 @@ public class UserDao {
             }
             e.printStackTrace();
         }
-        finally {
+        finally
+        {
             session.close();
         }
         return user;
     }
 
     @SuppressWarnings("unchecked")
-    public List< NguoidungEntity > getAllUser()
+    public List<NguoidungEntity> getAllUser()
     {
         Transaction transaction = null;
-        List < NguoidungEntity > listOfUser = null;
-        try (Session session = HibernateUtility.getSessionFactory().openSession())
+        List<NguoidungEntity> listOfUser = null;
+        Session session = HibernateUtility.getSessionFactory().openSession();
+        try
         {
             transaction = session.beginTransaction();
             listOfUser = session.createQuery("FROM NguoidungEntity").getResultList();
@@ -149,6 +168,10 @@ public class UserDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        }
+        finally
+        {
+            session.close();
         }
         return listOfUser;
     }

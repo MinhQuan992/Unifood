@@ -38,6 +38,10 @@ public class ResetPasswordController extends HttpServlet {
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
+
         String recipient = request.getParameter("reset-email");
         UserDao userDao = new UserDao();
         NguoidungEntity user = userDao.getUserByEmail(recipient);
@@ -52,7 +56,7 @@ public class ResetPasswordController extends HttpServlet {
             {
                 String subject = "Mat khau cua ban da duoc dat lai";
                 String content = "Xin chao, day la mat khau moi cua ban da duoc he thong tao ra ngau nhien: " + randomPassword;
-                content += "\nChu y: vi li do bao mat, ban phai doi mat khau ngay sau khi dang nhap.";
+                content += "\nChu y: Vi li do bao mat, ban phai doi mat khau ngay sau khi dang nhap.";
                 content += "\nDoi ngu ho tro UNIFOOD";
 
                 try
@@ -64,14 +68,13 @@ public class ResetPasswordController extends HttpServlet {
                 catch (Exception ex)
                 {
                     ex.printStackTrace();
-                    message = "Có lỗi xảy ra: " + ex.getMessage();
+                    message = "Có lỗi xảy ra, hãy kiểm tra email của bạn!";
                 }
             }
             else
             {
-                message = "Có lỗi xảy ra";
+                message = "Có lỗi xảy ra, mời bạn thử lại!";
             }
-            request.setAttribute("wrongEmail",false);
             request.setAttribute("message", message);
             request.getRequestDispatcher("/message.jsp").forward(request, response);
         }
