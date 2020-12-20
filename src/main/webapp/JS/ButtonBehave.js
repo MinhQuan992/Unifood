@@ -65,3 +65,38 @@ function Checked(Eid)
         document.getElementById('PD-main-menu-total-price').value = totalcost;
     }
 }
+
+
+function OnCheck(Eid)
+{
+    if (document.getElementById('Check'+Eid).checked)
+    {
+        var totalcost = parseInt(document.getElementById('Total-Cost-Of-Cart').value, 10)+10;
+        var totalnumber = parseInt(document.getElementById('Total-Number-Of-Item').value, 10);
+        var quantity = parseInt(document.getElementById(Eid).value, 10);
+        var price = parseInt(document.getElementById('SL'+Eid).value, 10);
+        totalnumber += quantity;
+        totalcost += quantity*price;
+        document.getElementById('Total-Cost-Of-Cart').value = totalcost;
+        document.getElementById('Total-Number-Of-Item').value = totalnumber;
+        if (totalnumber!=0)
+            document.getElementById('Shipping-fee').value = 'đ 19,000';
+        else
+            document.getElementById('Shipping-fee').value = 'đ 0';
+    }
+    else
+    {
+        var totalcost = parseInt(document.getElementById('Total-Cost-Of-Cart').value, 10)+10;
+        var totalnumber = parseInt(document.getElementById('Total-Number-Of-Item').value, 10);
+        var quantity = parseInt(document.getElementById(Eid).value, 10);
+        var price = parseInt(document.getElementById('SL'+Eid).value, 10);
+        totalnumber += quantity;
+        totalcost += quantity*price;
+        document.getElementById('Total-Cost-Of-Cart').value = totalcost;
+        document.getElementById('Total-Number-Of-Item').value = totalnumber;
+        if (totalnumber!=0)
+            document.getElementById('Shipping-fee').value = 'đ 19,000';
+        else
+            document.getElementById('Shipping-fee').value = 'đ 0';
+    }
+}

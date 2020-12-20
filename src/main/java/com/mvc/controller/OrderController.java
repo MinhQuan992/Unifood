@@ -6,6 +6,7 @@ import com.mvc.dao.GroupItemDao;
 import com.mvc.dao.ItemDao;
 import com.mvc.entities.*;
 
+import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -39,7 +40,7 @@ public class OrderController extends HttpServlet {
         for (AnkemEntity depend: list)
         {
             String checked = request.getParameter("Check"+depend.getMaDoAnKem());
-            System.out.println(checked);
+            //System.out.println(checked);
             if (checked!=null && checked.equals("on"))
             {
                 SanphamEntity depend_item = itemDao.GetItemData(depend.getMaDoAnKem());
@@ -47,5 +48,8 @@ public class OrderController extends HttpServlet {
                 cartDao.InsertItemToCart(cart,depend_item,quantity,"");
             }
         }
+        String url = "index.jsp";
+        RequestDispatcher requestDispatcher = request.getRequestDispatcher(url);
+        requestDispatcher.forward(request,response);
     }
 }

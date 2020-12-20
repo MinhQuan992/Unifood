@@ -39,7 +39,7 @@ public class CartDao {
         return cart;
     }
 
-    public List<DathangEntity> LoadCartData(String cartCode)
+    public List<DathangEntity> LoadCartData(int cartCode)
     {
         List<DathangEntity> listOrder = null;
         Transaction transaction = null;

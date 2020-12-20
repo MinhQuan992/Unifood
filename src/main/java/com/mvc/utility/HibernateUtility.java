@@ -40,7 +40,6 @@ public class HibernateUtility {
                 configuration.addAnnotatedClass(GiohangEntity.class);
                 configuration.addAnnotatedClass(DonhangEntity.class);
 
-
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();
                 System.out.println("Hibernate Java Config serviceRegistry created");

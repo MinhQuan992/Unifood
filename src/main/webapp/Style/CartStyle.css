@@ -49,27 +49,47 @@ body {
     border: solid red 1px;
 }
 
-.Cart-Items .An-Item{
+.Cart-Items .An-Item {
     display: grid;
     margin: 10px 10px 10px 10px;
     padding: 5px 5px 5px 5px;
     height: 150px;
     grid-template-rows: 40% 40% 20%;
-    grid-template-columns: 40% 30% 30%;
+    grid-template-columns: 5% 35% 30% 30%;
     border: solid red 1px;
 }
 
+.Cart-Items .An-Item .Item-Check{
+    grid-column: 1/2;
+    grid-row: 1/4;
+}
+
+.Cart-Items .An-Item .Item-Check .Check-Button{
+    grid-column: 1/2;
+    grid-row: 1/4;
+    text-align: center;
+    align-content: center;
+    justify-content: center;
+    background: transparent;
+    height: 30px;
+    font-size: 24px;
+    color: #a50909;
+    font-weight: bold;
+}
+
 .Cart-Items .An-Item .Item-Image {
+    grid-column: 2/3;
     grid-row: 1/4;
 }
 
 .Cart-Items .An-Item .Item-Image .Image{
-    width: 200px;
-    height: 150px;
+    width: 85%;
+    height: 100%;
 }
 
 .Cart-Items .An-Item .Item-Name{
-    grid-column: 2/4;
+    grid-column: 3/5;
+    font-weight: bold;
 }
 
 .Cart-Items .An-Item .Item-Quantity{
@@ -91,22 +111,59 @@ body {
 }
 
 .Cart-Items .An-Item .Item-Quantity .quanity{
+    border: none;
+    background: transparent;
+    width: 30px;
     height: 30px;
+    font-size: 24px;
     color: #a50909;
     font-weight: bold;
 }
 
 .Cart-Items .An-Item .Item-Price{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
+    border: none;
+    text-align: center;
     align-content: center;
+    justify-content: center;
+    background: transparent;
+    height: 30px;
+    font-size: 24px;
+    color: #a50909;
+    font-weight: bold;
 }
 
 .Cart-Items .An-Item .Items-Option{
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: flex-end;
     align-content: center;
-    grid-column: 3/4;
+    grid-column: 4/5;
+}
+
+.Cart-Items .An-Item .Items-Option .Button-Note,
+.Cart-Items .An-Item .Items-Option .Button-Delete {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+.Cart-Confirm-Button {
+    margin: 10px 5px 10px 5px;
+    font-family: 'Anton', sans-serif;
+    background-color: #a50909;
+    color: white;
+    font-size: 28px;
+    width: 400px;
+    height: 80px;
+    text-align: left;
+}
+
+.Input-text {
+    width: 120px;
+    border: none;
+    text-align: left;
+    background: transparent;
+    height: 30px;
+    font-size: 24px;
+    color: #a50909;
+    font-weight: bold;
 }

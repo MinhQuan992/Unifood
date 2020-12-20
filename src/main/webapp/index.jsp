@@ -14,7 +14,7 @@
 <body>
 <a href="login.jsp">HELLO WORLD</a>
 <a href="${pageContext.request.contextPath}/Product?ItemCode=MN10100005">Product detail</a>
-<a href="${pageContext.request.contextPath}/Page/Cart.jsp">Shopping cart</a>
+<a href="${pageContext.request.contextPath}/Cart?">Shopping cart</a>
 <br>
 <c:if test="${not empty loginFailed}">
     <c:choose>
