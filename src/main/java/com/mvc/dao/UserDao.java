@@ -50,6 +50,10 @@ public class UserDao {
         {
             transaction = session.beginTransaction();
             session.update(user);
+            Query query = session.createNativeQuery("EXEC proc_DoiMatKhau :userID, :password");
+            query.setParameter("userID", user.getMaNguoiDung());
+            query.setParameter("password", user.getMatKhau());
+            query.executeUpdate();
             transaction.commit();
             System.out.println("Update user successfully");
             return true;

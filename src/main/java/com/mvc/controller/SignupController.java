@@ -150,16 +150,9 @@ public class SignupController extends HttpServlet {
             }
         }
 
-        //Tạo pattern cho password
-        boolean rightPassword = session.doReturningWork(connection -> {
-            try (CallableStatement function = connection.prepareCall("{? = CALL func_MatKhauHopLe(?)}"))
-            {
-                function.registerOutParameter(1, Types.BIT);
-                function.setString(2, password);
-                function.execute();
-                return function.getBoolean(1);
-            }
-        });
+        Pattern passwordPattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{10,50}$");
+        Matcher passwordMatcher = passwordPattern.matcher(password);
+        boolean rightPassword =  passwordMatcher.matches();
         if (!rightPassword)
         {
             hasError = true;
