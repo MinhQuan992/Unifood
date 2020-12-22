@@ -1,6 +1,8 @@
 package com.mvc.controller;
 
+import com.mvc.dao.CartDao;
 import com.mvc.dao.UserDao;
+import com.mvc.entities.GiohangEntity;
 import com.mvc.entities.NguoidungEntity;
 
 import javax.servlet.RequestDispatcher;
@@ -37,7 +39,11 @@ public class SigninController extends HttpServlet {
                 {
                     request.getSession().setAttribute("userType", "Manager");
                 }
-
+                request.getSession().setAttribute("User",user);
+                CartDao cartDao = new CartDao();
+                GiohangEntity cart = cartDao.GetCartData(user);
+                if (cart==null) cart=cartDao.GetNewCart(user);
+                request.getSession().setAttribute("ShoppingCart",cart);
                 request.getSession().setAttribute("userID", userID);
                 request.getSession().setAttribute("fullName", user.getHoVaTen());
                 request.getSession().setAttribute("gender", user.getGioiTinh());

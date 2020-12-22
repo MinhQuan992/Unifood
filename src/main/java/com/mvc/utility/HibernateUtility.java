@@ -1,12 +1,9 @@
 package com.mvc.utility;
 
-<<<<<<< HEAD
 import com.mvc.entities.*;
-=======
 import com.mvc.entities.NguoidungEntity;
 import com.mvc.entities.ViewChiTietDonHangEntity;
 import com.mvc.entities.ViewDonHangEntity;
->>>>>>> origin/master
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -39,17 +36,14 @@ public class HibernateUtility {
 
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(NguoidungEntity.class);
-<<<<<<< HEAD
                 configuration.addAnnotatedClass(SanphamEntity.class);
                 configuration.addAnnotatedClass(NhomsanphamEntity.class);
                 configuration.addAnnotatedClass(AnkemEntity.class);
                 configuration.addAnnotatedClass(DathangEntity.class);
                 configuration.addAnnotatedClass(GiohangEntity.class);
                 configuration.addAnnotatedClass(DonhangEntity.class);
-=======
                 configuration.addAnnotatedClass(ViewDonHangEntity.class);
                 configuration.addAnnotatedClass(ViewChiTietDonHangEntity.class);
->>>>>>> origin/master
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();

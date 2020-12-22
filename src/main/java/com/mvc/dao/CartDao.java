@@ -63,27 +63,35 @@ public class CartDao {
         return listOrder;
     }
 
-    public boolean AddItemToCart(GiohangEntity cart, SanphamEntity item, String note)
+    public boolean AddItemToCart(GiohangEntity cart, SanphamEntity item)
     {
         OrderDao orderDao = new OrderDao();
         DathangEntity order = orderDao.GetOrderData(cart.getMaGio(),item.getMaSanPham());
-        if (order==null) order = new DathangEntity(cart.getMaGio(),item.getMaSanPham());
-        order.setSoLuong(order.getSoLuong()+1);
+        if (order==null)
+        {
+            order = new DathangEntity(cart.getMaGio(),item.getMaSanPham());
+            if (order.getSoLuong()<99)
+                order.setSoLuong(order.getSoLuong()+1);
+            order.setDonGia(item.getDonGia());
+            return orderDao.InsertOrderData(order);
+        }
+        if (order.getSoLuong()<99)
+            order.setSoLuong(order.getSoLuong()+1);
         order.setDonGia(item.getDonGia());
-        order.setGhiChu(note);
-        return orderDao.InsertOrderData(order);
+        return orderDao.UpdateOrderData(order);
+
     }
 
-    public boolean SubItemFromCart(GiohangEntity cart, SanphamEntity item, String note)
+    public boolean SubItemFromCart(GiohangEntity cart, SanphamEntity item)
     {
         OrderDao orderDao = new OrderDao();
         DathangEntity order = orderDao.GetOrderData(cart.getMaGio(),item.getMaSanPham());
         if (order==null) order = new DathangEntity(cart.getMaGio(),item.getMaSanPham());
-        order.setSoLuong(order.getSoLuong()-1);
+        if (order.getSoLuong()>0)
+            order.setSoLuong(order.getSoLuong()-1);
         order.setDonGia(item.getDonGia());
-        order.setGhiChu(note);
         if (order.getSoLuong()==0) return orderDao.DeleteOrderData(order);
-        return orderDao.InsertOrderData(order);
+        return orderDao.UpdateOrderData(order);
     }
 
     public boolean RemoveItemFromCart(GiohangEntity cart, SanphamEntity item)
@@ -136,6 +144,22 @@ public class CartDao {
         }
         cart.setMaGio(newCartCode);
         cart.setMaNguoiDung(user.getMaNguoiDung());
+        session = HibernateUtility.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            session.save(cart);
+            transaction.commit();
+        }
+        catch (Exception e)
+        {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        finally {
+            session.close();
+        }
         return cart;
     }
 }

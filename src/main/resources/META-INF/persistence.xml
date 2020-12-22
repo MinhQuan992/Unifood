@@ -15,12 +15,14 @@
         <class>com.mvc.entities.NhomsanphamEntity</class>
         <class>com.mvc.entities.SanphamEntity</class>
         <class>com.mvc.entities.NguoidungEntity</class>
+        <class>com.mvc.entities.ViewChiTietDonHangEntity</class>
+        <class>com.mvc.entities.ViewDonHangEntity</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
             <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
             <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost;integratedSecurity=True;databaseName=UNIFOOD"/>
-            <property name="toplink.jdbc.url" value="jdbc:sqlserver://localhost\SQLEXPRESS:1433;database=UNIFOOD"/>
+            <property name="toplink.jdbc.url" value="jdbc:sqlserver://localhost:1433;database=UNIFOOD"/>
             <property name="toplink.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
             <property name="hibernate.connection.url"
                       value="jdbc:sqlserver://localhost\SQLEXPRESS:1433;database=UNIFOOD"/>

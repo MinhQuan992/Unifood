@@ -8,7 +8,6 @@ import java.sql.Date;
 public class DonhangEntity {
     private int maDon;
     private Integer maGio;
-    private String maGiamGia;
     private String maDonViGiaoHang;
     private String ttDonHang;
     private Boolean ttThanhToan;
@@ -35,16 +34,6 @@ public class DonhangEntity {
 
     public void setMaGio(Integer maGio) {
         this.maGio = maGio;
-    }
-
-    @Basic
-    @Column(name = "MaGiamGia", nullable = true, length = 20)
-    public String getMaGiamGia() {
-        return maGiamGia;
-    }
-
-    public void setMaGiamGia(String maGiamGia) {
-        this.maGiamGia = maGiamGia;
     }
 
     @Basic
@@ -126,7 +115,6 @@ public class DonhangEntity {
 
         if (maDon != that.maDon) return false;
         if (maGio != null ? !maGio.equals(that.maGio) : that.maGio != null) return false;
-        if (maGiamGia != null ? !maGiamGia.equals(that.maGiamGia) : that.maGiamGia != null) return false;
         if (maDonViGiaoHang != null ? !maDonViGiaoHang.equals(that.maDonViGiaoHang) : that.maDonViGiaoHang != null)
             return false;
         if (ttDonHang != null ? !ttDonHang.equals(that.ttDonHang) : that.ttDonHang != null) return false;
@@ -144,7 +132,6 @@ public class DonhangEntity {
     public int hashCode() {
         int result = maDon;
         result = 31 * result + (maGio != null ? maGio.hashCode() : 0);
-        result = 31 * result + (maGiamGia != null ? maGiamGia.hashCode() : 0);
         result = 31 * result + (maDonViGiaoHang != null ? maDonViGiaoHang.hashCode() : 0);
         result = 31 * result + (ttDonHang != null ? ttDonHang.hashCode() : 0);
         result = 31 * result + (ttThanhToan != null ? ttThanhToan.hashCode() : 0);

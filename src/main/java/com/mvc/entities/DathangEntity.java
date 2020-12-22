@@ -12,15 +12,15 @@ public class DathangEntity {
     private Integer donGia;
     private String ghiChu;
 
-    public DathangEntity(int cartCode, String itemCode)
+    public DathangEntity()
     {
-        this.maGio = cartCode;
-        this.maSanPham = itemCode;
-        this.soLuong = 0;
-        this.ghiChu = "";
+
     }
 
-    public DathangEntity() {}
+    public DathangEntity(int maGio, String maSanPham) {
+        this.maGio = maGio;
+        this.maSanPham = maSanPham;
+    }
 
     @Id
     @Column(name = "MaGio", nullable = false)
