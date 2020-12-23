@@ -42,6 +42,15 @@ public class MainPageController extends HttpServlet {
             ListItems.add(listItemEntity);
         }
 
+        for (ListItemEntity list: ListItems)
+        {
+            System.out.println(list.getListItemName());
+            for (SanphamEntity item: list.getItemList())
+            {
+                System.out.println(item.getMaSanPham()+":"+item.getTenSanPham());
+            }
+        }
+
         request.setAttribute("ListItems",ListItems);
         String url = "MainPage.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(url);

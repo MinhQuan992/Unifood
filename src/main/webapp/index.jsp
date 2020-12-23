@@ -14,6 +14,7 @@
 <body>
 <a href="${pageContext.request.contextPath}/Product?ItemCode=MN10100005">Product detail</a>
 <a href="${pageContext.request.contextPath}/Cart?">Shopping cart</a>
+<a href="${pageContext.request.contextPath}/MainPage">MainPage</a>
 <c:choose>
     <c:when test="${empty signinSuccess}">
         <a href="${pageContext.request.contextPath}/signin.jsp">HELLO WORLD</a>
