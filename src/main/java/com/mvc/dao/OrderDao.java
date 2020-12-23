@@ -10,14 +10,14 @@ import org.hibernate.query.Query;
 import java.util.ArrayList;
 import java.util.List;
 
-public class OrderDao {
+public class OrderDao
+{
     public DathangEntity GetOrderData(int cartCode, String itemCode)
     {
-        DathangEntity order = new DathangEntity(cartCode,itemCode);
+        DathangEntity order = null;
         Transaction transaction = null;
         Session session = HibernateUtility.getSessionFactory().openSession();
         try {
-            System.out.println("This session was created completely");
             transaction = session.beginTransaction();
             Query<?> query = session.createQuery("FROM DathangEntity Orders WHERE " +
                     "Orders.maGio=:CartCode AND Orders.maSanPham=:ItemCode");
@@ -26,7 +26,6 @@ public class OrderDao {
             order = (DathangEntity) query.uniqueResult();
             transaction.commit();
         } catch (Exception var9) {
-            System.out.println("This session was failed");
             if (transaction != null) {
                 transaction.rollback();
             }

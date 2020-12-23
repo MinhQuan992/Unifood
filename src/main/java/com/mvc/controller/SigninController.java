@@ -47,6 +47,7 @@ public class SigninController extends HttpServlet {
                 CartDao cartDao = new CartDao();
                 GiohangEntity cart = cartDao.GetCartData(user);
                 if (cart==null) cart=cartDao.GetNewCart(user);
+
                 request.getSession().setAttribute("ShoppingCart",cart);
                 request.getSession().setAttribute("userID", userID);
                 request.getSession().setAttribute("fullName", user.getHoVaTen());

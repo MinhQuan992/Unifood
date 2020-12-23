@@ -36,7 +36,7 @@
 
         <c:choose>
             <c:when test="${userType == 'Customer'}">
-                <form method="post" action="${pageContext.request.contextPath}/orders">
+                <form method="post" action="${pageContext.request.contextPath}/Orders">
                     <input type="submit" value="Đơn hàng của tôi">
                 </form>
             </c:when>
@@ -51,6 +51,30 @@
         <form method="post" action="${pageContext.request.contextPath}/signout">
             <input type="submit" value="SIGN OUT">
         </form>
+
+        <form method="post" action="${pageContext.request.contextPath}/EditInfo">
+            <input type="hidden" id="userId" name="userId" value="${userID}">
+            <input type="submit" value="Edit Info">
+        </form>
+
+        <c:if test="${userType!='Customer'}">
+            <form method="post" action="${pageContext.request.contextPath}/ManageWarehouse">
+                <input type="submit" value="Manage Warehouse">
+            </form>
+        </c:if>
+
+        <c:if test="${userType!='Customer'}">
+            <form method="post" action="${pageContext.request.contextPath}/ManageOrder">
+                <input type="submit" value="Manage Warehouse">
+            </form>
+        </c:if>
+
+        <form method="post" action="${pageContext.request.contextPath}/Payment">
+            <input type="hidden" name="MaGio" value="1000000">
+            <input type="hidden" name="UserId" value="${userID}">
+            <input type="submit" value="Thanh toán">
+        </form>
+
     </c:otherwise>
 </c:choose>
 </body>

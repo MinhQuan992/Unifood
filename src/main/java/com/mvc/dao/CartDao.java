@@ -10,6 +10,7 @@ import org.hibernate.Transaction;
 import org.hibernate.query.Query;
 
 import javax.persistence.criteria.CriteriaBuilder;
+import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -79,14 +80,13 @@ public class CartDao {
             order.setSoLuong(order.getSoLuong()+1);
         order.setDonGia(item.getDonGia());
         return orderDao.UpdateOrderData(order);
-
     }
 
     public boolean SubItemFromCart(GiohangEntity cart, SanphamEntity item)
     {
         OrderDao orderDao = new OrderDao();
         DathangEntity order = orderDao.GetOrderData(cart.getMaGio(),item.getMaSanPham());
-        if (order==null) order = new DathangEntity(cart.getMaGio(),item.getMaSanPham());
+        if (order==null) return false;
         if (order.getSoLuong()>0)
             order.setSoLuong(order.getSoLuong()-1);
         order.setDonGia(item.getDonGia());
@@ -98,6 +98,13 @@ public class CartDao {
     {
         OrderDao orderDao = new OrderDao();
         DathangEntity order = orderDao.GetOrderData(cart.getMaGio(),item.getMaSanPham());
+        return orderDao.DeleteOrderData(order);
+    }
+
+    public boolean RemoveItemFromCart(GiohangEntity cart, DathangEntity order)
+    {
+        order.setMaGio(cart.getMaGio());
+        OrderDao orderDao = new OrderDao();
         return orderDao.DeleteOrderData(order);
     }
 
@@ -116,6 +123,13 @@ public class CartDao {
         order.setSoLuong(quantity);
         order.setDonGia(item.getDonGia());
         order.setGhiChu(note);
+        return orderDao.InsertOrderData(order);
+    }
+
+    public boolean InsertItemToCart(GiohangEntity cart, DathangEntity order)
+    {
+        order.setMaGio(cart.getMaGio());
+        OrderDao orderDao = new OrderDao();
         return orderDao.InsertOrderData(order);
     }
 
@@ -142,7 +156,7 @@ public class CartDao {
         } finally {
             session.close();
         }
-        cart.setMaGio(newCartCode);
+        cart.setMaGio(newCartCode+1);
         cart.setMaNguoiDung(user.getMaNguoiDung());
         session = HibernateUtility.getSessionFactory().openSession();
         try {

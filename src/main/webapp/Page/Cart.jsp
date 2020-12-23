@@ -35,7 +35,7 @@
         <div class="select-all">
             <input type="checkbox" style="width: 20px; height: 20px" name="Select-All-Check_Button" id="Select-All-Check_Button"
                     <c:if test="${requestScope.SelectAllItem!=null && requestScope.SelectAllItem=='On'}">checked</c:if>
-                   onclick="OnSelectAll('${pageContext.request.contextPath}/Cart?SelectAll=On')"/>
+                   onclick="ButtonClick('SelectAll','On')"/>
             <label for="Select-All-Check_Button">Select all</label>
         </div>
     </div>
@@ -44,34 +44,40 @@
             <div class="An-Item">
                 <div class="Item-Check">
                     <input type="checkbox" class="Check-Button" style="width: 20px; height: 20px;" <%%> <c:if test="${requestScope.CheckedItemList.contains(order.maSanPham)}">checked</c:if>
-                           name="Check${order.maSanPham}" id="Check${order.maSanPham}" onclick="OnCheck('${order.maSanPham}','${pageContext.request.contextPath}/Cart?CheckedItem=${order.maSanPham}')">
+                           name="Check${order.maSanPham}" id="Check${order.maSanPham}" onclick="ButtonClick('CheckedItem','${order.maSanPham}')">
                 </div>
                 <div class="Item-Image">
                     <img class="Image" src="${pageContext.request.contextPath}${requestScope.ItemMap.get(order.maSanPham).anhMinhHoa}">
                 </div>
                 <div class="Item-Name">${requestScope.ItemMap.get(order.maSanPham).tenSanPham}</div>
                 <div class="Item-Quantity">
-                    <input class="inc-button" type="button" value="-" onclick="DecButton('${order.maSanPham}','${pageContext.request.contextPath}/Cart?SubItem=${order.maSanPham}')">
+                    <input class="inc-button" type="button" value="-" onclick="DecButton('SubItem','${order.maSanPham}')">
                     <input type="text" disabled class="quanity" name="${order.maSanPham}" id="${order.maSanPham}" value="${order.soLuong}">
-                    <input class="dec-button" type="button" value="+" onclick="IncButton('${order.maSanPham}','${pageContext.request.contextPath}/Cart?AddItem=${order.maSanPham}')">
+                    <%--<input class="dec-button" type="button" value="+" onclick="IncButton('${order.maSanPham}','${pageContext.request.contextPath}/Cart?AddItem=${order.maSanPham}')">--%>
+                    <input class="dec-button" type="button" value="+" onclick="IncButton('AddItem','${order.maSanPham}')">
                 </div>
                 <input type="text" disabled class="Item-Price" name="SL${order.maSanPham}" id="SL${order.maSanPham}" value="${order.donGia}">
                 <div class="Items-Option">
+                    <input type="text" name="Note${order.maSanPham}"  class="Input-text" style="width: 100px;" maxlength="300">
                     <input type="button" class="Button-Note" name="Take-Items-Note" value="Note">
                     <%--<a style="text-decoration: none" href="${pageContext.request.contextPath}/Cart?DeleteItem=${order.maSanPham}">--%>
-                    <input type="button" class="Button-Delete" name="Remove-Items-Button" value="Delete" onclick="OnDelete('${pageContext.request.contextPath}/Cart?DeleteItem=${order.maSanPham}')">
+                    <input type="button" class="Button-Delete" name="Remove-Items-Button" value="Delete" onclick="OnDelete('DeleteItem','${order.maSanPham}')">
                 </div>
             </div>
         </c:forEach>
     </div>
-    <form name="Confirm-cart" action="#" method="get">
+    <form name="Confirm-cart" action="${pageContext.request.contextPath}/Cart" method="post">
         <div class="Cart-Confirm">
             Order summary
             <div>   Total number of Items: <input type="text" name="Total-Number-Of-Item" class="Input-text" disabled id="Total-Number-Of-Item" value="<%=quantityNumber%>"></div>
             <div>   Shipping fee: đ <input type="text" name="Shipping-fee" class="Input-text" disabled id="Shipping-fee" value="<%=shippingFee%>"></div>
             <div>   Total Cost: đ <input type="text" name="Total-Cost-Of-Cart" disabled class="Input-text" id="Total-Cost-Of-Cart" value="<%=totalCost%>"></div>
-            <input type="submit" class="Cart-Confirm-Button" name="Cart-Confirm-Button" value="CONFIRM CART">
+            <input type="submit" class="Cart-Confirm-Button" name="Cart-Confirm" value="CONFIRM CART">
         </div>
+    </form>
+    <form name="SendToPostRequest" method="Post" style="visibility: hidden;" action="${pageContext.request.contextPath}/Cart">
+        <input type="hidden" name="ParaName">
+        <input type="hidden" name="KeyValue">
     </form>
 </div>
 </body>

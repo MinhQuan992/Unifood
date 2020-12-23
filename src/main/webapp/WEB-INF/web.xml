@@ -59,10 +59,56 @@
     
     <servlet>
         <servlet-name>CartController</servlet-name>
-        <servlet-class>com.mvc.controller.CartControllet</servlet-class>
+        <servlet-class>com.mvc.controller.CartController</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>CartController</servlet-name>
         <url-pattern>/Cart</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>GetOrderController</servlet-name>
+        <servlet-class>com.mvc.controller.GetOrderController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetOrderController</servlet-name>
+        <url-pattern>/Orders</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OrderDetailController</servlet-name>
+        <servlet-class>com.mvc.controller.OrderDetailController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderDetailController</servlet-name>
+        <url-pattern>/OrderDetail</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditInfoController</servlet-name>
+        <servlet-class>com.mvc.controller.EditInfoController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditInfoController</servlet-name>
+        <url-pattern>/EditInfo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ManageWarehouseController</servlet-name>
+        <servlet-class>com.mvc.controller.ManageWarehouseController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManageWarehouseController</servlet-name>
+        <url-pattern>/ManageWarehouse</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PaymentController</servlet-name>
+        <servlet-class>com.mvc.controller.PaymentController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PaymentController</servlet-name>
+        <url-pattern>/Payment</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -45,7 +45,7 @@
                     </c:choose>
                     <td><p><c:out value="${order.tongGiaTri}"/><span> VND</span></p></td>
                     <td>
-                        <form method="post" action="${pageContext.request.contextPath}/orderDetail">
+                        <form method="post" action="${pageContext.request.contextPath}/OrderDetail">
                             <input type="hidden" name="maDon" value="${order.maDon}">
                             <input type="hidden" name="ttDonHang" value="${order.ttDonHang}">
                             <input type="hidden" name="ttThanhToan" value="${order.ttThanhToan}">

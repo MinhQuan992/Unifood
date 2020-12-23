@@ -1,4 +1,24 @@
-function IncButton(Eid,Url)
+function ButtonClick(NamePara,Eid)
+{
+    document.SendToPostRequest.ParaName.value = NamePara;
+    document.SendToPostRequest.KeyValue.value = Eid;
+    document.SendToPostRequest.submit();
+}
+
+function OnDelete(NamePara,Eid)
+{
+    var confirn = window.confirm("Are you sure to delete it?");
+    if (confirn)
+    {
+        document.SendToPostRequest.ParaName.value = NamePara;
+        document.SendToPostRequest.KeyValue.value = Eid;
+        document.SendToPostRequest.submit();
+    }
+}
+
+
+
+function IncButton(NamePara,Eid)
 {
     var value = parseInt(document.getElementById(Eid).value, 10);
     /*if (document.getElementById('Check'+Eid).checked)
@@ -11,13 +31,15 @@ function IncButton(Eid,Url)
             totalnumber += 1;
             document.getElementById('Total-Cost-Of-Cart').value = totalcost;
             document.getElementById('Total-Number-Of-Item').value = totalnumber;
-        }
+        }*/
 
-    value = isNaN(value) ? 0 : value;*/
+    value = isNaN(value) ? 0 : value;
     if (value<99)
     {
         //value++;
-        document.location.href = Url;
+        document.SendToPostRequest.ParaName.value = NamePara;
+        document.SendToPostRequest.KeyValue.value = Eid;
+        document.SendToPostRequest.submit();
     }
     else
     {
@@ -27,7 +49,8 @@ function IncButton(Eid,Url)
     //document.getElementById(Eid).value = value;
 }
 
-function DecButton(Eid,Url)
+
+function DecButton(NamePara,Eid)
 {
     var value = parseInt(document.getElementById(Eid).value, 10);
     /*if (document.getElementById("Check"+Eid).checked)
@@ -44,7 +67,9 @@ function DecButton(Eid,Url)
     value = isNaN(value) ? 1 : value;
     if (value>1) {
         //value--;
-        document.location.href = Url;
+        document.SendToPostRequest.ParaName.value = NamePara;
+        document.SendToPostRequest.KeyValue.value = Eid;
+        document.SendToPostRequest.submit();
     }
     else
     {
@@ -88,16 +113,3 @@ function OnCheck(Eid, Url)
     document.location.href = Url;
 }
 
-function OnDelete(Url)
-{
-    var confirn = window.confirm("Are you sure to delete it?");
-    if (confirn)
-    {
-        document.location.href = Url;
-    }
-}
-
-function OnSelectAll(Url)
-{
-    document.location.href = Url;
-}
