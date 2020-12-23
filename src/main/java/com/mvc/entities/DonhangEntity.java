@@ -6,7 +6,7 @@ import java.sql.Date;
 @Entity
 @Table(name = "DONHANG", schema = "dbo", catalog = "UNIFOOD")
 public class DonhangEntity {
-    private int maDon;
+    private Integer maDon;
     private Integer maGio;
     private String maGiamGia;
     private String maDonViGiaoHang;
@@ -16,17 +16,14 @@ public class DonhangEntity {
     private Date ngayDat;
     private Date ngayGiaoHang;
     private Date ngayThanhToan;
-    private GiohangEntity giohangByMaGio;
-    private MagiamgiaEntity magiamgiaByMaGiamGia;
-    private DonvigiaohangEntity donvigiaohangByMaDonViGiaoHang;
 
     @Id
     @Column(name = "MaDon")
-    public int getMaDon() {
+    public Integer getMaDon() {
         return maDon;
     }
 
-    public void setMaDon(int maDon) {
+    public void setMaDon(Integer maDon) {
         this.maDon = maDon;
     }
 
@@ -127,7 +124,7 @@ public class DonhangEntity {
 
         DonhangEntity that = (DonhangEntity) o;
 
-        if (maDon != that.maDon) return false;
+        if (maDon != null ? !maDon.equals(that.maDon) : that.maDon != null) return false;
         if (maGio != null ? !maGio.equals(that.maGio) : that.maGio != null) return false;
         if (maGiamGia != null ? !maGiamGia.equals(that.maGiamGia) : that.maGiamGia != null) return false;
         if (maDonViGiaoHang != null ? !maDonViGiaoHang.equals(that.maDonViGiaoHang) : that.maDonViGiaoHang != null)
@@ -145,7 +142,7 @@ public class DonhangEntity {
 
     @Override
     public int hashCode() {
-        int result = maDon;
+        int result = maDon != null ? maDon.hashCode() : 0;
         result = 31 * result + (maGio != null ? maGio.hashCode() : 0);
         result = 31 * result + (maGiamGia != null ? maGiamGia.hashCode() : 0);
         result = 31 * result + (maDonViGiaoHang != null ? maDonViGiaoHang.hashCode() : 0);
@@ -156,35 +153,5 @@ public class DonhangEntity {
         result = 31 * result + (ngayGiaoHang != null ? ngayGiaoHang.hashCode() : 0);
         result = 31 * result + (ngayThanhToan != null ? ngayThanhToan.hashCode() : 0);
         return result;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "MaGio", referencedColumnName = "MaGio")
-    public GiohangEntity getGiohangByMaGio() {
-        return giohangByMaGio;
-    }
-
-    public void setGiohangByMaGio(GiohangEntity giohangByMaGio) {
-        this.giohangByMaGio = giohangByMaGio;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "MaGiamGia", referencedColumnName = "TenMa")
-    public MagiamgiaEntity getMagiamgiaByMaGiamGia() {
-        return magiamgiaByMaGiamGia;
-    }
-
-    public void setMagiamgiaByMaGiamGia(MagiamgiaEntity magiamgiaByMaGiamGia) {
-        this.magiamgiaByMaGiamGia = magiamgiaByMaGiamGia;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "MaDonViGiaoHang", referencedColumnName = "MaDonVi")
-    public DonvigiaohangEntity getDonvigiaohangByMaDonViGiaoHang() {
-        return donvigiaohangByMaDonViGiaoHang;
-    }
-
-    public void setDonvigiaohangByMaDonViGiaoHang(DonvigiaohangEntity donvigiaohangByMaDonViGiaoHang) {
-        this.donvigiaohangByMaDonViGiaoHang = donvigiaohangByMaDonViGiaoHang;
     }
 }

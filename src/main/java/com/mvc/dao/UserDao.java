@@ -10,7 +10,7 @@ import org.hibernate.query.Query;
 import java.util.List;
 
 public class UserDao {
-    public void saveUser(NguoidungEntity user)
+    public boolean saveUser(NguoidungEntity user)
     {
         Transaction transaction = null;
         try (Session session = HibernateUtility.getSessionFactory().openSession())
@@ -19,6 +19,7 @@ public class UserDao {
             session.save(user);
             transaction.commit();
             System.out.println("Save user successfully");
+            return true;
         }
         catch (Exception e)
         {
@@ -28,9 +29,10 @@ public class UserDao {
             }
             e.printStackTrace();
         }
+        return false;
     }
 
-    public void updateUser(NguoidungEntity user)
+    public boolean updateUser(NguoidungEntity user)
     {
         Transaction transaction = null;
         try (Session session = HibernateUtility.getSessionFactory().openSession())
@@ -39,6 +41,7 @@ public class UserDao {
             session.update(user);
             transaction.commit();
             System.out.println("Update user successfully");
+            return true;
         }
         catch (Exception e)
         {
@@ -48,9 +51,10 @@ public class UserDao {
             }
             e.printStackTrace();
         }
+        return false;
     }
 
-    public void deleteUser(String userID)
+    public boolean deleteUser(String userID)
     {
         Transaction transaction = null;
         try (Session session = HibernateUtility.getSessionFactory().openSession())
@@ -63,6 +67,7 @@ public class UserDao {
                 System.out.println("Delete user successfully");
             }
             transaction.commit();
+            return true;
         }
         catch (Exception e)
         {
@@ -72,6 +77,7 @@ public class UserDao {
             }
             e.printStackTrace();
         }
+        return false;
     }
 
     public NguoidungEntity getUserByID(String userID)

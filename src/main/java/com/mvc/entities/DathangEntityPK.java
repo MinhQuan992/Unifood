@@ -8,17 +8,21 @@ public class DathangEntityPK implements Serializable {
     private int maGio;
     private String maSanPham;
 
-    @Column(name = "MaGio")
+    @Column(name = "MaGio", columnDefinition = "INT")
     @Id
     public int getMaGio() {
         return maGio;
+    }
+
+    public void setMaGio(Integer maGio) {
+        this.maGio = maGio;
     }
 
     public void setMaGio(int maGio) {
         this.maGio = maGio;
     }
 
-    @Column(name = "MaSanPham")
+    @Column(name = "MaSanPham", columnDefinition = "VARCHAR(10)")
     @Id
     public String getMaSanPham() {
         return maSanPham;

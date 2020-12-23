@@ -45,6 +45,7 @@ public class EditInfoController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Check for error, update changes to database and show changes to user
         Pattern specialCharsPattern = Pattern.compile("[!@#$%^&*()?\"':{}|<>]");
+        Pattern CPattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{10,50}$");
         Pattern phonePattern = Pattern.compile("^(\\d){10}$");
         Pattern emailPattern = Pattern.compile("\\A(?:[a-z0-9!#$%&'*+=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\\Z");
 
@@ -58,6 +59,7 @@ public class EditInfoController extends HttpServlet {
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
 
+        Matcher passwordMatcher = phonePattern.matcher(password);
         Matcher phoneMatcher = phonePattern.matcher(phone);
         Matcher emailMatcher = emailPattern.matcher(email);
 
@@ -65,6 +67,11 @@ public class EditInfoController extends HttpServlet {
 
         if (specialCharsPattern.matcher(password).find()) {
             errors.put("password", "Must not contain any special characters !@#$%^&*()?\"':{}|<>");
+        } else if (!passwordMatcher.find()) {
+            errors.put("password", "Must have from 10 to 50 characters" +
+                    " and contain at least a number, lowercase and uppercase letter");
+        } else {
+            password = passwordMatcher.group();
         }
 
         if (!rePassword.equals(password)) {

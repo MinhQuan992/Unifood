@@ -13,11 +13,9 @@
 </head>
 <body>
 <c:if test="${not empty wrongEmail}">
-    <c:if test="${wrongEmail == true}">
-        <script type="text/javascript">
-            alert("Email không hợp lệ!")
-        </script>
-    </c:if>
+    <script type="text/javascript">
+        alert("Email không hợp lệ!")
+    </script>
 </c:if>
 <div align="center">
     <h1>ĐẶT LẠI MẬT KHẨU</h1>
@@ -30,6 +28,8 @@
         <br>
         <input id="btnSubmit" type="submit" value="Gửi tôi mật khẩu mới">
     </form>
+
+    <a href="${pageContext.request.contextPath}/index.jsp">TRANG CHỦ</a>
 </div>
 </body>
 </html>

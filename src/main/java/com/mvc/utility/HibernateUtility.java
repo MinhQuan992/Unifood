@@ -1,8 +1,6 @@
 package com.mvc.utility;
 
-import com.mvc.entities.KhohangEntity;
-import com.mvc.entities.NguoidungEntity;
-import com.mvc.entities.SanphamEntity;
+import com.mvc.entities.*;
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.hibernate.cfg.Configuration;
@@ -35,8 +33,11 @@ public class HibernateUtility {
 
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(NguoidungEntity.class);
+                //configuration.addAnnotatedClass(ViewDonHangEntity.class);
+                //configuration.addAnnotatedClass(ViewChiTietDonHangEntity.class);
                 configuration.addAnnotatedClass(KhohangEntity.class);
                 configuration.addAnnotatedClass(SanphamEntity.class);
+                configuration.addAnnotatedClass(DathangEntity.class);
                 // TODO: Add 'configuration.addAnnotatedClass(...)' foremost to avoid
                 //  org.hibernate.hql.internal.ast.QuerySyntaxException: ... is not mapped
 

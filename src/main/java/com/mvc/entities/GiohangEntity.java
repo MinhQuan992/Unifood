@@ -1,29 +1,25 @@
 package com.mvc.entities;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 @Table(name = "GIOHANG", schema = "dbo", catalog = "UNIFOOD")
 public class GiohangEntity {
-    private int maGio;
+    private Integer maGio;
     private String maNguoiDung;
-    private Collection<DathangEntity> dathangsByMaGio;
-    private Collection<DonhangEntity> donhangsByMaGio;
-    private NguoidungEntity nguoidungByMaNguoiDung;
 
     @Id
-    @Column(name = "MaGio")
-    public int getMaGio() {
+    @Column(name = "MaGio", columnDefinition = "INT")
+    public Integer getMaGio() {
         return maGio;
     }
 
-    public void setMaGio(int maGio) {
+    public void setMaGio(Integer maGio) {
         this.maGio = maGio;
     }
 
     @Basic
-    @Column(name = "MaNguoiDung")
+    @Column(name = "MaNguoiDung", columnDefinition = "VARCHAR(9)")
     public String getMaNguoiDung() {
         return maNguoiDung;
     }
@@ -39,7 +35,7 @@ public class GiohangEntity {
 
         GiohangEntity that = (GiohangEntity) o;
 
-        if (maGio != that.maGio) return false;
+        if (maGio != null ? !maGio.equals(that.maGio) : that.maGio != null) return false;
         if (maNguoiDung != null ? !maNguoiDung.equals(that.maNguoiDung) : that.maNguoiDung != null) return false;
 
         return true;
@@ -47,36 +43,8 @@ public class GiohangEntity {
 
     @Override
     public int hashCode() {
-        int result = maGio;
+        int result = maGio != null ? maGio.hashCode() : 0;
         result = 31 * result + (maNguoiDung != null ? maNguoiDung.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "giohangByMaGio")
-    public Collection<DathangEntity> getDathangsByMaGio() {
-        return dathangsByMaGio;
-    }
-
-    public void setDathangsByMaGio(Collection<DathangEntity> dathangsByMaGio) {
-        this.dathangsByMaGio = dathangsByMaGio;
-    }
-
-    @OneToMany(mappedBy = "giohangByMaGio")
-    public Collection<DonhangEntity> getDonhangsByMaGio() {
-        return donhangsByMaGio;
-    }
-
-    public void setDonhangsByMaGio(Collection<DonhangEntity> donhangsByMaGio) {
-        this.donhangsByMaGio = donhangsByMaGio;
-    }
-
-    @ManyToOne
-    @JoinColumn(name = "MaNguoiDung", referencedColumnName = "MaNguoiDung")
-    public NguoidungEntity getNguoidungByMaNguoiDung() {
-        return nguoidungByMaNguoiDung;
-    }
-
-    public void setNguoidungByMaNguoiDung(NguoidungEntity nguoidungByMaNguoiDung) {
-        this.nguoidungByMaNguoiDung = nguoidungByMaNguoiDung;
     }
 }

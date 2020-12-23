@@ -2,7 +2,6 @@ package com.mvc.entities;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.Collection;
 
 @Entity
 @Table(name = "MAGIAMGIA", schema = "dbo", catalog = "UNIFOOD")
@@ -13,7 +12,6 @@ public class MagiamgiaEntity {
     private Short soLuong;
     private Date ngayBatDau;
     private Date ngayKetThuc;
-    private Collection<DonhangEntity> donhangsByTenMa;
 
     @Id
     @Column(name = "TenMa")
@@ -26,7 +24,7 @@ public class MagiamgiaEntity {
     }
 
     @Basic
-    @Column(name = "GTDuocGiam")
+    @Column(name = "GT_DuocGiam")
     public Short getGtDuocGiam() {
         return gtDuocGiam;
     }
@@ -36,7 +34,7 @@ public class MagiamgiaEntity {
     }
 
     @Basic
-    @Column(name = "GTGHToiThieu")
+    @Column(name = "GTGH_ToiThieu")
     public Integer getGtghToiThieu() {
         return gtghToiThieu;
     }
@@ -101,14 +99,5 @@ public class MagiamgiaEntity {
         result = 31 * result + (ngayBatDau != null ? ngayBatDau.hashCode() : 0);
         result = 31 * result + (ngayKetThuc != null ? ngayKetThuc.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "magiamgiaByMaGiamGia")
-    public Collection<DonhangEntity> getDonhangsByTenMa() {
-        return donhangsByTenMa;
-    }
-
-    public void setDonhangsByTenMa(Collection<DonhangEntity> donhangsByTenMa) {
-        this.donhangsByTenMa = donhangsByTenMa;
     }
 }

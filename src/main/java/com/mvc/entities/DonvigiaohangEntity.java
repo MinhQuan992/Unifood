@@ -1,7 +1,6 @@
 package com.mvc.entities;
 
 import javax.persistence.*;
-import java.util.Collection;
 
 @Entity
 @Table(name = "DONVIGIAOHANG", schema = "dbo", catalog = "UNIFOOD")
@@ -9,7 +8,6 @@ public class DonvigiaohangEntity {
     private String maDonVi;
     private String tenDonVi;
     private String diaChi;
-    private Collection<DonhangEntity> donhangsByMaDonVi;
 
     @Id
     @Column(name = "MaDonVi")
@@ -61,14 +59,5 @@ public class DonvigiaohangEntity {
         result = 31 * result + (tenDonVi != null ? tenDonVi.hashCode() : 0);
         result = 31 * result + (diaChi != null ? diaChi.hashCode() : 0);
         return result;
-    }
-
-    @OneToMany(mappedBy = "donvigiaohangByMaDonViGiaoHang")
-    public Collection<DonhangEntity> getDonhangsByMaDonVi() {
-        return donhangsByMaDonVi;
-    }
-
-    public void setDonhangsByMaDonVi(Collection<DonhangEntity> donhangsByMaDonVi) {
-        this.donhangsByMaDonVi = donhangsByMaDonVi;
     }
 }

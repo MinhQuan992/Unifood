@@ -15,6 +15,22 @@ public class NguoidungEntity {
     private String email;
     private String matKhau;
 
+    public NguoidungEntity()
+    {
+    }
+
+    public NguoidungEntity(String userID, String fullName, String gender, Date birthdate, String address, String phone, String email, String password)
+    {
+        this.maNguoiDung = userID;
+        this.hoVaTen = fullName;
+        this.gioiTinh = gender;
+        this.ngaySinh = birthdate;
+        this.diaChi = address;
+        this.dienThoai = phone;
+        this.email = email;
+        this.matKhau = password;
+    }
+
     @Id
     @Column(name = "MaNguoiDung", columnDefinition = "VARCHAR(9)")
     public String getMaNguoiDung() {

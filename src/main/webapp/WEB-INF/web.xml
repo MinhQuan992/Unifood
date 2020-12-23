@@ -3,14 +3,59 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+    <!--
     <servlet>
         <servlet-name>LoginController</servlet-name>
         <servlet-class>com.mvc.controller.LoginController</servlet-class>
     </servlet>
-
     <servlet-mapping>
         <servlet-name>LoginController</servlet-name>
         <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    -->
+    <servlet>
+        <servlet-name>GetOrderController</servlet-name>
+        <servlet-class>com.mvc.controller.GetOrderController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>GetOrderController</servlet-name>
+        <url-pattern>/Orders</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OrderDetailController</servlet-name>
+        <servlet-class>com.mvc.controller.OrderDetailController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderDetailController</servlet-name>
+        <url-pattern>/OrderDetail</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>SigninController</servlet-name>
+        <servlet-class>com.mvc.controller.SigninController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SigninController</servlet-name>
+        <url-pattern>/Signin</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SignoutController</servlet-name>
+        <servlet-class>com.mvc.controller.SigninController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SignoutController</servlet-name>
+        <url-pattern>/Signout</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>SignupController</servlet-name>
+        <servlet-class>com.mvc.controller.SignupController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>SignupController</servlet-name>
+        <url-pattern>/Signup</url-pattern>
     </servlet-mapping>
 
     <servlet>
@@ -29,6 +74,15 @@
     <servlet-mapping>
         <servlet-name>ManageWarehouseController</servlet-name>
         <url-pattern>/ManageWarehouse</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PaymentController</servlet-name>
+        <servlet-class>com.mvc.controller.PaymentController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PaymentController</servlet-name>
+        <url-pattern>/Payment</url-pattern>
     </servlet-mapping>
 
     <context-param>
