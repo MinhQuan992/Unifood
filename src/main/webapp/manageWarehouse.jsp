@@ -23,6 +23,11 @@
 </head>
 <body>
 <c:if test="${not empty authorize}">
+    <c:if test="${not empty DeleteStatus}">
+        <script type="text/javascript">
+            alert("Lỗi: Không thể thực hiện việc xóa. \n${DeleteStatus}")
+        </script>
+    </c:if>
     <div class="container">
         <div class="page-header">
             <h1>Trang quản lý kho hàng</h1>
@@ -115,8 +120,8 @@
                         </td>
                         <td><%= sp.getSoLuong() %>
                         </td>
-                        <td class="text-center"><img src="<%= sp.getAnhMinhHoa()%>" width="200px"
-                                                     onerror="this.onerror=null; this.src='311151.jpg'"></td>
+                        <td class="text-center"><img src=".<%= sp.getAnhMinhHoa()%>" width="200px"
+                                                     onerror="this.onerror=null; this.src='./Images/311151.jpg'"></td>
                         <td><%= sp.getMaNhom() %>
                         </td>
                         <td><%= sp.getMoTa() %>

@@ -1,7 +1,5 @@
-<%@ page import="com.mvc.entities.DathangEntity" %>
 <%@ page import="java.util.List" %>
-<%@ page import="com.mvc.entities.SanphamEntity" %>
-<%@ page import="com.mvc.entities.NguoidungEntity" %>
+<%@ page import="com.mvc.entities.*" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -26,6 +24,7 @@
 <body>
 <div class="container col-md-8 col-md-offset-3" style="overflow: auto">
     <%
+        List<DonvigiaohangEntity> listDV = (List<DonvigiaohangEntity>) request.getAttribute("listDV");
         List<SanphamEntity> listSP = (List<SanphamEntity>) request.getAttribute("listSP");
         NguoidungEntity user = (NguoidungEntity) request.getAttribute("user");
     %>
@@ -35,10 +34,11 @@
         </div>
 
         <div class="container">
-            <h3>Địa chỉ nhận hàng</h3>
+            <h3>Địa chỉ nhận hàng: </h3>
             <p><strong>Họ tên: </strong><%= user.getHoVaTen() %></p>
             <p><strong>Điện thoại: </strong><%= user.getDienThoai() %></p>
             <p><strong>Địa chỉ: </strong><%= user.getDiaChi() %></p>
+            <h3>Sản phẩm: </h3>
             <table class="table table-bordered table-striped table-hover">
                 <thead>
                 <tr>
@@ -67,10 +67,40 @@
                 %>
                 <tr>
                     <th colspan="3">Tổng tiền: </th>
-                    <td>${cost}</td>
+                    <td><c:out value="${cost}"></c:out></td>
+                </tr>
+                <tr>
+                    <th colspan="3">Giảm giá: <c:out value="${TenMaGiamGia}"></c:out></th>
+                    <td>${discount}</td>
+                </tr>
+                <tr>
+                    <th colspan="3">Số tiền phải thanh toán: </th>
+                    <td><c:out value="${cost - discount}"></c:out></td>
                 </tr>
                 </tbody>
             </table>
+            <h3>Chọn đơn vị giao hàng </h3>
+            <form method="get" action="${pageContext.request.contextPath}/Payment">
+                <input type="hidden" name="MaGio" value="${MaGio}">
+                <input type="hidden" name="TongGiaTri" value="${cost - discount}">
+                <%
+                    String checked = "checked";
+                    for (DonvigiaohangEntity dv: listDV) {
+                %>
+                <div class="form-group custom-radio">
+                    <label>
+                        <input type="radio" name="MaDonViGiaoHang" value="<%= dv.getMaDonVi() %>" <%=checked%> > <%= dv.getTenDonVi() %>
+                    </label>
+                </div>
+                <%
+                        checked = "";
+                    }
+                %>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Xác nhận đơn hàng</button>
+                </div>
+            </form>
+
         </div>
     </div>
 </div>

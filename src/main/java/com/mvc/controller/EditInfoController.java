@@ -45,7 +45,7 @@ public class EditInfoController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         // Check for error, update changes to database and show changes to user
         Pattern specialCharsPattern = Pattern.compile("[!@#$%^&*()?\"':{}|<>]");
-        Pattern CPattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{10,50}$");
+        Pattern passwordPattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{10,50}$");
         Pattern phonePattern = Pattern.compile("^(\\d){10}$");
         Pattern emailPattern = Pattern.compile("\\A(?:[a-z0-9!#$%&'*+=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\\Z");
 
@@ -59,35 +59,35 @@ public class EditInfoController extends HttpServlet {
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
 
-        Matcher passwordMatcher = phonePattern.matcher(password);
+        Matcher passwordMatcher = passwordPattern.matcher(password);
         Matcher phoneMatcher = phonePattern.matcher(phone);
         Matcher emailMatcher = emailPattern.matcher(email);
 
         Map<String, String> errors = new HashMap<String, String>();
 
         if (specialCharsPattern.matcher(password).find()) {
-            errors.put("password", "Must not contain any special characters !@#$%^&*()?\"':{}|<>");
+            errors.put("password", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
         } else if (!passwordMatcher.find()) {
-            errors.put("password", "Must have from 10 to 50 characters" +
-                    " and contain at least a number, lowercase and uppercase letter");
+            errors.put("password", "Phải có từ 10 đến 50 ký tự" +
+                    " và có ít nhất một chữ số, chữ thường và chữ hoa");
         } else {
             password = passwordMatcher.group();
         }
 
         if (!rePassword.equals(password)) {
-            errors.put("rePassword", "Not match with new password");
+            errors.put("rePassword", "Không trùng khớp với mật khẩu");
         } else if (specialCharsPattern.matcher(rePassword).find()) {
-            errors.put("rePassword", "Must not contain any special characters !@#$%^&*()?\"':{}|<>");
+            errors.put("rePassword", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
         }
 
-        if (fullName.equals("")) {
-            errors.put("fullName", "Must not be empty");
+        if (fullName.trim().equals("")) {
+            errors.put("fullName", "Không được để trống");
         } else if (specialCharsPattern.matcher(fullName).find()) {
-            errors.put("fullName", "Must not contain any special characters !@#$%^&*()?\"':{}|<>");
+            errors.put("fullName", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
         }
 
         if (!(gender.equals("Nam") || gender.equals("Nữ"))) {
-            errors.put("gender", "Must be either 'Nam' or 'Nữ'");
+            errors.put("gender", "Phải là 'Nam' hoặc 'Nữ'");
         }
 
         java.sql.Date birthDate = null;
@@ -95,7 +95,7 @@ public class EditInfoController extends HttpServlet {
             java.util.Date birth = new SimpleDateFormat("yyyy-MM-dd").parse(birthDateStr);
             java.util.Date today = Calendar.getInstance().getTime();
             if (birth.after(today)) {
-                throw new Exception("Birthdate not valid");
+                throw new Exception("Ngày sinh không hợp lệ");
             }
             birthDate = new java.sql.Date(birth.getTime());
         } catch (Exception e) {
@@ -103,17 +103,17 @@ public class EditInfoController extends HttpServlet {
         }
 
         if (specialCharsPattern.matcher(address).find()) {
-            errors.put("address", "Must not contain any special characters !@#$%^&*()?\"':{}|<>");
+            errors.put("address", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
         }
 
         if (!phoneMatcher.find()) {
-            errors.put("phone", "Must be a 10-digit number");
+            errors.put("phone", "Phải có 10 chữ số");
         } else {
             phone = phoneMatcher.group();
         }
 
         if (!emailMatcher.find()) {
-            errors.put("email", "Must be a valid email address");
+            errors.put("email", "Phải là địa chỉ email hợp lệ");
         } else {
             email = emailMatcher.group();
         }

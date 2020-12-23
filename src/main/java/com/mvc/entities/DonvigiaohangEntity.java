@@ -10,7 +10,7 @@ public class DonvigiaohangEntity {
     private String diaChi;
 
     @Id
-    @Column(name = "MaDonVi")
+    @Column(name = "MaDonVi", columnDefinition = "VARCHAR(10)")
     public String getMaDonVi() {
         return maDonVi;
     }
@@ -20,7 +20,7 @@ public class DonvigiaohangEntity {
     }
 
     @Basic
-    @Column(name = "TenDonVi")
+    @Column(name = "TenDonVi", columnDefinition = "NVARCHAR(50)")
     public String getTenDonVi() {
         return tenDonVi;
     }
@@ -30,7 +30,7 @@ public class DonvigiaohangEntity {
     }
 
     @Basic
-    @Column(name = "DiaChi")
+    @Column(name = "DiaChi", columnDefinition = "NVARCHAR(150)")
     public String getDiaChi() {
         return diaChi;
     }

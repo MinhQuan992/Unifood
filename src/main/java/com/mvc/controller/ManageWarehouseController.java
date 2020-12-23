@@ -44,7 +44,8 @@ public class ManageWarehouseController extends HttpServlet {
 
         if (type.contains("Warehouse")) {
             if (type.contains("Delete")) {
-                ManageWarehouseDao.DeleteWarehouse(maKho);
+                String status = ManageWarehouseDao.DeleteWarehouse(maKho);
+                request.setAttribute("DeleteStatus", status);
                 doPost(request, response); // Forward to manageWarehouse.jsp
                 return;
             }
@@ -122,7 +123,8 @@ public class ManageWarehouseController extends HttpServlet {
         }
         if (type.contains("Item")) {
             if (type.contains("Delete")) {
-                ManageWarehouseDao.DeleteItemInWarehouse(maSanPham);
+                String status = ManageWarehouseDao.DeleteItemInWarehouse(maSanPham);
+                request.setAttribute("DeleteStatus", status);
                 doPost(request, response);
                 return;
             }
@@ -140,29 +142,29 @@ public class ManageWarehouseController extends HttpServlet {
                 SanphamEntity sp = new SanphamEntity();
                 Map<String, String> errors = new HashMap<String, String>();
 
-                if (maSanPham.equals("")) {
-                    errors.put("MaSanPham", "Must not be empty");
+                if (maSanPham.trim().equals("")) {
+                    errors.put("MaSanPham", "Không được để trống");
                 } else if (specialCharsPattern.matcher(maSanPham).find()) {
-                    errors.put("MaSanPham", "Must not contain any special characters !@#$%^&*()?\"':{}|<>");
+                    errors.put("MaSanPham", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
                 }
 
-                if (tenSanPham.equals("")) {
-                    errors.put("TenSanPham", "Must not be empty");
+                if (tenSanPham.trim().equals("")) {
+                    errors.put("TenSanPham", "Không được để trống");
                 } else if (specialCharsPattern.matcher(tenSanPham).find()) {
-                    errors.put("TenSanPham", "Must not contain any special characters !@#$%^&*()?\"':{}|<>");
+                    errors.put("TenSanPham", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
                 }
 
-                if (donViTinh.equals("")) {
-                    errors.put("DonViTinh", "Must not be empty");
+                if (donViTinh.trim().equals("")) {
+                    errors.put("DonViTinh", "Không được để trống");
                 } else if (specialCharsPattern.matcher(donViTinh).find()) {
-                    errors.put("DonViTinh", "Must not contain any special characters !@#$%^&*()?\"':{}|<>");
+                    errors.put("DonViTinh", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
                 }
 
                 int donGia = 0;
                 try {
                     donGia = Integer.parseInt(donGiaStr);
                     if (donGia <= 0) {
-                        throw new NumberFormatException("Must be a positive integer (greater than 0)");
+                        throw new NumberFormatException("Phải là số nguyên dương (lớn hơn 0)");
                     }
                 }
                 catch (Exception e) {
@@ -173,7 +175,7 @@ public class ManageWarehouseController extends HttpServlet {
                 try {
                     soLuong = Integer.parseInt(soLuongStr);
                     if (soLuong < 0) {
-                        throw new NumberFormatException("Must be a integer (greater or equal 0)");
+                        throw new NumberFormatException("Phải là số nguyên (lớn hơn hoặc bằng 0)");
                     }
                 }
                 catch (Exception e) {
@@ -181,7 +183,7 @@ public class ManageWarehouseController extends HttpServlet {
                 }
 
                 if (specialCharsPattern.matcher(anhMinhHoa).find()) {
-                    errors.put("AnhMinhHoa", "Must not contain any special characters !@#$%^&*()?\"':{}|<>");
+                    errors.put("AnhMinhHoa", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
                 }
 
                 short maNhom = 0;
@@ -193,7 +195,7 @@ public class ManageWarehouseController extends HttpServlet {
                 }
 
                 if (specialCharsPattern.matcher(moTa).find()) {
-                    errors.put("AnhMinhHoa", "Must not contain any special characters !@#$%^&*()?\"':{}|<>");
+                    errors.put("AnhMinhHoa", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
                 }
 
                 String status = "";

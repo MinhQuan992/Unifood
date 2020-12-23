@@ -18,7 +18,7 @@ public class DonhangEntity {
     private Date ngayThanhToan;
 
     @Id
-    @Column(name = "MaDon")
+    @Column(name = "MaDon", columnDefinition = "INT")
     public Integer getMaDon() {
         return maDon;
     }
@@ -28,7 +28,7 @@ public class DonhangEntity {
     }
 
     @Basic
-    @Column(name = "MaGio")
+    @Column(name = "MaGio", columnDefinition = "INT")
     public Integer getMaGio() {
         return maGio;
     }
@@ -38,7 +38,7 @@ public class DonhangEntity {
     }
 
     @Basic
-    @Column(name = "MaGiamGia")
+    @Column(name = "MaGiamGia", columnDefinition = "VARCHAR(20)")
     public String getMaGiamGia() {
         return maGiamGia;
     }
@@ -48,7 +48,7 @@ public class DonhangEntity {
     }
 
     @Basic
-    @Column(name = "MaDonViGiaoHang")
+    @Column(name = "MaDonViGiaoHang", columnDefinition = "VARCHAR(10)")
     public String getMaDonViGiaoHang() {
         return maDonViGiaoHang;
     }
@@ -58,7 +58,7 @@ public class DonhangEntity {
     }
 
     @Basic
-    @Column(name = "TT_DonHang")
+    @Column(name = "TT_DonHang", columnDefinition = "NVARCHAR(50)")
     public String getTtDonHang() {
         return ttDonHang;
     }
@@ -68,7 +68,7 @@ public class DonhangEntity {
     }
 
     @Basic
-    @Column(name = "TT_ThanhToan")
+    @Column(name = "TT_ThanhToan", columnDefinition = "BIT")
     public Boolean getTtThanhToan() {
         return ttThanhToan;
     }
@@ -78,7 +78,7 @@ public class DonhangEntity {
     }
 
     @Basic
-    @Column(name = "TongGiaTri")
+    @Column(name = "TongGiaTri", columnDefinition = "INT")
     public Integer getTongGiaTri() {
         return tongGiaTri;
     }
@@ -88,7 +88,7 @@ public class DonhangEntity {
     }
 
     @Basic
-    @Column(name = "NgayDat")
+    @Column(name = "NgayDat", columnDefinition = "DATE")
     public Date getNgayDat() {
         return ngayDat;
     }
@@ -98,7 +98,7 @@ public class DonhangEntity {
     }
 
     @Basic
-    @Column(name = "NgayGiaoHang")
+    @Column(name = "NgayGiaoHang", columnDefinition = "DATE")
     public Date getNgayGiaoHang() {
         return ngayGiaoHang;
     }
@@ -108,7 +108,7 @@ public class DonhangEntity {
     }
 
     @Basic
-    @Column(name = "NgayThanhToan")
+    @Column(name = "NgayThanhToan", columnDefinition = "DATE")
     public Date getNgayThanhToan() {
         return ngayThanhToan;
     }

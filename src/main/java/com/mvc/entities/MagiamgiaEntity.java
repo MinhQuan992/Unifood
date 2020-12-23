@@ -14,7 +14,7 @@ public class MagiamgiaEntity {
     private Date ngayKetThuc;
 
     @Id
-    @Column(name = "TenMa")
+    @Column(name = "TenMa", columnDefinition = "VARCHAR(20)")
     public String getTenMa() {
         return tenMa;
     }
@@ -24,7 +24,7 @@ public class MagiamgiaEntity {
     }
 
     @Basic
-    @Column(name = "GT_DuocGiam")
+    @Column(name = "GT_DuocGiam", columnDefinition = "SMALLINT")
     public Short getGtDuocGiam() {
         return gtDuocGiam;
     }
@@ -34,7 +34,7 @@ public class MagiamgiaEntity {
     }
 
     @Basic
-    @Column(name = "GTGH_ToiThieu")
+    @Column(name = "GTGH_ToiThieu", columnDefinition = "INT")
     public Integer getGtghToiThieu() {
         return gtghToiThieu;
     }
@@ -44,7 +44,7 @@ public class MagiamgiaEntity {
     }
 
     @Basic
-    @Column(name = "SoLuong")
+    @Column(name = "SoLuong", columnDefinition = "SMALLINT")
     public Short getSoLuong() {
         return soLuong;
     }
@@ -54,7 +54,7 @@ public class MagiamgiaEntity {
     }
 
     @Basic
-    @Column(name = "NgayBatDau")
+    @Column(name = "NgayBatDau", columnDefinition = "DATE")
     public Date getNgayBatDau() {
         return ngayBatDau;
     }
@@ -64,7 +64,7 @@ public class MagiamgiaEntity {
     }
 
     @Basic
-    @Column(name = "NgayKetThuc")
+    @Column(name = "NgayKetThuc", columnDefinition = "DATE")
     public Date getNgayKetThuc() {
         return ngayKetThuc;
     }
