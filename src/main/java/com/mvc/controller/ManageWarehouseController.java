@@ -58,18 +58,18 @@ public class ManageWarehouseController extends HttpServlet {
                 KhohangEntity kho = new KhohangEntity();
                 Map<String, String> errors = new HashMap<String, String>();
 
-                if (maKho.equals("")) {
-                    errors.put("MaKho", "Must not be empty");
+                if (maKho.trim().equals("")) {
+                    errors.put("MaKho", "Không được để trống");
                 } else if (specialCharsPattern.matcher(maKho).find()) {
-                    errors.put("MaKho", "Must not contain any special characters !@#$%^&*()?\"':{}|<>");
+                    errors.put("MaKho", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
                 }
 
                 if (specialCharsPattern.matcher(tenKho).find()) {
-                    errors.put("TenKho", "Must not contain any special characters !@#$%^&*()?\"':{}|<>");
+                    errors.put("TenKho", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
                 }
 
                 if (specialCharsPattern.matcher(diaChi).find()) {
-                    errors.put("DiaChi", "Must not contain any special characters !@#$%^&*()?\"':{}|<>");
+                    errors.put("DiaChi", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
                 }
 
                 String status = "";
