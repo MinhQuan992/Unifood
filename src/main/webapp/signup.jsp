@@ -164,7 +164,7 @@
             <tr>
                 <td>Mật khẩu:</td>
                 <td>
-                    <input type="password" name="password" placeholder="Nhập mật khẩu độ dài từ 8 đến 50 kí tự"
+                    <input type="password" name="password" placeholder="Nhập mật khẩu độ dài từ 10 đến 50 kí tự, bao gồm chữ hoa, chữ thường và chữ số"
                     <c:if test="${not empty passwordError}">
                         style="border-color: red"
                     </c:if>

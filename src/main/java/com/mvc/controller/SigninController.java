@@ -16,6 +16,10 @@ import java.io.IOException;
 @WebServlet(name = "SigninController", urlPatterns = {"/signin"})
 public class SigninController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
+
         String email = request.getParameter("email");
         String password = request.getParameter("password");
 

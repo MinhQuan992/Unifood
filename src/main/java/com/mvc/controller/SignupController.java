@@ -5,6 +5,7 @@ import com.mvc.entities.NguoidungEntity;
 import org.hibernate.*;
 
 import javax.persistence.*;
+import javax.persistence.Query;
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -149,19 +150,13 @@ public class SignupController extends HttpServlet {
             }
         }
 
-        boolean rightPassword = session.doReturningWork(connection -> {
-            try (CallableStatement function = connection.prepareCall("{? = CALL func_MatKhauHopLe(?)}"))
-            {
-                function.registerOutParameter(1, Types.BIT);
-                function.setString(2, password);
-                function.execute();
-                return function.getBoolean(1);
-            }
-        });
+        Pattern passwordPattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{10,50}$");
+        Matcher passwordMatcher = passwordPattern.matcher(password);
+        boolean rightPassword =  passwordMatcher.matches();
         if (!rightPassword)
         {
             hasError = true;
-            request.setAttribute("passwordError","Mật khẩu phải có độ dài từ 8 đến 50 kí tự");
+            request.setAttribute("passwordError","Mật khẩu phải có độ dài từ 10 đến 50 kí tự, bao gồm chữ hoa, chữ thường và chữ số");
         }
         else
         {
@@ -218,7 +213,7 @@ public class SignupController extends HttpServlet {
 
             UserDao userDao = new UserDao();
             NguoidungEntity user = new NguoidungEntity(userID, fullname, gender, birthdateInSqlDate, address, phone, email, password);
-            boolean canExecute = userDao.saveUser(user);
+            boolean canExecute = userDao.saveUser(user, isManager);
 
             if (canExecute)
             {

@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 @WebServlet(name = "ResetPasswordController", urlPatterns = {"/resetPassword"})
 public class ResetPasswordController extends HttpServlet {
@@ -48,7 +50,14 @@ public class ResetPasswordController extends HttpServlet {
 
         if (user != null)
         {
-            String randomPassword = RandomStringUtils.randomAlphanumeric(8);
+            Pattern passwordPattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{10,50}$");
+            String randomPassword;
+            Matcher passwordMatcher;
+            do {
+                randomPassword = RandomStringUtils.randomAlphanumeric(10);
+                passwordMatcher = passwordPattern.matcher(randomPassword);
+            } while (!passwordMatcher.matches());
+
             user.setMatKhau(randomPassword);
             String message = "";
             boolean canExecute = userDao.updateUser(user);
