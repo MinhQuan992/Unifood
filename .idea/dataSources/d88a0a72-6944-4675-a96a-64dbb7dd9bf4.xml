@@ -1,0 +1,718 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dataSource name="Microsoft SQL Server - UNIFOOD@localhost">
+  <database-model serializer="dbm" dbms="MSSQL" family-id="MSSQL" format-version="4.19">
+    <root id="1">
+      <ServerVersion>15.0.2000</ServerVersion>
+    </root>
+    <database id="2" parent="1" name="AdventureWorks2019">
+      <ObjectId>14</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+    </database>
+    <database id="3" parent="1" name="Bai2_18110359">
+      <ObjectId>7</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+    </database>
+    <database id="4" parent="1" name="Bai3_18110359">
+      <ObjectId>9</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+    </database>
+    <database id="5" parent="1" name="Bai4_18110359">
+      <ObjectId>8</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+    </database>
+    <database id="6" parent="1" name="Bai5_18110359">
+      <ObjectId>10</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+    </database>
+    <database id="7" parent="1" name="QLNV1">
+      <ObjectId>6</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+    </database>
+    <database id="8" parent="1" name="QuanLyBanHang">
+      <ObjectId>5</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+    </database>
+    <database id="9" parent="1" name="QuanLyQuanCafe">
+      <ObjectId>11</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+    </database>
+    <database id="10" parent="1" name="SimpleQuanLyKhachSan">
+      <ObjectId>12</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+    </database>
+    <database id="11" parent="1" name="TestingHibernate">
+      <ObjectId>16</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+    </database>
+    <database id="12" parent="1" name="ThuVien">
+      <ObjectId>13</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+    </database>
+    <database id="13" parent="1" name="UNIFOOD">
+      <ObjectId>15</ObjectId>
+      <Current>1</Current>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+      <Fingerprint>15.44177/463105A6-7970-4587-9FCD-5D9E686D4F1E@DESKTOP-4IP37R9</Fingerprint>
+    </database>
+    <database id="14" parent="1" name="master">
+      <ObjectId>1</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+    </database>
+    <database id="15" parent="1" name="model">
+      <ObjectId>3</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+    </database>
+    <database id="16" parent="1" name="msdb">
+      <ObjectId>4</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+    </database>
+    <database id="17" parent="1" name="tempdb">
+      <ObjectId>2</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+    </database>
+    <schema id="18" parent="13" name="INFORMATION_SCHEMA">
+      <ObjectId>3</ObjectId>
+    </schema>
+    <schema id="19" parent="13" name="db_accessadmin">
+      <ObjectId>16385</ObjectId>
+    </schema>
+    <schema id="20" parent="13" name="db_backupoperator">
+      <ObjectId>16389</ObjectId>
+    </schema>
+    <schema id="21" parent="13" name="db_datareader">
+      <ObjectId>16390</ObjectId>
+    </schema>
+    <schema id="22" parent="13" name="db_datawriter">
+      <ObjectId>16391</ObjectId>
+    </schema>
+    <schema id="23" parent="13" name="db_ddladmin">
+      <ObjectId>16387</ObjectId>
+    </schema>
+    <schema id="24" parent="13" name="db_denydatareader">
+      <ObjectId>16392</ObjectId>
+    </schema>
+    <schema id="25" parent="13" name="db_denydatawriter">
+      <ObjectId>16393</ObjectId>
+    </schema>
+    <schema id="26" parent="13" name="db_owner">
+      <ObjectId>16384</ObjectId>
+    </schema>
+    <schema id="27" parent="13" name="db_securityadmin">
+      <ObjectId>16386</ObjectId>
+    </schema>
+    <schema id="28" parent="13" name="dbo">
+      <ObjectId>1</ObjectId>
+      <IntrospectionTimestamp>2020-12-17.02:48:00.740</IntrospectionTimestamp>
+      <Current>1</Current>
+    </schema>
+    <schema id="29" parent="13" name="guest">
+      <ObjectId>2</ObjectId>
+    </schema>
+    <schema id="30" parent="13" name="sys">
+      <ObjectId>4</ObjectId>
+    </schema>
+    <table id="31" parent="28" name="ANKEM">
+      <ObjectId>837578022</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.867</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.867</ModifiedTimestamp>
+    </table>
+    <table id="32" parent="28" name="DATHANG">
+      <ObjectId>965578478</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.887</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.887</ModifiedTimestamp>
+    </table>
+    <table id="33" parent="28" name="DONHANG">
+      <ObjectId>1157579162</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.943</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.943</ModifiedTimestamp>
+    </table>
+    <table id="34" parent="28" name="DONVIGIAOHANG">
+      <ObjectId>1125579048</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.933</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.947</ModifiedTimestamp>
+    </table>
+    <table id="35" parent="28" name="GIOHANG">
+      <ObjectId>901578250</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.867</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.943</ModifiedTimestamp>
+    </table>
+    <table id="36" parent="28" name="KHOHANG">
+      <ObjectId>709577566</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.800</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.820</ModifiedTimestamp>
+    </table>
+    <table id="37" parent="28" name="MAGIAMGIA">
+      <ObjectId>1045578763</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.923</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.943</ModifiedTimestamp>
+    </table>
+    <table id="38" parent="28" name="NGUOIDUNG">
+      <ObjectId>581577110</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.700</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.870</ModifiedTimestamp>
+    </table>
+    <table id="39" parent="28" name="NHOMSANPHAM">
+      <ObjectId>661577395</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.780</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.820</ModifiedTimestamp>
+    </table>
+    <table id="40" parent="28" name="SANPHAM">
+      <ObjectId>741577680</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.817</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.887</ModifiedTimestamp>
+    </table>
+    <column id="41" parent="31" name="MaMonAnChinh">
+      <Position>1</Position>
+      <DataType>varchar(10 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="42" parent="31" name="MaDoAnKem">
+      <Position>2</Position>
+      <DataType>varchar(10 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <index id="43" parent="31" name="PK_ANKEM">
+      <Position>1</Position>
+      <ColNames>MaMonAnChinh
+MaDoAnKem</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="44" parent="31" name="PK_ANKEM">
+      <ObjectId>853578079</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.867</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.867</ModifiedTimestamp>
+      <ColNames>MaMonAnChinh
+MaDoAnKem</ColNames>
+      <UnderlyingIndexName>PK_ANKEM</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="45" parent="31" name="FK_ANCHINH_SANPHAM">
+      <ObjectId>869578136</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.867</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.867</ModifiedTimestamp>
+      <ColNames>MaMonAnChinh</ColNames>
+      <RefTableId>741577680</RefTableId>
+      <RefTableName>SANPHAM</RefTableName>
+      <RefKeyName>PK_SANPHAM</RefKeyName>
+      <RefColNames>MaSanPham</RefColNames>
+    </foreign-key>
+    <foreign-key id="46" parent="31" name="FK_ANKEM_SANPHAM">
+      <ObjectId>885578193</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.867</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.867</ModifiedTimestamp>
+      <ColNames>MaDoAnKem</ColNames>
+      <RefTableId>741577680</RefTableId>
+      <RefTableName>SANPHAM</RefTableName>
+      <RefKeyName>PK_SANPHAM</RefKeyName>
+      <RefColNames>MaSanPham</RefColNames>
+    </foreign-key>
+    <column id="47" parent="32" name="MaGio">
+      <Position>1</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="48" parent="32" name="MaSanPham">
+      <Position>2</Position>
+      <DataType>varchar(10 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="49" parent="32" name="SoLuong">
+      <Position>3</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="50" parent="32" name="GhiChu">
+      <Position>4</Position>
+      <DataType>nvarchar(200 char)|0s</DataType>
+    </column>
+    <index id="51" parent="32" name="PK_DATHANG">
+      <Position>1</Position>
+      <ColNames>MaGio
+MaSanPham</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="52" parent="32" name="PK_DATHANG">
+      <ObjectId>981578535</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.887</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.887</ModifiedTimestamp>
+      <ColNames>MaGio
+MaSanPham</ColNames>
+      <UnderlyingIndexName>PK_DATHANG</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="53" parent="32" name="FK_DATHANG_GIOHANG">
+      <ObjectId>997578592</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.887</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.887</ModifiedTimestamp>
+      <ColNames>MaGio</ColNames>
+      <RefTableId>901578250</RefTableId>
+      <RefTableName>GIOHANG</RefTableName>
+      <RefKeyName>PK_GIOHANG</RefKeyName>
+      <RefColNames>MaGio</RefColNames>
+    </foreign-key>
+    <foreign-key id="54" parent="32" name="FK_DATHANG_SANPHAM">
+      <ObjectId>1013578649</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.887</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.887</ModifiedTimestamp>
+      <ColNames>MaSanPham</ColNames>
+      <RefTableId>741577680</RefTableId>
+      <RefTableName>SANPHAM</RefTableName>
+      <RefKeyName>PK_SANPHAM</RefKeyName>
+      <RefColNames>MaSanPham</RefColNames>
+    </foreign-key>
+    <check id="55" parent="32" name="Right_SoLuongMua">
+      <ObjectId>1029578706</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.887</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.887</ModifiedTimestamp>
+      <ColNames>SoLuong</ColNames>
+      <Predicate>[SoLuong]&gt;0</Predicate>
+    </check>
+    <column id="56" parent="33" name="MaDon">
+      <Position>1</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="57" parent="33" name="MaGio">
+      <Position>2</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="58" parent="33" name="MaGiamGia">
+      <Position>3</Position>
+      <DataType>varchar(20 char)|0s</DataType>
+    </column>
+    <column id="59" parent="33" name="MaDonViGiaoHang">
+      <Position>4</Position>
+      <DataType>varchar(10 char)|0s</DataType>
+    </column>
+    <column id="60" parent="33" name="TT_DonHang">
+      <Position>5</Position>
+      <DataType>nvarchar(50 char)|0s</DataType>
+    </column>
+    <column id="61" parent="33" name="TT_ThanhToan">
+      <Position>6</Position>
+      <DataType>bit|0s</DataType>
+    </column>
+    <column id="62" parent="33" name="TongGiaTri">
+      <Position>7</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="63" parent="33" name="NgayDat">
+      <Position>8</Position>
+      <DataType>date|0s</DataType>
+    </column>
+    <column id="64" parent="33" name="NgayGiaoHang">
+      <Position>9</Position>
+      <DataType>date|0s</DataType>
+    </column>
+    <column id="65" parent="33" name="NgayThanhToan">
+      <Position>10</Position>
+      <DataType>date|0s</DataType>
+    </column>
+    <index id="66" parent="33" name="PK_DONHANG">
+      <Position>1</Position>
+      <ColNames>MaDon</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="67" parent="33" name="PK_DONHANG">
+      <ObjectId>1173579219</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.943</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.943</ModifiedTimestamp>
+      <ColNames>MaDon</ColNames>
+      <UnderlyingIndexName>PK_DONHANG</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="68" parent="33" name="FK_DONHANG_GIOHANG">
+      <ObjectId>1205579333</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.943</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.943</ModifiedTimestamp>
+      <ColNames>MaGio</ColNames>
+      <RefTableId>901578250</RefTableId>
+      <RefTableName>GIOHANG</RefTableName>
+      <RefKeyName>PK_GIOHANG</RefKeyName>
+      <RefColNames>MaGio</RefColNames>
+    </foreign-key>
+    <foreign-key id="69" parent="33" name="FK_DONHANG_MAGIAMGIA">
+      <ObjectId>1221579390</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.943</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.943</ModifiedTimestamp>
+      <ColNames>MaGiamGia</ColNames>
+      <RefTableId>1045578763</RefTableId>
+      <RefTableName>MAGIAMGIA</RefTableName>
+      <RefKeyName>PK_MAGIAMGIA</RefKeyName>
+      <RefColNames>TenMa</RefColNames>
+    </foreign-key>
+    <foreign-key id="70" parent="33" name="FK_DONHANG_DONVIGIAOHANG">
+      <ObjectId>1237579447</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.943</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.943</ModifiedTimestamp>
+      <ColNames>MaDonViGiaoHang</ColNames>
+      <RefTableId>1125579048</RefTableId>
+      <RefTableName>DONVIGIAOHANG</RefTableName>
+      <RefKeyName>PK_DONVIGIAOHANG</RefKeyName>
+      <RefColNames>MaDonVi</RefColNames>
+    </foreign-key>
+    <check id="71" parent="33" name="Right_MaDon">
+      <ObjectId>1189579276</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.943</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.943</ModifiedTimestamp>
+      <ColNames>MaDon</ColNames>
+      <Predicate>[MaDon]&gt;0</Predicate>
+    </check>
+    <check id="72" parent="33" name="Right_TT_DonHang">
+      <ObjectId>1253579504</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.947</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.947</ModifiedTimestamp>
+      <ColNames>TT_DonHang</ColNames>
+      <Predicate>[TT_DonHang]=N&apos;Đã tiếp nhận&apos; OR [TT_DonHang]=N&apos;Đang xử lý&apos; OR [TT_DonHang]=N&apos;Đang giao hàng&apos; OR [TT_DonHang]=N&apos;Giao hàng thành công&apos; OR [TT_DonHang]=N&apos;Đã hủy&apos;</Predicate>
+    </check>
+    <column id="73" parent="34" name="MaDonVi">
+      <Position>1</Position>
+      <DataType>varchar(10 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="74" parent="34" name="TenDonVi">
+      <Position>2</Position>
+      <DataType>nvarchar(50 char)|0s</DataType>
+    </column>
+    <column id="75" parent="34" name="DiaChi">
+      <Position>3</Position>
+      <DataType>nvarchar(150 char)|0s</DataType>
+    </column>
+    <index id="76" parent="34" name="PK_DONVIGIAOHANG">
+      <Position>1</Position>
+      <ColNames>MaDonVi</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="77" parent="34" name="PK_DONVIGIAOHANG">
+      <ObjectId>1141579105</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.933</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.933</ModifiedTimestamp>
+      <ColNames>MaDonVi</ColNames>
+      <UnderlyingIndexName>PK_DONVIGIAOHANG</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="78" parent="35" name="MaGio">
+      <Position>1</Position>
+      <DataType>int|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="79" parent="35" name="MaNguoiDung">
+      <Position>2</Position>
+      <DataType>varchar(9 char)|0s</DataType>
+    </column>
+    <index id="80" parent="35" name="PK_GIOHANG">
+      <Position>1</Position>
+      <ColNames>MaGio</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="81" parent="35" name="PK_GIOHANG">
+      <ObjectId>917578307</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.867</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.867</ModifiedTimestamp>
+      <ColNames>MaGio</ColNames>
+      <UnderlyingIndexName>PK_GIOHANG</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="82" parent="35" name="FK_GIOHANG_NGUOIDUNG">
+      <ObjectId>949578421</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.870</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.870</ModifiedTimestamp>
+      <ColNames>MaNguoiDung</ColNames>
+      <RefTableId>581577110</RefTableId>
+      <RefTableName>NGUOIDUNG</RefTableName>
+      <RefKeyName>PK_NGUOIDUNG</RefKeyName>
+      <RefColNames>MaNguoiDung</RefColNames>
+    </foreign-key>
+    <check id="83" parent="35" name="Right_MaGio">
+      <ObjectId>933578364</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.867</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.867</ModifiedTimestamp>
+      <ColNames>MaGio</ColNames>
+      <Predicate>[MaGio]&gt;0</Predicate>
+    </check>
+    <column id="84" parent="36" name="MaKho">
+      <Position>1</Position>
+      <DataType>varchar(10 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="85" parent="36" name="TenKho">
+      <Position>2</Position>
+      <DataType>nvarchar(50 char)|0s</DataType>
+    </column>
+    <column id="86" parent="36" name="DiaChi">
+      <Position>3</Position>
+      <DataType>nvarchar(100 char)|0s</DataType>
+    </column>
+    <index id="87" parent="36" name="PK_KHOHANG">
+      <Position>1</Position>
+      <ColNames>MaKho</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="88" parent="36" name="PK_KHOHANG">
+      <ObjectId>725577623</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.800</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.800</ModifiedTimestamp>
+      <ColNames>MaKho</ColNames>
+      <UnderlyingIndexName>PK_KHOHANG</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <column id="89" parent="37" name="TenMa">
+      <Position>1</Position>
+      <DataType>varchar(20 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="90" parent="37" name="GT_DuocGiam">
+      <Position>2</Position>
+      <DataType>smallint|0s</DataType>
+    </column>
+    <column id="91" parent="37" name="GTGH_ToiThieu">
+      <Position>3</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="92" parent="37" name="SoLuong">
+      <Position>4</Position>
+      <DataType>smallint|0s</DataType>
+    </column>
+    <column id="93" parent="37" name="NgayBatDau">
+      <Position>5</Position>
+      <DataType>date|0s</DataType>
+    </column>
+    <column id="94" parent="37" name="NgayKetThuc">
+      <Position>6</Position>
+      <DataType>date|0s</DataType>
+    </column>
+    <index id="95" parent="37" name="PK_MAGIAMGIA">
+      <Position>1</Position>
+      <ColNames>TenMa</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="96" parent="37" name="PK_MAGIAMGIA">
+      <ObjectId>1061578820</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.927</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.927</ModifiedTimestamp>
+      <ColNames>TenMa</ColNames>
+      <UnderlyingIndexName>PK_MAGIAMGIA</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <check id="97" parent="37" name="Right_GTGH_ToiThieu">
+      <ObjectId>1093578934</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.927</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.927</ModifiedTimestamp>
+      <ColNames>GTGH_ToiThieu</ColNames>
+      <Predicate>[GTGH_ToiThieu]&gt;=10000</Predicate>
+    </check>
+    <check id="98" parent="37" name="Right_GT_DuocGiam">
+      <ObjectId>1077578877</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.927</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.927</ModifiedTimestamp>
+      <ColNames>GT_DuocGiam</ColNames>
+      <Predicate>[GT_DuocGiam]&gt;0 AND [GT_DuocGiam]&lt;=50</Predicate>
+    </check>
+    <check id="99" parent="37" name="Right_SoLuongMaGG">
+      <ObjectId>1109578991</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.927</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.927</ModifiedTimestamp>
+      <ColNames>SoLuong</ColNames>
+      <Predicate>[SoLuong]&gt;=0 AND [SoLuong]&lt;=1000</Predicate>
+    </check>
+    <column id="100" parent="38" name="MaNguoiDung">
+      <Position>1</Position>
+      <DataType>varchar(9 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="101" parent="38" name="HoVaTen">
+      <Position>2</Position>
+      <DataType>nvarchar(50 char)|0s</DataType>
+    </column>
+    <column id="102" parent="38" name="GioiTinh">
+      <Position>3</Position>
+      <DataType>nvarchar(3 char)|0s</DataType>
+    </column>
+    <column id="103" parent="38" name="NgaySinh">
+      <Position>4</Position>
+      <DataType>date|0s</DataType>
+    </column>
+    <column id="104" parent="38" name="DiaChi">
+      <Position>5</Position>
+      <DataType>nvarchar(150 char)|0s</DataType>
+    </column>
+    <column id="105" parent="38" name="DienThoai">
+      <Position>6</Position>
+      <DataType>varchar(10 char)|0s</DataType>
+    </column>
+    <column id="106" parent="38" name="Email">
+      <Position>7</Position>
+      <DataType>varchar(30 char)|0s</DataType>
+    </column>
+    <column id="107" parent="38" name="MatKhau">
+      <Position>8</Position>
+      <DataType>varchar(50 char)|0s</DataType>
+    </column>
+    <index id="108" parent="38" name="PK_NGUOIDUNG">
+      <Position>1</Position>
+      <ColNames>MaNguoiDung</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <index id="109" parent="38" name="Email_Is_Unique">
+      <Position>2</Position>
+      <ColNames>Email</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <index id="110" parent="38" name="DienThoai_Is_Unique">
+      <Position>3</Position>
+      <ColNames>DienThoai</ColNames>
+      <Unique>1</Unique>
+    </index>
+    <key id="111" parent="38" name="PK_NGUOIDUNG">
+      <ObjectId>597577167</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.703</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.703</ModifiedTimestamp>
+      <ColNames>MaNguoiDung</ColNames>
+      <UnderlyingIndexName>PK_NGUOIDUNG</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <key id="112" parent="38" name="DienThoai_Is_Unique">
+      <ObjectId>629577281</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.707</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.707</ModifiedTimestamp>
+      <ColNames>DienThoai</ColNames>
+      <UnderlyingIndexName>DienThoai_Is_Unique</UnderlyingIndexName>
+    </key>
+    <key id="113" parent="38" name="Email_Is_Unique">
+      <ObjectId>613577224</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.707</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.707</ModifiedTimestamp>
+      <ColNames>Email</ColNames>
+      <UnderlyingIndexName>Email_Is_Unique</UnderlyingIndexName>
+    </key>
+    <check id="114" parent="38" name="Right_GioiTinh">
+      <ObjectId>645577338</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.707</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.707</ModifiedTimestamp>
+      <ColNames>GioiTinh</ColNames>
+      <Predicate>[GioiTinh]=N&apos;Nam&apos; OR [GioiTinh]=N&apos;Nữ&apos;</Predicate>
+    </check>
+    <column id="115" parent="39" name="MaNhom">
+      <Position>1</Position>
+      <DataType>smallint|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="116" parent="39" name="TenNhom">
+      <Position>2</Position>
+      <DataType>nvarchar(20 char)|0s</DataType>
+    </column>
+    <index id="117" parent="39" name="PK_NHOMSANPHAM">
+      <Position>1</Position>
+      <ColNames>MaNhom</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="118" parent="39" name="PK_NHOMSANPHAM">
+      <ObjectId>677577452</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.780</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.780</ModifiedTimestamp>
+      <ColNames>MaNhom</ColNames>
+      <UnderlyingIndexName>PK_NHOMSANPHAM</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <check id="119" parent="39" name="Right_MaNhom">
+      <ObjectId>693577509</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.780</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.780</ModifiedTimestamp>
+      <ColNames>MaNhom</ColNames>
+      <Predicate>[MaNhom]&gt;0</Predicate>
+    </check>
+    <column id="120" parent="40" name="MaSanPham">
+      <Position>1</Position>
+      <DataType>varchar(10 char)|0s</DataType>
+      <NotNull>1</NotNull>
+    </column>
+    <column id="121" parent="40" name="TenSanPham">
+      <Position>2</Position>
+      <DataType>nvarchar(100 char)|0s</DataType>
+    </column>
+    <column id="122" parent="40" name="DonViTinh">
+      <Position>3</Position>
+      <DataType>nvarchar(10 char)|0s</DataType>
+    </column>
+    <column id="123" parent="40" name="DonGia">
+      <Position>4</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="124" parent="40" name="SoLuong">
+      <Position>5</Position>
+      <DataType>int|0s</DataType>
+    </column>
+    <column id="125" parent="40" name="AnhMinhHoa">
+      <Position>6</Position>
+      <DataType>varchar(100 char)|0s</DataType>
+    </column>
+    <column id="126" parent="40" name="MaNhom">
+      <Position>7</Position>
+      <DataType>smallint|0s</DataType>
+    </column>
+    <column id="127" parent="40" name="MaKho">
+      <Position>8</Position>
+      <DataType>varchar(10 char)|0s</DataType>
+    </column>
+    <column id="128" parent="40" name="MoTa">
+      <Position>9</Position>
+      <DataType>nvarchar(1500 char)|0s</DataType>
+    </column>
+    <index id="129" parent="40" name="PK_SANPHAM">
+      <Position>1</Position>
+      <ColNames>MaSanPham</ColNames>
+      <Clustering>1</Clustering>
+      <Unique>1</Unique>
+    </index>
+    <key id="130" parent="40" name="PK_SANPHAM">
+      <ObjectId>757577737</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.817</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.817</ModifiedTimestamp>
+      <ColNames>MaSanPham</ColNames>
+      <UnderlyingIndexName>PK_SANPHAM</UnderlyingIndexName>
+      <Primary>1</Primary>
+    </key>
+    <foreign-key id="131" parent="40" name="FK_SANPHAM_NHOMSANPHAM">
+      <ObjectId>805577908</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.817</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.817</ModifiedTimestamp>
+      <ColNames>MaNhom</ColNames>
+      <RefTableId>661577395</RefTableId>
+      <RefTableName>NHOMSANPHAM</RefTableName>
+      <RefKeyName>PK_NHOMSANPHAM</RefKeyName>
+      <RefColNames>MaNhom</RefColNames>
+    </foreign-key>
+    <foreign-key id="132" parent="40" name="FK_SANPHAM_KHOHANG">
+      <ObjectId>821577965</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.820</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.820</ModifiedTimestamp>
+      <ColNames>MaKho</ColNames>
+      <RefTableId>709577566</RefTableId>
+      <RefTableName>KHOHANG</RefTableName>
+      <RefKeyName>PK_KHOHANG</RefKeyName>
+      <RefColNames>MaKho</RefColNames>
+    </foreign-key>
+    <check id="133" parent="40" name="Right_DonGia">
+      <ObjectId>773577794</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.817</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.817</ModifiedTimestamp>
+      <ColNames>DonGia</ColNames>
+      <Predicate>[DonGia]&gt;0</Predicate>
+    </check>
+    <check id="134" parent="40" name="Right_SoLuongHang">
+      <ObjectId>789577851</ObjectId>
+      <CreatedTimestamp>2020-12-13.23:18:16.817</CreatedTimestamp>
+      <ModifiedTimestamp>2020-12-13.23:18:16.817</ModifiedTimestamp>
+      <ColNames>SoLuong</ColNames>
+      <Predicate>[SoLuong]&gt;=0</Predicate>
+    </check>
+  </database-model>
+</dataSource>
