@@ -8,7 +8,8 @@ package com.mvc.entities;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ListItemEntity {
+public class
+ListItemEntity {
     private String listItemName;
     private NhomsanphamEntity groupItem;
     private SanphamEntity mainItem;

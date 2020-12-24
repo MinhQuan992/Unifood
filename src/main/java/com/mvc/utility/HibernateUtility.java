@@ -42,6 +42,7 @@ public class HibernateUtility {
                 configuration.addAnnotatedClass(DathangEntity.class);
                 configuration.addAnnotatedClass(GiohangEntity.class);
                 configuration.addAnnotatedClass(DonhangEntity.class);
+                configuration.addAnnotatedClass(SanphamEntity.class);
                 configuration.addAnnotatedClass(ViewDonHangEntity.class);
                 configuration.addAnnotatedClass(ViewChiTietDonHangEntity.class);
 

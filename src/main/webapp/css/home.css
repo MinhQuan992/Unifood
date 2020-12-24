@@ -1,0 +1,263 @@
+*{
+    margin: 0;
+    padding: 0;
+}/*==reset css==*/
+
+body{
+    font-family: SVN-Zero;
+    font-size: 16px;
+    color: ghostwhite;
+}
+
+/*==Dieu chinh menu==*/
+
+#menu{
+    height: 100px;
+    width: 100%;
+}
+#menu ul {
+    display: block;
+    background: #60150c;
+    list-style-type: none;
+    text-align: center;
+    height: 200px;
+    top: 0;
+}
+#menu li{
+    float: left;
+    text-align: center;
+    color: #60150c;
+    display: inline-block;
+    width: 250px;
+    height: 20px;
+    padding-top: 35px;
+    line-height: 30px;
+    margin-left: -5px;/*==xoa inline-block tu sinh==*/
+}
+#menu li a{
+    text-decoration: none;
+    color: #60150c;
+    display: block;
+    padding: 0 1em;
+}
+a:hover, a:visited{
+    background: #8e1b0c;
+    color: ghostwhite;
+}
+.navbar-nav{
+    margin-left: 1%;
+}
+li.nav-item{
+    margin-left: 25px;
+}
+li.nav-item a:hover{
+    color: ghostwhite;
+    border-radius: 20px;
+}
+.nav-link{
+    font-weight: bold;
+}
+.homelogo{
+    margin-left: 100px;
+}
+.homelogo:hover{
+    background: #60150c;
+    text-decoration: none;
+}
+/*==Drop down menu==*/
+.sub-menu li {
+    display: none;
+}
+#menu li{
+    position: relative;
+}
+.sub-menu {
+    color: #602b28;
+    display: none;
+    position: absolute;
+}
+a.dropdown-item-custom{
+    color: #000000;
+    font-weight: bold;
+}
+a.dropdown-item-custom:hover{
+    background: #60150c;
+    color: #fff;
+    border-radius: 2%;
+}
+a.dropdown-item-custom:active{
+    background: #60150c;
+    color: #fff;
+}
+/*==Hien thi khi re chuot==*/
+#menu li:hover .sub-menu{
+    display: block;
+}
+.sub-menu li{
+    margin-left: 0 !important;
+}
+/*==can chinh==*/
+.logo{
+    float: left;
+    text-align: center;
+    width: 150px;height: 100px;
+    background: #60150c;
+}
+.logo:hover{
+    text-decoration: none;
+}
+.logo img{
+    width: 100%;height: 100%
+}
+.floated-left{
+
+    display: flex;
+    flex-direction: row;
+    color: #60150c;
+    float:left;
+}
+
+.cart{
+    margin-left: 100%;
+}
+.cart:hover{
+    background: #60150c;
+    text-decoration: none;
+}
+/*==Products==*/
+
+.Products{
+    border: 1px solid #000;
+    position: relative;
+}
+.img1{
+    border: 1px solid #000;
+    position: relative;
+    z-index: 2;
+}
+.img2{
+    border: 1px solid #000;
+    position: relative;
+    z-index: 1;
+    top: -12px;
+    left: 12px;
+}
+/*==footer==*/
+#footer{
+    font-family: SVN-Titillium Light;
+    font-size: 16px;
+    border-top: 1px solid #E6E6E6;
+    color: slategray;
+    padding: 1em 3em;
+    text-alignt: center;
+}
+
+#container{
+    padding-top: 0px;
+    position: relative;
+    top: 0;
+    width: 100%;
+}
+
+/*==slide hinh anh==*/
+*html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.slider-container{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.menu {
+    position: absolute;
+    left: 0;
+    z-index: 900;
+    width: 100%;
+    bottom: 0;
+}
+
+.menu label {
+    cursor: pointer;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50px;
+    margin: 0 .2em 1em;
+    transition: all .3s ease;
+}
+:hover {
+     background: #60150c;
+ }
+
+.slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    z-index: 10;
+    padding: 8em 1em 0;
+    background-size: cover;
+    background-position: 50% 50%;
+    transition: left 0s .75s;
+}
+
+[id^="slide"]:checked + .slide {
+    left: 0;
+    z-index: 100;
+    transition: left .65s ease-out;
+}
+
+.slide-1 {
+    background-image: url("../Images/Comga.jpg");
+}
+.slide-2 {
+    background-image: url("../Images/Comsuonbi.jpg");
+}
+.slide-3 {
+    background-image: url("../Images/Comthitnuong.jpg");
+}
+
+/*Can dong row*/
+.row {
+    font-family: SVN-Titillium Light;
+    color: #60150c;
+    background-image: url("../Images/bg.jpg");
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-attachment: fixed;
+    overflow: auto;
+    margin: 1.5em auto;
+}
+/*==Chia cột phần content==*/
+.row {
+    overflow: auto;
+    margin: 1.5em auto;
+}
+.row .col {
+    float: left;
+    width: 31.3333%;
+    margin-right: 2.99%;
+}
+.row .col:last-child {
+    float: right;
+    margin-right: 0;
+}
+/* Style cho ảnh */
+.row .col img {
+    border-image: 50 / 10px / 60px stretch;
+    width: auto;
+    height: auto;
+    max-width:230px;
+    max-height:95px;
+    float: left;
+    margin-right: 1em;
+}

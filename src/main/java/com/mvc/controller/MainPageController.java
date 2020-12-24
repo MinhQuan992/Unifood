@@ -33,26 +33,26 @@ public class MainPageController extends HttpServlet {
         ItemDao itemDao = new ItemDao();
         GroupItemDao groupItemDao = new GroupItemDao();
 
-        for (int i=1; i<9; i++)
+        for (short i=1; i<9; i++)
         {
-            groupItem = groupItemDao.getGroupItemData(Short.parseShort("1"));
-            System.out.println("Group Item was loaded completely: " + groupItem.getTenNhom());
+            groupItem = groupItemDao.getGroupItemData(i);
+            //System.out.println("Group Item was loaded completely: " + groupItem.getTenNhom());
             listItemEntity = new ListItemEntity(groupItem.getTenNhom(), null, groupItem);
             listItemEntity.setItemList(groupItemDao.getAllGroupItem(groupItem));
             ListItems.add(listItemEntity);
         }
 
-        for (ListItemEntity list: ListItems)
+        /*for (ListItemEntity list: ListItems)
         {
             System.out.println(list.getListItemName());
             for (SanphamEntity item: list.getItemList())
             {
                 System.out.println(item.getMaSanPham()+":"+item.getTenSanPham());
             }
-        }
+        }*/
 
         request.setAttribute("ListItems",ListItems);
-        String url = "MainPage.jsp";
+        String url = "Khach.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(url);
         requestDispatcher.forward(request,response);
     }
