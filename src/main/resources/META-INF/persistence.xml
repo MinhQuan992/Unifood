@@ -17,6 +17,7 @@
         <class>com.mvc.entities.NguoidungEntity</class>
         <class>com.mvc.entities.ViewChiTietDonHangEntity</class>
         <class>com.mvc.entities.ViewDonHangEntity</class>
+        <class>com.mvc.entities.ViewAllOrderEntity</class>
         <exclude-unlisted-classes>false</exclude-unlisted-classes>
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>

@@ -28,18 +28,123 @@ public class PaymentDao {
                 transaction.rollback();
             }
             e.printStackTrace();
+        } finally {
+            session.close();
         }
         return list;
     }
 
-    public DathangEntity getPaymentData(String cartCode)
+    public static List<DonvigiaohangEntity> GetDVGiaoHang()
     {
-        DathangEntity payment = null;
+        List<DonvigiaohangEntity> list = null;
+
         Transaction transaction = null;
         Session session = HibernateUtility.getSessionFactory().openSession();
         try {
             transaction = session.beginTransaction();
-            Query<DathangEntity> query = session.createQuery("SELECT DH FROM DathangEntity DH WHERE DH.maGio=:CartCode");
+            list = session.createQuery("SELECT d FROM DonvigiaohangEntity d", DonvigiaohangEntity.class)
+                    .getResultList();
+            transaction.commit();
+        }
+        catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
+
+    public static List<MagiamgiaEntity> GetMaGiamGia()
+    {
+        List<MagiamgiaEntity> list = null;
+
+        Transaction transaction = null;
+        Session session = HibernateUtility.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            list = session.createQuery("SELECT m FROM MagiamgiaEntity m", MagiamgiaEntity.class)
+                    .getResultList();
+            transaction.commit();
+        }
+        catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
+
+    public static MagiamgiaEntity ReceivedMaGiamGia(int tongGiaTri)
+    {
+        List<MagiamgiaEntity> list = GetMaGiamGia();
+        if (list != null) {
+            java.sql.Date today = new java.sql.Date(Calendar.getInstance().getTime().getTime());
+            list.sort(Comparator.comparing(MagiamgiaEntity::getGtghToiThieu).reversed());
+            for (MagiamgiaEntity m: list) {
+                if (m.getNgayBatDau().before(today) && m.getNgayKetThuc().after(today)
+                        && tongGiaTri >= m.getGtghToiThieu()) {
+                    return m;
+                }
+            }
+        }
+        return null;
+    }
+
+    public static List<DonhangEntity> GetDonHang()
+    {
+        List<DonhangEntity> list = null;
+
+        Transaction transaction = null;
+        Session session = HibernateUtility.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            list = session.createQuery("SELECT d FROM DonhangEntity d", DonhangEntity.class)
+                    .getResultList();
+            transaction.commit();
+        }
+        catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return list;
+    }
+
+    public static String AddDonHang(DonhangEntity don)
+    {
+        String status = null;
+        Transaction transaction = null;
+        try (Session session = HibernateUtility.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.save(don);
+            transaction.commit();
+        }
+        catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            status = e.getMessage();
+        }
+        return status;
+    }
+
+    public ViewAllOrderEntity getPaymentData(int cartCode)
+    {
+        ViewAllOrderEntity payment = null;
+        Transaction transaction = null;
+        Session session = HibernateUtility.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            Query<ViewAllOrderEntity> query = session.createQuery("SELECT DH FROM ViewAllOrderEntity DH WHERE DH.maDon=:CartCode");
             query.setParameter("CartCode",cartCode);
             payment = query.uniqueResult();
             transaction.commit();
@@ -71,5 +176,46 @@ public class PaymentDao {
             session.close();
         }
         return true;
+    }
+
+    public DonhangEntity getPaymentDataRaw(int cartCode) {
+        DonhangEntity payment = null;
+        Transaction transaction = null;
+        Session session = HibernateUtility.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            Query<DonhangEntity> query = session.createQuery("SELECT DH FROM DonhangEntity DH WHERE DH.maDon=:CartCode");
+            query.setParameter("CartCode",cartCode);
+            payment = query.uniqueResult();
+            transaction.commit();
+        } catch (Exception var9) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            var9.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return payment;
+    }
+
+    public List<ViewAllOrderEntity> getAllPaymentData() {
+        List<ViewAllOrderEntity> payment = null;
+        Transaction transaction = null;
+        Session session = HibernateUtility.getSessionFactory().openSession();
+        try {
+            transaction = session.beginTransaction();
+            Query<ViewAllOrderEntity> query = session.createQuery("FROM ViewAllOrderEntity ");
+            payment = query.getResultList();
+            transaction.commit();
+        } catch (Exception var9) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            var9.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return payment;
     }
 }

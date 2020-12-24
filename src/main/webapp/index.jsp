@@ -58,6 +58,12 @@
         </form>
 
         <c:if test="${userType!='Customer'}">
+            <form method="post" action="${pageContext.request.contextPath}/OrderManage">
+                <input type="submit" value="Manage Order">
+            </form>
+        </c:if>
+
+        <c:if test="${userType!='Customer'}">
             <form method="post" action="${pageContext.request.contextPath}/ManageWarehouse">
                 <input type="submit" value="Manage Warehouse">
             </form>

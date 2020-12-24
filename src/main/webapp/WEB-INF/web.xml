@@ -111,4 +111,13 @@
         <url-pattern>/Payment</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>OrderManageController</servlet-name>
+        <servlet-class>com.mvc.controller.OrderManageController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderManageController</servlet-name>
+        <url-pattern>/OrderManage</url-pattern>
+    </servlet-mapping>
+
 </web-app>
