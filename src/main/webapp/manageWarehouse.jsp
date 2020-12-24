@@ -30,6 +30,7 @@
     </c:if>
     <div class="container">
         <div class="page-header">
+            <p>Trở về <a href="${pageContext.request.contextPath}/index.jsp">trang chủ</a></p>
             <h1>Trang quản lý kho hàng</h1>
             <p>
             <form method="get" action="${pageContext.request.contextPath}/ManageWarehouse">

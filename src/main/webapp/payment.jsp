@@ -30,6 +30,7 @@
     %>
     <div class="jumbotron">
         <div class="page-header">
+            <p>Trở về <a href="${pageContext.request.contextPath}/index.jsp">trang chủ</a></p>
             <h1>Trang thanh toán</h1>
         </div>
 
@@ -69,20 +70,20 @@
                     <th colspan="3">Tổng tiền: </th>
                     <td><c:out value="${cost}"></c:out></td>
                 </tr>
-                <tr>
+                <!--tr>
                     <th colspan="3">Giảm giá: <c:out value="${TenMaGiamGia}"></c:out></th>
                     <td>${discount}</td>
                 </tr>
                 <tr>
                     <th colspan="3">Số tiền phải thanh toán: </th>
                     <td><c:out value="${cost - discount}"></c:out></td>
-                </tr>
+                </tr-->
                 </tbody>
             </table>
             <h3>Chọn đơn vị giao hàng </h3>
             <form method="get" action="${pageContext.request.contextPath}/Payment">
                 <input type="hidden" name="MaGio" value="${MaGio}">
-                <input type="hidden" name="TongGiaTri" value="${cost - discount}">
+                <input type="hidden" name="TongGiaTri" value="${cost}">
                 <%
                     String checked = "checked";
                     for (DonvigiaohangEntity dv: listDV) {

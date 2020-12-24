@@ -20,6 +20,7 @@
     </style>
 </head>
 <body>
+<p>Trở về <a href="${pageContext.request.contextPath}/index.jsp">trang chủ</a></p>
 <c:if test="${fn:contains(Type, 'Add')}">
     <div class="container col-md-8 col-md-offset-3" style="overflow: auto">
         <div class="jumbotron">

@@ -18,6 +18,7 @@
     <div class="container col-md-8 col-md-offset-3" style="overflow: auto">
         <div class="jumbotron">
             <div class="page-header">
+                <p>Trở về <a href="${pageContext.request.contextPath}/index.jsp">trang chủ</a></p>
                 <h1>Thay đổi thông tin người dùng</h1>
                 <p class="text-info"><c:out value="${status}"></c:out></p>
             </div>

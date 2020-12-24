@@ -58,7 +58,10 @@ public class PaymentController extends HttpServlet {
 
         List<DonhangEntity> listDH = PaymentDao.GetDonHang();
         listDH.sort(Comparator.comparing(DonhangEntity::getMaDon).reversed());
-        int maDon = listDH.get(0).getMaDon() + 1;
+        int maDon = 1;
+        if (!listDH.isEmpty()) {
+            maDon = listDH.get(0).getMaDon() + 1;
+        }
 
         // response.getWriter().append(String.format("MaGio: %s\nMaGiamGia: %s\nMaDonViGiaoHang: %s\nTongGiaTri: %s", maGioStr, maGiam, maDonViGiaoHang, tongGiaTriStr));
 
@@ -72,13 +75,25 @@ public class PaymentController extends HttpServlet {
         don.setTongGiaTri(Integer.parseInt(tongGiaTriStr));
         don.setNgayDat(new java.sql.Date(Calendar.getInstance().getTime().getTime()));
 
-        String status = PaymentDao.AddDonHang(don);
+        String status = null;
+        for (DonhangEntity dh: listDH) {
+            if (dh.getMaGio().equals(Integer.parseInt(maGioStr))) {
+                don.setMaDon(dh.getMaDon());
+                status = "Đơn hàng có trùng mã giỏ " + maGioStr + "\n";
+                break;
+            }
+        }
+        if (status != null) {
+            status += PaymentDao.EditDonHang(don);
+        }
+        else {
+            status = PaymentDao.AddDonHang(don);
+        }
 
         request.setAttribute("status", status);
         request.setAttribute("authorize", true);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("payment-message.jsp");
         dispatcher.forward(request, response);
-
     }
 }
