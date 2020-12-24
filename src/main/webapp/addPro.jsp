@@ -1,17 +1,44 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Hương Gấu
-  Date: 12/24/2020
-  Time: 9:29 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Thêm sản phẩm</title>
+    <meta name="description" content="Quan Com Online Unifood" />
+    <meta name="author" content="NhomHQNT">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <link type="text/css" rel="stylesheet" href="css/qlpage.css" />
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
 </head>
 <body>
+<div id="container">
+    <nav style="background-color: #60150c;" class="navbar navbar-expand-sm">
+        <a href="#"><img class="logo" src="Images/LOGO.png" style="width: auto; height: 50px;"></a>
+        <a class="homelogo" href="index.jsp"><img src="Images/homepage_icon.png" style="width: auto; height: 50px;"></a>
+        <ul class="navbar-nav">
+            <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/MainPage?">HOME</a></li>
+            <li class="nav-item"><a class="nav-link" href="staffs.jsp">STAFFS</a></li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">MANAGER</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/ManageWarehouse">My Profile</a>
+                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
+                </div></li>
+        </ul>
+    </nav>
 <c:if test="${not empty Trangthaithem}">
     <c:choose>
         <c:when test="${Trangthaithem==true}">
@@ -26,11 +53,11 @@
         </c:otherwise>
     </c:choose>
 </c:if>
-<div align="center">
+<div id="procontainer" style="text-align: center;">
     <form id="addcontainer" method="post" action="${pageContext.request.contextPath}/addPro">
         <table>
             <tr>
-                <td> Mã Sản Phẩm: </td>
+                <td><b> Mã Sản Phẩm: </b></td>
                 <td>
                 <input type="text" name="maSanPham"
                 <c:choose>
@@ -50,7 +77,7 @@
             </tr>
 
             <tr>
-                <td> Tên Sản Phẩm: </td>
+                <td><b>Tên Sản Phẩm: </b></td>
                 <td>
                     <input type="text" name="tenSanPham"
                     <c:choose>
@@ -70,7 +97,7 @@
             </tr>
 
             <tr>
-                <td> Đơn giá: </td>
+                <td><b> Đơn giá: </b></td>
                 <td>
                 <input type="text" name="donGia"
                 <c:choose>
@@ -90,7 +117,7 @@
             </tr>
 
             <tr>
-                <td> Đơn vị tính của Sản Phẩm: </td>
+                <td><b> Đơn vị tính của Sản Phẩm: </b></td>
                 <td>
                 <input type="text" name="donViTinh"
                 <c:choose>
@@ -110,7 +137,7 @@
             </tr>
 
             <tr>
-                <td> Số lượng của Sản Phẩm: </td>
+                <td><b> Số lượng của Sản Phẩm: </b></td>
                 <td>
                     <input type="text" name="soLuong"
                     <c:choose>
@@ -131,7 +158,7 @@
 
 
             <tr>
-                <td> Hình ảnh Sản Phẩm: </td>
+                <td><b> Hình ảnh Sản Phẩm: </b></td>
                 <td>
                 <input type="text" name="anhMinhHoa"
                 <c:choose>
@@ -151,7 +178,7 @@
             </tr>
 
             <tr>
-                <td> Mã nhóm của Sản Phẩm: </td>
+                <td><b> Mã nhóm của Sản Phẩm: </b></td>
                 <td>
                 <input type="text" name="maNhom"
                 <c:choose>
@@ -171,7 +198,7 @@
             </tr>
 
             <tr>
-                <td> Mã kho của Sản Phẩm: </td>
+                <td><b> Mã kho của Sản Phẩm: </b></td>
                 <td>
                 <input type="text" name="maKho"
                 <c:choose>
@@ -191,7 +218,7 @@
             </tr>
 
             <tr>
-                <td> Mô tả Sản Phẩm: </td>
+                <td><b> Mô tả Sản Phẩm: </b></td>
                 <td>
                 <input type="text" name="moTa"
                 <c:choose>
@@ -211,8 +238,15 @@
                 </tr>
         </table>
 
-        <input type="submit" value="Xác nhận">
+        <input type="submit" style="text-align: center; background-color: #60150c; text-decoration-color: white" value="Xác nhận">
     </form>
+</div>
+
+    <div id="footer">
+        <p style="text-align: center">
+            <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
+        </p>
+    </div>
 </div>
 </body>
 </html>

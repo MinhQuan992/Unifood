@@ -261,3 +261,20 @@ a.dropdown-item-custom:active{
     float: left;
     margin-right: 1em;
 }
+
+/*Thêm sản phẩm*/
+#procontainer{
+    height: 100%;
+    width: 100%;
+    font-family: SVN-Zero;
+    font-size: 25px;
+    border-top: 1px solid #E6E6E6;
+    color: #60150c;
+    padding: 1em 3em;
+    text-align: center;
+    background-image: url("../Images/bg.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+}

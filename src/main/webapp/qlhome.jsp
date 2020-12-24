@@ -30,15 +30,14 @@
         <a href="#"><img class="logo" src="Images/LOGO.png" style="width: auto; height: 50px;"></a>
         <a class="homelogo" href="index.jsp"><img src="Images/homepage_icon.png" style="width: auto; height: 50px;"></a>
         <ul class="navbar-nav">
-            <li class="nav-item active"><a class="nav-link" href="index.jsp">HOME</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">PRODUCTS</a></li>
-            <li class="nav-item"><a class="nav-link" href="#">STAFFS</a></li>
+            <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/MainPage?">HOME</a></li>
+            <li class="nav-item"><a class="nav-link" href="staffs.jsp">STAFFS</a></li>
         </ul>
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">MANAGER</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item dropdown-item-custom" href="#">My Profile</a>
-                    <a class="dropdown-item dropdown-item-custom" href="#">Sign Out</a>
+                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/ManageWarehouse">My Profile</a>
+                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
                 </div></li>
         </ul>
     </nav>
@@ -68,6 +67,7 @@
                                                 <div class="col-xs-12 col-md-6">
                                                     <p class="lead"><strong>${item.donGia}</strong></p>
                                                 </div><br>
+                                                <div class="col-xs-12 col-md-6"><a class="btn btn-success" href="${pageContext.request.contextPath}/Product?ItemCode=${item.maSanPham}">Chi tiết</a> </div>
                                             </div>
                                         </div>
                                     </div>
@@ -79,6 +79,7 @@
             </div>
         </div>
     </div>
+</div>
 
     <div id="footer">
         <p style="text-align: center">
@@ -86,6 +87,5 @@
         </p>
     </div>
 </div>
-
 </body>
 </html>

@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Vo Tran Minh Quan
-  Date: 11/12/2020
-  Time: 3:26 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -23,7 +16,7 @@
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-    <link type="text/css" rel="stylesheet" href="../../../../Unifood-master/target/UniFoods-1.0-SNAPSHOT/css/conpage.css" />
+    <link type="text/css" rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -32,15 +25,15 @@
 <body>
 <div id="container">
     <nav style="background-color: #60150c;" class="navbar navbar-expand-sm">
-        <a href="#"><img class="logo" src="Images/LOGO.png" style="width: auto; height: 50px;">}</a>
+        <a href="#"><img class="logo" src="Images/LOGO.png" style="width: auto; height: 50px;"></a>
         <a class="homelogo" href="index.jsp"><img src="Images/homepage_icon.png" style="width: auto; height: 50px;"></a>
         <ul class="navbar-nav">
             <li class="nav-item active"><a class="nav-link" href="index.jsp">HOME</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/MainPage?">PRODUCTS</a></li>
             <li class="nav-item"><a class="nav-link" href="contact.jsp">CONTACTS</a></li>
         </ul>
-        <a href="${pageContext.request.contextPath}/Cart?"><img class="cart" src="Images/gio.png" style="width: auto; height: 50px;"></a>
         <ul class="navbar-nav ml-auto">
+            <a href="${pageContext.request.contextPath}/Cart?"><img class="cart" src="Images/gio.png" style="width: auto; height: 50px;"></a>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> Sign In - Sign Up </a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item dropdown-item-custom" href="signin.jsp">Sign In</a>
@@ -50,7 +43,7 @@
     </nav>
 <c:choose>
     <c:when test="${empty signinSuccess}">
-        <a href="${pageContext.request.contextPath}/signin.jsp">HELLO WORLD</a>
+        <a href="${pageContext.request.contextPath}/signin.jsp"></a>
     </c:when>
 
     <c:otherwise>
@@ -111,6 +104,49 @@
 
     </c:otherwise>
 </c:choose>
+
+    <div class="slider-container">
+        <div class="menu">
+            <label for="slide-dot-1"></label> <label for="slide-dot-2"></label>
+            <label for="slide-dot-3"></label>
+        </div>
+
+        <input id="slide-dot-1" type="radio" name="slides" checked>
+        <div class="slide slide-1"></div>
+
+        <input id="slide-dot-2" type="radio" name="slides">
+        <div class="slide slide-2"></div>
+
+        <input id="slide-dot-3" type="radio" name="slides">
+        <div class="slide slide-3"></div>
+    </div>
+
+    <h1 style="text-align: center; color: #60150c;"><b>ABOUT US</b></h1>
+    <div class="row">
+        <div id="box1" class="col">
+            <h2><b>General</b></h2>
+            <img src="Images/gate.jpg" alt="CSS" />
+            <p>We are pleased to serve you with the best quality. Our
+                retaurant is experienced in food industry, expecially COM TAM. We
+                hope you will have good experience in our retaurant.</p>
+        </div>
+        <div id="box2" class="col">
+            <h2><b>Facilities</b></h2>
+            <img src="Images/kit.jpg" alt="URL" />
+            <p>With the highest quality facilities, we commit serving you
+                well. All the dishes are made from the fresh ingredients, which is
+                classified carefully from the famous farms. High technology will
+                make you comfortable. Thank you for choosing us.</p>
+        </div>
+        <div id="box3" class="col">
+            <h2><b>Staffs</b></h2>
+            <img src="Images/staff.jpg" alt="HTML" />
+            <p>The team is appreciated to be with you in all meals.
+                Throughout the best training, we know that our attitude will decide
+                your attitude. So we always try our best to understand what you
+                need, from now on, we continue changing everything to be suitable.</p>
+        </div>
+    </div>
 
     <div id="footer">
         <p style="text-align: center">
