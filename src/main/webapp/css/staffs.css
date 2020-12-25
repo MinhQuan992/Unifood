@@ -1,0 +1,186 @@
+*{
+    margin: 0;
+    padding: 0;
+}/*==reset css==*/
+
+body{
+    font-family: SVN-Zero;
+    font-size: 16px;
+    color: ghostwhite;
+}
+
+/*==Dieu chinh menu==*/
+
+#menu{
+    height: 100px;
+    width: 100%;
+}
+#menu ul {
+    display: block;
+    background: #60150c;
+    list-style-type: none;
+    text-align: center;
+    height: 200px;
+    top: 0;
+}
+#menu li{
+    float: left;
+    text-align: center;
+    color: #60150c;
+    display: inline-block;
+    width: 250px;
+    height: 20px;
+    padding-top: 35px;
+    line-height: 30px;
+    margin-left: -5px;/*==xoa inline-block tu sinh==*/
+}
+#menu li a{
+    text-decoration: none;
+    color: #60150c;
+    display: block;
+    padding: 0 1em;
+}
+a:hover, a:visited{
+    background: #8e1b0c;
+    color: ghostwhite;
+}
+.navbar-nav{
+    margin-left: 1%;
+}
+li.nav-item{
+    margin-left: 25px;
+}
+li.nav-item a:hover{
+    color: ghostwhite;
+    border-radius: 20px;
+}
+.nav-link{
+    font-weight: bold;
+}
+.homelogo{
+    margin-left: 100px;
+}
+.homelogo:hover{
+    background: #60150c;
+    text-decoration: none;
+}
+/*==Drop down menu==*/
+.sub-menu li {
+    display: none;
+}
+#menu li{
+    position: relative;
+}
+.sub-menu {
+    color: #602b28;
+    display: none;
+    position: absolute;
+}
+a.dropdown-item-custom{
+    color: #000000;
+    font-weight: bold;
+}
+a.dropdown-item-custom:hover{
+    background: #60150c;
+    color: #fff;
+    border-radius: 2%;
+}
+a.dropdown-item-custom:active{
+    background: #60150c;
+    color: #fff;
+}
+/*==Hien thi khi re chuot==*/
+#menu li:hover .sub-menu{
+    display: block;
+}
+.sub-menu li{
+    margin-left: 0 !important;
+}
+/*==can chinh==*/
+.logo{
+    float: left;
+    text-align: center;
+    width: 150px;height: 100px;
+    background: #60150c;
+}
+.logo:hover{
+    text-decoration: none;
+}
+.logo img{
+    width: 100%;height: 100%
+}
+.floated-left{
+
+    display: flex;
+    flex-direction: row;
+    color: #60150c;
+    float:left;
+}
+
+/*==footer==*/
+#footer{
+    font-family: SVN-Titillium Light;
+    font-size: 16px;
+    border-top: 1px solid #E6E6E6;
+    color: slategray;
+    padding: 1em 3em;
+    text-alignt: center;
+}
+
+#container{
+    padding-top: 0px;
+    position: relative;
+    top: 0;
+    width: 100%;
+}
+
+
+/*nhân viên*/
+.glyphicon{
+    margin-right: 5px;
+}
+.thumbnail {
+    margin-bottom: 20px;
+    padding: 0px;
+    -webkit-border-radius: 0px;
+    -moz-border-radius: 0px;
+    border-radius: 0px;
+}
+.item.list-group-item {
+    float: none;
+    width: 100%;
+    background-color: #fff;
+    margin-bottom: 10px;
+}
+.item.list-group-item:nth-of-type(odd):hover, .item.list-group-item:hover {
+    background: #428bca;
+}
+.item.list-group-item .list-group-image {
+    margin-right: 10px;
+}
+.item.list-group-item .thumbnail {
+    margin-bottom: 0px;
+}
+.item.list-group-item .caption {
+    padding: 9px 9px 0px 9px;
+}
+.item.list-group-item:nth-of-type(odd) {
+    background: #eeeeee;
+}
+.item.list-group-item:before, .item.list-group-item:after {
+    display: table; content:"";
+}
+.item.list-group-item img {
+    float: left;
+}
+.item.list-group-item:after {
+    clear: both;
+}
+.list-group-item-text {
+    position: center;
+    margin: 0 0 11px;
+}
+.group .list-group-image{
+    height: 200px;
+    width: 300px;
+}

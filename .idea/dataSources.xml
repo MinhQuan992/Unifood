@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="UNIFOOD@localhost" uuid="c50df048-1fb1-417d-b551-5d99721c9d2b">
+    <data-source source="LOCAL" name="UNIFOOD@localhost" uuid="2dd8b757-a9bc-4c3c-ac09-31d9f53a1a32">
       <driver-ref>sqlserver.ms</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
-      <jdbc-url>jdbc:sqlserver://localhost:1433;database=UNIFOOD</jdbc-url>
-      <working-dir>$ProjectFileDir$</working-dir>
+      <jdbc-url>jdbc:sqlserver://localhost;database=UNIFOOD</jdbc-url>
     </data-source>
   </component>
 </project>

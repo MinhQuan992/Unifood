@@ -47,7 +47,7 @@ public class GroupItemDao {
         Session session = HibernateUtility.getSessionFactory().openSession();
         try {
             transaction = session.beginTransaction();
-            Query<SanphamEntity> query = session.createQuery("SELECT Item FROM SanphamEntity Item, NhomsanphamEntity Group WHERE Group.maNhom=:GroupID");
+            Query<SanphamEntity> query = session.createQuery("SELECT Item FROM SanphamEntity Item WHERE Item.maNhom=:GroupID");
             query.setParameter("GroupID", group.getMaNhom());
             listItem = query.getResultList();
             transaction.commit();

@@ -1,5 +1,6 @@
 package com.mvc.entities;
 
+
 import javax.persistence.*;
 
 @Entity
@@ -14,6 +15,22 @@ public class SanphamEntity {
     private Short maNhom;
     private String maKho;
     private String moTa;
+    public SanphamEntity(){
+
+    }
+
+    public SanphamEntity(String maSP, String tenSP, String dv, Integer gia, Integer sl, String anh, Short nhomID, String khoID, String mt)
+    {
+        this.maSanPham=maSP;
+        this.tenSanPham=tenSP;
+        this.donViTinh=dv;
+        this.donGia=gia;
+        this.soLuong=sl;
+        this.anhMinhHoa=anh;
+        this.maNhom=nhomID;
+        this.maKho=khoID;
+        this.moTa=mt;
+    }
 
     @Id
     @Column(name = "MaSanPham", nullable = false, length = 10)

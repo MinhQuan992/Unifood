@@ -38,10 +38,12 @@ public class SigninController extends HttpServlet {
                 if (userID.startsWith("KH"))
                 {
                     request.getSession().setAttribute("userType", "Customer");
+                    url="/khach.jsp";
                 }
                 else
                 {
                     request.getSession().setAttribute("userType", "Manager");
+                    url="qlhome.jsp";
                 }
                 request.getSession().setAttribute("User",user);
                 CartDao cartDao = new CartDao();
@@ -58,7 +60,6 @@ public class SigninController extends HttpServlet {
                 request.getSession().setAttribute("email", user.getEmail());
                 request.getSession().setAttribute("signinSuccess", true);
 
-                url = "/index.jsp";
             }
             else
             {
