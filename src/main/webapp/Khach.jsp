@@ -26,7 +26,7 @@
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-    <link type="text/css" rel="stylesheet" href="css/khachpage.css" />
+    <link type="text/css" rel="stylesheet" href="/css/khachpage.css" />
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -45,7 +45,7 @@
         <ul class="navbar-nav">
             <li class="nav-item active"><a class="nav-link" href="index.jsp">HOME</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/MainPage?">PRODUCTS</a></li>
-            <li class="nav-item"><a class="nav-link" href="contact.jsp">CONTACTS</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/contact.jsp">CONTACTS</a></li>
         </ul>
         <ul class="navbar-nav ml-auto">
             <a href="${pageContext.request.contextPath}/Cart?"><img class="cart" src="Images/gio.png" style="width: auto; height: 50px;"></a>
@@ -57,33 +57,46 @@
         </ul>
     </nav>
 
+    <div class="slider-container">
+        <div class="menu">
+            <label for="slide-dot-1"></label> <label for="slide-dot-2"></label>
+            <label for="slide-dot-3"></label>
+        </div>
 
-    <div class="contain">
-        <h3 style="text-align: center;">SẢN PHẨM NỔI BẬT</h3>
-        <div class="well well-sm text-right">
-            <div id="product" class="row list-group">
-                    <c:forEach items="${requestScope.ListItems}" var="list">
-                        <div class="container">
-                        <h2 class="caption" style="text-align: center;">${list.listItemName}</h2>
-                        <c:forEach items="${list.itemList}" var="item">
-                            <div class="item col-xs-3 col-lg-3">
-                                <div class="thumnail"><img class="group list-group image" src="${pageContext.request.contextPath}${item.anhMinhHoa}" style="width: 300px; height: 200px;">
-                                    <div class="caption">
-                                        <h4 class="group inner list-group-item-heading" style="text-align: center"><strong>${item.tenSanPham}</strong></h4>
-                                        <div class="row">
-                                            <div class="col-xs-12 col-md-6">
-                                                <p class="lead"><strong>${item.donGia}</strong></p>
-                                            </div><br>
-                                            <div class="col-xs-12 col-md-6"><a class="btn btn-success" href="${pageContext.request.contextPath}/Product?ItemCode=${item.maSanPham}">Chi tiết</a> </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </c:forEach>
-                        </div>
-                    </c:forEach>
-                </div>
-            </div>
+        <input id="slide-dot-1" type="radio" name="slides" checked>
+        <div class="slide slide-1"></div>
+
+        <input id="slide-dot-2" type="radio" name="slides">
+        <div class="slide slide-2"></div>
+
+        <input id="slide-dot-3" type="radio" name="slides">
+        <div class="slide slide-3"></div>
+    </div>
+
+    <h1 style="text-align: center; color: #60150c;"><b>ABOUT US</b></h1>
+    <div class="row">
+        <div id="box1" class="col">
+            <h2><b>General</b></h2>
+            <img src="Images/gate.jpg" alt="CSS" />
+            <p>We are pleased to serve you with the best quality. Our
+                retaurant is experienced in food industry, expecially COM TAM. We
+                hope you will have good experience in our retaurant.</p>
+        </div>
+        <div id="box2" class="col">
+            <h2><b>Facilities</b></h2>
+            <img src="Images/kit.jpg" alt="URL" />
+            <p>With the highest quality facilities, we commit serving you
+                well. All the dishes are made from the fresh ingredients, which is
+                classified carefully from the famous farms. High technology will
+                make you comfortable. Thank you for choosing us.</p>
+        </div>
+        <div id="box3" class="col">
+            <h2><b>Staffs</b></h2>
+            <img src="Images/staff.jpg" alt="HTML" />
+            <p>The team is appreciated to be with you in all meals.
+                Throughout the best training, we know that our attitude will decide
+                your attitude. So we always try our best to understand what you
+                need, from now on, we continue changing everything to be suitable.</p>
         </div>
     </div>
 

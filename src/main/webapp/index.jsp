@@ -23,42 +23,6 @@
           crossorigin="anonymous">
 </head>
 <body>
-<c:choose>
-    <c:when test="${empty signinSuccess}">
-        <a href="${pageContext.request.contextPath}/signin.jsp"></a>
-    </c:when>
-
-    <c:otherwise>
-        <c:out value="${userID}"/>
-        <br>
-        <c:out value="${fullName}"/>
-        <br>
-        <c:out value="${gender}"/>
-        <br>
-        <c:out value="${birthdate}"/>
-        <br>
-        <c:out value="${address}"/>
-        <br>
-        <c:out value="${phone}"/>
-        <br>
-        <c:out value="${email}"/>
-
-        <c:choose>
-            <c:when test="${userType == 'Customer'}">
-                <form method="post" action="${pageContext.request.contextPath}/Orders">
-                    <input type="submit" value="Đơn hàng của tôi">
-                </form>
-            </c:when>
-
-            <c:otherwise>
-                <form method="post" action="${pageContext.request.contextPath}/signup.jsp">
-                    <input type="submit" value="Thêm quản lý">
-                </form>
-            </c:otherwise>
-        </c:choose>
-
-    </c:otherwise>
-</c:choose>
 <div id="container">
     <nav style="background-color: #60150c;" class="navbar navbar-expand-sm">
         <a href="#"><img class="logo" src="Images/LOGO.png" style="width: auto; height: 50px;"></a>

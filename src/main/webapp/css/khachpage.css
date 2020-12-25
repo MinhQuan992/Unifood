@@ -117,6 +117,109 @@ a.dropdown-item-custom:active{
     float:left;
 }
 
+/*==slide hinh anh==*/
+*html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+.slider-container{
+    height: 100%;
+    width: 100%;
+    position: relative;
+    overflow: hidden;
+    text-align: center;
+}
+
+.menu {
+    position: absolute;
+    left: 0;
+    z-index: 900;
+    width: 100%;
+    bottom: 0;
+}
+
+.menu label {
+    cursor: pointer;
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    background: #fff;
+    border-radius: 50px;
+    margin: 0 .2em 1em;
+    transition: all .3s ease;
+}
+:hover {
+    background: #60150c;
+}
+
+.slide {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 100%;
+    z-index: 10;
+    padding: 8em 1em 0;
+    background-size: cover;
+    background-position: 50% 50%;
+    transition: left 0s .75s;
+}
+
+[id^="slide"]:checked + .slide {
+    left: 0;
+    z-index: 100;
+    transition: left .65s ease-out;
+}
+
+.slide-1 {
+    background-image: url("../Images/Comga.jpg");
+}
+.slide-2 {
+    background-image: url("../Images/Comsuonbi.jpg");
+}
+.slide-3 {
+    background-image: url("../Images/Comthitnuong.jpg");
+}
+
+/*Can dong row*/
+.row {
+    font-family: SVN-Titillium Light;
+    color: #60150c;
+    background-image: url("../Images/bg.jpg");
+    background-repeat: no-repeat;
+    background-position: right top;
+    background-attachment: fixed;
+    overflow: auto;
+    margin: 1.5em auto;
+}
+/*==Chia cột phần content==*/
+.row {
+    overflow: auto;
+    margin: 1.5em auto;
+}
+.row .col {
+    float: left;
+    width: 31.3333%;
+    margin-right: 2.99%;
+}
+.row .col:last-child {
+    float: right;
+    margin-right: 0;
+}
+/* Style cho ảnh */
+.row .col img {
+    border-image: 50 / 10px / 60px stretch;
+    width: auto;
+    height: auto;
+    max-width:230px;
+    max-height:95px;
+    float: left;
+    margin-right: 1em;
+}
+
 /*==footer==*/
 #footer{
     font-family: SVN-Titillium Light;

@@ -5,7 +5,7 @@
       <configuration>
         <setting name="validation-enabled" value="true" />
         <datasource-mapping>
-          <factory-entry name="default" value="8067fce5-eb02-4209-ac06-b02abb5ddb42" />
+          <factory-entry name="default" value="0a604918-3538-4120-a8d4-323005d1f945" />
           <factory-entry name="noname-a.xml@0" value="e4fa9265-54fe-4fb4-978a-f02d4bafe431" />
         </datasource-mapping>
         <naming-strategy-map />

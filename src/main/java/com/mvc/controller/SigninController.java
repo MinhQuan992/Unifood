@@ -38,7 +38,7 @@ public class SigninController extends HttpServlet {
                 if (userID.startsWith("KH"))
                 {
                     request.getSession().setAttribute("userType", "Customer");
-                    url="/khach.jsp";
+                    url="/Khach.jsp";
                 }
                 else
                 {
