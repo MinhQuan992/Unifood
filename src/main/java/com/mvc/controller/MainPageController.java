@@ -33,7 +33,7 @@ public class MainPageController extends HttpServlet {
         ItemDao itemDao = new ItemDao();
         GroupItemDao groupItemDao = new GroupItemDao();
 
-        for (short i=1; i<9; i++)
+        for (short i=1; i<4; i++)
         {
             groupItem = groupItemDao.getGroupItemData(i);
             //System.out.println("Group Item was loaded completely: " + groupItem.getTenNhom());

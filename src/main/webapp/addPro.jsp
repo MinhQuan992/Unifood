@@ -23,6 +23,20 @@
           crossorigin="anonymous">
 </head>
 <body>
+<c:if test="${not empty Trangthaithem}">
+    <c:choose>
+        <c:when test="${Trangthaithem==true}">
+            <script type="text/javascript">
+                alert("Thêm thành công!");
+            </script>
+        </c:when>
+        <c:otherwise>
+            <script type="text/javascript">
+                alert("Thêm không thành công!");
+            </script>
+        </c:otherwise>
+    </c:choose>
+</c:if>
 <div id="container">
     <nav style="background-color: #60150c;" class="navbar navbar-expand-sm">
         <a href="#"><img class="logo" src="Images/LOGO.png" style="width: auto; height: 50px;"></a>
@@ -39,20 +53,6 @@
                 </div></li>
         </ul>
     </nav>
-<c:if test="${not empty Trangthaithem}">
-    <c:choose>
-        <c:when test="${Trangthaithem==true}">
-            <script type="text/javascript">
-                alert("Thêm thành công!");
-            </script>
-        </c:when>
-        <c:otherwise>
-            <script type="text/javascript">
-                alert("Thêm không thành công!");
-            </script>
-        </c:otherwise>
-    </c:choose>
-</c:if>
 <div id="procontainer" style="text-align: center;">
     <form id="addcontainer" method="post" action="${pageContext.request.contextPath}/addPro">
         <table>

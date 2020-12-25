@@ -18,23 +18,12 @@
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-    <link type="text/css" rel="stylesheet" href="css/home.css" />
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
 </head>
 <body id="login-page">
-<div id="container">
-    <nav style="background-color: #60150c;" class="navbar navbar-expand-sm">
-        <a href="#"><img class="logo" src="Images/LOGO.png" style="width: auto; height: 50px;">}</a>
-        <a class="homelogo" href="index.jsp"><img src="Images/homepage_icon.png" style="width: auto; height: 50px;"></a>
-        <ul class="navbar-nav">
-            <li class="nav-item active"><a class="nav-link" href="index.jsp">HOME</a></li>
-            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/MainPage?">PRODUCTS</a></li>
-            <li class="nav-item"><a class="nav-link" href="contact.jsp">CONTACTS</a></li>
-        </ul>
-    </nav>
 <c:if test="${not empty signupSuccess && signupSuccess == true}">
     <script type="text/javascript">
         alert("Tạo tài khoản thành công, mời bạn đăng nhập để tiếp tục!")
@@ -45,6 +34,16 @@
         alert("Tên đăng nhập hoặc mật khẩu sai!")
     </script>
 </c:if>
+<div id="container">
+    <nav style="background-color: #60150c;" class="navbar navbar-expand-sm">
+        <a href="#"><img class="logo" src="Images/LOGO.png" style="width: auto; height: 50px;"></a>
+        <a class="homelogo" href="index.jsp"><img src="Images/homepage_icon.png" style="width: auto; height: 50px;"></a>
+        <ul class="navbar-nav">
+            <li class="nav-item active"><a class="nav-link" href="index.jsp">HOME</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/MainPage?">PRODUCTS</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.jsp">CONTACTS</a></li>
+        </ul>
+    </nav>
 
 <article>
     <img id="logo" src="Images/LOGO.png">
