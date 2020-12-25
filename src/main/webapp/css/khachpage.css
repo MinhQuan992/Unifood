@@ -283,6 +283,5 @@ a.dropdown-item-custom:active{
     margin: 0 0 11px;
 }
 .group .list-group-image{
-    height: 200px;
-    width: 300px;
+    width: 100%;
 }

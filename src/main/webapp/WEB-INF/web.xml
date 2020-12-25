@@ -120,4 +120,12 @@
         <url-pattern>/OrderManage</url-pattern>
     </servlet-mapping>
 
+    <servlet>
+        <servlet-name>MainPageController</servlet-name>
+        <servlet-class>com.mvc.controller.MainPageController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MainPageController</servlet-name>
+        <url-pattern>/MainPage</url-pattern>
+    </servlet-mapping>
 </web-app>

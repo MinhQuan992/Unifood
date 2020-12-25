@@ -1,6 +1,12 @@
 <%@ page import="com.mvc.entities.KhohangEntity" %>
 <%@ page import="com.mvc.entities.SanphamEntity" %>
-<%@ page import="java.util.*" %>
+<%@ page import="java.util.*" %><%--
+  Created by IntelliJ IDEA.
+  User: Admin
+  Date: 12/9/2020
+  Time: 9:04 AM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -13,45 +19,18 @@
         .jumbotron {
             background-color: #fafafa;
         }
-    </style><meta name="description" content="Quan Com Online Unifood" />
-    <meta name="author" content="NhomHQNT">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script
-            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script
-            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
-    <link type="text/css" rel="stylesheet" href="css/qlpage.css" />
-    <link rel="stylesheet"
-          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
-          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
-          crossorigin="anonymous">
+    </style>
 </head>
 <body>
-<div id="container">
-    <nav style="background-color: #60150c;" class="navbar navbar-expand-sm">
-        <a href="#"><img class="logo" src="Images/LOGO.png" style="width: auto; height: 50px;"></a>
-        <a class="homelogo" href="index.jsp"><img src="Images/homepage_icon.png" style="width: auto; height: 50px;"></a>
-        <ul class="navbar-nav">
-            <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/MainPage?">HOME</a></li>
-            <li class="nav-item"><a class="nav-link" href="staffs.jsp">STAFFS</a></li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">MANAGER</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/ManageWarehouse">My Profile</a>
-                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
-                </div></li>
-        </ul>
-    </nav>
 <c:if test="${not empty authorize}">
+    <c:if test="${not empty DeleteStatus}">
+        <script type="text/javascript">
+            alert("Lỗi: Không thể thực hiện việc xóa. \n${DeleteStatus}")
+        </script>
+    </c:if>
     <div class="container">
         <div class="page-header">
+            <p>Trở về <a href="${pageContext.request.contextPath}/index.jsp">trang chủ</a></p>
             <h1>Trang quản lý kho hàng</h1>
             <p>
             <form method="get" action="${pageContext.request.contextPath}/ManageWarehouse">
@@ -142,8 +121,8 @@
                         </td>
                         <td><%= sp.getSoLuong() %>
                         </td>
-                        <td class="text-center"><img src="<%= sp.getAnhMinhHoa()%>" width="200px"
-                                                     onerror="this.onerror=null; this.src='311151.jpg'"></td>
+                        <td class="text-center"><img src=".<%= sp.getAnhMinhHoa()%>" width="200px"
+                                                     onerror="this.onerror=null; this.src='./Images/311151.jpg'"></td>
                         <td><%= sp.getMaNhom() %>
                         </td>
                         <td><%= sp.getMoTa() %>
@@ -182,12 +161,5 @@
         <h1>Không có quyền truy cập</h1>
     </div>
 </c:if>
-
-    <div id="footer">
-        <p style="text-align: center">
-            <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
-        </p>
-    </div>
-</div>
 </body>
 </html>

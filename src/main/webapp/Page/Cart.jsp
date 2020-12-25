@@ -2,6 +2,7 @@
 <%@ page import="com.mvc.entities.DathangEntity" %>
 <%@ page import="com.mvc.entities.SanphamEntity" %>
 <%@ page import="java.util.Map" %>
+<%@ page import="com.mvc.entities.GiohangEntity" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -20,6 +21,7 @@
     int totalCost = (Integer) request.getAttribute("TotalCost");
     int quantityNumber = (Integer) request.getAttribute("QuantityNumber");
     int shippingFee = (Integer) request.getAttribute("ShippingFee");
+    GiohangEntity cart = (GiohangEntity) session1.getAttribute("ShoppingCart");
 %>
 <html>
 <head>
@@ -72,6 +74,7 @@
             <div>   Total number of Items: <input type="text" name="Total-Number-Of-Item" class="Input-text" disabled id="Total-Number-Of-Item" value="<%=quantityNumber%>"></div>
             <div>   Shipping fee: đ <input type="text" name="Shipping-fee" class="Input-text" disabled id="Shipping-fee" value="<%=shippingFee%>"></div>
             <div>   Total Cost: đ <input type="text" name="Total-Cost-Of-Cart" disabled class="Input-text" id="Total-Cost-Of-Cart" value="<%=totalCost%>"></div>
+            <input name="MaGio" value="<%=cart.getMaGio()%>" hidden>
             <input type="submit" class="Cart-Confirm-Button" name="Cart-Confirm" value="CONFIRM CART">
         </div>
     </form>

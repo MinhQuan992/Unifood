@@ -46,6 +46,7 @@
     <div class="container col-md-8 col-md-offset-3" style="overflow: auto">
         <div class="jumbotron">
             <div class="page-header">
+                <p>Trở về <a href="${pageContext.request.contextPath}/index.jsp">trang chủ</a></p>
                 <h1>Thay đổi thông tin người dùng</h1>
                 <p class="text-info"><c:out value="${status}"></c:out></p>
             </div>
@@ -53,7 +54,7 @@
                 <input type="hidden" id="UserId" name="UserId" value="${userID}">
 
                 <div class="form-group">
-                    <label for="fullName">Full Name:</label>
+                    <label for="fullName">Họ và tên:</label>
                     <input type="text"
                            class="form-control" id="fullName"
                            name="fullName" value="${fullName}">
@@ -61,7 +62,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="newPassword">New Password:</label>
+                    <label for="newPassword">Mật khẩu mới:</label>
                     <input type="password"
                            class="form-control" id="newPassword"
                            name="newPassword" value="${newPassword}" required>
@@ -69,7 +70,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="rePassword">Reenter new Password:</label>
+                    <label for="rePassword">Nhập lại mật khẩu mới:</label>
                     <input type="password"
                            class="form-control" id="rePassword"
                            name="rePassword" value="${rePassword}" required>
@@ -77,7 +78,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="gender">Gender:</label>
+                    <label for="gender">Giới tính:</label>
                     <input type="text"
                            class="form-control" id="gender"
                            name="gender" value="${gender}">
@@ -85,7 +86,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="birthDate">Birth Date:</label>
+                    <label for="birthDate">Ngày sinh:</label>
                     <input type="date"
                            class="form-control" id="birthDate"
                            name="birthDate" value="${birthDate}">
@@ -93,7 +94,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="address">Address:</label>
+                    <label for="address">Địa chỉ:</label>
                     <input type="text"
                            class="form-control" id="address"
                            name="address" value="${address}">
@@ -101,7 +102,7 @@
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">Phone Number:</label>
+                    <label for="phone">Số điện thoại:</label>
                     <input type="text"
                            class="form-control" id="phone"
                            name="phone" value="${phone}">
@@ -117,7 +118,7 @@
                 </div>
 
                 <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Confirm changes</button>
+                    <button type="submit" class="btn btn-primary">Xác nhận thay đổi</button>
                 </div>
 
             </form>

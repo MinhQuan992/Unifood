@@ -137,6 +137,8 @@ public class PaymentDao {
         return status;
     }
 
+
+
     public ViewAllOrderEntity getPaymentData(int cartCode)
     {
         ViewAllOrderEntity payment = null;
@@ -217,5 +219,23 @@ public class PaymentDao {
             session.close();
         }
         return payment;
+    }
+
+    public static String EditDonHang(DonhangEntity don)
+    {
+        String status = null;
+        Transaction transaction = null;
+        try (Session session = HibernateUtility.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            session.update(don);
+            transaction.commit();
+        }
+        catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            status = e.getMessage();
+        }
+        return status;
     }
 }

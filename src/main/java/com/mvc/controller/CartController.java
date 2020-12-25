@@ -9,6 +9,7 @@ import com.mvc.entities.SanphamEntity;
 import org.hibernate.Session;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -54,8 +55,12 @@ public class CartController extends HttpServlet {
             checkedList.clear();
             session.setAttribute("CheckedItemList",checkedList);
             session.setAttribute("SelectAllItem",null);
-            url = "/Payment?Cart=" + cart.getMaGio();
-            System.out.println("This servlet is being forward you to: " + url);
+
+            ServletContext context = this.getServletContext();
+            System.out.println("This servlet is being forward you to: /Payment");
+            RequestDispatcher dispatcher = context.getRequestDispatcher("/Payment");
+            dispatcher.forward(request, response);
+
         }
         else
         {
