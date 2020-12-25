@@ -39,9 +39,9 @@
         <a href="#"><img class="logo" src="Images/LOGO.png" style="width: auto; height: 50px;"></a>
         <a class="homelogo" href="index.jsp"><img src="Images/homepage_icon.png" style="width: auto; height: 50px;"></a>
         <ul class="navbar-nav">
-            <li class="nav-item active"><a class="nav-link" href="index.jsp">HOME</a></li>
+            <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">HOME</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/MainPage?">PRODUCTS</a></li>
-            <li class="nav-item"><a class="nav-link" href="contact.jsp">CONTACTS</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/contact.jsp">CONTACTS</a></li>
         </ul>
     </nav>
 
