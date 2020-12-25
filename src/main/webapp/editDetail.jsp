@@ -30,22 +30,6 @@
           crossorigin="anonymous">
 </head>
 <body>
-<div id="container">
-    <nav style="background-color: #60150c;" class="navbar navbar-expand-sm">
-        <a href="#"><img class="logo" src="Images/LOGO.png" style="width: auto; height: 50px;"></a>
-        <a class="homelogo" href="index.jsp"><img src="Images/homepage_icon.png" style="width: auto; height: 50px;"></a>
-        <ul class="navbar-nav">
-            <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/MainPage?">HOME</a></li>
-            <li class="nav-item"><a class="nav-link" href="staffs.jsp">STAFFS</a></li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">MANAGER</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/ManageWarehouse">My Profile</a>
-                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
-                </div></li>
-        </ul>
-    </nav>
 <%
     String maSanPham = request.getParameter("maSanPham");
 %>
@@ -63,6 +47,23 @@
         </c:otherwise>
     </c:choose>
 </c:if>
+<div id="container">
+    <nav style="background-color: #60150c;" class="navbar navbar-expand-sm">
+        <a href="#"><img class="logo" src="Images/LOGO.png" style="width: auto; height: 50px;"></a>
+        <a class="homelogo" href="index.jsp"><img src="Images/homepage_icon.png" style="width: auto; height: 50px;"></a>
+        <ul class="navbar-nav">
+            <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/MainPage?">HOME</a></li>
+            <li class="nav-item"><a class="nav-link" href="staffs.jsp">STAFFS</a></li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">MANAGER</a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/ManageWarehouse">My Profile</a>
+                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
+                </div></li>
+        </ul>
+    </nav>
+
 <form id="procontainer" method="post" action="${pageContext.request.contextPath}/editdetail" style="text-align: center;">
     <div class="form-group">
         <label for="maSanPham">Mã Sản Phẩm: </label>
