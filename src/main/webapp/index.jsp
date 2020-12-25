@@ -65,8 +65,7 @@
             </form>
         </c:if>
         <form method="post" action="${pageContext.request.contextPath}/Payment">
-            <input type="hidden" name="MaGio" value="1000000">
-            <input type="hidden" name="UserId" value="${userID}">
+            <input type="hidden" name="MaGio" value="1000003">
             <input type="submit" value="Thanh toán">
         </form>
     </c:otherwise>

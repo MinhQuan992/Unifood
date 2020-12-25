@@ -55,7 +55,7 @@ public class PaymentDao {
         }
         return list;
     }
-
+    /*
     public static List<MagiamgiaEntity> GetMaGiamGia()
     {
         List<MagiamgiaEntity> list = null;
@@ -94,8 +94,9 @@ public class PaymentDao {
         }
         return null;
     }
+     */
 
-    public static List<DonhangEntity> GetDonHang()
+    public static List<DonhangEntity> GetAllDonHang()
     {
         List<DonhangEntity> list = null;
 
@@ -116,6 +117,24 @@ public class PaymentDao {
             session.close();
         }
         return list;
+    }
+
+    public static DonhangEntity GetDonHang(int maDon)
+    {
+        DonhangEntity don = null;
+        Transaction transaction = null;
+        try (Session session = HibernateUtility.getSessionFactory().openSession()) {
+            transaction = session.beginTransaction();
+            don = session.get(DonhangEntity.class, maDon);
+            transaction.commit();
+        }
+        catch (Exception e) {
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            e.printStackTrace();
+        }
+        return don;
     }
 
     public static String AddDonHang(DonhangEntity don)

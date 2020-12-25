@@ -1,5 +1,6 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.mvc.entities.*" %>
+<%@ page import="com.mvc.dao.UserDao" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -26,12 +27,13 @@
     <%
         List<DonvigiaohangEntity> listDV = (List<DonvigiaohangEntity>) request.getAttribute("listDV");
         List<SanphamEntity> listSP = (List<SanphamEntity>) request.getAttribute("listSP");
-        NguoidungEntity user = (NguoidungEntity) request.getAttribute("user");
+        NguoidungEntity user = (new UserDao().getUserByID(session.getAttribute("userID").toString()));
     %>
     <div class="jumbotron">
         <div class="page-header">
             <p>Trở về <a href="${pageContext.request.contextPath}/index.jsp">trang chủ</a></p>
             <h1>Trang thanh toán</h1>
+            <p><c:out value="${status}"></c:out></p>
         </div>
 
         <div class="container">
@@ -45,7 +47,7 @@
                 <tr>
                     <th class="text-center">Hình ảnh</th>
                     <th class="text-center">Tên sản phẩm</th>
-                    <th class="text-center">Số luọng</th>
+                    <th class="text-center">Số lượng</th>
                     <th class="text-center">Đơn giá</th>
                 </tr>
                 </thead>
@@ -55,7 +57,7 @@
                 %>
                 <tr>
                     <td class="text-center"><img src="<%= sp.getAnhMinhHoa()%>" width="200px"
-                                                 onerror="this.onerror=null; this.src='311151.jpg'"></td>
+                                                 onerror="this.onerror=null; this.src='./Images/311151.jpg'"></td>
                     <td><%= sp.getTenSanPham() %>
                     </td>
                     <td><%= sp.getSoLuong() %>
@@ -68,7 +70,7 @@
                 %>
                 <tr>
                     <th colspan="3">Tổng tiền: </th>
-                    <td><c:out value="${cost}"></c:out></td>
+                    <th><c:out value="${cost}"></c:out></th>
                 </tr>
                 <!--tr>
                     <th colspan="3">Giảm giá: <c:out value="${TenMaGiamGia}"></c:out></th>
@@ -82,8 +84,7 @@
             </table>
             <h3>Chọn đơn vị giao hàng </h3>
             <form method="get" action="${pageContext.request.contextPath}/Payment">
-                <input type="hidden" name="MaGio" value="${MaGio}">
-                <input type="hidden" name="TongGiaTri" value="${cost}">
+                <input type="hidden" name="MaDon" value="${MaDon}">
                 <%
                     String checked = "checked";
                     for (DonvigiaohangEntity dv: listDV) {
