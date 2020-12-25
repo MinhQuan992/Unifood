@@ -60,7 +60,7 @@
             <marquee scrollamount="200" scrolldelay="2000" style="height: 100px; width: 400px;">
                 <span style="color: navy; font-size: 30px; text-align: center;"><b>NGUYỄN QUỐC NINH</b></span>
             </marquee><br>
-            <a style="text-align: center";><img src="Images/DT.jpg" style="width: 250px; height: 300px"> </a>
+            <a style="text-align: center";><img src="Images/DT.jpg" style="width: 250px; height: 300px"> </a><br>
             <marquee scrollamount="200" scrolldelay="2000" style="height: 100px; width: 400px;">
                 <span style="color: navy; font-size: 30px; text-align: center;"><b>TRẦN ĐĂNG TÂM</b></span>
             </marquee><br>

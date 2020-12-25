@@ -23,24 +23,6 @@
           crossorigin="anonymous">
 </head>
 <body>
-<div id="container">
-    <nav style="background-color: #60150c;" class="navbar navbar-expand-sm">
-        <a href="#"><img class="logo" src="Images/LOGO.png" style="width: auto; height: 50px;"></a>
-        <a class="homelogo" href="index.jsp"><img src="Images/homepage_icon.png" style="width: auto; height: 50px;"></a>
-        <ul class="navbar-nav">
-            <li class="nav-item active"><a class="nav-link" href="index.jsp">HOME</a></li>
-            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/MainPage?">PRODUCTS</a></li>
-            <li class="nav-item"><a class="nav-link" href="contact.jsp">CONTACTS</a></li>
-        </ul>
-        <ul class="navbar-nav ml-auto">
-            <a href="${pageContext.request.contextPath}/Cart?"><img class="cart" src="Images/gio.png" style="width: auto; height: 50px;"></a>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> Sign In - Sign Up </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item dropdown-item-custom" href="signin.jsp">Sign In</a>
-                    <a class="dropdown-item dropdown-item-custom" href="signup.jsp">Sign Up</a>
-                </div></li>
-        </ul>
-    </nav>
 <c:choose>
     <c:when test="${empty signinSuccess}">
         <a href="${pageContext.request.contextPath}/signin.jsp"></a>
@@ -75,41 +57,27 @@
             </c:otherwise>
         </c:choose>
 
-        <form method="post" action="${pageContext.request.contextPath}/signout">
-            <input type="submit" value="SIGN OUT">
-        </form>
-
-        <form method="post" action="${pageContext.request.contextPath}/EditInfo">
-            <input type="hidden" id="userId" name="userId" value="${userID}">
-            <input type="submit" value="Edit Info">
-        </form>
-
-        <c:if test="${userType!='Customer'}">
-            <form method="post" action="${pageContext.request.contextPath}/OrderManage">
-                <input type="submit" value="Manage Order">
-            </form>
-        </c:if>
-
-        <c:if test="${userType!='Customer'}">
-            <form method="post" action="${pageContext.request.contextPath}/ManageWarehouse">
-                <input type="submit" value="Manage Warehouse">
-            </form>
-        </c:if>
-
-        <c:if test="${userType!='Customer'}">
-            <form method="post" action="${pageContext.request.contextPath}/ManageOrder">
-                <input type="submit" value="Manage Warehouse">
-            </form>
-        </c:if>
-
-        <form method="post" action="${pageContext.request.contextPath}/Payment">
-            <input type="hidden" name="MaGio" value="1000000">
-            <input type="hidden" name="UserId" value="${userID}">
-            <input type="submit" value="Thanh toán">
-        </form>
-
     </c:otherwise>
 </c:choose>
+<div id="container">
+    <nav style="background-color: #60150c;" class="navbar navbar-expand-sm">
+        <a href="#"><img class="logo" src="Images/LOGO.png" style="width: auto; height: 50px;"></a>
+        <a class="homelogo" href="index.jsp"><img src="Images/homepage_icon.png" style="width: auto; height: 50px;"></a>
+        <ul class="navbar-nav">
+            <li class="nav-item active"><a class="nav-link" href="index.jsp">HOME</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/MainPage?">PRODUCTS</a></li>
+            <li class="nav-item"><a class="nav-link" href="contact.jsp">CONTACTS</a></li>
+        </ul>
+        <ul class="navbar-nav ml-auto">
+            <a href="${pageContext.request.contextPath}/Cart?"><img class="cart" src="Images/gio.png" style="width: auto; height: 50px;"></a>
+            <li class="nav-item active"><a class="nav-link" href="index.jsp">      </a></li>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> Sign In - Sign Up </a>
+                <div class="dropdown-menu">
+                    <a class="dropdown-item dropdown-item-custom" href="signin.jsp">Sign In</a>
+                    <a class="dropdown-item dropdown-item-custom" href="signup.jsp">Sign Up</a>
+                </div></li>
+        </ul>
+    </nav>
 
     <div class="slider-container">
         <div class="menu">
