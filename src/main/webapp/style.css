@@ -1,4 +1,3 @@
-
 *{
     margin: 0;
     padding: 0;
@@ -159,20 +158,21 @@ a.dropdown-item-custom:active{
     color: white;
     border-bottom: 5px solid #4bb8dc;
     width: 88%;
+    margin-top: 4%;
 }
 
 #frmLogin {
     margin-left: 33%;
-    margin-top: -12%;
+    margin-top: 3%;
     border: 2px solid;
-    width: 33%;
+    width: 37%;
     padding-left: 4%;
     padding-bottom: 2%;
     border-radius: 8px;
 }
 
 .txtInfo {
-    width: 81%;
+    width: 80%;
     height: 7%;
     border: 2px solid #4bb8dc;
     border-radius: 8px;
@@ -190,6 +190,7 @@ a.dropdown-item-custom:active{
     font-family: "Myriad Pro Black";
     border: none;
     border-radius: 20px;
+    margin-top: -2%;
     margin-left: 20%;
 }
 
@@ -202,7 +203,7 @@ a.dropdown-item-custom:active{
     font-family: "Myriad Pro Black";
     font-size: 20px;
     color: white;
-    margin-top: -0.5%;
+    margin-top: 2%;
     margin-left: 39%;
 }
 

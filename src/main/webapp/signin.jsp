@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Đăng nhập | Unifood</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/style.css">
     <script src="https://kit.fontawesome.com/9636dbf883.js" crossorigin="anonymous"></script>
     <meta name="description" content="Quan Com Online Unifood" />
     <meta name="author" content="NhomHQNT">
@@ -45,27 +45,25 @@
         </ul>
     </nav>
 
-    <div id="login">
-        <img id="logo" src="${pageContext.request.contextPath}/Images/log.png"><br>
-        <form id="frmLogin" method="post" action="${pageContext.request.contextPath}/signin">
-            <h1 id="form-title">ĐĂNG NHẬP TÀI KHOẢN</h1>
-            <i class="fas fa-envelope" style="font-size: 155%"></i>
-            &nbsp;
-            <input class="txtInfo" type="text" name="email" placeholder="Email" required>
-            <br>
-            <br>
-            <i class="fas fa-lock" style="font-size: 170%"></i>
-            &nbsp;
-            <input class="txtInfo" type="password" name="password" placeholder="Mật khẩu" required>
-            <br>
-            <br>
-            <a id="link-forgot" href="${pageContext.request.contextPath}/reset-password.jsp">Quên mật khẩu?</a>
-            <br>
-            <br>
-            <input id="btnLogin" type="submit" value="ĐĂNG NHẬP">
-        </form>
-        <p id="message-signup">Bạn chưa có tài khoản? <a id="link-signup" href="${pageContext.request.contextPath}/signup.jsp">Đăng kí ngay!</a></p>
-    </div>
+    <form id="frmLogin" method="post" action="${pageContext.request.contextPath}/signin">
+        <h1 id="form-title">ĐĂNG NHẬP TÀI KHOẢN</h1>
+        <br>
+        <i class="fas fa-envelope" style="font-size: 155%"></i>
+        &nbsp;
+        <input class="txtInfo" type="text" name="email" placeholder="Email" required>
+        <br>
+        <br>
+        <i class="fas fa-lock" style="font-size: 170%"></i>
+        &nbsp;
+        <input class="txtInfo" type="password" name="password" placeholder="Mật khẩu" required>
+        <br>
+        <br>
+        <a id="link-forgot" href="${pageContext.request.contextPath}/reset-password.jsp">Quên mật khẩu?</a>
+        <br>
+        <br>
+        <input id="btnLogin" type="submit" value="ĐĂNG NHẬP">
+    </form>
+    <p id="message-signup">Bạn chưa có tài khoản? <a id="link-signup" href="${pageContext.request.contextPath}/signup.jsp">Đăng kí ngay!</a></p>
 
     <div id="footer">
         <p style="text-align: center">
