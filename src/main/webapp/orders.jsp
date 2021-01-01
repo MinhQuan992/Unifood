@@ -9,7 +9,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Đơn hàng của tôi | Unifood</title><meta name="description" content="Quan Com Online Unifood" />
+    <title>Đơn hàng của tôi | Unifood</title>
     <meta name="author" content="NhomHQNT">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -23,6 +23,7 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
     <link type="text/css" rel="stylesheet" href="css/home.css" />
+    <link type="text/css" rel="stylesheet" href="css/orders.css" />
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -49,25 +50,37 @@
     </nav>
 <c:choose>
     <c:when test="${empty orders}">
-        <h1>Bạn chưa có đơn hàng nào!</h1>
+        <img id="image" src="Images/no-order.png">
+        <h1 class="title">Bạn chưa có đơn hàng nào!</h1>
     </c:when>
 
     <c:otherwise>
-        <h1>Đơn hàng của tôi</h1>
-        <table id="procontainer">
+        <h1 class="title">ĐƠN HÀNG CỦA TÔI</h1>
+        <table id="orders">
             <thead>
             <tr>
-                <td>Mã đơn hàng</td>
-                <td>Trạng thái đơn hàng</td>
-                <td>Trạng thái thanh toán</td>
-                <td>Tổng giá trị</td>
+                <th>Mã đơn hàng</th>
+                <th>Trạng thái đơn hàng</th>
+                <th>Trạng thái thanh toán</th>
+                <th>Tổng giá trị</th>
             </tr>
             </thead>
 
             <tbody>
             <c:forEach items="${orders}" var="order">
                 <tr>
-                    <td><c:out value="${order.maDon}"/></td>
+                    <td>
+                        <form method="post" action="${pageContext.request.contextPath}/orderDetail">
+                            <input type="hidden" name="maDon" value="${order.maDon}">
+                            <input type="hidden" name="ttDonHang" value="${order.ttDonHang}">
+                            <input type="hidden" name="ttThanhToan" value="${order.ttThanhToan}">
+                            <input type="hidden" name="ngayDat" value="${order.ngayDat}">
+                            <input type="hidden" name="ngayGiaoHang" value="${order.ngayGiaoHang}">
+                            <input type="hidden" name="ngayThanhToan" value="${order.ngayThanhToan}">
+                            <input type="hidden" name="tongGiaTri" value="${order.tongGiaTri}">
+                            <input id="btnSubmit" type="submit" value="<c:out value="${order.maDon}"/>">
+                        </form>
+                    </td>
                     <td><c:out value="${order.ttDonHang}"/></td>
                     <c:choose>
                         <c:when test="${order.ttThanhToan == true}">
@@ -78,26 +91,13 @@
                             <td>Chưa thanh toán</td>
                         </c:otherwise>
                     </c:choose>
-                    <td><p><c:out value="${order.tongGiaTri}"/><span> VND</span></p></td>
-                    <td>
-                        <form method="post" action="${pageContext.request.contextPath}/OrderDetail">
-                            <input type="hidden" name="maDon" value="${order.maDon}">
-                            <input type="hidden" name="ttDonHang" value="${order.ttDonHang}">
-                            <input type="hidden" name="ttThanhToan" value="${order.ttThanhToan}">
-                            <input type="hidden" name="ngayDat" value="${order.ngayDat}">
-                            <input type="hidden" name="ngayGiaoHang" value="${order.ngayGiaoHang}">
-                            <input type="hidden" name="ngayThanhToan" value="${order.ngayThanhToan}">
-                            <input type="hidden" name="tongGiaTri" value="${order.tongGiaTri}">
-                            <input type="submit" style="text-align: center; background-color: #60150c; text-decoration-color: white" value="Chi tiết">
-                        </form>
-                    </td>
+                    <td style="text-align: center"><p><c:out value="${order.tongGiaTri}"/><span> VND</span></p></td>
                 </tr>
             </c:forEach>
             </tbody>
         </table>
     </c:otherwise>
 </c:choose>
-
     <div id="footer">
         <p style="text-align: center">
             <b> NhomHQNT 2020 - Quan Com Online Unifood </b>

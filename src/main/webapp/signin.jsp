@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Đăng nhập | Unifood</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/style.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/signin.css">
     <script src="https://kit.fontawesome.com/9636dbf883.js" crossorigin="anonymous"></script>
     <meta name="description" content="Quan Com Online Unifood" />
     <meta name="author" content="NhomHQNT">
@@ -61,7 +61,7 @@
         <a id="link-forgot" href="${pageContext.request.contextPath}/reset-password.jsp">Quên mật khẩu?</a>
         <br>
         <br>
-        <input id="btnLogin" type="submit" value="ĐĂNG NHẬP">
+        <input id="btnSignin" type="submit" value="ĐĂNG NHẬP">
     </form>
     <p id="message-signup">Bạn chưa có tài khoản? <a id="link-signup" href="${pageContext.request.contextPath}/signup.jsp">Đăng kí ngay!</a></p>
 

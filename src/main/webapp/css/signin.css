@@ -134,22 +134,9 @@ a.dropdown-item-custom:active{
     width: 100%;
 }
 /* DESIGN FOR LOGIN */
-#login{
-    height: 100%;
-    width: 100%;
-    position: relative;
-    overflow: hidden;
-    text-align: center;
-}
 #login-page {
-    background: url("Images/background.jpg") no-repeat center center fixed;
+    background: url("../Images/background.jpg") no-repeat center center fixed;
     background-size: cover;
-}
-
-#logo {
-    width: 50%;
-    margin-left: 28%;
-    margin-top: -9%;
 }
 
 #form-title {
@@ -180,10 +167,10 @@ a.dropdown-item-custom:active{
     font-family: "Source Sans Pro";
 }
 
-#btnLogin {
+#btnSignin {
     width: 45%;
     height: 7%;
-    background-color: #a50909;
+    background-color: #60150c;
     color: white;
     font-weight: bold;
     font-size: 20px;
@@ -194,7 +181,7 @@ a.dropdown-item-custom:active{
     margin-left: 20%;
 }
 
-#btnLogin:hover {
+#btnSignin:hover {
     cursor: pointer;
     background-color: red;
 }
@@ -226,4 +213,3 @@ a.dropdown-item-custom:active{
 #link-signup:hover {
     text-decoration: underline;
 }
-

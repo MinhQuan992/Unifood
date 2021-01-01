@@ -156,7 +156,7 @@ public class SignupController extends HttpServlet {
         if (!rightPassword)
         {
             hasError = true;
-            request.setAttribute("passwordError","Mật khẩu phải có độ dài từ 10 đến 50 kí tự, bao gồm chữ hoa, chữ thường và chữ số");
+            request.setAttribute("passwordError",true);
         }
         else
         {

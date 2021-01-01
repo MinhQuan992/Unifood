@@ -26,6 +26,7 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
     <link type="text/css" rel="stylesheet" href="css/khachpage.css" />
+    <link type="text/css" rel="stylesheet" href="css/reset-password.css">
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -54,14 +55,14 @@
 </c:if>
 <div align="center">
     <h1>ĐẶT LẠI MẬT KHẨU</h1>
-    <p>Nhập vào địa chỉ email của bạn, chúng tôi sẽ đặt một mật khẩu mới ngẫu nhiên cho tài khoản của bạn và gửi vào hộp thư!</p>
+    <p id="message">Nhập vào địa chỉ email của bạn, chúng tôi sẽ đặt một mật khẩu mới ngẫu nhiên cho tài khoản của bạn và gửi vào hộp thư!</p>
 
     <form id="frmReset" method="post" action="${pageContext.request.contextPath}/resetPassword">
         <label for="reset-email">Email:</label>&nbsp;
         <input id="reset-email" type="email" name="reset-email" required>
         <br>
         <br>
-        <input id="btnSubmit" type="submit" value="Gửi tôi mật khẩu mới">
+        <input id="btnSubmit" type="submit" value="GỬI TÔI MẬT KHẨU MỚI">
     </form>
 </div>
 

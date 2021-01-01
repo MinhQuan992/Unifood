@@ -23,7 +23,8 @@
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-    <link type="text/css" rel="stylesheet" href="css/home.css" />
+    <link type="text/css" rel="stylesheet" href="css/home.css">
+    <link type="text/css" rel="stylesheet" href="css/signup.css">
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -62,161 +63,173 @@
         </c:otherwise>
     </c:choose>
 </c:if>
-<div id="procontainer" style="text-align: center;">
-    <h1>ĐĂNG KÝ TÀI KHOẢN</h1>
-    <form id="" method="post" action="${pageContext.request.contextPath}/signup">
-        <table>
-            <tr>
-                <td>Họ và tên:</td>
-                <td>
-                    <input type="text" name="userFullname"
-                    <c:choose>
-                        <c:when test="${empty userFullname}">
-                            placeholder="Nhập họ và tên"
-                        </c:when>
+<h1 id="form-title">ĐĂNG KÝ TÀI KHOẢN</h1>
+<form id="frmSignup" method="post" action="${pageContext.request.contextPath}/signup">
+    <table>
+        <tr>
+            <td class="row-name">Họ và tên:</td>
+            <td>
+                <input class="text textbox" type="text" name="userFullname"
+                <c:choose>
+                    <c:when test="${empty userFullname}">
+                           placeholder="Nhập họ và tên"
+                    </c:when>
 
-                        <c:otherwise>
-                            value="<c:out value="${userFullname}"/>"
-                        </c:otherwise>
-                    </c:choose>
+                    <c:otherwise>
+                           value="<c:out value="${userFullname}"/>"
+                    </c:otherwise>
+                </c:choose>
 
-                    <c:if test="${not empty fullnameError}">
-                           style="border-color: red"
-                    </c:if>
-                    required>
-                </td>
-                <td><c:out value="${fullnameError}"/></td>
-            </tr>
+                <c:if test="${not empty fullnameError}">
+                       style="border-color: red"
+                </c:if>
+                required>
+                <br>
+                <p class="error-message"><c:out value="${fullnameError}"/></p>
+            </td>
+        </tr>
 
-            <tr>
-                <td>Giới tính:</td>
-                <td>
-                    <label>
-                        <input type="radio" name="userGender" value="Nam" <c:if test="${empty userGender || userGender == 'Nam'}">checked</c:if>>
-                    </label>Nam
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <label>
-                        <input type="radio" name="userGender" value="Nữ" <c:if test="${userGender == 'Nữ'}">checked</c:if>>
-                    </label>Nữ
-                </td>
-            </tr>
+        <tr>
+            <td class="row-name">Giới tính:</td>
+            <td>
+                <label class="rdbGender" style="float: left">Nam
+                    <input type="radio" name="userGender" value="Nam" <c:if test="${empty userGender || userGender == 'Nam'}">checked</c:if>>
+                    <span class="checkmark"></span>
+                </label>
+                <label class="rdbGender" style="float: right; margin-right: 68%;">Nữ
+                    <input type="radio" name="userGender" value="Nữ" <c:if test="${userGender == 'Nữ'}">checked</c:if>>
+                    <span class="checkmark"></span>
+                </label>
+            </td>
+        </tr>
 
-            <tr>
-                <td>Ngày sinh:</td>
-                <td>
-                    <input type="date" name="userBirthdate"
-                    <c:choose>
-                        <c:when test="${not empty userBirthdate}">
-                            value="<c:out value="${userBirthdate}"/>"
-                        </c:when>
+        <tr>
+            <td class="row-name">Ngày sinh:</td>
+            <td>
+                <input class="text datetime" type="date" name="userBirthdate"
+                <c:choose>
+                    <c:when test="${not empty userBirthdate}">
+                           value="<c:out value="${userBirthdate}"/>"
+                    </c:when>
 
-                        <c:otherwise>
-                            value="2000-01-01"
-                        </c:otherwise>
-                    </c:choose>
+                    <c:otherwise>
+                           value="2000-01-01"
+                    </c:otherwise>
+                </c:choose>
 
-                    <c:if test="${not empty birthdateError}">
-                            style="border-color: red"
-                    </c:if>
-                    >
-                </td>
-                <td><c:out value="${birthdateError}"/></td>
-            </tr>
+                <c:if test="${not empty birthdateError}">
+                       style="border-color: red"
+                </c:if>
+                >
+                <br>
+                <p class="error-message"><c:out value="${birthdateError}"/></p>
+            </td>
+        </tr>
 
-            <tr>
-                <td>Địa chỉ:</td>
-                <td>
-                    <input type="text" name="userAddress"
-                    <c:choose>
-                        <c:when test="${empty userAddress}">
-                            placeholder="Nhập địa chỉ"
-                        </c:when>
+        <tr>
+            <td class="row-name">Địa chỉ:</td>
+            <td class="info">
+                <textarea class="text" name="userAddress" rows="3" cols="50"
+                <c:if test="${empty userAddress}">
+                    placeholder="Nhập địa chỉ"
+                </c:if>
 
-                        <c:otherwise>
-                            value="<c:out value="${userAddress}"/>"
-                        </c:otherwise>
-                    </c:choose>
+                <c:if test="${not empty addressError}">
+                       style="border-color: red"
+                </c:if>
+                required><c:out value="${userAddress}"/></textarea>
+                <br>
+                <p class="error-message"><c:out value="${addressError}"/></p>
+            </td>
+        </tr>
 
-                    <c:if test="${not empty addressError}">
-                           style="border-color: red"
-                    </c:if>
-                    required>
-                </td>
-                <td><c:out value="${addressError}"/></td>
-            </tr>
-
-            <tr>
-                <td>Điện thoại:</td>
-                <td>
-                    <input type="text" name="userPhone"
-                    <c:choose>
-                        <c:when test="${empty userPhone}">
+        <tr>
+            <td class="row-name">Điện thoại:</td>
+            <td class="info">
+                <input class="text textbox" type="text" name="userPhone"
+                <c:choose>
+                    <c:when test="${empty userPhone}">
                            placeholder="Nhập số điện thoại"
-                        </c:when>
+                    </c:when>
 
-                        <c:otherwise>
+                    <c:otherwise>
                            value="<c:out value="${userPhone}"/>"
-                        </c:otherwise>
-                    </c:choose>
+                    </c:otherwise>
+                </c:choose>
 
-                    <c:if test="${not empty phoneError}">
-                        style="border-color: red"
-                    </c:if>
-                    required>
-                </td>
-                <td><c:out value="${phoneError}"/></td>
-            </tr>
+                <c:if test="${not empty phoneError}">
+                       style="border-color: red"
+                </c:if>
+                required>
+                <br>
+                <p class="error-message"><c:out value="${phoneError}"/></p>
+            </td>
+        </tr>
 
-            <tr>
-                <td>Email:</td>
-                <td>
-                    <input type="email" name="userEmail"
-                    <c:choose>
-                        <c:when test="${empty userEmail}">
+        <tr>
+            <td class="row-name">Email:</td>
+            <td class="info">
+                <input class="text textbox" type="email" name="userEmail"
+                <c:choose>
+                    <c:when test="${empty userEmail}">
                            placeholder="Nhập địa chỉ email"
-                        </c:when>
+                    </c:when>
 
-                        <c:otherwise>
+                    <c:otherwise>
                            value="<c:out value="${userEmail}"/>"
-                        </c:otherwise>
-                    </c:choose>
+                    </c:otherwise>
+                </c:choose>
 
-                    <c:if test="${not empty emailError}">
-                        style="border-color: red"
-                    </c:if>
-                    required>
-                </td>
-                <td><c:out value="${emailError}"/></td>
-            </tr>
+                <c:if test="${not empty emailError}">
+                       style="border-color: red"
+                </c:if>
+                required>
+                <br>
+                <p class="error-message"><c:out value="${emailError}"/></p>
+            </td>
+        </tr>
 
-            <tr>
-                <td>Mật khẩu:</td>
-                <td>
-                    <input type="password" name="password" placeholder="Nhập mật khẩu độ dài từ 10 đến 50 kí tự, bao gồm chữ hoa, chữ thường và chữ số"
-                    <c:if test="${not empty passwordError}">
-                        style="border-color: red"
-                    </c:if>
-                    required>
-                </td>
-                <td><c:out value="${passwordError}"/></td>
-            </tr>
+        <tr>
+            <td class="row-name">Mật khẩu:</td>
+            <td class="info">
+                <input class="text textbox" type="password" name="password" placeholder="Nhập mật khẩu"
+                <c:if test="${not empty passwordError}">
+                       style="border-color: red"
+                </c:if>
+                required>
+                <br>
+                <p
+                <c:choose>
+                    <c:when test="${empty passwordError}">
+                        style="font-size: 75%; font-weight: bold; color: #264cad;"
+                    </c:when>
 
-            <tr>
-                <td>Nhập lại mật khẩu:</td>
-                <td>
-                    <input type="password" name="retypePassword" placeholder="Nhập lại mật khẩu"
-                    <c:if test="${not empty retypePasswordError}">
-                        style="border-color: red"
-                    </c:if>
-                    required>
-                </td>
-                <td><c:out value="${retypePasswordError}"/></td>
-            </tr>
-        </table>
+                    <c:otherwise>
+                        class="error-message"
+                    </c:otherwise>
+                </c:choose>
+                >
+                    Mật khẩu phải có độ dài từ 10 đến 50 kí tự, bao gồm chữ hoa, chữ thường và chữ số
+                </p>
+            </td>
+        </tr>
 
-        <input type="submit" style="text-align: center; background-color: #60150c; text-decoration-color: white" value="ĐĂNG KÝ">
-    </form>
-</div>
+        <tr>
+            <td class="row-name">Nhập lại mật khẩu:</td>
+            <td class="info">
+                <input class="text textbox" type="password" name="retypePassword" placeholder="Nhập lại mật khẩu"
+                <c:if test="${not empty retypePasswordError}">
+                       style="border-color: red"
+                </c:if>
+                required>
+                <br>
+                <p class="error-message"><c:out value="${retypePasswordError}"/></p>
+            </td>
+        </tr>
+    </table>
+
+    <input id="btnSignup" type="submit" value="ĐĂNG KÝ">
+</form>
 <div id="footer">
     <p style="text-align: center">
         <b> NhomHQNT 2020 - Quan Com Online Unifood </b>

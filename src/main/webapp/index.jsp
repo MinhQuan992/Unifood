@@ -73,6 +73,10 @@
         <div class="slide slide-3"></div>
     </div>
 
+    <form method="post" action="${pageContext.request.contextPath}/orders">
+        <input type="submit" value="Đơn hàng của tôi">
+    </form>
+
     <h1 style="text-align: center; color: #60150c;"><b>ABOUT US</b></h1>
     <div class="row">
         <div id="box1" class="col">
