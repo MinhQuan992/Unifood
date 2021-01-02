@@ -73,7 +73,7 @@
         <div class="slide slide-3"></div>
     </div>
 
-    <form method="post" action="${pageContext.request.contextPath}/orders">
+    <form method="get" action="${pageContext.request.contextPath}/orders">
         <input type="submit" value="Đơn hàng của tôi">
     </form>
 

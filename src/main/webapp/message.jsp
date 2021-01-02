@@ -14,8 +14,8 @@
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-    <link type="text/css" rel="stylesheet" href="css/home.css">
-    <link type="text/css" rel="stylesheet" href="css/message.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/message.css">
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -36,10 +36,7 @@
     <img id="image" src="Images/email_check.png">
 </div>
 <div id="message" align="center">
-    <c:if test="${not empty message}">
-        <h1><c:out value="${message}"/></h1>
-    </c:if>
-
+    <h1><c:out value="${message}"/></h1>
     <form action="${pageContext.request.contextPath}/signin.jsp">
         <input id="btnSubmit" type="submit" value="ĐĂNG NHẬP">
     </form>

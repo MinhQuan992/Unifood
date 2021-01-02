@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Vo Tran Minh Quan
-  Date: 11/28/2020
-  Time: 8:57 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -23,8 +16,8 @@
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-    <link type="text/css" rel="stylesheet" href="css/home.css">
-    <link type="text/css" rel="stylesheet" href="css/signup.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/signup.css">
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"

@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Vo Tran Minh Quan
-  Date: 12/17/2020
-  Time: 9:44 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -22,8 +15,8 @@
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-    <link type="text/css" rel="stylesheet" href="css/home.css" />
-    <link type="text/css" rel="stylesheet" href="css/orders.css" />
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css" />
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/orders.css" />
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -48,56 +41,56 @@
                 </div></li>
         </ul>
     </nav>
-<c:choose>
-    <c:when test="${empty orders}">
-        <img id="image" src="Images/no-order.png">
-        <h1 class="title">Bạn chưa có đơn hàng nào!</h1>
-    </c:when>
+    <c:choose>
+        <c:when test="${empty orders}">
+            <img id="image" src="Images/no-order.png">
+            <h1 class="title">Bạn chưa có đơn hàng nào!</h1>
+        </c:when>
 
-    <c:otherwise>
-        <h1 class="title">ĐƠN HÀNG CỦA TÔI</h1>
-        <table id="orders">
-            <thead>
-            <tr>
-                <th>Mã đơn hàng</th>
-                <th>Trạng thái đơn hàng</th>
-                <th>Trạng thái thanh toán</th>
-                <th>Tổng giá trị</th>
-            </tr>
-            </thead>
-
-            <tbody>
-            <c:forEach items="${orders}" var="order">
+        <c:otherwise>
+            <h1 class="title">ĐƠN HÀNG CỦA TÔI</h1>
+            <table id="orders">
+                <thead>
                 <tr>
-                    <td>
-                        <form method="post" action="${pageContext.request.contextPath}/orderDetail">
-                            <input type="hidden" name="maDon" value="${order.maDon}">
-                            <input type="hidden" name="ttDonHang" value="${order.ttDonHang}">
-                            <input type="hidden" name="ttThanhToan" value="${order.ttThanhToan}">
-                            <input type="hidden" name="ngayDat" value="${order.ngayDat}">
-                            <input type="hidden" name="ngayGiaoHang" value="${order.ngayGiaoHang}">
-                            <input type="hidden" name="ngayThanhToan" value="${order.ngayThanhToan}">
-                            <input type="hidden" name="tongGiaTri" value="${order.tongGiaTri}">
-                            <input id="btnSubmit" type="submit" value="<c:out value="${order.maDon}"/>">
-                        </form>
-                    </td>
-                    <td><c:out value="${order.ttDonHang}"/></td>
-                    <c:choose>
-                        <c:when test="${order.ttThanhToan == true}">
-                            <td>Đã thanh toán</td>
-                        </c:when>
-
-                        <c:otherwise>
-                            <td>Chưa thanh toán</td>
-                        </c:otherwise>
-                    </c:choose>
-                    <td style="text-align: center"><p><c:out value="${order.tongGiaTri}"/><span> VND</span></p></td>
+                    <th>Mã đơn hàng</th>
+                    <th>Trạng thái đơn hàng</th>
+                    <th>Trạng thái thanh toán</th>
+                    <th>Tổng giá trị</th>
                 </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-    </c:otherwise>
-</c:choose>
+                </thead>
+
+                <tbody>
+                <c:forEach items="${orders}" var="order">
+                    <tr>
+                        <td>
+                            <form method="get" action="${pageContext.request.contextPath}/orderDetail">
+                                <input type="hidden" name="maDon" value="${order.maDon}">
+                                <input type="hidden" name="ttDonHang" value="${order.ttDonHang}">
+                                <input type="hidden" name="ttThanhToan" value="${order.ttThanhToan}">
+                                <input type="hidden" name="ngayDat" value="${order.ngayDat}">
+                                <input type="hidden" name="ngayGiaoHang" value="${order.ngayGiaoHang}">
+                                <input type="hidden" name="ngayThanhToan" value="${order.ngayThanhToan}">
+                                <input type="hidden" name="tongGiaTri" value="${order.tongGiaTri}">
+                                <input id="btnSubmit" type="submit" value="<c:out value="${order.maDon}"/>">
+                            </form>
+                        </td>
+                        <td><c:out value="${order.ttDonHang}"/></td>
+                        <c:choose>
+                            <c:when test="${order.ttThanhToan == true}">
+                                <td>Đã thanh toán</td>
+                            </c:when>
+
+                            <c:otherwise>
+                                <td>Chưa thanh toán</td>
+                            </c:otherwise>
+                        </c:choose>
+                        <td style="text-align: center"><p><c:out value="${order.tongGiaTri}"/><span> VND</span></p></td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </c:otherwise>
+    </c:choose>
     <div id="footer">
         <p style="text-align: center">
             <b> NhomHQNT 2020 - Quan Com Online Unifood </b>

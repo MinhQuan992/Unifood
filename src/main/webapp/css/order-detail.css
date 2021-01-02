@@ -36,3 +36,14 @@
     width: 50%;
     margin-left: 23%;
 }
+
+#link-order {
+    color: blue;
+    font-size: 14px;
+}
+
+#link-order:hover {
+    text-decoration: underline;
+    color: red;
+    background-color: white;
+}

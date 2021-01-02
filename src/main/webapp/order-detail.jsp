@@ -16,8 +16,8 @@
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-    <link type="text/css" rel="stylesheet" href="css/home.css" />
-    <link type="text/css" rel="stylesheet" href="css/order-detail.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css" />
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/order-detail.css">
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -76,13 +76,13 @@
             <p>Ngày thanh toán: <span><c:out value="${payDate}"/></span></p>
         </c:if>
         <h2>Tổng giá trị: <span style="font-weight: bold; color: red"><c:out value="${totalCost}"/></span></h2>
-        <a id="link-order" href="${pageContext.request.contextPath}/orders.jsp">ĐƠN HÀNG CỦA TÔI</a>
+        <a id="link-order" href="${pageContext.request.contextPath}/orders.jsp"><span><<</span>Quay lại đơn hàng của tôi</a>
     </div>
-<div id="footer">
-    <p style="text-align: center">
-        <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
-    </p>
-</div>
+    <div id="footer">
+        <p style="text-align: center">
+            <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
+        </p>
+    </div>
 </div>
 </body>
 </html>
