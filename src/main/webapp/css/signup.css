@@ -4,7 +4,7 @@
 }
 
 #frmSignup {
-    margin-left: 27%;
+    margin-left: 32%;
     padding-top: 1%;
 }
 
@@ -96,7 +96,7 @@ tr {
 }
 
 .datetime {
-    width: 33%;
+    width: 38%;
 }
 
 .error-message {
@@ -115,7 +115,7 @@ tr {
     font-family: "Myriad Pro Black";
     border: none;
     border-radius: 20px;
-    margin-left: 24%;
+    margin-left: 20%;
 }
 
 #btnSignup:hover {

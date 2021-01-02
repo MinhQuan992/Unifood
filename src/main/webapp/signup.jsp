@@ -181,44 +181,6 @@
                 <p class="error-message"><c:out value="${emailError}"/></p>
             </td>
         </tr>
-
-        <tr>
-            <td class="row-name">Mật khẩu:</td>
-            <td class="info">
-                <input class="text textbox" type="password" name="password" placeholder="Nhập mật khẩu"
-                <c:if test="${not empty passwordError}">
-                       style="border-color: red"
-                </c:if>
-                required>
-                <br>
-                <p
-                <c:choose>
-                    <c:when test="${empty passwordError}">
-                        style="font-size: 75%; font-weight: bold; color: #264cad;"
-                    </c:when>
-
-                    <c:otherwise>
-                        class="error-message"
-                    </c:otherwise>
-                </c:choose>
-                >
-                    Mật khẩu phải có độ dài từ 10 đến 50 kí tự, bao gồm chữ hoa, chữ thường và chữ số
-                </p>
-            </td>
-        </tr>
-
-        <tr>
-            <td class="row-name">Nhập lại mật khẩu:</td>
-            <td class="info">
-                <input class="text textbox" type="password" name="retypePassword" placeholder="Nhập lại mật khẩu"
-                <c:if test="${not empty retypePasswordError}">
-                       style="border-color: red"
-                </c:if>
-                required>
-                <br>
-                <p class="error-message"><c:out value="${retypePasswordError}"/></p>
-            </td>
-        </tr>
     </table>
 
     <input id="btnSignup" type="submit" value="ĐĂNG KÝ">
