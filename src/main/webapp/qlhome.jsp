@@ -50,6 +50,10 @@
         <input type="submit" style="color: #60150c" value="Thêm sản phẩm">
     </form>
 
+    <form method="get" action="${pageContext.request.contextPath}/signup.jsp">
+        <input type="submit" value="Thêm quản lý">
+    </form>
+
     <div class="contain">
         <h3 style="text-align: center;">SẢN PHẨM NỔI BẬT</h3>
         <div class="well well-sm text-right">

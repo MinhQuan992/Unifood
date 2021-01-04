@@ -1,12 +1,5 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
-<%@ page import="com.mvc.entities.*"%>
-<%@ page import="org.hibernate.Session" %>
-<%@ page import="java.util.Map" %>
-<%@ page import="java.util.HashMap" %>
-<%@ page import="java.util.List" %>
-
-
 <html>
 <head>
     <meta charset="utf-8" />
@@ -51,7 +44,7 @@
             <a href="${pageContext.request.contextPath}/Cart?"><img class="cart" src="Images/gio.png" style="width: auto; height: 50px;"></a>
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> YOUR INFORMATION </a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/EditInfo">My Profile</a>
+                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/editInfo.jsp">My Profile</a>
                     <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
                 </div></li>
         </ul>
@@ -93,7 +86,5 @@
         </p>
     </div>
 </div>
-
-
 </body>
 </html>

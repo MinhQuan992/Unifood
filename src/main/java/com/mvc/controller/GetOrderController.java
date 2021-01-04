@@ -15,6 +15,10 @@ import java.util.List;
 @WebServlet(name = "GetOrderController", urlPatterns = {"/orders"})
 public class GetOrderController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         String userID = (String) request.getSession().getAttribute("userID");
         ViewOrderDao viewOrderDao = new ViewOrderDao();
         List<ViewDonHangEntity> orders = viewOrderDao.getAllOrder(userID);
@@ -30,9 +34,5 @@ public class GetOrderController extends HttpServlet {
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/orders.jsp");
         dispatcher.forward(request, response);
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 }

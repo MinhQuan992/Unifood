@@ -67,24 +67,6 @@
     </servlet-mapping>
 
     <servlet>
-        <servlet-name>GetOrderController</servlet-name>
-        <servlet-class>com.mvc.controller.GetOrderController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>GetOrderController</servlet-name>
-        <url-pattern>/Orders</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
-        <servlet-name>OrderDetailController</servlet-name>
-        <servlet-class>com.mvc.controller.OrderDetailController</servlet-class>
-    </servlet>
-    <servlet-mapping>
-        <servlet-name>OrderDetailController</servlet-name>
-        <url-pattern>/OrderDetail</url-pattern>
-    </servlet-mapping>
-
-    <servlet>
         <servlet-name>EditInfoController</servlet-name>
         <servlet-class>com.mvc.controller.EditInfoController</servlet-class>
     </servlet>

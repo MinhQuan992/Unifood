@@ -16,7 +16,8 @@
             src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
-    <link type="text/css" rel="stylesheet" href="css/home.css" />
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css" />
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/order-detail.css">
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -41,43 +42,47 @@
                 </div></li>
         </ul>
     </nav>
-<h1>Đơn hàng <span><c:out value="${orderID}"></c:out></span></h1>
-<table style="text-align: center;">
-    <thead>
-    <tr>
-        <td>Tên sản phẩm</td>
-        <td>Số lượng</td>
-        <td>Đơn giá</td>
-    </tr>
-    </thead>
+    <h1 id="title">Đơn hàng <span><c:out value="${orderID}"></c:out></span></h1>
+    <div id="detail">
+        <table id="products">
+            <thead>
+            <tr>
+                <th style="width: 20%"></th>
+                <th>Tên sản phẩm</th>
+                <th>Số lượng</th>
+                <th>Đơn giá</th>
+            </tr>
+            </thead>
 
-    <tbody>
-    <c:forEach items="${orderDetail}" var="detail">
-        <tr>
-            <td><c:out value="${detail.tenSanPham}"/></td>
-            <td><c:out value="${detail.soLuong}"/></td>
-            <td><p><c:out value="${detail.donGia}"/><span> VND</span></p></td>
-        </tr>
-    </c:forEach>
-    </tbody>
-</table>
-<p>Trạng thái đơn hàng: <span><c:out value="${orderStatus}"/></span></p>
-<p>Trạng thái thanh toán: <span><c:out value="${paymentStatus}"/></span></p>
-<p>Ngày đặt: <span><c:out value="${placeOrderDate}"/></span></p>
-<c:if test="${not empty shipDate}">
-    <p>Ngày giao hàng: <span><c:out value="${shipDate}"/></span></p>
-</c:if>
-<c:if test="${not empty payDate}">
-    <p>Ngày thanh toán: <span><c:out value="${payDate}"/></span></p>
-</c:if>
-<h2>Tổng giá trị: <span style="font-weight: bold; color: red"><c:out value="${totalCost}"/></span></h2>
-<a href="${pageContext.request.contextPath}/orders.jsp">ĐƠN HÀNG CỦA TÔI</a>
-
-<div id="footer">
-    <p style="text-align: center">
-        <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
-    </p>
-</div>
+            <tbody>
+            <c:forEach items="${orderDetail}" var="detail">
+                <tr>
+                    <td><img class="image" src="${pageContext.request.contextPath}<c:out value="${detail.anhMinhHoa}"/>"></td>
+                    <td><c:out value="${detail.tenSanPham}"/></td>
+                    <td style="text-align: center"><c:out value="${detail.soLuong}"/></td>
+                    <td style="text-align: center"><p><c:out value="${detail.donGia}"/><span> VND</span></p></td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+        <br>
+        <p>Trạng thái đơn hàng: <span><c:out value="${orderStatus}"/></span></p>
+        <p>Trạng thái thanh toán: <span><c:out value="${paymentStatus}"/></span></p>
+        <p>Ngày đặt: <span><c:out value="${placeOrderDate}"/></span></p>
+        <c:if test="${not empty shipDate}">
+            <p>Ngày giao hàng: <span><c:out value="${shipDate}"/></span></p>
+        </c:if>
+        <c:if test="${not empty payDate}">
+            <p>Ngày thanh toán: <span><c:out value="${payDate}"/></span></p>
+        </c:if>
+        <h2>Tổng giá trị: <span style="font-weight: bold; color: red"><c:out value="${totalCost}"/></span></h2>
+        <a id="link-order" href="${pageContext.request.contextPath}/orders.jsp"><span><<</span>Quay lại đơn hàng của tôi</a>
+    </div>
+    <div id="footer">
+        <p style="text-align: center">
+            <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
+        </p>
+    </div>
 </div>
 </body>
 </html>
