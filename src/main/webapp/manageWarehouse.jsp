@@ -77,7 +77,7 @@
             </div>
         </div>
 
-        <div class="container-fluid">
+        <div class="container">
             <%
                 Map<KhohangEntity, List<SanphamEntity>> map = (Map<KhohangEntity, List<SanphamEntity>>) request.getAttribute("map");
                 List<KhohangEntity> listKho = new ArrayList<>(map.keySet());
