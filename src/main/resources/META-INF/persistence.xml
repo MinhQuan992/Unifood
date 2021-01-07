@@ -10,7 +10,6 @@
         <class>com.mvc.entities.DonvigiaohangEntity</class>
         <class>com.mvc.entities.GiohangEntity</class>
         <class>com.mvc.entities.KhohangEntity</class>
-        <class>com.mvc.entities.MagiamgiaEntity</class>
         <class>com.mvc.entities.NguoidungEntity</class>
         <class>com.mvc.entities.NhomsanphamEntity</class>
         <class>com.mvc.entities.SanphamEntity</class>

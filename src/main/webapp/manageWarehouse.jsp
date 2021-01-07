@@ -52,7 +52,7 @@
         .content {
             padding: 0 18px;
             max-height: 0;
-            overflow: hidden;
+            overflow: auto;
             transition: max-height 0.2s ease-out;
             background-color: #fafafa;
         }
@@ -97,11 +97,11 @@
                                 <td><%= k.getMaKho() %>
                                 </td>
                                 <th rowspan="2">
-                                    <form method="get" action="${pageContext.request.contextPath}/ManageWarehouse">
+                                    <!--form method="get" action="${pageContext.request.contextPath}/ManageWarehouse">
                                         <input type="hidden" name="Type" value="AddItem">
                                         <input type="hidden" name="MaKho" value="<%= k.getMaKho() %>">
                                         <input type="submit" class="btn btn-success" value="Thêm sản phẩm">
-                                    </form>
+                                    </form-->
                                     <form method="get" action="${pageContext.request.contextPath}/ManageWarehouse">
                                         <input type="hidden" name="Type" value="EditWarehouse">
                                         <input type="hidden" name="MaKho" value="<%= k.getMaKho() %>">
@@ -172,15 +172,15 @@
                                         <input type="hidden" name="Type" value="EditItem">
                                         <input type="hidden" name="MaKho" value="<%= k.getMaKho() %>">
                                         <input type="hidden" name="MaSanPham" value="<%= sp.getMaSanPham() %>">
-                                        <input type="submit" class="btn btn-info" value="Sửa">
+                                        <input type="submit" class="btn btn-info" value="Chỉnh sửa">
                                     </form>
-                                    <form method="get" action="${pageContext.request.contextPath}/ManageWarehouse">
+                                    <!--form method="get" action="${pageContext.request.contextPath}/ManageWarehouse">
                                         <input type="hidden" name="Type" value="DeleteItem">
                                         <input type="hidden" name="MaKho" value="<%= k.getMaKho() %>">
                                         <input type="hidden" name="MaSanPham" value="<%= sp.getMaSanPham() %>">
                                         <input type="submit" class="btn btn-danger" value="Xóa"
                                                onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm <%= sp.getMaSanPham() %> khỏi kho hàng <%= k.getMaKho() %>?');">
-                                    </form>
+                                    </form-->
                                 </td>
                             </tr>
                             <%

@@ -1,4 +1,6 @@
-<%--
+<%@ page import="com.mvc.entities.KhohangEntity" %>
+<%@ page import="com.mvc.dao.ManageWarehouseDao" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Admin
   Date: 12/16/2020
@@ -17,11 +19,77 @@
         .jumbotron {
             background-color: #fafafa;
         }
+
+        /* The container */
+        .cont {
+            display: block;
+            position: relative;
+            padding-left: 35px;
+            margin-bottom: 12px;
+            cursor: pointer;
+            font-family: inherit;
+            font-size: 1rem;
+            font-weight: 400;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -ms-user-select: none;
+            user-select: none;
+        }
+
+        /* Hide the browser's default radio button */
+        .cont input {
+            position: absolute;
+            opacity: 0;
+            cursor: pointer;
+        }
+
+        /* Create a custom radio button */
+        .checkmark {
+            position: absolute;
+            top: 0;
+            left: 0;
+            height: 25px;
+            width: 25px;
+            background-color: #eee;
+            border-radius: 50%;
+        }
+
+        /* On mouse-over, add a grey background color */
+        .cont:hover input ~ .checkmark {
+            background-color: #ccc;
+        }
+
+        /* When the radio button is checked, add a blue background */
+        .cont input:checked ~ .checkmark {
+            background-color: #2196F3;
+        }
+
+        /* Create the indicator (the dot/circle - hidden when not checked) */
+        .checkmark:after {
+            content: "";
+            position: absolute;
+            display: none;
+        }
+
+        /* Show the indicator (dot/circle) when checked */
+        .cont input:checked ~ .checkmark:after {
+            display: block;
+        }
+
+        /* Style the indicator (dot/circle) */
+        .cont .checkmark:after {
+            top: 9px;
+            left: 9px;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: white;
+        }
     </style>
 </head>
 <body>
 <p>Trở về <a href="${pageContext.request.contextPath}/index.jsp">trang chủ</a></p>
-<c:if test="${fn:contains(Type, 'Add')}">
+<!--c:if-- test="${fn:contains(Type, 'Add')}">
     <div class="container col-md-8 col-md-offset-3" style="overflow: auto">
         <div class="jumbotron">
             <div class="page-header">
@@ -103,20 +171,41 @@
             </form>
         </div>
     </div>
-</c:if>
+<-/c:if-->
 <c:if test="${fn:contains(Type, 'Edit')}">
     <div class="container col-md-8 col-md-offset-3" style="overflow: auto">
         <div class="jumbotron">
             <div class="page-header">
-                <h1>Thay đổi thông tin sản phẩm trong kho hàng ${MaKho}</h1>
+                <h1>Thay đổi kho hàng chứa sản phẩm và số lượng sản phẩm ${MaSanPham}</h1>
                 <p class="text-info"><c:out value="${status}"></c:out></p>
             </div>
             <form method="get" action="${pageContext.request.contextPath}/ManageWarehouse">
                 <input type="hidden" id="Type2" name="Type" value="${Type}">
-                <input type="hidden" id="MaKho2" name="MaKho" value="${MaKho}">
+                <!--input type="hidden" id="MaKho2" name="MaKho" value="${MaKho}"-->
                 <input type="hidden" id="MaSanPham2" name="MaSanPham" value="${MaSanPham}">
 
                 <div class="form-group">
+                    <label>Kho hàng:</label>
+                    <%
+                        String maKho = (String) request.getAttribute("MaKho");
+                        List<KhohangEntity> list = ManageWarehouseDao.GetWarehouses();
+                        String check = "";
+                        for (KhohangEntity kh : list) {
+                            if (kh.getMaKho().equals(maKho)) {
+                                check = "checked=\"checked\"";
+                            } else {
+                                check = "";
+                            }
+                    %>
+                    <label class="cont"><%=kh.getMaKho()%> - <%=kh.getTenKho()%>
+                        <input type="radio" <%=check%> name="MaKho" value="<%=kh.getMaKho()%>">
+                        <span class="checkmark"></span>
+                    </label>
+                    <%
+                        }
+                    %>
+                </div>
+                <!--div class="form-group">
                     <label for="TenSanPham2">Tên sản phẩm:</label>
                     <input type="text"
                            class="form-control" id="TenSanPham2"
@@ -138,7 +227,7 @@
                            class="form-control" id="DonGia2"
                            name="DonGia" value="${DonGia}">
                     <p style="color: red"><c:out value="${error.DonGia}"></c:out></p>
-                </div>
+                </div-->
 
                 <div class="form-group">
                     <label for="SoLuong2">Số lượng:</label>
@@ -148,7 +237,7 @@
                     <p style="color: red"><c:out value="${error.SoLuong}"></c:out></p>
                 </div>
 
-                <div class="form-group">
+                <!--div class="form-group">
                     <label for="AnhMinhHoa2">Ảnh minh họa:</label>
                     <input type="text"
                            class="form-control" id="AnhMinhHoa2"
@@ -170,7 +259,7 @@
                            class="form-control" id="MoTa2"
                            name="MoTa" value="${MoTa}">
                     <p style="color: red"><c:out value="${error.MoTa}"></c:out></p>
-                </div>
+                </div-->
 
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Xác nhận thay đổi</button>

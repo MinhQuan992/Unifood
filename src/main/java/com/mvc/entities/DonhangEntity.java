@@ -38,16 +38,6 @@ public class DonhangEntity {
     }
 
     @Basic
-    @Column(name = "MaGiamGia", columnDefinition = "VARCHAR(20)")
-    public String getMaGiamGia() {
-        return maGiamGia;
-    }
-
-    public void setMaGiamGia(String maGiamGia) {
-        this.maGiamGia = maGiamGia;
-    }
-
-    @Basic
     @Column(name = "MaDonViGiaoHang", columnDefinition = "VARCHAR(10)")
     public String getMaDonViGiaoHang() {
         return maDonViGiaoHang;

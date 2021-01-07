@@ -37,7 +37,6 @@ public class PaymentController extends HttpServlet {
         DonhangEntity don = new DonhangEntity();
         don.setMaDon(maDon);
         don.setMaGio(maGio);
-        don.setMaGiamGia(null);
         don.setMaDonViGiaoHang(null);
         don.setTtDonHang("Đã tiếp nhận");
         don.setTtThanhToan(false);

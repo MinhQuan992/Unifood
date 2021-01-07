@@ -122,27 +122,27 @@ public class ManageWarehouseController extends HttpServlet {
             }
         }
         if (type.contains("Item")) {
-            if (type.contains("Delete")) {
+            /*if (type.contains("Delete")) {
                 String status = ManageWarehouseDao.DeleteItemInWarehouse(maSanPham);
                 request.setAttribute("DeleteStatus", status);
                 doPost(request, response);
                 return;
-            }
+            }*/
 
             // From editItem.jsp
             if (type.contains("Form")) {
-                String tenSanPham = request.getParameter("TenSanPham");
-                String donViTinh = request.getParameter("DonViTinh");
-                String donGiaStr = request.getParameter("DonGia");
+                //String tenSanPham = request.getParameter("TenSanPham");
+                //String donViTinh = request.getParameter("DonViTinh");
+                //String donGiaStr = request.getParameter("DonGia");
                 String soLuongStr = request.getParameter("SoLuong");
-                String anhMinhHoa = request.getParameter("AnhMinhHoa");
-                String maNhomStr = request.getParameter("MaNhom");
-                String moTa = request.getParameter("MoTa");
+                //String anhMinhHoa = request.getParameter("AnhMinhHoa");
+                //String maNhomStr = request.getParameter("MaNhom");
+                //String moTa = request.getParameter("MoTa");
 
-                SanphamEntity sp = new SanphamEntity();
+                //SanphamEntity sp = new SanphamEntity();
                 Map<String, String> errors = new HashMap<String, String>();
 
-                if (maSanPham.trim().equals("")) {
+                /*if (maSanPham.trim().equals("")) {
                     errors.put("MaSanPham", "Không được để trống");
                 } else if (specialCharsPattern.matcher(maSanPham).find()) {
                     errors.put("MaSanPham", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
@@ -169,7 +169,7 @@ public class ManageWarehouseController extends HttpServlet {
                 }
                 catch (Exception e) {
                     errors.put("DonGia", e.getMessage());
-                }
+                }*/
 
                 int soLuong = 0;
                 try {
@@ -182,7 +182,7 @@ public class ManageWarehouseController extends HttpServlet {
                     errors.put("SoLuong", e.getMessage());
                 }
 
-                if (specialCharsPattern.matcher(anhMinhHoa).find()) {
+                /*if (specialCharsPattern.matcher(anhMinhHoa).find()) {
                     errors.put("AnhMinhHoa", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
                 }
 
@@ -196,19 +196,19 @@ public class ManageWarehouseController extends HttpServlet {
 
                 if (specialCharsPattern.matcher(moTa).find()) {
                     errors.put("AnhMinhHoa", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
-                }
+                }*/
 
                 String status = "";
                 if (errors.isEmpty()) {
+                    SanphamEntity sp = ManageWarehouseDao.GetItem(maSanPham);
                     sp.setMaKho(maKho);
-                    sp.setMaSanPham(maSanPham);
-                    sp.setTenSanPham(tenSanPham);
-                    sp.setDonViTinh(donViTinh);
-                    sp.setDonGia(donGia);
+                    //sp.setTenSanPham(tenSanPham);
+                    //sp.setDonViTinh(donViTinh);
+                    //sp.setDonGia(donGia);
                     sp.setSoLuong(soLuong);
-                    sp.setAnhMinhHoa(anhMinhHoa);
-                    sp.setMaNhom(maNhom);
-                    sp.setMoTa(moTa);
+                    //sp.setAnhMinhHoa(anhMinhHoa);
+                    //sp.setMaNhom(maNhom);
+                    //sp.setMoTa(moTa);
 
                     if (type.contains("Add")) {
                         status = ManageWarehouseDao.AddItemInWarehouse(sp);
@@ -230,13 +230,13 @@ public class ManageWarehouseController extends HttpServlet {
                 request.setAttribute("Type", type);
                 request.setAttribute("MaKho", maKho);
                 request.setAttribute("MaSanPham", maSanPham);
-                request.setAttribute("TenSanPham", tenSanPham);
-                request.setAttribute("DonViTinh", donViTinh);
-                request.setAttribute("DonGia", donGiaStr);
+                //request.setAttribute("TenSanPham", tenSanPham);
+                //request.setAttribute("DonViTinh", donViTinh);
+                //request.setAttribute("DonGia", donGiaStr);
                 request.setAttribute("SoLuong", soLuongStr);
-                request.setAttribute("AnhMinhHoa", anhMinhHoa);
-                request.setAttribute("MaNhom", maNhomStr);
-                request.setAttribute("MoTa", moTa);
+                //request.setAttribute("AnhMinhHoa", anhMinhHoa);
+                //request.setAttribute("MaNhom", maNhomStr);
+                //request.setAttribute("MoTa", moTa);
                 request.setAttribute("status", status);
 
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/editItem.jsp");
@@ -251,13 +251,13 @@ public class ManageWarehouseController extends HttpServlet {
                     SanphamEntity sp = ManageWarehouseDao.GetItem(maSanPham);
                     if (sp != null) {
                         request.setAttribute("MaSanPham", sp.getMaSanPham());
-                        request.setAttribute("TenSanPham", sp.getTenSanPham());
-                        request.setAttribute("DonViTinh", sp.getDonViTinh());
-                        request.setAttribute("DonGia", sp.getDonGia());
+                        //request.setAttribute("TenSanPham", sp.getTenSanPham());
+                        //request.setAttribute("DonViTinh", sp.getDonViTinh());
+                        //request.setAttribute("DonGia", sp.getDonGia());
                         request.setAttribute("SoLuong", sp.getSoLuong());
-                        request.setAttribute("AnhMinhHoa", sp.getAnhMinhHoa());
-                        request.setAttribute("MaNhom", sp.getMaNhom());
-                        request.setAttribute("MoTa", sp.getMoTa());
+                        //request.setAttribute("AnhMinhHoa", sp.getAnhMinhHoa());
+                        //request.setAttribute("MaNhom", sp.getMaNhom());
+                        //request.setAttribute("MoTa", sp.getMoTa());
                     }
                 }
                 RequestDispatcher dispatcher = request.getRequestDispatcher("/editItem.jsp");

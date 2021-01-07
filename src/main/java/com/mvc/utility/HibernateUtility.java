@@ -38,7 +38,6 @@ public class HibernateUtility {
                 configuration.addAnnotatedClass(KhohangEntity.class);
                 configuration.addAnnotatedClass(SanphamEntity.class);
                 configuration.addAnnotatedClass(DathangEntity.class);
-                configuration.addAnnotatedClass(MagiamgiaEntity.class);
                 configuration.addAnnotatedClass(DonhangEntity.class);
                 configuration.addAnnotatedClass(DonvigiaohangEntity.class);
                 // TODO: Add 'configuration.addAnnotatedClass(...)' foremost to avoid
