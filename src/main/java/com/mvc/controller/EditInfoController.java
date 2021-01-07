@@ -21,7 +21,7 @@ import java.util.regex.Pattern;
 public class EditInfoController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        NguoidungEntity user = EditInfoDao.authorizeEditInfo(request.getParameter("userId"));
+        NguoidungEntity user = EditInfoDao.authorizeEditInfo(request.getSession().getAttribute("userID").toString());
 
         if (user != null)
         {

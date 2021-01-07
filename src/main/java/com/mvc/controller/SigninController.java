@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "SigninController", urlPatterns = {"/signin"})
+@WebServlet(name = "SigninController", urlPatterns = {"/signin", "/index"})
 public class SigninController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
@@ -38,7 +38,7 @@ public class SigninController extends HttpServlet {
                 if (userID.startsWith("KH"))
                 {
                     request.getSession().setAttribute("userType", "Customer");
-                    url="/Khach.jsp";
+                    url="/index.jsp";
                 }
                 else
                 {

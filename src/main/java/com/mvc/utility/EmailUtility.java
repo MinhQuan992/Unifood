@@ -1,5 +1,7 @@
 package com.mvc.utility;
 
+import com.mvc.entities.NguoidungEntity;
+
 import java.io.UnsupportedEncodingException;
 import java.util.Date;
 import java.util.Properties;
@@ -12,11 +14,12 @@ import javax.mail.Session;
 import javax.mail.Transport;
 import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
+import javax.servlet.http.HttpServletRequest;
 
 public class EmailUtility {
-    public static void sendEmail(String host, String port, String socketFactoryClass, String auth,
-                                 final String senderEmail, String senderName, final String password,
-                                 String recipientEmail, String subject, String message) throws MessagingException, UnsupportedEncodingException {
+    public static NguoidungEntity sendEmail(String host, String port, String socketFactoryClass, String auth,
+                                            final String senderEmail, String senderName, final String password,
+                                            String recipientEmail, String subject, String message) throws MessagingException, UnsupportedEncodingException {
         //Get properties object
         Properties props = new Properties();
         props.put("mail.smtp.host", host);
@@ -42,5 +45,10 @@ public class EmailUtility {
         msg.setText(message);
         //Send the e-mail
         Transport.send(msg);
+        return null;
+    }
+
+    public static NguoidungEntity sendEmail(Class<NguoidungEntity> nguoidungEntityClass, HttpServletRequest request) {
+        return null;
     }
 }

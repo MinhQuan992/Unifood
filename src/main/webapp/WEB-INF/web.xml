@@ -119,4 +119,13 @@
         <servlet-name>MainPageController</servlet-name>
         <url-pattern>/MainPage</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ManagerController</servlet-name>
+        <servlet-class>com.mvc.controller.ManagerController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManagerController</servlet-name>
+        <url-pattern>/Manager</url-pattern>
+    </servlet-mapping>
 </web-app>

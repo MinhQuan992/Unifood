@@ -4,7 +4,6 @@ import com.mvc.dao.GroupItemDao;
 import com.mvc.dao.ItemDao;
 import com.mvc.entities.ListItemEntity;
 import com.mvc.entities.NhomsanphamEntity;
-import com.mvc.entities.SanphamEntity;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -17,8 +16,8 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "MainPageController", urlPatterns = {""})
-public class MainPageController extends HttpServlet {
+@WebServlet(name = "ManagerController")
+public class ManagerController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
     }
@@ -52,8 +51,9 @@ public class MainPageController extends HttpServlet {
         }*/
 
         request.setAttribute("ListItems",ListItems);
-        String url = "/index.jsp";
+        String url = "qlhome.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(url);
         requestDispatcher.forward(request,response);
     }
 }
+

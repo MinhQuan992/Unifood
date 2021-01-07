@@ -35,11 +35,21 @@
         <ul class="navbar-nav ml-auto">
             <a href="${pageContext.request.contextPath}/Cart?"><img class="cart" src="Images/gio.png" style="width: auto; height: 50px;"></a>
             <li class="nav-item active"><a class="nav-link" href="index.jsp">      </a></li>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> Sign In - Sign Up </a>
+            <c:if test="${not empty NguoidungEntity}">
+                li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">${NguoidungEntity.Name}</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item dropdown-item-custom" href="signin.jsp">Sign In</a>
-                    <a class="dropdown-item dropdown-item-custom" href="signup.jsp">Sign Up</a>
+                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/EditInfo">My Profile</a>
+                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
                 </div></li>
+            </c:if>
+            <c:if test="${empty NguoidungEntity}">
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardropp" data-toggle="dropdown"> Sign In - Sign Up </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item dropdown-item-custom" href='<c:url value="/signin?action=signin"/> '>Sign In</a>
+                        <a class="dropdown-item dropdown-item-custom" href="signup.jsp">Sign Up</a>
+                    </div></li>
+            </c:if>
+
         </ul>
     </nav>
 
