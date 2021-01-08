@@ -25,6 +25,7 @@
             <div class="page-header">
                 <h1>Cập nhật thông tin đơn hàng</h1>
                 <h3>Chào mừng quản lí (<%=user.getMaNguoiDung()%>): <%=user.getHoVaTen()%></h3>
+                <p>Trở về <a href="${pageContext.request.contextPath}/qlhome.jsp">trang chủ</a></p>
             </div>
             <form method="post" action="${pageContext.request.contextPath}/OrderManage">
                 <input name="OrderCode" value="${requestScope.Payment.maDon}" hidden>

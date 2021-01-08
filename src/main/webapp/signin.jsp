@@ -3,7 +3,7 @@
 <html>
 <head>
     <title>Đăng nhập | Unifood</title>
-    <link rel="stylesheet" href="${pageContext.request.contextPath}/css/signin.css">
+    <link rel="stylesheet" href="style.css">
     <script src="https://kit.fontawesome.com/9636dbf883.js" crossorigin="anonymous"></script>
     <meta name="description" content="Quan Com Online Unifood" />
     <meta name="author" content="NhomHQNT">
@@ -36,8 +36,8 @@
 </c:if>
 <div id="container">
     <nav style="background-color: #60150c;" class="navbar navbar-expand-sm">
-        <a href="#"><img class="logo" src="${pageContext.request.contextPath}/Images/LOGO.png" style="width: auto; height: 50px;"></a>
-        <a class="homelogo" href="index.jsp"><img src="${pageContext.request.contextPath}/Images/homepage_icon.png" style="width: auto; height: 50px;"></a>
+        <a href="#"><img class="logo" src="Images/LOGO.png" style="width: auto; height: 50px;"></a>
+        <a class="homelogo" href="index.jsp"><img src="Images/homepage_icon.png" style="width: auto; height: 50px;"></a>
         <ul class="navbar-nav">
             <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/index.jsp">HOME</a></li>
             <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/MainPage?">PRODUCTS</a></li>
@@ -45,25 +45,27 @@
         </ul>
     </nav>
 
-    <form id="frmLogin" method="post" action="${pageContext.request.contextPath}/signin">
-        <h1 id="form-title">ĐĂNG NHẬP TÀI KHOẢN</h1>
-        <br>
-        <i class="fas fa-envelope" style="font-size: 155%"></i>
-        &nbsp;
-        <input class="txtInfo" type="text" name="email" placeholder="Email" required>
-        <br>
-        <br>
-        <i class="fas fa-lock" style="font-size: 170%"></i>
-        &nbsp;
-        <input class="txtInfo" type="password" name="password" placeholder="Mật khẩu" required>
-        <br>
-        <br>
-        <a id="link-forgot" href="${pageContext.request.contextPath}/reset-password.jsp">Quên mật khẩu?</a>
-        <br>
-        <br>
-        <input id="btnSignin" type="submit" value="ĐĂNG NHẬP">
-    </form>
-    <p id="message-signup">Bạn chưa có tài khoản? <a id="link-signup" href="${pageContext.request.contextPath}/signup.jsp">Đăng kí ngay!</a></p>
+    <div id="login">
+        <img id="logo" src="Images/log.png"><br>
+        <form id="frmLogin" method="post" action="<c:url value='/signin'/>">
+            <h1 id="form-title">ĐĂNG NHẬP TÀI KHOẢN</h1>
+            <i class="fas fa-envelope" style="font-size: 155%"></i>
+            &nbsp;
+            <input class="txtInfo" type="text" name="email" placeholder="Email" required>
+            <br>
+            <br>
+            <i class="fas fa-lock" style="font-size: 170%"></i>
+            &nbsp;
+            <input class="txtInfo" type="password" name="password" placeholder="Mật khẩu" required>
+            <br>
+            <br>
+            <a id="link-forgot" href="${pageContext.request.contextPath}/reset-password.jsp">Quên mật khẩu?</a>
+            <br>
+            <br>
+            <input id="btnLogin" type="submit" value="ĐĂNG NHẬP">
+        </form>
+        <p id="message-signup">Bạn chưa có tài khoản? <a id="link-signup" href="${pageContext.request.contextPath}/signup.jsp">Đăng kí ngay!</a></p>
+    </div>
 
     <div id="footer">
         <p style="text-align: center">

@@ -1,3 +1,23 @@
+function NoteButtonClick(Eid)
+{
+    var Value = document.getElementById("Take-Items-Note"+Eid).value;
+    if (Value == "Note")
+    {
+        document.getElementById("Take-Items-Note"+Eid).value = 'OK';
+        document.getElementById("Note"+Eid).disabled = false;
+        document.getElementById("Note"+Eid).focus();
+        return;
+    }
+    else
+    {
+        document.SendToPostRequest.ParaName.value = 'TakeNote';
+        document.SendToPostRequest.KeyValue.value = Eid;
+        var Note = document.getElementById("Note"+Eid).value;
+        document.SendToPostRequest.Extend.value = Note;
+        document.SendToPostRequest.submit();
+    }
+}
+
 function ButtonClick(NamePara,Eid)
 {
     document.SendToPostRequest.ParaName.value = NamePara;

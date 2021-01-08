@@ -56,7 +56,7 @@
                     for (SanphamEntity sp: listSP) {
                 %>
                 <tr>
-                    <td class="text-center"><img src="<%= sp.getAnhMinhHoa()%>" width="200px"
+                    <td class="text-center"><img src="${pageContext.request.contextPath}<%=sp.getAnhMinhHoa()%>" width="200px"
                                                  onerror="this.onerror=null; this.src='311151.jpg'"></td>
                     <td><%= sp.getTenSanPham() %>
                     </td>
@@ -100,6 +100,7 @@
                     }
                 %>
                 <div class="form-group">
+                    <input type="hidden" name="MaDon" value="${requestScope.MaDon}">
                     <button type="submit" class="btn btn-primary">Xác nhận đơn hàng</button>
                 </div>
             </form>

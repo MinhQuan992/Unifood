@@ -1,5 +1,24 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page import="com.mvc.entities.*"%>
+<%@ page import="org.hibernate.Session" %>
+<%@ page import="java.util.Map" %>
+<%@ page import="java.util.HashMap" %>
+<%@ page import="java.util.List" %>
+<%@ page import="com.mvc.dao.UserDao" %>
+<%@ page import="com.mvc.dao.CartDao" %>
+<%
+    NguoidungEntity user = (NguoidungEntity) session.getAttribute("User");
+    if (user==null)
+    {
+        UserDao userDao = new UserDao();
+        user = userDao.getUserByID("KH0000000");
+        CartDao cartDao = new CartDao();
+        GiohangEntity cart = cartDao.GetNewCart(user);
+        session.setAttribute("User",user);
+        session.setAttribute("ShoppingCart",cart);
+    }
+%>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -41,12 +60,26 @@
             <li class="nav-item"><a class="nav-link" href="contact.jsp">CONTACTS</a></li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <a href="${pageContext.request.contextPath}/Cart?"><img class="cart" src="Images/gio.png" style="width: auto; height: 50px;"></a>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> YOUR INFORMATION </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/editInfo.jsp">My Profile</a>
-                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
-                </div></li>
+            <li>
+                <button id="close-image" onclick="${pageContext.request.contextPath}/Cart"><img src="Images/gio.png" style="width: auto; height: 50px;"></button>
+                <button id="close-CSS"></button>
+            </li>
+            <li class="nav-item active"><a class="nav-link" href="index.jsp">      </a></li>
+            <c:if test="${not empty User}">
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">${User.hoVaTen}</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/EditInfo">My Profile</a>
+                        <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/orders">Orders</a>
+                        <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
+                    </div></li>
+            </c:if>
+            <c:if test="${empty User}">
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardropp" data-toggle="dropdown"> Sign In - Sign Up </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item dropdown-item-custom" href="signin.jsp">Sign In</a>
+                        <a class="dropdown-item dropdown-item-custom" href="signup.jsp">Sign Up</a>
+                    </div></li>
+            </c:if>
         </ul>
     </nav>
 
@@ -55,8 +88,8 @@
         <h3 style="text-align: center;">SẢN PHẨM NỔI BẬT</h3>
         <div class="well well-sm text-right">
             <div id="product" class="row list-group">
-                    <c:forEach items="${requestScope.ListItems}" var="list">
-                        <div class="container">
+                <c:forEach items="${requestScope.ListItems}" var="list">
+                    <div class="container">
                         <h2 class="caption" style="text-align: center;">${list.listItemName}</h2>
                         <c:forEach items="${list.itemList}" var="item">
                             <div class="item col-xs-3 col-lg-3">
@@ -73,18 +106,20 @@
                                 </div>
                             </div>
                         </c:forEach>
-                        </div>
-                    </c:forEach>
-                </div>
+                    </div>
+                </c:forEach>
             </div>
         </div>
     </div>
-
-    <div id="footer">
-        <p style="text-align: center">
-            <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
-        </p>
-    </div>
 </div>
+
+<div id="footer">
+    <p style="text-align: center">
+        <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
+    </p>
+</div>
+</div>
+
+
 </body>
 </html>

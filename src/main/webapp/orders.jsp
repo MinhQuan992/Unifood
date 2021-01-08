@@ -1,8 +1,15 @@
+<%--
+  Created by IntelliJ IDEA.
+  User: Vo Tran Minh Quan
+  Date: 12/17/2020
+  Time: 9:44 AM
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Đơn hàng của tôi | Unifood</title>
+    <title>Đơn hàng của tôi | Unifood</title><meta name="description" content="Quan Com Online Unifood" />
     <meta name="author" content="NhomHQNT">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -33,12 +40,24 @@
             <li class="nav-item"><a class="nav-link" href="contact.jsp">CONTACTS</a></li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <a href="${pageContext.request.contextPath}/Cart?"><img class="cart" src="Images/gio.png" style="width: auto; height: 50px;"></a>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> Sign In - Sign Up </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item dropdown-item-custom" href="signin.jsp">Sign In</a>
-                    <a class="dropdown-item dropdown-item-custom" href="signup.jsp">Sign Up</a>
-                </div></li>
+            <li>
+                <button id="close-image" onclick="${pageContext.request.contextPath}/Cart"><img src="Images/gio.png" style="width: auto; height: 50px;"></button>
+                <button id="close-CSS"></button>
+            <li class="nav-item active"><a class="nav-link" href="index.jsp">      </a></li>
+            <c:if test="${not empty User}">
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">${User.hoVaTen}</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/EditInfo">My Profile</a>
+                        <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
+                    </div></li>
+            </c:if>
+            <c:if test="${empty User}">
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardropp" data-toggle="dropdown"> Sign In - Sign Up </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item dropdown-item-custom" href="signin.jsp">Sign In</a>
+                        <a class="dropdown-item dropdown-item-custom" href="signup.jsp">Sign Up</a>
+                    </div></li>
+            </c:if>
         </ul>
     </nav>
     <c:choose>
@@ -91,6 +110,7 @@
             </table>
         </c:otherwise>
     </c:choose>
+
     <div id="footer">
         <p style="text-align: center">
             <b> NhomHQNT 2020 - Quan Com Online Unifood </b>

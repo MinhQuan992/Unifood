@@ -17,7 +17,7 @@
             integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
             crossorigin="anonymous"></script>
     <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css" />
-    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/order-detail.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/order-detail.css" />
     <link rel="stylesheet"
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
@@ -34,50 +34,59 @@
             <li class="nav-item"><a class="nav-link" href="contact.jsp">CONTACTS</a></li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <a href="${pageContext.request.contextPath}/Cart?"><img class="cart" src="Images/gio.png" style="width: auto; height: 50px;"></a>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> Sign In - Sign Up </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item dropdown-item-custom" href="signin.jsp">Sign In</a>
-                    <a class="dropdown-item dropdown-item-custom" href="signup.jsp">Sign Up</a>
-                </div></li>
+            <li>
+                <button id="close-image" onclick="${pageContext.request.contextPath}/Cart"><img src="Images/gio.png" style="width: auto; height: 50px;"></button>
+                <button id="close-CSS"></button>
+            <li class="nav-item active"><a class="nav-link" href="index.jsp">      </a></li>
+            <c:if test="${not empty User}">
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">${User.hoVaTen}</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/EditInfo">My Profile</a>
+                        <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/Orders">Orders</a>
+                        <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
+                    </div></li>
+            </c:if>
+            <c:if test="${empty User}">
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardropp" data-toggle="dropdown"> Sign In - Sign Up </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item dropdown-item-custom" href="signin.jsp">Sign In</a>
+                        <a class="dropdown-item dropdown-item-custom" href="signup.jsp">Sign Up</a>
+                    </div></li>
+            </c:if>
         </ul>
     </nav>
-    <h1 id="title">Đơn hàng <span><c:out value="${orderID}"></c:out></span></h1>
-    <div id="detail">
-        <table id="products">
-            <thead>
-            <tr>
-                <th style="width: 20%"></th>
-                <th>Tên sản phẩm</th>
-                <th>Số lượng</th>
-                <th>Đơn giá</th>
-            </tr>
-            </thead>
+    <h1>Đơn hàng <span><c:out value="${orderID}"></c:out></span></h1>
+    <table style="text-align: center;">
+        <thead>
+        <tr>
+            <td>Tên sản phẩm</td>
+            <td>Số lượng</td>
+            <td>Đơn giá</td>
+        </tr>
+        </thead>
 
-            <tbody>
-            <c:forEach items="${orderDetail}" var="detail">
-                <tr>
-                    <td><img class="image" src="${pageContext.request.contextPath}<c:out value="${detail.anhMinhHoa}"/>"></td>
-                    <td><c:out value="${detail.tenSanPham}"/></td>
-                    <td style="text-align: center"><c:out value="${detail.soLuong}"/></td>
-                    <td style="text-align: center"><p><c:out value="${detail.donGia}"/><span> VND</span></p></td>
-                </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-        <br>
-        <p>Trạng thái đơn hàng: <span><c:out value="${orderStatus}"/></span></p>
-        <p>Trạng thái thanh toán: <span><c:out value="${paymentStatus}"/></span></p>
-        <p>Ngày đặt: <span><c:out value="${placeOrderDate}"/></span></p>
-        <c:if test="${not empty shipDate}">
-            <p>Ngày giao hàng: <span><c:out value="${shipDate}"/></span></p>
-        </c:if>
-        <c:if test="${not empty payDate}">
-            <p>Ngày thanh toán: <span><c:out value="${payDate}"/></span></p>
-        </c:if>
-        <h2>Tổng giá trị: <span style="font-weight: bold; color: red"><c:out value="${totalCost}"/></span></h2>
-        <a id="link-order" href="${pageContext.request.contextPath}/orders.jsp"><span><<</span>Quay lại đơn hàng của tôi</a>
-    </div>
+        <tbody>
+        <c:forEach items="${orderDetail}" var="detail">
+            <tr>
+                <td><c:out value="${detail.tenSanPham}"/></td>
+                <td><c:out value="${detail.soLuong}"/></td>
+                <td><p><c:out value="${detail.donGia}"/><span> VND</span></p></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+    <p>Trạng thái đơn hàng: <span><c:out value="${orderStatus}"/></span></p>
+    <p>Trạng thái thanh toán: <span><c:out value="${paymentStatus}"/></span></p>
+    <p>Ngày đặt: <span><c:out value="${placeOrderDate}"/></span></p>
+    <c:if test="${not empty shipDate}">
+        <p>Ngày giao hàng: <span><c:out value="${shipDate}"/></span></p>
+    </c:if>
+    <c:if test="${not empty payDate}">
+        <p>Ngày thanh toán: <span><c:out value="${payDate}"/></span></p>
+    </c:if>
+    <h2>Tổng giá trị: <span style="font-weight: bold; color: red"><c:out value="${totalCost}"/></span></h2>
+    <a href="${pageContext.request.contextPath}/orders.jsp">ĐƠN HÀNG CỦA TÔI</a>
+
     <div id="footer">
         <p style="text-align: center">
             <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
