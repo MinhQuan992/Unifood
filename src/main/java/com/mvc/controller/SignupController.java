@@ -181,6 +181,7 @@ public class SignupController extends HttpServlet {
         {
             isManager = true;
             prefix = "QL";
+
         }
         else
         {

@@ -17,7 +17,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-@WebServlet(name = "MainPageController", urlPatterns = {""})
+@WebServlet(name = "MainPageController")
 public class MainPageController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
@@ -52,7 +52,7 @@ public class MainPageController extends HttpServlet {
         }*/
 
         request.setAttribute("ListItems",ListItems);
-        String url = "/index.jsp";
+        String url = "/Khach.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(url);
         requestDispatcher.forward(request,response);
     }
