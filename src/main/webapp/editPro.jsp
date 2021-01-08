@@ -47,9 +47,9 @@
                 </div></li>
         </ul>
     </nav>
-<table id="procontainer" style="text-align: center;">
-    <thead style="text-align: center;">
-        <tr>
+<table id="procontainer" style="align: center;" border="1" cellpadding="2">
+    <thead style="align: center;">
+        <tr bgcolor="#7fffd4">
             <td>Mã Sản Phẩm</td>
             <td>Tên Sản Phẩm</td>
             <td>Đơn Vị Tính</td>
@@ -61,7 +61,7 @@
             <td>Mô tả</td>
         </tr>
     </thead>
-    <tbody style="text-align: center;">
+    <tbody style="align: center;">
         <c:forEach items="${products}" var="product">
             <tr>
                 <td><c:out value="${product.maSanPham}"></c:out></td>
@@ -85,7 +85,7 @@
                         <input type="hidden" name="maNhom" value="${product.maNhom}">
                         <input type="hidden" name="maKho" value="${product.maKho}">
                         <input type="hidden" name="moTa" value="${product.moTa}">
-                        <input type="submit" style="text-align: center; background-color: #60150c; text-decoration-color: white;" value="Chỉnh sửa">
+                        <input type="submit" style="text-align: center; background-color: #60150c; text-emphasis-color: white;" value="Chỉnh sửa">
                     </form>
                 </td>
             </tr>

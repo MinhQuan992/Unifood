@@ -206,12 +206,13 @@
         </div>
     </div>
 </c:if>
-
-    <div id="footer">
-        <p style="text-align: center">
-            <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
-        </p>
-    </div>
 </div>
+
+<div id="footer">
+    <p style="text-align: center">
+        <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
+    </p>
+</div>
+
 </body>
 </html>

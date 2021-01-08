@@ -34,9 +34,8 @@
         </ul>
         <ul class="navbar-nav ml-auto">
             <li>
-                <form class="cart" method="post" action="${pageContext.request.contextPath}/Cart">
-                    <input type="submit" style="background-image: url('/Images/gio.png'); width: auto; height: 50px;">
-                </form>
+                <button id="close-image" onclick="${pageContext.request.contextPath}/Cart"><img src="Images/gio.png" style="width: auto; height: 50px;"></button>
+                <button id="close-CSS"></button>
             <li class="nav-item active"><a class="nav-link" href="index.jsp">      </a></li>
             <c:if test="${not empty User}">
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">${User.hoVaTen}</a>
