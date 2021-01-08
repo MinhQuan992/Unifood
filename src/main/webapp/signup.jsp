@@ -25,15 +25,6 @@
 </head>
 <body>
 <div id="container">
-<nav style="background-color: #60150c;" class="navbar navbar-expand-sm">
-    <a href="#"><img class="logo" src="Images/LOGO.png" style="width: auto; height: 50px;"></a>
-    <a class="homelogo" href="index.jsp"><img src="Images/homepage_icon.png" style="width: auto; height: 50px;"></a>
-    <ul class="navbar-nav">
-        <li class="nav-item active"><a class="nav-link" href="index.jsp">HOME</a></li>
-        <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/MainPage?">PRODUCTS</a></li>
-        <li class="nav-item"><a class="nav-link" href="contact.jsp">CONTACTS</a></li>
-    </ul>
-</nav>
 <%
     String userType = (String) request.getSession().getAttribute("userType");
     if (userType == null)
@@ -184,6 +175,16 @@
     </table>
 
     <input id="btnSignup" type="submit" value="ĐĂNG KÝ">
+
+    <c:choose>
+        <c:when test="${userType == 'Customer'}">
+            <a href="qlhome.jsp">Quay về trang chủ</a>
+        </c:when>
+
+        <c:otherwise>
+            <a href="Khach.jsp">Quay về trang chủ</a>
+        </c:otherwise>
+    </c:choose>
 </form>
 <div id="footer">
     <p style="text-align: center">
