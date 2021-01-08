@@ -45,12 +45,24 @@
             <li class="nav-item"><a class="nav-link" href="contact.jsp">CONTACTS</a></li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <a href="${pageContext.request.contextPath}/Cart?"><img class="cart" src="Images/gio.png" style="width: auto; height: 50px;"></a>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> YOUR INFORMATION </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/EditInfo">My Profile</a>
-                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
-                </div></li>
+            <li>
+                <button id="close-image" onclick="${pageContext.request.contextPath}/Cart"><img src="Images/gio.png" style="width: auto; height: 50px;"></button>
+                <button id="close-CSS"></button>
+            <li class="nav-item active"><a class="nav-link" href="index.jsp">      </a></li>
+            <c:if test="${not empty User}">
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">${User.hoVaTen}</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/EditInfo">My Profile</a>
+                        <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
+                    </div></li>
+            </c:if>
+            <c:if test="${empty User}">
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardropp" data-toggle="dropdown"> Sign In - Sign Up </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item dropdown-item-custom" href="signin.jsp">Sign In</a>
+                        <a class="dropdown-item dropdown-item-custom" href="signup.jsp">Sign Up</a>
+                    </div></li>
+            </c:if>
         </ul>
     </nav>
 <div class="container col-md-8 col-md-offset-3" style="overflow: auto">

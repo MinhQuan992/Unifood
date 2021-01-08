@@ -74,7 +74,7 @@ public class EditDetailController extends HttpServlet {
         }
         else {
             maNhomNum = (short)Integer.parseInt(maNhom);
-            if (maNhomNum == 0)
+            if (maNhomNum == 0 || maNhomNum < 0 || maNhomNum > 99)
             {
                 haserror=true;
                 request.setAttribute("maNhomError", "Nhập Số Nguyên Dương");
@@ -109,13 +109,13 @@ public class EditDetailController extends HttpServlet {
             haserror=true;
             request.setAttribute("maKhoError", "Nhập Mã Kho của sản phẩm");
         }
-
+/*
         if(moTa.equals(""))
         {
             haserror=true;
             request.setAttribute("moTaError", "Nhập Mô Tả sản phẩm");
         }
-
+*/
         if(haserror==false)
         {
             SanphamEntity sanphamEntity = new SanphamEntity(maSanPham, tenSanPham, donViTinh, donGiaNum, soLuongNum, anhMinhHoa, maNhomNum, maKho, moTa);

@@ -70,7 +70,7 @@
         <input type="text"
                class="form-control" id="maSanPham"
                name="maSanPham" value="${maSanPham}">
-        <p style="color: darkred"><c:out value="${maSanPhamError}"></c:out></p>
+        <p style="color: gray; font-family: Arial"><c:out value="${maSanPhamError}"></c:out></p>
     </div>
 
     <div class="form-group">
@@ -78,7 +78,7 @@
         <input type="text"
                class="form-control" id="tenSanPham"
                name="tenSanPham" value="${tenSanPham}">
-        <p style="color: darkred"><c:out value="${tenSanPhamError}"></c:out></p>
+        <p style="color: gray; font-family: Arial"><c:out value="${tenSanPhamError}"></c:out></p>
     </div>
 
     <div class="form-group">
@@ -86,7 +86,7 @@
         <input type="text"
                class="form-control" id="donGia"
                name="donGia" value="${donGia}">
-        <p style="color: darkred"><c:out value="${donGiaError}"></c:out></p>
+        <p style="color: gray; font-family: Arial"><c:out value="${donGiaError}"></c:out></p>
     </div>
 
     <div class="form-group">
@@ -94,7 +94,7 @@
     <input type="text"
            class="form-control" id="donViTinh"
            name="donViTinh" value="${donViTinh}">
-    <p style="color: darkred"><c:out value="${donViTinhError}"></c:out></p>
+    <p style="color: gray; font-family: Arial"><c:out value="${donViTinhError}"></c:out></p>
 </div>
 
     <div class="form-group">
@@ -102,7 +102,7 @@
         <input type="text"
                class="form-control" id="soLuong"
                name="soLuong" value="${soLuong}">
-        <p style="color: darkred"><c:out value="${soLuongError}"></c:out></p>
+        <p style="color: gray; font-family: Arial"><c:out value="${soLuongError}"></c:out></p>
     </div>
 
     <div class="form-group">
@@ -110,7 +110,7 @@
         <input type="text"
                class="form-control" id="anhMinhHoa"
                name="anhMinhHoa" value="${anhMinhHoa}">
-        <p style="color: darkred"><c:out value="${anhMinhHoaError}"></c:out></p>
+        <p style="color: gray; font-family: Arial"><c:out value="${anhMinhHoaError}"></c:out></p>
     </div>
 
     <div class="form-group">
@@ -118,7 +118,7 @@
         <input type="text"
                class="form-control" id="maNhom"
                name="maNhom" value="${maNhom}">
-        <p style="color: darkred"><c:out value="${maNhomError}"></c:out></p>
+        <p style="color: gray; font-family: Arial"><c:out value="${maNhomError}"></c:out></p>
     </div>
 
     <div class="form-group">
@@ -126,7 +126,7 @@
         <input type="text"
                class="form-control" id="maKho"
                name="maKho" value="${maKho}">
-        <p style="color: darkred"><c:out value="${maKhoError}"></c:out></p>
+        <p style="color: gray; font-family: Arial"><c:out value="${maKhoError}"></c:out></p>
     </div>
 
     <div class="form-group">
@@ -134,14 +134,14 @@
         <input type="text"
                class="form-control" id="moTa"
                name="moTa" value="${moTa}">
-        <p style="color: darkred"><c:out value="${moTaError}"></c:out></p>
+        <p style="color: gray; font-family: Arial"><c:out value="${moTaError}"></c:out></p>
     </div>
 
     <input type="submit" style="text-align: center; background-color: #60150c; text-decoration-color: white;" value="Xác Nhận">
 
 </form>
 
-</div>
+</div><br>
 
 <form method="post" action="${pageContext.request.contextPath}/getPro">
     <input type="submit" style="align: center; background-color: #60150c; text-decoration-color: white;" value="Quay lại">

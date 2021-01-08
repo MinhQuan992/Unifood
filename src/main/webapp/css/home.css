@@ -194,8 +194,8 @@ a.dropdown-item-custom:active{
     transition: all .3s ease;
 }
 :hover {
-     background: #60150c;
- }
+    background: #60150c;
+}
 
 .slide {
     width: 100%;
@@ -240,7 +240,8 @@ a.dropdown-item-custom:active{
 /*==Chia cột phần content==*/
 .row {
     overflow: auto;
-    margin: 1.5em auto;
+    margin: 0px 0px;
+    /*margin: 1.5em auto;*/
 }
 .row .col {
     float: left;

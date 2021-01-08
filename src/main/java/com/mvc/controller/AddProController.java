@@ -30,7 +30,7 @@ public class AddProController extends HttpServlet {
         String moTa = request.getParameter("moTa").trim();
 
 
-        boolean haserror=false;
+        boolean haserror = false;
         int donGiaNum = 0;
         int soLuongNum = 0;
         short maNhomNum = 0;
@@ -39,34 +39,42 @@ public class AddProController extends HttpServlet {
         Matcher donGiaMatcher = numPattern.matcher(donGia);
         Matcher soLuongMatcher = numPattern.matcher(soLuong);
         Matcher maNhomMatcher = numPattern.matcher(maNhom);
-        if(!donGiaMatcher.matches())
-        {
+
+        if (donGia.equals("")) {
             request.setAttribute("donGiaError", "Nhập Số Nguyên Dương");
-            haserror=true;
+            haserror = true;
         }
-        else {
+        if (!donGiaMatcher.matches()) {
+            request.setAttribute("donGiaError", "Nhập Số Nguyên Dương");
+            haserror = true;
+        } else {
             donGiaNum = Integer.parseInt(donGia);
-            if (donGiaNum == 0)
-            {
-                haserror=true;
+            if (donGiaNum == 0 || donGiaNum < 0) {
+                haserror = true;
                 request.setAttribute("donGiaError", "Nhập Số Nguyên Dương");
             }
         }
 
-        if(!soLuongMatcher.matches())
-        {
+        if (soLuong.equals("")) {
             request.setAttribute("soLuongError", "Nhập Số Nguyên Dương");
-            haserror=true;
+            haserror = true;
         }
-        else {
+        if (!soLuongMatcher.matches()) {
+            request.setAttribute("soLuongError", "Nhập Số Nguyên Dương");
+            haserror = true;
+        } else {
             soLuongNum = Integer.parseInt(soLuong);
-            if (soLuongNum == 0)
-            {
-                haserror=true;
+            if (soLuongNum == 0) {
+                haserror = true;
                 request.setAttribute("soLuongError", "Nhập Số Nguyên Dương");
             }
         }
 
+        if (maNhom.equals(""))
+        {
+            request.setAttribute("maNhomError", "Nhập Số Nguyên Dương");
+            haserror=true;
+        }
         if(!maNhomMatcher.matches())
         {
             request.setAttribute("maNhomError", "Nhập Số Nguyên Dương");
