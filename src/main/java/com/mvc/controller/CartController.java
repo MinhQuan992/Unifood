@@ -2,6 +2,8 @@ package com.mvc.controller;
 
 import com.mvc.dao.CartDao;
 import com.mvc.dao.ItemDao;
+import com.mvc.dao.OrderDao;
+import com.mvc.dao.UserDao;
 import com.mvc.entities.DathangEntity;
 import com.mvc.entities.GiohangEntity;
 import com.mvc.entities.NguoidungEntity;
@@ -30,6 +32,15 @@ public class CartController extends HttpServlet {
         HttpSession session = request.getSession();
         NguoidungEntity user = (NguoidungEntity) session.getAttribute("User");
         GiohangEntity cart = (GiohangEntity) session.getAttribute("ShoppingCart");
+        if (user==null)
+        {
+            UserDao userDao = new UserDao();
+            user = userDao.getUserByID("KH0000000");
+            CartDao cartDao = new CartDao();
+            cart = cartDao.GetNewCart(user);
+            session.setAttribute("User",user);
+            session.setAttribute("ShoppingCart",cart);
+        }
         String url = "index.jsp";
         CartDao cartDao = new CartDao();
         ItemDao itemDao = new ItemDao();
@@ -57,10 +68,10 @@ public class CartController extends HttpServlet {
             session.setAttribute("SelectAllItem",null);
 
             ServletContext context = this.getServletContext();
+            //context.setAttribute("Test","OK!");
             System.out.println("This servlet is being forward you to: /Payment");
             RequestDispatcher dispatcher = context.getRequestDispatcher("/Payment");
             dispatcher.forward(request, response);
-
         }
         else
         {
@@ -101,6 +112,16 @@ public class CartController extends HttpServlet {
                     {
                         checkedList.clear();
                         session.setAttribute("SelectAllItem",null);
+                    }
+                    break;
+                case "TakeNote":
+                    String note = request.getParameter("Extend");
+                    if (note!=null)
+                    {
+                        OrderDao orderDao = new OrderDao();
+                        DathangEntity order = orderDao.GetOrderData(cart.getMaGio(),ItemCode);
+                        order.setGhiChu(note);
+                        orderDao.UpdateOrderData(order);
                     }
                     break;
             }

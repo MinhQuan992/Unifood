@@ -36,7 +36,7 @@ public class MainPageController extends HttpServlet {
         }
 
         request.setAttribute("ListItems",ListItems);
-        String url = "Khach.jsp";
+        String url = "/Khach.jsp";
         RequestDispatcher requestDispatcher = request.getRequestDispatcher(url);
         requestDispatcher.forward(request,response);
     }

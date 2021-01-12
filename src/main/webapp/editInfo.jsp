@@ -8,6 +8,7 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
 <html>
 <head>
     <title>Edit Info</title>
@@ -50,9 +51,8 @@
                 <h1>Thay đổi thông tin người dùng</h1>
                 <p class="text-info"><c:out value="${status}"></c:out></p>
             </div>
-            <form method="get" action="${pageContext.request.contextPath}/EditInfo">
+            <form method="post" action="${pageContext.request.contextPath}/EditInfo">
                 <input type="hidden" id="UserId" name="UserId" value="${userID}">
-
                 <div class="form-group">
                     <label for="fullName">Họ và tên:</label>
                     <input type="text"
@@ -65,7 +65,7 @@
                     <label for="newPassword">Mật khẩu mới:</label>
                     <input type="password"
                            class="form-control" id="newPassword"
-                           name="newPassword" value="${newPassword}" required>
+                           name="newPassword" value="${password}" required>
                     <p style="color: red"><c:out value="${error.password}"></c:out></p>
                 </div>
 
@@ -73,7 +73,7 @@
                     <label for="rePassword">Nhập lại mật khẩu mới:</label>
                     <input type="password"
                            class="form-control" id="rePassword"
-                           name="rePassword" value="${rePassword}" required>
+                           name="rePassword" value="${rePassword}">
                     <p style="color: red"><c:out value="${error.rePassword}"></c:out></p>
                 </div>
 

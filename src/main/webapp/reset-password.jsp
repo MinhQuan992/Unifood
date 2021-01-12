@@ -41,29 +41,33 @@
             <li class="nav-item"><a class="nav-link" href="contact.jsp">CONTACTS</a></li>
         </ul>
     </nav>
-<c:if test="${not empty wrongEmail}">
-    <script type="text/javascript">
-        alert("Email không hợp lệ!")
-    </script>
-</c:if>
-<div align="center">
-    <h1>ĐẶT LẠI MẬT KHẨU</h1>
-    <p id="message">Nhập vào địa chỉ email của bạn, chúng tôi sẽ đặt một mật khẩu mới ngẫu nhiên cho tài khoản của bạn và gửi vào hộp thư!</p>
+    <c:if test="${not empty wrongEmail}">
+        <script type="text/javascript">
+            alert("Email không hợp lệ!")
+        </script>
+    </c:if>
+    <c:if test="${not empty sendEmailFailed}">
+        <script type="text/javascript">
+            alert("Không thể gửi mã xác minh về email của bạn, mời bạn thử lại")
+        </script>
+    </c:if>
+    <div align="center">
+        <h1>ĐẶT LẠI MẬT KHẨU</h1>
+        <p id="message">Nhập vào địa chỉ email của bạn, chúng tôi sẽ gửi một mã xác minh xác nhận yêu cầu thay đổi mật khẩu vào hộp thư!</p>
 
-    <form id="frmReset" method="post" action="${pageContext.request.contextPath}/resetPassword">
-        <label for="reset-email">Email:</label>&nbsp;
-        <input id="reset-email" type="email" name="reset-email" required>
-        <br>
-        <br>
-        <input id="btnSubmit" type="submit" value="GỬI TÔI MẬT KHẨU MỚI">
-    </form>
-</div>
-
-<div id="footer">
-    <p style="text-align: center">
-        <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
-    </p>
-</div>
+        <form id="frmReset" method="post" action="${pageContext.request.contextPath}/resetPassword">
+            <input id="reset-email" type="email" name="reset-email" placeholder="Email" required>
+            <br>
+            <br>
+            <input id="btnSubmit" type="submit" value="GỬI TÔI MÃ XÁC MINH">
+        </form>
+    </div>
+    <br>
+    <div id="footer">
+        <p style="text-align: center">
+            <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
+        </p>
+    </div>
 </div>
 </body>
 </html>

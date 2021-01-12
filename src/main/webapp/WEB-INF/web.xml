@@ -110,4 +110,5 @@
         <servlet-name>MainPageController</servlet-name>
         <url-pattern>/MainPage</url-pattern>
     </servlet-mapping>
+
 </web-app>

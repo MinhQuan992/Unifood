@@ -217,3 +217,9 @@ a.dropdown-item-custom:active{
     height: 200px;
     width: 300px;
 }
+
+/*Ô nội dung*/
+.form-control {
+    height: auto;
+    width: auto;
+}

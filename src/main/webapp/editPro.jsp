@@ -36,20 +36,20 @@
         <a href="#"><img class="logo" src="Images/LOGO.png" style="width: auto; height: 50px;"></a>
         <a class="homelogo" href="index.jsp"><img src="Images/homepage_icon.png" style="width: auto; height: 50px;"></a>
         <ul class="navbar-nav">
-            <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/MainPage?">HOME</a></li>
+            <li class="nav-item active"><a class="nav-link" href="qlhome.jsp">HOME</a></li>
             <li class="nav-item"><a class="nav-link" href="staffs.jsp">STAFFS</a></li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">MANAGER</a>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">${User.hoVaTen}</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/ManageWarehouse">My Profile</a>
                     <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
                 </div></li>
         </ul>
     </nav>
-<table id="procontainer" style="text-align: center;">
-    <thead>
-        <tr>
+    <table id="procontainer" style="align: center;" border="1" cellpadding="2">
+        <thead style="align: center;">
+        <tr bgcolor="#7fffd4">
             <td>Mã Sản Phẩm</td>
             <td>Tên Sản Phẩm</td>
             <td>Đơn Vị Tính</td>
@@ -60,8 +60,8 @@
             <td>Mã Kho</td>
             <td>Mô tả</td>
         </tr>
-    </thead>
-    <tbody>
+        </thead>
+        <tbody style="align: center;">
         <c:forEach items="${products}" var="product">
             <tr>
                 <td><c:out value="${product.maSanPham}"></c:out></td>
@@ -85,20 +85,20 @@
                         <input type="hidden" name="maNhom" value="${product.maNhom}">
                         <input type="hidden" name="maKho" value="${product.maKho}">
                         <input type="hidden" name="moTa" value="${product.moTa}">
-                        <input type="submit" style="text-align: center; background-color: #60150c; text-decoration-color: white;" value="Chỉnh sửa">
+                        <input type="submit" style="text-align: center; background-color: #60150c; text-emphasis-color: white;" value="Chỉnh sửa">
                     </form>
                 </td>
             </tr>
         </c:forEach>
 
-    </tbody>
-</table>
+        </tbody>
+    </table>
 
-<div id="footer">
-    <p style="text-align: center">
-        <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
-    </p>
-</div>
+    <div id="footer">
+        <p style="text-align: center">
+            <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
+        </p>
+    </div>
 </div>
 </body>
 </html>

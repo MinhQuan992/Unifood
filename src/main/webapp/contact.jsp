@@ -1,5 +1,20 @@
+<%@ page import="com.mvc.entities.NguoidungEntity" %>
+<%@ page import="com.mvc.dao.UserDao" %>
+<%@ page import="com.mvc.dao.CartDao" %>
+<%@ page import="com.mvc.entities.GiohangEntity" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
-
+<%
+    NguoidungEntity user = (NguoidungEntity) session.getAttribute("User");
+    if (user==null) {
+        UserDao userDao = new UserDao();
+        user = userDao.getUserByID("KH0000000");
+        CartDao cartDao = new CartDao();
+        GiohangEntity cart = cartDao.GetNewCart(user);
+        session.setAttribute("User", user);
+        session.setAttribute("ShoppingCart", cart);
+        pageContext.setAttribute("User", user);
+    }
+%>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -28,19 +43,41 @@
 <div id="container">
     <nav style="background-color: #60150c;" class="navbar navbar-expand-sm">
         <a href="#"><img class="logo" src="Images/LOGO.png" style="width: auto; height: 50px;"></a>
-        <a class="homelogo" href="index.jsp"><img src="Images/homepage_icon.png" style="width: auto; height: 50px;"></a>
+        <a class="homelogo" href="#"><img src="Images/homepage_icon.png" style="width: auto; height: 50px;"></a>
         <ul class="navbar-nav">
             <li class="nav-item active"><a class="nav-link" href="index.jsp">HOME</a></li>
-            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/MainPage?">PRODUCTS</a></li>
+            <li class="nav-item"><a class="nav-link" href="${pageContext.request.contextPath}/MainPage">PRODUCTS</a></li>
             <li class="nav-item"><a class="nav-link" href="contact.jsp">CONTACTS</a></li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <a href="${pageContext.request.contextPath}/Cart?"><img class="cart" src="Images/gio.png" style="width: auto; height: 50px;"></a>
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown"> YOUR INFORMATION </a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/EditInfo">My Profile</a>
-                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
-                </div></li>
+            <li>
+                <button id="close-image" onclick="${pageContext.request.contextPath}/Cart"><img src="Images/gio.png" style="width: auto; height: 50px;"></button>
+                <button id="close-CSS"></button>
+            </li>
+            <li class="nav-item active"><a class="nav-link" href="index.jsp"> </a></li>
+            <%
+                if (!user.getMaNguoiDung().equals("KH0000000"))
+                {
+            %>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">${User.hoVaTen}</a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/EditInfo">My Profile</a>
+                        <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/orders">Orders</a>
+                        <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
+                    </div></li>
+            <%
+                }
+                else
+                {
+            %>
+                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardropp" data-toggle="dropdown"> Sign In - Sign Up </a>
+                    <div class="dropdown-menu">
+                        <a class="dropdown-item dropdown-item-custom" href="signin.jsp">Sign In</a>
+                        <a class="dropdown-item dropdown-item-custom" href="signup.jsp">Sign Up</a>
+                    </div></li>
+            <%
+                }
+            %>
         </ul>
     </nav>
 

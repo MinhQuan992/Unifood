@@ -1,13 +1,11 @@
 package com.mvc.controller;
 
-import com.mvc.dao.PaymentDao;
-import com.mvc.dao.ShipingUnitDao;
-import com.mvc.entities.DonhangEntity;
-import com.mvc.entities.DonvigiaohangEntity;
-import com.mvc.entities.NguoidungEntity;
-import com.mvc.entities.ViewAllOrderEntity;
+import com.mvc.dao.*;
+import com.mvc.entities.*;
+import com.mvc.utility.EmailUtility;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -25,7 +23,45 @@ import java.util.List;
 
 @WebServlet(name = "OrderManageController")
 public class OrderManageController extends HttpServlet {
+    private static final long serialVersionUID = 1L;
+
+    private String host;
+    private String port;
+    private String socketFactoryClass;
+    private String auth;
+    private String email;
+    private String name;
+    private String pass;
+
+    public void init() {
+        // reads SMTP server setting from web.xml file
+        ServletContext context = getServletContext();
+        host = context.getInitParameter("host");
+        port = context.getInitParameter("port");
+        socketFactoryClass = context.getInitParameter("socketFactoryClass");
+        auth = context.getInitParameter("auth");
+        email = context.getInitParameter("email");
+        name = context.getInitParameter("name");
+        pass = context.getInitParameter("pass");
+    }
+
+    public void SendEmail(String Message, String recipient)
+    {
+        String subject = "Your order was updated!";
+        String content = "We send from UNIFOOD\nYour order status was changed to:  " + Message +
+                "\nPlease visit our page to track your order information!\nThanks!\nUnifood Team";
+        try
+        {
+            EmailUtility.sendEmail(host, port, socketFactoryClass, auth, email, name, pass, recipient, subject, content);
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
         request.setCharacterEncoding("UTF-8");
         HttpSession session = request.getSession();
         NguoidungEntity user = (NguoidungEntity) session.getAttribute("User");
@@ -51,9 +87,9 @@ public class OrderManageController extends HttpServlet {
 
         String cancel = request.getParameter("Cancel");
         String savechange = request.getParameter("Save");
+        String orderCode = request.getParameter("OrderCode");
         if (savechange!=null)
         {
-            String orderCode = request.getParameter("OrderCode");
             String shippingUnit = request.getParameter("ShippingUnit");
             String shippingDate = request.getParameter("TransDate");
             String completeDate = request.getParameter("CompleteDate");
@@ -80,9 +116,35 @@ public class OrderManageController extends HttpServlet {
             donhangEntity.setTtThanhToan(payStatus);
 
             System.out.println(orderStatus);
-            /*System.out.println(donhangEntity.getMaDon()+"//"+donhangEntity.getMaDonViGiaoHang()+"//");
-            System.out.println(orderStatus);
-            System.out.println(payStatus);*/
+            String message = "";
+            switch (orderStatus)
+            {
+                case "Đang xử lý":
+                    message = "In Processing!!";
+                    break;
+                case "Đã tiếp nhận":
+                    message = "In Accepted Status!!";
+                    break;
+                case "Giao hàng thành công":
+                    message = "Delivered Successfully!!";
+                    break;
+                case "Đã bị hủy":
+                    message = "Canceled!!";
+                    break;
+                case "Đang giao hàng":
+                    message = "Delivering to you!!";
+                    break;
+                default:
+                    message = "Nothings!";
+            }
+            //aymentDao paymentDao1 = new OrderDao();
+            DonhangEntity DH = (DonhangEntity) paymentDao.GetDonHang(Integer.parseInt(orderCode));
+            int CartCode = DH.getMaGio();
+            CartDao cartDao = new CartDao();
+            GiohangEntity GH = cartDao.GetCartData(CartCode);
+            UserDao userDao = new UserDao();
+            NguoidungEntity userss = userDao.getUserByID(GH.getMaNguoiDung());
+            SendEmail(message,userss.getEmail());
             paymentDao.UpdateOrderData(donhangEntity);
         }
 

@@ -28,6 +28,7 @@
     <div class="Main-Form">
     <h1>Trang quản lí đơn hàng</h1>
     <h3>Chào mừng quản lí (<%=user.getMaNguoiDung()%>): <%=user.getHoVaTen()%></h3>
+        <p>Trở về <a href="${pageContext.request.contextPath}/qlhome.jsp">trang chủ</a></p>
     <table class="table">
         <thead class="thead-dark">
         <tr>

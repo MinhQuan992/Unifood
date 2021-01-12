@@ -2,8 +2,13 @@
 <dataSource name="UNIFOOD@localhost">
   <database-model serializer="dbm" dbms="MSSQL" family-id="MSSQL" format-version="4.20">
     <root id="1">
+<<<<<<< HEAD
       <ServerVersion>15.0.2070</ServerVersion>
       <PermissionsCheckSum>43840689887</PermissionsCheckSum>
+=======
+      <ServerVersion>15.0.2000</ServerVersion>
+      <PermissionsCheckSum>47332830169</PermissionsCheckSum>
+>>>>>>> QuocNinh
       <Grants>0|root||1|connect sql|G
 0|root||2|view any database|G
 0|root||101|view any definition|G
@@ -14,9 +19,17 @@
 0|root||105|control server|G
 0|root||105|view any definition|G
 0|root||106|view any definition|G
+<<<<<<< HEAD
 0|root||257|connect sql|G
 0|root||257|view any definition|G
 0|root||257|view server state|G
+=======
+0|root||256|connect sql|G
+0|root||257|connect sql|G
+0|root||257|view any definition|G
+0|root||257|view server state|G
+0|root||258|connect sql|G
+>>>>>>> QuocNinh
 0|root||259|connect sql|G
 0|root||260|connect sql|G
 0|root||261|connect sql|G
@@ -31,13 +44,18 @@
 0|root||265|view any definition|G
 0|root||265|view server state|G
 0|root||266|connect sql|G
+<<<<<<< HEAD
 0|root||267|connect sql|G
+=======
+0|root||269|connect sql|G
+>>>>>>> QuocNinh
 2|||2|connect|G
 3|||2|connect|G
 4|||2|connect|G
 5|||2|connect|G
 </Grants>
     </root>
+<<<<<<< HEAD
     <database id="2" parent="1" name="Baitap2">
       <ObjectId>12</ObjectId>
     </database>
@@ -112,136 +130,286 @@
       <DefaultDatabase>master</DefaultDatabase>
     </login>
     <login id="21" parent="1" name="public">
+=======
+    <database id="2" parent="1" name="DBMS_C2">
+      <ObjectId>5</ObjectId>
+    </database>
+    <database id="3" parent="1" name="DBMS_C2_T">
+      <ObjectId>6</ObjectId>
+    </database>
+    <database id="4" parent="1" name="DBMS_C3">
+      <ObjectId>7</ObjectId>
+    </database>
+    <database id="5" parent="1" name="DBMS_C3_DoAn">
+      <ObjectId>8</ObjectId>
+    </database>
+    <database id="6" parent="1" name="DBMS_ONKT">
+      <ObjectId>10</ObjectId>
+    </database>
+    <database id="7" parent="1" name="KT">
+      <ObjectId>11</ObjectId>
+    </database>
+    <database id="8" parent="1" name="UNIFOOD">
+      <ObjectId>12</ObjectId>
+      <PermissionsCheckSum>3196235284</PermissionsCheckSum>
+      <Grants>12|database||0|view any column encryption key definition|G
+12|database||0|view any column master key definition|G
+12|database||1|connect|G
+</Grants>
+      <Current>1</Current>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+      <Fingerprint>12.44184/335D515D-2869-4CE7-843B-686901171111@NINH-MASTER\SQLEXPRESS</Fingerprint>
+    </database>
+    <database id="9" parent="1" name="UNIFOODS">
+      <ObjectId>9</ObjectId>
+    </database>
+    <database id="10" parent="1" name="master">
+      <ObjectId>1</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+    </database>
+    <database id="11" parent="1" name="model">
+      <ObjectId>3</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+    </database>
+    <database id="12" parent="1" name="msdb">
+      <ObjectId>4</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+    </database>
+    <database id="13" parent="1" name="tempdb">
+      <ObjectId>2</ObjectId>
+      <Collation>SQL_Latin1_General_CP1_CI_AS</Collation>
+    </database>
+    <login id="14" parent="1" name="sa">
+      <ObjectId>1</ObjectId>
+      <Enabled>1</Enabled>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+    <login id="15" parent="1" name="public">
+>>>>>>> QuocNinh
       <ObjectId>2</ObjectId>
       <Type>server-role</Type>
       <Enabled>1</Enabled>
     </login>
+<<<<<<< HEAD
     <login id="22" parent="1" name="sysadmin">
+=======
+    <login id="16" parent="1" name="sysadmin">
+>>>>>>> QuocNinh
       <ObjectId>3</ObjectId>
       <Type>server-role</Type>
       <Enabled>1</Enabled>
     </login>
+<<<<<<< HEAD
     <login id="23" parent="1" name="securityadmin">
+=======
+    <login id="17" parent="1" name="securityadmin">
+>>>>>>> QuocNinh
       <ObjectId>4</ObjectId>
       <Type>server-role</Type>
       <Enabled>1</Enabled>
     </login>
+<<<<<<< HEAD
     <login id="24" parent="1" name="serveradmin">
+=======
+    <login id="18" parent="1" name="serveradmin">
+>>>>>>> QuocNinh
       <ObjectId>5</ObjectId>
       <Type>server-role</Type>
       <Enabled>1</Enabled>
     </login>
+<<<<<<< HEAD
     <login id="25" parent="1" name="setupadmin">
+=======
+    <login id="19" parent="1" name="setupadmin">
+>>>>>>> QuocNinh
       <ObjectId>6</ObjectId>
       <Type>server-role</Type>
       <Enabled>1</Enabled>
     </login>
+<<<<<<< HEAD
     <login id="26" parent="1" name="processadmin">
+=======
+    <login id="20" parent="1" name="processadmin">
+>>>>>>> QuocNinh
       <ObjectId>7</ObjectId>
       <Type>server-role</Type>
       <Enabled>1</Enabled>
     </login>
+<<<<<<< HEAD
     <login id="27" parent="1" name="diskadmin">
+=======
+    <login id="21" parent="1" name="diskadmin">
+>>>>>>> QuocNinh
       <ObjectId>8</ObjectId>
       <Type>server-role</Type>
       <Enabled>1</Enabled>
     </login>
+<<<<<<< HEAD
     <login id="28" parent="1" name="dbcreator">
+=======
+    <login id="22" parent="1" name="dbcreator">
+>>>>>>> QuocNinh
       <ObjectId>9</ObjectId>
       <Type>server-role</Type>
       <Enabled>1</Enabled>
     </login>
+<<<<<<< HEAD
     <login id="29" parent="1" name="bulkadmin">
+=======
+    <login id="23" parent="1" name="bulkadmin">
+>>>>>>> QuocNinh
       <ObjectId>10</ObjectId>
       <Type>server-role</Type>
       <Enabled>1</Enabled>
     </login>
+<<<<<<< HEAD
     <login id="30" parent="1" name="##MS_SQLResourceSigningCertificate##">
+=======
+    <login id="24" parent="1" name="##MS_SQLResourceSigningCertificate##">
+>>>>>>> QuocNinh
       <ObjectId>101</ObjectId>
       <Type>certificate-mapped-login</Type>
       <Enabled>1</Enabled>
       <DefaultDatabase>master</DefaultDatabase>
     </login>
+<<<<<<< HEAD
     <login id="31" parent="1" name="##MS_SQLReplicationSigningCertificate##">
+=======
+    <login id="25" parent="1" name="##MS_SQLReplicationSigningCertificate##">
+>>>>>>> QuocNinh
       <ObjectId>102</ObjectId>
       <Type>certificate-mapped-login</Type>
       <Enabled>1</Enabled>
       <DefaultDatabase>master</DefaultDatabase>
     </login>
+<<<<<<< HEAD
     <login id="32" parent="1" name="##MS_SQLAuthenticatorCertificate##">
+=======
+    <login id="26" parent="1" name="##MS_SQLAuthenticatorCertificate##">
+>>>>>>> QuocNinh
       <ObjectId>103</ObjectId>
       <Type>certificate-mapped-login</Type>
       <Enabled>1</Enabled>
       <DefaultDatabase>master</DefaultDatabase>
     </login>
+<<<<<<< HEAD
     <login id="33" parent="1" name="##MS_PolicySigningCertificate##">
+=======
+    <login id="27" parent="1" name="##MS_PolicySigningCertificate##">
+>>>>>>> QuocNinh
       <ObjectId>105</ObjectId>
       <Type>certificate-mapped-login</Type>
       <Enabled>1</Enabled>
       <DefaultDatabase>master</DefaultDatabase>
     </login>
+<<<<<<< HEAD
     <login id="34" parent="1" name="##MS_SmoExtendedSigningCertificate##">
+=======
+    <login id="28" parent="1" name="##MS_SmoExtendedSigningCertificate##">
+>>>>>>> QuocNinh
       <ObjectId>106</ObjectId>
       <Type>certificate-mapped-login</Type>
       <Enabled>1</Enabled>
       <DefaultDatabase>master</DefaultDatabase>
     </login>
+<<<<<<< HEAD
     <login id="35" parent="1" name="##MS_PolicyTsqlExecutionLogin##">
       <ObjectId>257</ObjectId>
       <DefaultDatabase>master</DefaultDatabase>
     </login>
     <login id="36" parent="1" name="DESKTOP-LKP2UCO\Vo Tran Minh Quan">
+=======
+    <login id="29" parent="1" name="##MS_PolicyTsqlExecutionLogin##">
+      <ObjectId>257</ObjectId>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+    <login id="30" parent="1" name="NINH-MASTER\ninhn">
+>>>>>>> QuocNinh
       <ObjectId>259</ObjectId>
       <Type>windows-login</Type>
       <Enabled>1</Enabled>
       <DefaultDatabase>master</DefaultDatabase>
     </login>
+<<<<<<< HEAD
     <login id="37" parent="1" name="NT SERVICE\SQLWriter">
+=======
+    <login id="31" parent="1" name="NT SERVICE\SQLWriter">
+>>>>>>> QuocNinh
       <ObjectId>260</ObjectId>
       <Type>windows-login</Type>
       <Enabled>1</Enabled>
       <DefaultDatabase>master</DefaultDatabase>
     </login>
+<<<<<<< HEAD
     <login id="38" parent="1" name="NT SERVICE\Winmgmt">
+=======
+    <login id="32" parent="1" name="NT SERVICE\Winmgmt">
+>>>>>>> QuocNinh
       <ObjectId>261</ObjectId>
       <Type>windows-login</Type>
       <Enabled>1</Enabled>
       <DefaultDatabase>master</DefaultDatabase>
     </login>
+<<<<<<< HEAD
     <login id="39" parent="1" name="NT Service\MSSQLSERVER">
+=======
+    <login id="33" parent="1" name="NT Service\MSSQL$SQLEXPRESS">
+>>>>>>> QuocNinh
       <ObjectId>262</ObjectId>
       <Type>windows-login</Type>
       <Enabled>1</Enabled>
       <DefaultDatabase>master</DefaultDatabase>
     </login>
+<<<<<<< HEAD
     <login id="40" parent="1" name="BUILTIN\Users">
+=======
+    <login id="34" parent="1" name="BUILTIN\Users">
+>>>>>>> QuocNinh
       <ObjectId>263</ObjectId>
       <Type>windows-group</Type>
       <Enabled>1</Enabled>
       <DefaultDatabase>master</DefaultDatabase>
     </login>
+<<<<<<< HEAD
     <login id="41" parent="1" name="NT AUTHORITY\SYSTEM">
+=======
+    <login id="35" parent="1" name="NT AUTHORITY\SYSTEM">
+>>>>>>> QuocNinh
       <ObjectId>264</ObjectId>
       <Type>windows-login</Type>
       <Enabled>1</Enabled>
       <DefaultDatabase>master</DefaultDatabase>
     </login>
+<<<<<<< HEAD
     <login id="42" parent="1" name="NT SERVICE\SQLTELEMETRY">
+=======
+    <login id="36" parent="1" name="NT SERVICE\SQLTELEMETRY$SQLEXPRESS">
+>>>>>>> QuocNinh
       <ObjectId>265</ObjectId>
       <Type>windows-login</Type>
       <Enabled>1</Enabled>
       <DefaultDatabase>master</DefaultDatabase>
     </login>
+<<<<<<< HEAD
     <login id="43" parent="1" name="##MS_PolicyEventProcessingLogin##">
       <ObjectId>266</ObjectId>
       <DefaultDatabase>master</DefaultDatabase>
     </login>
     <login id="44" parent="1" name="##MS_AgentSigningCertificate##">
+=======
+    <login id="37" parent="1" name="QuanAP">
+      <ObjectId>266</ObjectId>
+      <Enabled>1</Enabled>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+    <login id="38" parent="1" name="##MS_AgentSigningCertificate##">
+>>>>>>> QuocNinh
       <ObjectId>267</ObjectId>
       <Type>certificate-mapped-login</Type>
       <Enabled>1</Enabled>
       <DefaultDatabase>master</DefaultDatabase>
     </login>
+<<<<<<< HEAD
     <schema id="45" parent="15" name="INFORMATION_SCHEMA">
       <ObjectId>3</ObjectId>
     </schema>
@@ -274,7 +442,7 @@
     </schema>
     <schema id="55" parent="15" name="dbo">
       <ObjectId>1</ObjectId>
-      <IntrospectionTimestamp>2021-01-11.15:29:40.400</IntrospectionTimestamp>
+      <IntrospectionTimestamp>2021-01-02.04:15:56.700</IntrospectionTimestamp>
       <Current>1</Current>
     </schema>
     <schema id="56" parent="15" name="guest">
@@ -1076,5 +1244,22 @@ MaSanPham</ColNames>
       <Position>1</Position>
       <DataType>varchar(2 char)|0s</DataType>
     </argument>
+=======
+    <login id="39" parent="1" name="##MS_PolicyEventProcessingLogin##">
+      <ObjectId>256</ObjectId>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+    <login id="40" parent="1" name="##MS_AgentSigningCertificate##">
+      <ObjectId>258</ObjectId>
+      <Type>certificate-mapped-login</Type>
+      <Enabled>1</Enabled>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+    <login id="41" parent="1" name="ninhmaster">
+      <ObjectId>269</ObjectId>
+      <Enabled>1</Enabled>
+      <DefaultDatabase>master</DefaultDatabase>
+    </login>
+>>>>>>> QuocNinh
   </database-model>
 </dataSource>
