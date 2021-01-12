@@ -1,0 +1,178 @@
+*{
+    margin: 0;
+    padding: 0;
+}/*==reset css==*/
+
+body{
+    height: 100%;
+    width: 100%;
+    background-image: url("../Images/nen.jpg");
+    background-size: cover;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    font-family: SVN-Zero;
+    font-size: 16px;
+    color: ghostwhite;
+}
+
+/*==Dieu chinh menu==*/
+
+#menu{
+    height: 100px;
+    width: 100%;
+}
+#menu ul {
+    display: block;
+    background: #60150c;
+    list-style-type: none;
+    text-align: center;
+    height: 200px;
+    top: 0;
+}
+#menu li{
+    float: left;
+    text-align: center;
+    color: #60150c;
+    display: inline-block;
+    width: 250px;
+    height: 20px;
+    padding-top: 35px;
+    line-height: 30px;
+    margin-left: -5px;/*==xoa inline-block tu sinh==*/
+}
+#menu li a{
+    text-decoration: none;
+    color: #60150c;
+    display: block;
+    padding: 0 1em;
+}
+a:hover, a:visited{
+    background: #8e1b0c;
+    color: ghostwhite;
+}
+.navbar-nav{
+    margin-left: 1%;
+}
+li.nav-item{
+    margin-left: 25px;
+}
+li.nav-item a:hover{
+    color: ghostwhite;
+    border-radius: 20px;
+}
+.nav-link{
+    font-weight: bold;
+}
+.homelogo{
+    margin-left: 100px;
+}
+.homelogo:hover{
+    background: #60150c;
+    text-decoration: none;
+}
+/*==Drop down menu==*/
+.sub-menu li {
+    display: none;
+}
+#menu li{
+    position: relative;
+}
+.sub-menu {
+    color: #602b28;
+    display: none;
+    position: absolute;
+}
+a.dropdown-item-custom{
+    color: #000000;
+    font-weight: bold;
+}
+a.dropdown-item-custom:hover{
+    background: #60150c;
+    color: #fff;
+    border-radius: 2%;
+}
+a.dropdown-item-custom:active{
+    background: #60150c;
+    color: #fff;
+}
+/*==Hien thi khi re chuot==*/
+#menu li:hover .sub-menu{
+    display: block;
+}
+.sub-menu li{
+    margin-left: 0 !important;
+}
+/*==can chinh==*/
+.logo{
+    float: left;
+    text-align: center;
+    width: 150px;height: 100px;
+    background: #60150c;
+}
+.logo:hover{
+    text-decoration: none;
+}
+.logo img{
+    width: 100%;height: 100%
+}
+.floated-left{
+
+    display: flex;
+    flex-direction: row;
+    color: #60150c;
+    float:left;
+}
+
+/*==footer==*/
+#footer{
+    font-family: SVN-Titillium Light;
+    font-size: 16px;
+    border-top: 1px solid #E6E6E6;
+    color: slategray;
+    padding: 1em 3em;
+    text-alignt: center;
+}
+
+#container{
+    padding-top: 0px;
+    position: relative;
+    top: 0;
+    width: 100%;
+}
+
+/*con-text*/
+#contact{
+    font-family: SVN-A Love Of Thunder;
+    font-size: 25px;
+    border-top: 1px solid #E6E6E6;
+    color: #60150c;
+    padding: 1em 3em;
+    text-align: center;
+}
+.h1{
+    text-align: center;
+    background: #8e1b0c;
+}
+
+/*button*/
+button {
+    display: inline-block;
+    height: 50px;
+    padding: 0;
+    margin: 0;
+    vertical-align: top;
+    width: auto;
+}
+
+#close-image img {
+    display: block;
+    height: 50px;
+    width: auto;
+}
+
+#close-CSS {
+    background-image: url( '../Images/gio.png' );
+    height: 50px;
+    width: auto;
+}

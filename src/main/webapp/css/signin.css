@@ -1,0 +1,215 @@
+*{
+    margin: 0;
+    padding: 0;
+}/*==reset css==*/
+
+body{
+    font-family: SVN-Zero;
+    font-size: 16px;
+    color: ghostwhite;
+}
+
+/*==Dieu chinh menu==*/
+
+#menu{
+    height: 100px;
+    width: 100%;
+}
+#menu ul {
+    display: block;
+    background: #60150c;
+    list-style-type: none;
+    text-align: center;
+    height: 200px;
+    top: 0;
+}
+#menu li{
+    float: left;
+    text-align: center;
+    color: #60150c;
+    display: inline-block;
+    width: 250px;
+    height: 20px;
+    padding-top: 35px;
+    line-height: 30px;
+    margin-left: -5px;/*==xoa inline-block tu sinh==*/
+}
+#menu li a{
+    text-decoration: none;
+    color: #60150c;
+    display: block;
+    padding: 0 1em;
+}
+a:hover, a:visited{
+    background: #8e1b0c;
+    color: ghostwhite;
+}
+.navbar-nav{
+    margin-left: 1%;
+}
+li.nav-item{
+    margin-left: 25px;
+}
+li.nav-item a:hover{
+    color: ghostwhite;
+    border-radius: 20px;
+}
+.nav-link{
+    font-weight: bold;
+}
+.homelogo{
+    margin-left: 100px;
+}
+.homelogo:hover{
+    background: #60150c;
+    text-decoration: none;
+}
+/*==Drop down menu==*/
+.sub-menu li {
+    display: none;
+}
+#menu li{
+    position: relative;
+}
+.sub-menu {
+    color: #602b28;
+    display: none;
+    position: absolute;
+}
+a.dropdown-item-custom{
+    color: #000000;
+    font-weight: bold;
+}
+a.dropdown-item-custom:hover{
+    background: #60150c;
+    color: #fff;
+    border-radius: 2%;
+}
+a.dropdown-item-custom:active{
+    background: #60150c;
+    color: #fff;
+}
+/*==Hien thi khi re chuot==*/
+#menu li:hover .sub-menu{
+    display: block;
+}
+.sub-menu li{
+    margin-left: 0 !important;
+}
+/*==can chinh==*/
+.logo{
+    float: left;
+    text-align: center;
+    width: 150px;height: 100px;
+    background: #60150c;
+}
+.logo:hover{
+    text-decoration: none;
+}
+.logo img{
+    width: 100%;height: 100%
+}
+.floated-left{
+
+    display: flex;
+    flex-direction: row;
+    color: #60150c;
+    float:left;
+}
+
+/*==footer==*/
+#footer{
+    font-family: SVN-Titillium Light;
+    font-size: 16px;
+    border-top: 1px solid #E6E6E6;
+    color: slategray;
+    padding: 1em 3em;
+    text-alignt: center;
+}
+
+#container{
+    padding-top: 0px;
+    position: relative;
+    top: 0;
+    width: 100%;
+}
+/* DESIGN FOR LOGIN */
+#login-page {
+    background: url("../Images/background.jpg") no-repeat center center fixed;
+    background-size: cover;
+}
+
+#form-title {
+    font-family: "Myriad Pro Black";
+    font-size: 35px;
+    color: white;
+    border-bottom: 5px solid #4bb8dc;
+    width: 88%;
+    margin-top: 4%;
+}
+
+#frmLogin {
+    margin-left: 33%;
+    margin-top: 3%;
+    border: 2px solid;
+    width: 37%;
+    padding-left: 4%;
+    padding-bottom: 2%;
+    border-radius: 8px;
+}
+
+.txtInfo {
+    width: 80%;
+    height: 7%;
+    border: 2px solid #4bb8dc;
+    border-radius: 8px;
+    font-size: 20px;
+    font-family: "Source Sans Pro";
+}
+
+#btnSignin {
+    width: 45%;
+    height: 7%;
+    background-color: #60150c;
+    color: white;
+    font-weight: bold;
+    font-size: 20px;
+    font-family: "Myriad Pro Black";
+    border: none;
+    border-radius: 20px;
+    margin-top: -2%;
+    margin-left: 20%;
+}
+
+#btnSignin:hover {
+    cursor: pointer;
+    background-color: red;
+}
+
+#message-signup {
+    font-family: "Myriad Pro Black";
+    font-size: 20px;
+    color: white;
+    margin-top: 2%;
+    margin-left: 39%;
+}
+
+#link-forgot {
+    color: #b3aeaee3;
+    text-decoration: none;
+    font-family: "Myriad Pro Black";
+    font-size: 20px;
+}
+
+#link-forgot:hover {
+    text-decoration: underline;
+}
+
+#link-signup {
+    color: #b3aeaee3;
+    text-decoration: none;
+}
+
+#link-signup:hover {
+    text-decoration: underline;
+}

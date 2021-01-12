@@ -1,11 +1,55 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="UNIFOOD@localhost" uuid="94f66827-f6c5-4993-a9fc-d40a547dc266">
+    <data-source source="LOCAL" name="UNIFOOD@localhost" uuid="0a604918-3538-4120-a8d4-323005d1f945">
       <driver-ref>sqlserver.ms</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
       <jdbc-url>jdbc:sqlserver://localhost;database=UNIFOOD</jdbc-url>
+    </data-source>
+    <data-source source="LOCAL" name="default/TopLink" uuid="98e3f403-4872-4283-bc60-e02dcefa0c19">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>TopLink
+
+G:/JAVA/Unifood/src/main/resources/META-INF/persistence.xml</remarks>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://localhost:1433;database=UNIFOOD</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="default/EclipseLink" uuid="67da8805-5d34-4e8a-8a9a-932092bda54c">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>EclipseLink
+
+G:/JAVA/Unifood/src/main/resources/META-INF/persistence.xml</remarks>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://localhost\SQLEXPRESS:1433;database=UNIFOOD</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="default/Hibernate" uuid="3be235ec-cc54-455c-bb65-cb83377ea710">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>Hibernate
+
+G:/JAVA/Unifood/src/main/resources/META-INF/persistence.xml</remarks>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://localhost\SQLEXPRESS:1433;database=UNIFOOD</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
+    </data-source>
+    <data-source source="LOCAL" name="default/OpenJPA" uuid="cec9d754-ce0d-41e6-8e25-ff87812e2b0b">
+      <driver-ref>sqlserver.ms</driver-ref>
+      <synchronize>true</synchronize>
+      <imported>true</imported>
+      <remarks>OpenJPA
+
+G:/JAVA/Unifood/src/main/resources/META-INF/persistence.xml</remarks>
+      <jdbc-driver>com.microsoft.sqlserver.jdbc.SQLServerDriver</jdbc-driver>
+      <jdbc-url>jdbc:sqlserver://localhost\SQLEXPRESS:1433;database=UNIFOOD</jdbc-url>
+      <working-dir>$ProjectFileDir$</working-dir>
     </data-source>
   </component>
 </project>

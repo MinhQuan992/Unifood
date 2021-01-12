@@ -2,7 +2,6 @@ package com.mvc.entities;
 
 import javax.persistence.*;
 import java.sql.Date;
-import java.util.Objects;
 
 @Entity
 @Table(name = "NGUOIDUNG", schema = "dbo", catalog = "UNIFOOD")
@@ -34,7 +33,7 @@ public class NguoidungEntity {
     }
 
     @Id
-    @Column(name = "MaNguoiDung")
+    @Column(name = "MaNguoiDung", nullable = false, length = 9)
     public String getMaNguoiDung() {
         return maNguoiDung;
     }
@@ -44,7 +43,7 @@ public class NguoidungEntity {
     }
 
     @Basic
-    @Column(name = "HoVaTen")
+    @Column(name = "HoVaTen", nullable = true, length = 50)
     public String getHoVaTen() {
         return hoVaTen;
     }
@@ -54,7 +53,7 @@ public class NguoidungEntity {
     }
 
     @Basic
-    @Column(name = "GioiTinh")
+    @Column(name = "GioiTinh", nullable = true, length = 3)
     public String getGioiTinh() {
         return gioiTinh;
     }
@@ -64,7 +63,7 @@ public class NguoidungEntity {
     }
 
     @Basic
-    @Column(name = "NgaySinh")
+    @Column(name = "NgaySinh", nullable = true)
     public Date getNgaySinh() {
         return ngaySinh;
     }
@@ -74,7 +73,7 @@ public class NguoidungEntity {
     }
 
     @Basic
-    @Column(name = "DiaChi")
+    @Column(name = "DiaChi", nullable = true, length = 150)
     public String getDiaChi() {
         return diaChi;
     }
@@ -84,7 +83,7 @@ public class NguoidungEntity {
     }
 
     @Basic
-    @Column(name = "DienThoai")
+    @Column(name = "DienThoai", nullable = true, length = 10)
     public String getDienThoai() {
         return dienThoai;
     }
@@ -94,7 +93,7 @@ public class NguoidungEntity {
     }
 
     @Basic
-    @Column(name = "Email")
+    @Column(name = "Email", nullable = true, length = 30)
     public String getEmail() {
         return email;
     }
@@ -104,7 +103,7 @@ public class NguoidungEntity {
     }
 
     @Basic
-    @Column(name = "MatKhau")
+    @Column(name = "MatKhau", nullable = true, length = 50)
     public String getMatKhau() {
         return matKhau;
     }
@@ -120,14 +119,14 @@ public class NguoidungEntity {
 
         NguoidungEntity that = (NguoidungEntity) o;
 
-        if (!Objects.equals(maNguoiDung, that.maNguoiDung)) return false;
-        if (!Objects.equals(hoVaTen, that.hoVaTen)) return false;
-        if (!Objects.equals(gioiTinh, that.gioiTinh)) return false;
-        if (!Objects.equals(ngaySinh, that.ngaySinh)) return false;
-        if (!Objects.equals(diaChi, that.diaChi)) return false;
-        if (!Objects.equals(dienThoai, that.dienThoai)) return false;
-        if (!Objects.equals(email, that.email)) return false;
-        if (!Objects.equals(matKhau, that.matKhau)) return false;
+        if (maNguoiDung != null ? !maNguoiDung.equals(that.maNguoiDung) : that.maNguoiDung != null) return false;
+        if (hoVaTen != null ? !hoVaTen.equals(that.hoVaTen) : that.hoVaTen != null) return false;
+        if (gioiTinh != null ? !gioiTinh.equals(that.gioiTinh) : that.gioiTinh != null) return false;
+        if (ngaySinh != null ? !ngaySinh.equals(that.ngaySinh) : that.ngaySinh != null) return false;
+        if (diaChi != null ? !diaChi.equals(that.diaChi) : that.diaChi != null) return false;
+        if (dienThoai != null ? !dienThoai.equals(that.dienThoai) : that.dienThoai != null) return false;
+        if (email != null ? !email.equals(that.email) : that.email != null) return false;
+        if (matKhau != null ? !matKhau.equals(that.matKhau) : that.matKhau != null) return false;
 
         return true;
     }

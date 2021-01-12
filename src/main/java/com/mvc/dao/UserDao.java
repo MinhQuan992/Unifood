@@ -18,11 +18,6 @@ public class UserDao {
         {
             transaction = session.beginTransaction();
             session.save(user);
-            Query query = session.createNativeQuery("EXEC proc_PhanQuyen :userID, :password, :isManager");
-            query.setParameter("userID", user.getMaNguoiDung());
-            query.setParameter("password", user.getMatKhau());
-            query.setParameter("isManager", isManager);
-            query.executeUpdate();
             transaction.commit();
             System.out.println("Save user successfully");
             return true; //Save user successfully
@@ -50,10 +45,6 @@ public class UserDao {
         {
             transaction = session.beginTransaction();
             session.update(user);
-            Query query = session.createNativeQuery("EXEC proc_DoiMatKhau :userID, :password");
-            query.setParameter("userID", user.getMaNguoiDung());
-            query.setParameter("password", user.getMatKhau());
-            query.executeUpdate();
             transaction.commit();
             System.out.println("Update user successfully");
             return true;

@@ -15,6 +15,10 @@ import java.util.List;
 @WebServlet(name = "OrderDetailController", urlPatterns = {"/orderDetail"})
 public class OrderDetailController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");
@@ -63,10 +67,6 @@ public class OrderDetailController extends HttpServlet {
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("/order-detail.jsp");
         dispatcher.forward(request, response);
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
     }
 
     private String formatDate(String date)

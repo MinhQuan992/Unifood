@@ -44,59 +44,53 @@ public class ResetPasswordController extends HttpServlet {
         response.setCharacterEncoding("UTF-8");
         request.setCharacterEncoding("UTF-8");
 
-        String recipient = request.getParameter("reset-email");
+        String recipient = request.getParameter("reset-email").trim();
         UserDao userDao = new UserDao();
         NguoidungEntity user = userDao.getUserByEmail(recipient);
+        String url = "";
 
         if (user != null)
         {
-            Pattern passwordPattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{10,50}$");
-            String randomPassword;
-            Matcher passwordMatcher;
+            Pattern codePattern = Pattern.compile("\\d{6}");
+            Matcher codeMatcher;
+            String verificationCode;
             do {
-                randomPassword = RandomStringUtils.randomAlphanumeric(10);
-                passwordMatcher = passwordPattern.matcher(randomPassword);
-            } while (!passwordMatcher.matches());
+                verificationCode = RandomStringUtils.randomAlphanumeric(6);
+                codeMatcher = codePattern.matcher(verificationCode);
+            } while (!codeMatcher.matches());
 
-            user.setMatKhau(randomPassword);
-            String message = "";
-            boolean canExecute = userDao.updateUser(user);
-            if (canExecute)
-            {
-                String subject = "Mat khau cua ban da duoc dat lai";
-                String content = "Xin chao, day la mat khau moi cua ban da duoc he thong tao ra ngau nhien: " + randomPassword;
-                content += "\nChu y: Vi li do bao mat, ban phai doi mat khau ngay sau khi dang nhap.";
-                content += "\nDoi ngu ho tro UNIFOOD";
+            String subject = "Yeu cau thay doi mat khau";
+            String content = "Xin chao ban, UNIFOOD da nhan duoc yeu cau thay doi mat khau cua ban.";
+            content += "\nBan hay nhap ma xac minh nay vao trang web va click XAC NHAN: " + verificationCode;
+            content += "\nNeu ban khong yeu cau thay doi mat khau, hay bo qua email nay.";
+            content += "\nTran trong.";
+            content += "\nDoi ngu ho tro UNIFOOD";
 
-                try
-                {
-                    EmailUtility.sendEmail(host, port, socketFactoryClass, auth, email, name, pass,
-                            recipient, subject, content);
-                    message = "Mật khẩu của bạn đã thay đổi, hãy kiểm tra email của bạn!";
-                }
-                catch (Exception ex)
-                {
-                    ex.printStackTrace();
-                    message = "Có lỗi xảy ra, hãy kiểm tra email của bạn!";
-                }
-            }
-            else
+            try
             {
-                message = "Có lỗi xảy ra, mời bạn thử lại!";
+                EmailUtility.sendEmail(host, port, socketFactoryClass, auth, email, name, pass,
+                        recipient, subject, content);
+                request.getSession().setAttribute("verificationCode", verificationCode);
+                request.getSession().setAttribute("userEmail", recipient);
+                url = "/verification.jsp";
             }
-            request.setAttribute("message", message);
-            request.getRequestDispatcher("/message.jsp").forward(request, response);
+            catch (Exception ex)
+            {
+                ex.printStackTrace();
+                request.setAttribute("sendEmailFailed", false);
+                url = "/reset-password.jsp";
+            }
         }
         else
         {
             request.setAttribute("wrongEmail",true);
-            request.getRequestDispatcher("/reset-password.jsp").forward(request, response);
+            url = "/reset-password.jsp";
         }
+
+        request.getRequestDispatcher(url).forward(request, response);
     }
 
-        protected void doGet (HttpServletRequest request, HttpServletResponse response) throws
-        ServletException, IOException {
-            String url = "/reset-password.jsp";
-            request.getRequestDispatcher(url).forward(request, response);
-        }
+    protected void doGet (HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+    }
 }

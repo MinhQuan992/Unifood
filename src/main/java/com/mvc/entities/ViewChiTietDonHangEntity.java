@@ -15,6 +15,7 @@ public class ViewChiTietDonHangEntity {
     private Integer soLuong;
     private Integer donGia;
     private String ghiChu;
+    private String anhMinhHoa;
 
     @Id
     @Column(name = "MaDon")
@@ -74,6 +75,16 @@ public class ViewChiTietDonHangEntity {
 
     public void setGhiChu(String ghiChu) {
         this.ghiChu = ghiChu;
+    }
+
+    @Basic
+    @Column(name = "AnhMinhHoa")
+    public String getAnhMinhHoa() {
+        return anhMinhHoa;
+    }
+
+    public void setAnhMinhHoa(String anhMinhHoa) {
+        this.anhMinhHoa = anhMinhHoa;
     }
 
     @Override

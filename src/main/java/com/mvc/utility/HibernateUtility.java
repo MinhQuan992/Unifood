@@ -1,5 +1,6 @@
 package com.mvc.utility;
 
+import com.mvc.entities.*;
 import com.mvc.entities.NguoidungEntity;
 import com.mvc.entities.ViewChiTietDonHangEntity;
 import com.mvc.entities.ViewDonHangEntity;
@@ -26,17 +27,24 @@ public class HibernateUtility {
                 settings.put(Environment.USER, "root");
                 settings.put(Environment.PASS, "root");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.SQLServerDialect");
-
                 settings.put(Environment.SHOW_SQL, "true");
-
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-
                 settings.put(Environment.HBM2DDL_AUTO, "none");
 
                 configuration.setProperties(settings);
                 configuration.addAnnotatedClass(NguoidungEntity.class);
+                configuration.addAnnotatedClass(SanphamEntity.class);
+                configuration.addAnnotatedClass(NhomsanphamEntity.class);
+                configuration.addAnnotatedClass(AnkemEntity.class);
+                configuration.addAnnotatedClass(DathangEntity.class);
+                configuration.addAnnotatedClass(GiohangEntity.class);
+                configuration.addAnnotatedClass(DonhangEntity.class);
+                configuration.addAnnotatedClass(SanphamEntity.class);
                 configuration.addAnnotatedClass(ViewDonHangEntity.class);
                 configuration.addAnnotatedClass(ViewChiTietDonHangEntity.class);
+                configuration.addAnnotatedClass(KhohangEntity.class);
+                configuration.addAnnotatedClass(DonvigiaohangEntity.class);
+                configuration.addAnnotatedClass(ViewAllOrderEntity.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();

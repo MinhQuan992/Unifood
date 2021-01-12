@@ -1,0 +1,31 @@
+#image-container {
+    float: left;
+    width: 25%;
+}
+
+#image {
+    width: 120%;
+}
+
+#message {
+    float: right;
+    width: 70%;
+    padding-top: 6%;
+}
+
+#btnSubmit {
+    font-size: 16px;
+    font-weight: bold;
+    width: 17%;
+    height: 6%;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    background-color: #0e840e;
+    margin-top: 1%;
+}
+
+#btnSubmit:hover {
+    cursor: pointer;
+    background-color: #16c816;
+}

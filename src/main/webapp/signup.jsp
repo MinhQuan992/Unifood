@@ -1,24 +1,29 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Vo Tran Minh Quan
-  Date: 11/28/2020
-  Time: 8:57 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>Đăng ký | Unifood</title>
+    <meta name="description" content="Quan Com Online Unifood" />
+    <meta name="author" content="NhomHQNT">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+            crossorigin="anonymous"></script>
+    <script
+            src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+            crossorigin="anonymous"></script>
+    <script
+            src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+            crossorigin="anonymous"></script>
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/home.css">
+    <link type="text/css" rel="stylesheet" href="${pageContext.request.contextPath}/css/signup.css">
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+          crossorigin="anonymous">
 </head>
 <body>
-<%
-    String userType = (String) request.getSession().getAttribute("userType");
-    if (userType == null)
-    {
-        request.getSession().setAttribute("userType", "Customer");
-    }
-%>
 <c:if test="${not empty signupSuccess}">
     <c:choose>
         <c:when test="${signupSuccess == true}">
@@ -34,93 +39,98 @@
         </c:otherwise>
     </c:choose>
 </c:if>
+<%
+    String userType = (String) request.getSession().getAttribute("userType");
+    if (userType == null)
+    {
+        request.getSession().setAttribute("userType", "Customer");
+    }
+%>
 <div align="center">
-    <h1>ĐĂNG KÝ TÀI KHOẢN</h1>
-    <form id="" method="post" action="${pageContext.request.contextPath}/signup">
+    <h1 id="form-title">ĐĂNG KÝ TÀI KHOẢN</h1>
+    <form id="frmSignup" method="post" action="${pageContext.request.contextPath}/signup">
         <table>
             <tr>
-                <td>Họ và tên:</td>
+                <td class="row-name">Họ và tên:</td>
                 <td>
-                    <input type="text" name="userFullname"
+                    <input class="text textbox" type="text" name="userFullname"
                     <c:choose>
                         <c:when test="${empty userFullname}">
-                            placeholder="Nhập họ và tên"
+                           placeholder="Nhập họ và tên"
                         </c:when>
 
                         <c:otherwise>
-                            value="<c:out value="${userFullname}"/>"
+                           value="<c:out value="${userFullname}"/>"
                         </c:otherwise>
                     </c:choose>
 
                     <c:if test="${not empty fullnameError}">
-                           style="border-color: red"
+                       style="border-color: red"
                     </c:if>
                     required>
+                    <br>
+                    <p class="error-message"><c:out value="${fullnameError}"/></p>
                 </td>
-                <td><c:out value="${fullnameError}"/></td>
             </tr>
 
             <tr>
-                <td>Giới tính:</td>
+                <td class="row-name">Giới tính:</td>
                 <td>
-                    <label>
+                    <label class="rdbGender" style="float: left">Nam
                         <input type="radio" name="userGender" value="Nam" <c:if test="${empty userGender || userGender == 'Nam'}">checked</c:if>>
-                    </label>Nam
-                    &nbsp;&nbsp;&nbsp;&nbsp;
-                    <label>
+                        <span class="checkmark"></span>
+                    </label>
+                    <label class="rdbGender" style="float: right; margin-right: 68%;">Nữ
                         <input type="radio" name="userGender" value="Nữ" <c:if test="${userGender == 'Nữ'}">checked</c:if>>
-                    </label>Nữ
+                        <span class="checkmark"></span>
+                    </label>
                 </td>
             </tr>
 
             <tr>
-                <td>Ngày sinh:</td>
+                <td class="row-name">Ngày sinh:</td>
                 <td>
-                    <input type="date" name="userBirthdate"
+                    <input class="text datetime" type="date" name="userBirthdate"
                     <c:choose>
                         <c:when test="${not empty userBirthdate}">
-                            value="<c:out value="${userBirthdate}"/>"
+                           value="<c:out value="${userBirthdate}"/>"
                         </c:when>
 
                         <c:otherwise>
-                            value="2000-01-01"
+                           value="2000-01-01"
                         </c:otherwise>
                     </c:choose>
 
                     <c:if test="${not empty birthdateError}">
-                            style="border-color: red"
+                       style="border-color: red"
                     </c:if>
                     >
+                    <br>
+                    <p class="error-message"><c:out value="${birthdateError}"/></p>
                 </td>
-                <td><c:out value="${birthdateError}"/></td>
             </tr>
 
             <tr>
-                <td>Địa chỉ:</td>
-                <td>
-                    <input type="text" name="userAddress"
-                    <c:choose>
-                        <c:when test="${empty userAddress}">
+                <td class="row-name">Địa chỉ:</td>
+                <td class="info">
+                    <textarea class="text" name="userAddress" rows="3" cols="50"
+                        <c:if test="${empty userAddress}">
                             placeholder="Nhập địa chỉ"
-                        </c:when>
+                        </c:if>
 
-                        <c:otherwise>
-                            value="<c:out value="${userAddress}"/>"
-                        </c:otherwise>
-                    </c:choose>
-
-                    <c:if test="${not empty addressError}">
-                           style="border-color: red"
-                    </c:if>
-                    required>
+                        <c:if test="${not empty addressError}">
+                            style="border-color: red"
+                        </c:if>
+                    required><c:out value="${userAddress}"/></textarea>
+                    <br>
+                    <p class="error-message"><c:out value="${addressError}"/></p>
                 </td>
-                <td><c:out value="${addressError}"/></td>
             </tr>
 
             <tr>
-                <td>Điện thoại:</td>
-                <td>
-                    <input type="text" name="userPhone"
+                <td class="row-name">Điện thoại:</td>
+                <td class="info">
+                    <input class="text textbox" type="text" name="userPhone"
                     <c:choose>
                         <c:when test="${empty userPhone}">
                            placeholder="Nhập số điện thoại"
@@ -132,20 +142,21 @@
                     </c:choose>
 
                     <c:if test="${not empty phoneError}">
-                        style="border-color: red"
+                       style="border-color: red"
                     </c:if>
                     required>
+                    <br>
+                    <p class="error-message"><c:out value="${phoneError}"/></p>
                 </td>
-                <td><c:out value="${phoneError}"/></td>
             </tr>
 
             <tr>
-                <td>Email:</td>
-                <td>
-                    <input type="email" name="userEmail"
+                <td class="row-name">Email:</td>
+                <td class="info">
+                    <input class="text textbox" type="email" name="userEmail"
                     <c:choose>
                         <c:when test="${empty userEmail}">
-                           placeholder="Nhập địa chỉ email"
+                            placeholder="Nhập địa chỉ email"
                         </c:when>
 
                         <c:otherwise>
@@ -154,42 +165,34 @@
                     </c:choose>
 
                     <c:if test="${not empty emailError}">
-                        style="border-color: red"
+                       style="border-color: red"
                     </c:if>
                     required>
+                    <br>
+                    <p class="error-message"><c:out value="${emailError}"/></p>
                 </td>
-                <td><c:out value="${emailError}"/></td>
-            </tr>
-
-            <tr>
-                <td>Mật khẩu:</td>
-                <td>
-                    <input type="password" name="password" placeholder="Nhập mật khẩu độ dài từ 10 đến 50 kí tự, bao gồm chữ hoa, chữ thường và chữ số"
-                    <c:if test="${not empty passwordError}">
-                        style="border-color: red"
-                    </c:if>
-                    required>
-                </td>
-                <td><c:out value="${passwordError}"/></td>
-            </tr>
-
-            <tr>
-                <td>Nhập lại mật khẩu:</td>
-                <td>
-                    <input type="password" name="retypePassword" placeholder="Nhập lại mật khẩu"
-                    <c:if test="${not empty retypePasswordError}">
-                        style="border-color: red"
-                    </c:if>
-                    required>
-                </td>
-                <td><c:out value="${retypePasswordError}"/></td>
             </tr>
         </table>
 
-        <input type="submit" value="ĐĂNG KÝ">
-    </form>
+        <input id="btnSignup" type="submit" value="ĐĂNG KÝ">
+        <br>
 
-    <a href="${pageContext.request.contextPath}/index.jsp">TRANG CHỦ</a>
+        <c:choose>
+            <c:when test="${userType == 'Manager'}">
+                <a style="color: #007bff;" href="qlhome.jsp">Quay về trang chủ</a>
+            </c:when>
+
+            <c:otherwise>
+                <a style="color: #007bff;" href="index.jsp">Quay về trang chủ</a>
+            </c:otherwise>
+        </c:choose>
+    </form>
+</div>
+
+<div id="footer">
+    <p style="text-align: center">
+        <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
+    </p>
 </div>
 </body>
 </html>

@@ -3,6 +3,7 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
+
     <context-param>
         <param-name>host</param-name>
         <param-value>smtp.gmail.com</param-value>
@@ -37,4 +38,77 @@
         <param-name>pass</param-name>
         <param-value>unifood2020</param-value>
     </context-param>
+
+    <servlet>
+        <servlet-name>ItemController</servlet-name>
+        <servlet-class>com.mvc.controller.ItemController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ItemController</servlet-name>
+        <url-pattern>/Product</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OrderController</servlet-name>
+        <servlet-class>com.mvc.controller.OrderController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderController</servlet-name>
+        <url-pattern>/Order</url-pattern>
+    </servlet-mapping>
+    
+    <servlet>
+        <servlet-name>CartController</servlet-name>
+        <servlet-class>com.mvc.controller.CartController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>CartController</servlet-name>
+        <url-pattern>/Cart</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>EditInfoController</servlet-name>
+        <servlet-class>com.mvc.controller.EditInfoController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>EditInfoController</servlet-name>
+        <url-pattern>/EditInfo</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>ManageWarehouseController</servlet-name>
+        <servlet-class>com.mvc.controller.ManageWarehouseController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>ManageWarehouseController</servlet-name>
+        <url-pattern>/ManageWarehouse</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>PaymentController</servlet-name>
+        <servlet-class>com.mvc.controller.PaymentController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>PaymentController</servlet-name>
+        <url-pattern>/Payment</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>OrderManageController</servlet-name>
+        <servlet-class>com.mvc.controller.OrderManageController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>OrderManageController</servlet-name>
+        <url-pattern>/OrderManage</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>MainPageController</servlet-name>
+        <servlet-class>com.mvc.controller.MainPageController</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>MainPageController</servlet-name>
+        <url-pattern>/MainPage</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -1,0 +1,28 @@
+#title {
+    margin-top: 1%;
+}
+
+#textbox {
+    padding-left: 1%;
+    font-size: 18px;
+    height: 35px;
+    width: 10%;
+    border: 2px solid #264cad;
+    border-radius: 5px;
+}
+
+#btnSubmit {
+    font-size: 16px;
+    font-weight: bold;
+    width: 9%;
+    height: 6%;
+    border: none;
+    border-radius: 15px;
+    color: white;
+    background-color: #0e840e;
+}
+
+#btnSubmit:hover {
+    cursor: pointer;
+    background-color: #16c816;
+}

@@ -1,6 +1,8 @@
 package com.mvc.controller;
 
+import com.mvc.dao.CartDao;
 import com.mvc.dao.UserDao;
+import com.mvc.entities.GiohangEntity;
 import com.mvc.entities.NguoidungEntity;
 
 import javax.servlet.RequestDispatcher;
@@ -11,7 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(name = "SigninController", urlPatterns = {"/signin"})
+@WebServlet(name = "SigninController", urlPatterns = {"/signin", "/index"})
 public class SigninController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
@@ -36,12 +38,19 @@ public class SigninController extends HttpServlet {
                 if (userID.startsWith("KH"))
                 {
                     request.getSession().setAttribute("userType", "Customer");
+                    url="/index.jsp";
                 }
                 else
                 {
                     request.getSession().setAttribute("userType", "Manager");
+                    url="qlhome.jsp";
                 }
+                request.getSession().setAttribute("User",user);
+                CartDao cartDao = new CartDao();
+                GiohangEntity cart = cartDao.GetCartData(user);
+                if (cart==null) cart=cartDao.GetNewCart(user);
 
+                request.getSession().setAttribute("ShoppingCart",cart);
                 request.getSession().setAttribute("userID", userID);
                 request.getSession().setAttribute("fullName", user.getHoVaTen());
                 request.getSession().setAttribute("gender", user.getGioiTinh());
@@ -50,8 +59,6 @@ public class SigninController extends HttpServlet {
                 request.getSession().setAttribute("phone", user.getDienThoai());
                 request.getSession().setAttribute("email", user.getEmail());
                 request.getSession().setAttribute("signinSuccess", true);
-
-                url = "/index.jsp";
             }
             else
             {
