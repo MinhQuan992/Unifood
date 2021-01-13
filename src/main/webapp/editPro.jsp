@@ -47,8 +47,8 @@
                 </div></li>
         </ul>
     </nav>
-<table id="procontainer" style="align: center;" border="1" cellpadding="2">
-    <thead style="align: center;">
+    <table id="procontainer" style="align: center;" border="1" cellpadding="2">
+        <thead style="align: center;">
         <tr bgcolor="#7fffd4">
             <td>Mã Sản Phẩm</td>
             <td>Tên Sản Phẩm</td>
@@ -60,8 +60,8 @@
             <td>Mã Kho</td>
             <td>Mô tả</td>
         </tr>
-    </thead>
-    <tbody style="align: center;">
+        </thead>
+        <tbody style="align: center;">
         <c:forEach items="${products}" var="product">
             <tr>
                 <td><c:out value="${product.maSanPham}"></c:out></td>
@@ -91,14 +91,14 @@
             </tr>
         </c:forEach>
 
-    </tbody>
-</table>
+        </tbody>
+    </table>
 
-<div id="footer">
-    <p style="text-align: center">
-        <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
-    </p>
-</div>
+    <div id="footer">
+        <p style="text-align: center">
+            <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
+        </p>
+    </div>
 </div>
 </body>
 </html>

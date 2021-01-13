@@ -36,7 +36,7 @@
         <ul class="navbar-nav ml-auto">
             <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">${User.hoVaTen}</a>
                 <div class="dropdown-menu">
-                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/ManageWarehouse">My Profile</a>
+                    <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/EditInfo">My Profile</a>
                     <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
                 </div></li>
         </ul>
@@ -50,17 +50,21 @@
         <input type="submit" style="color: #60150c" value="Thêm sản phẩm">
     </form>
 
+    <form id="ManageOder" method="post" action="${pageContext.request.contextPath}/OrderManage">
+        <input type="submit" style="color: #60150c" value="Quản lí đơn hàng">
+    </form>
+
     <form id="addMan" method="post" action="${pageContext.request.contextPath}/signup.jsp">
         <input type="submit" style="color: #60150c" value="Thêm Quản Lý">
     </form>
 
 </div>
 
-    <div id="footer">
-        <p style="text-align: center">
-            <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
-        </p>
-    </div>
+<div id="footer">
+    <p style="text-align: center">
+        <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
+    </p>
+</div>
 </div>
 </body>
 </html>

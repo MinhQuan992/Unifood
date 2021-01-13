@@ -40,6 +40,30 @@ public class CartDao {
         return cart;
     }
 
+    public GiohangEntity GetCartData(int CartCode)
+    {
+        GiohangEntity cart = null;
+        Transaction transaction = null;
+        Session session = HibernateUtility.getSessionFactory().openSession();
+        try {
+            System.out.println("This session was created completely");
+            transaction = session.beginTransaction();
+            Query<GiohangEntity> query = session.createQuery("FROM GiohangEntity Carts WHERE Carts.maGio=:CartCode");
+            query.setParameter("CartCode",CartCode);
+            cart = query.getSingleResult();
+            transaction.commit();
+        } catch (Exception var9) {
+            System.out.println("This session was failed");
+            if (transaction != null) {
+                transaction.rollback();
+            }
+            var9.printStackTrace();
+        } finally {
+            session.close();
+        }
+        return cart;
+    }
+
     public List<DathangEntity> LoadCartData(int cartCode)
     {
         List<DathangEntity> listOrder = null;

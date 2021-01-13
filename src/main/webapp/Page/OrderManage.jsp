@@ -1,4 +1,7 @@
-<%--
+<%@ page import="java.util.List" %>
+<%@ page import="com.mvc.entities.DonhangEntity" %>
+<%@ page import="com.mvc.entities.NguoidungEntity" %>
+<%@ page import="com.mvc.entities.ViewAllOrderEntity" %><%--
   Created by IntelliJ IDEA.
   User: ninhn
   Date: 12/23/2020
@@ -8,100 +11,65 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="C" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    List<ViewAllOrderEntity> listPayments = (List<ViewAllOrderEntity>) request.getAttribute("ListPayments");
+    NguoidungEntity user = (NguoidungEntity) session.getAttribute("User");
+%>
 <html>
 <head>
     <title>Order Manage</title>
     <link rel="stylesheet" href="bootstrap.min.css">
-    <link href="${pageContext.request.contextPath}/Style/CartStyle.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Oswald:wght@500&display=swap" rel="stylesheet">
     <script src="${pageContext.request.contextPath}/JS/CartScript.js"></script>
 </head>
 <body>
-<c:if test="${not empty authorize}">
     <div class="container col-md-8 col-md-offset-3" style="overflow: auto">
-        <div class="jumbotron">
-            <div class="page-header">
-                <h1>QUẢN LÍ ĐƠN HÀNG</h1>
-                <p class="text-info"><c:out value="${status}"></c:out></p>
-            </div>
-            <form method="get" action="${pageContext.request.contextPath}/EditInfo">
-                <input type="hidden" id="UserId" name="UserId" value="${userID}">
-
-                <div class="form-group">
-                    <label for="fullName">Full Name:</label>
-                    <input type="text"
-                           class="form-control" id="fullName"
-                           name="fullName" value="${fullName}">
-                    <p style="color: red"><c:out value="${error.fullName}"></c:out></p>
-                </div>
-
-                <div class="form-group">
-                    <label for="newPassword">New Password:</label>
-                    <input type="password"
-                           class="form-control" id="newPassword"
-                           name="newPassword" value="${newPassword}" required>
-                    <p style="color: red"><c:out value="${error.password}"></c:out></p>
-                </div>
-
-                <div class="form-group">
-                    <label for="rePassword">Reenter new Password:</label>
-                    <input type="password"
-                           class="form-control" id="rePassword"
-                           name="rePassword" value="${rePassword}" required>
-                    <p style="color: red"><c:out value="${error.rePassword}"></c:out></p>
-                </div>
-
-                <div class="form-group">
-                    <label for="gender">Gender:</label>
-                    <input type="text"
-                           class="form-control" id="gender"
-                           name="gender" value="${gender}">
-                    <p style="color: red"><c:out value="${error.gender}"></c:out></p>
-                </div>
-
-                <div class="form-group">
-                    <label for="birthDate">Birth Date:</label>
-                    <input type="date"
-                           class="form-control" id="birthDate"
-                           name="birthDate" value="${birthDate}">
-                    <p style="color: red"><c:out value="${error.birthDate}"></c:out></p>
-                </div>
-
-                <div class="form-group">
-                    <label for="address">Address:</label>
-                    <input type="text"
-                           class="form-control" id="address"
-                           name="address" value="${address}">
-                    <p style="color: red"><c:out value="${error.address}"></c:out></p>
-                </div>
-
-                <div class="form-group">
-                    <label for="phone">Phone Number:</label>
-                    <input type="text"
-                           class="form-control" id="phone"
-                           name="phone" value="${phone}">
-                    <p style="color: red"><c:out value="${error.phone}"></c:out></p>
-                </div>
-
-                <div class="form-group">
-                    <label for="email">Email:</label>
-                    <input type="text"
-                           class="form-control" id="email"
-                           name="email" value="${email}">
-                    <p style="color: red"><c:out value="${error.email}"></c:out></p>
-                </div>
-
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">Confirm changes</button>
-                </div>
-
-            </form>
-        </div>
+    <div class="Main-Form">
+    <h1>Trang quản lí đơn hàng</h1>
+    <h3>Chào mừng quản lí (<%=user.getMaNguoiDung()%>): <%=user.getHoVaTen()%></h3>
+        <p>Trở về <a href="${pageContext.request.contextPath}/qlhome.jsp">trang chủ</a></p>
+    <table class="table">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">OrderCode</th>
+            <th scope="col">UserName</th>
+            <th scope="col">Address</th>
+            <th scope="col">Quantity</th>
+            <th scope="col">Total</th>
+            <th scope="col">Payment</th>
+            <th scope="col">Shipping Unit</th>
+            <th scope="col">PlaceDate</th>
+            <th scope="col">TransDate</th>
+            <th scope="col">CompleteDate</th>
+            <th scope="col">Status</th>
+            <th scope="col">Manage</th>
+        </tr>
+        </thead>
+        <tbody>
+        <c:forEach items="${requestScope.ListPayments}" var="payment">
+            <tr>
+                <th scope="row">${payment.maDon}</th>
+                <td>${payment.tenNguoiDung}</td>
+                <td>${payment.diaChi}</td>
+                <td>${payment.quantity}</td>
+                <td>${payment.tongGiaTri}</td>
+                <td>${payment.trangThaiThanhToan}</td>
+                <td>${payment.tenDonViGiaoHang}</td>
+                <td>${payment.ngayDat}</td>
+                <td>${payment.ngayThanhToan}</td>
+                <td>${payment.ngayGiaoHang}</td>
+                <td>${payment.trangThaiDonHang}</td>
+                <td><button type="submit" onclick="ButtonClick('EditPayment','${payment.maDon}')">Edit</button></td>
+            </tr>
+        </c:forEach>
+        </tbody>
+    </table>
+    <form method="post" name="SendToPostRequest" action="${pageContext.request.contextPath}/OrderManage">
+        <input type="hidden" name="ParaName">
+        <input type="hidden" name="KeyValue">
+    </form>
     </div>
-</c:if>
-<c:if test="${empty authorize}">
-    <p>Not Authorize</p>
-</c:if>
+    </div>
 </body>
 </html>

@@ -59,7 +59,6 @@ public class SigninController extends HttpServlet {
                 request.getSession().setAttribute("phone", user.getDienThoai());
                 request.getSession().setAttribute("email", user.getEmail());
                 request.getSession().setAttribute("signinSuccess", true);
-
             }
             else
             {

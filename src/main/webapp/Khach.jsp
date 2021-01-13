@@ -5,8 +5,20 @@
 <%@ page import="java.util.Map" %>
 <%@ page import="java.util.HashMap" %>
 <%@ page import="java.util.List" %>
-
-
+<%@ page import="com.mvc.dao.UserDao" %>
+<%@ page import="com.mvc.dao.CartDao" %>
+<%
+    NguoidungEntity user = (NguoidungEntity) session.getAttribute("User");
+    if (user==null)
+    {
+        UserDao userDao = new UserDao();
+        user = userDao.getUserByID("KH0000000");
+        CartDao cartDao = new CartDao();
+        GiohangEntity cart = cartDao.GetNewCart(user);
+        session.setAttribute("User",user);
+        session.setAttribute("ShoppingCart",cart);
+    }
+%>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -51,13 +63,13 @@
             <li>
                 <button id="close-image" onclick="${pageContext.request.contextPath}/Cart"><img src="Images/gio.png" style="width: auto; height: 50px;"></button>
                 <button id="close-CSS"></button>
-
             </li>
             <li class="nav-item active"><a class="nav-link" href="index.jsp">      </a></li>
             <c:if test="${not empty User}">
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">${User.hoVaTen}</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/EditInfo">My Profile</a>
+                        <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/orders">Orders</a>
                         <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
                     </div></li>
             </c:if>

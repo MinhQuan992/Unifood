@@ -9,6 +9,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -20,32 +21,13 @@ import java.util.regex.Pattern;
 @WebServlet(name = "EditInfoController")
 public class EditInfoController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-
-        NguoidungEntity user = EditInfoDao.authorizeEditInfo(request.getSession().getAttribute("userID").toString());
-
-        if (user != null)
-        {
-            request.setAttribute("userID", user.getMaNguoiDung());
-            request.setAttribute("password", user.getMatKhau());
-            request.setAttribute("fullName", user.getHoVaTen());
-            request.setAttribute("gender", user.getGioiTinh());
-            request.setAttribute("birthDate", user.getNgaySinh().toString());
-            request.setAttribute("address", user.getDiaChi());
-            request.setAttribute("phone", user.getDienThoai());
-            request.setAttribute("email", user.getEmail());
-            request.setAttribute("authorize", true);
-        }
-
-        String url = "/editInfo.jsp";
-
-        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
-        dispatcher.forward(request, response);
-    }
-
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
+        NguoidungEntity usersss = (NguoidungEntity) request.getSession().getAttribute("User");
         // Check for error, update changes to database and show changes to user
         Pattern specialCharsPattern = Pattern.compile("[!@#$%^&*()?\"':{}|<>]");
-        Pattern CPattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{10,50}$");
+        Pattern passwordPattern = Pattern.compile("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{10,50}$");
         Pattern phonePattern = Pattern.compile("^(\\d){10}$");
         Pattern emailPattern = Pattern.compile("\\A(?:[a-z0-9!#$%&'*+=?^_`{|}~-]+(?:\\.[a-z0-9!#$%&'*+=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?)\\Z");
 
@@ -59,35 +41,38 @@ public class EditInfoController extends HttpServlet {
         String phone = request.getParameter("phone");
         String email = request.getParameter("email");
 
-        Matcher passwordMatcher = phonePattern.matcher(password);
+        Matcher passwordMatcher = passwordPattern.matcher(password);
         Matcher phoneMatcher = phonePattern.matcher(phone);
         Matcher emailMatcher = emailPattern.matcher(email);
 
         Map<String, String> errors = new HashMap<String, String>();
 
-        if (specialCharsPattern.matcher(password).find()) {
-            errors.put("password", "Must not contain any special characters !@#$%^&*()?\"':{}|<>");
-        } else if (!passwordMatcher.find()) {
-            errors.put("password", "Must have from 10 to 50 characters" +
-                    " and contain at least a number, lowercase and uppercase letter");
-        } else {
-            password = passwordMatcher.group();
+        if (!usersss.getMatKhau().equals(password))
+        {
+            if (specialCharsPattern.matcher(password).find()) {
+                errors.put("password", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
+            } else if (!passwordMatcher.find()) {
+                errors.put("password", "Phải có từ 10 đến 50 ký tự" +
+                        " và có ít nhất một chữ số, chữ thường và chữ hoa");
+            } else {
+                password = passwordMatcher.group();
+            }
+
+            if (!rePassword.equals(password)) {
+                errors.put("rePassword", "Không trùng khớp với mật khẩu");
+            } else if (specialCharsPattern.matcher(rePassword).find()) {
+                errors.put("rePassword", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
+            }
         }
 
-        if (!rePassword.equals(password)) {
-            errors.put("rePassword", "Not match with new password");
-        } else if (specialCharsPattern.matcher(rePassword).find()) {
-            errors.put("rePassword", "Must not contain any special characters !@#$%^&*()?\"':{}|<>");
-        }
-
-        if (fullName.equals("")) {
-            errors.put("fullName", "Must not be empty");
+        if (fullName.trim().equals("")) {
+            errors.put("fullName", "Không được để trống");
         } else if (specialCharsPattern.matcher(fullName).find()) {
-            errors.put("fullName", "Must not contain any special characters !@#$%^&*()?\"':{}|<>");
+            errors.put("fullName", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
         }
 
         if (!(gender.equals("Nam") || gender.equals("Nữ"))) {
-            errors.put("gender", "Must be either 'Nam' or 'Nữ'");
+            errors.put("gender", "Phải là 'Nam' hoặc 'Nữ'");
         }
 
         java.sql.Date birthDate = null;
@@ -95,7 +80,7 @@ public class EditInfoController extends HttpServlet {
             java.util.Date birth = new SimpleDateFormat("yyyy-MM-dd").parse(birthDateStr);
             java.util.Date today = Calendar.getInstance().getTime();
             if (birth.after(today)) {
-                throw new Exception("Birthdate not valid");
+                throw new Exception("Ngày sinh không hợp lệ");
             }
             birthDate = new java.sql.Date(birth.getTime());
         } catch (Exception e) {
@@ -103,17 +88,17 @@ public class EditInfoController extends HttpServlet {
         }
 
         if (specialCharsPattern.matcher(address).find()) {
-            errors.put("address", "Must not contain any special characters !@#$%^&*()?\"':{}|<>");
+            errors.put("address", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
         }
 
         if (!phoneMatcher.find()) {
-            errors.put("phone", "Must be a 10-digit number");
+            errors.put("phone", "Phải có 10 chữ số");
         } else {
             phone = phoneMatcher.group();
         }
 
         if (!emailMatcher.find()) {
-            errors.put("email", "Must be a valid email address");
+            errors.put("email", "Phải là địa chỉ email hợp lệ");
         } else {
             email = emailMatcher.group();
         }
@@ -131,6 +116,7 @@ public class EditInfoController extends HttpServlet {
             user.setMatKhau(password);
             user.setDienThoai(phone);
 
+            request.getSession().setAttribute("User",user);
             status = EditInfoDao.updateUserInfo(user);
             if (status == null) {
                 status = "Updated on " + Calendar.getInstance().getTime().toString();
@@ -152,6 +138,29 @@ public class EditInfoController extends HttpServlet {
 
         String url = "/editInfo.jsp";
 
+
+        RequestDispatcher dispatcher = request.getRequestDispatcher(url);
+        dispatcher.forward(request, response);
+    }
+
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        HttpSession session = request.getSession();
+        NguoidungEntity user = (NguoidungEntity) session.getAttribute("User");
+
+        if (user != null)
+        {
+            request.setAttribute("userID", user.getMaNguoiDung());
+            request.setAttribute("password", user.getMatKhau());
+            request.setAttribute("fullName", user.getHoVaTen());
+            request.setAttribute("gender", user.getGioiTinh());
+            request.setAttribute("birthDate", user.getNgaySinh().toString());
+            request.setAttribute("address", user.getDiaChi());
+            request.setAttribute("phone", user.getDienThoai());
+            request.setAttribute("email", user.getEmail());
+            request.setAttribute("authorize", true);
+        }
+
+        String url = "/editInfo.jsp";
         RequestDispatcher dispatcher = request.getRequestDispatcher(url);
         dispatcher.forward(request, response);
     }

@@ -27,11 +27,8 @@ public class HibernateUtility {
                 settings.put(Environment.USER, "root");
                 settings.put(Environment.PASS, "root");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.SQLServerDialect");
-
                 settings.put(Environment.SHOW_SQL, "true");
-
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");
-
                 settings.put(Environment.HBM2DDL_AUTO, "none");
 
                 configuration.setProperties(settings);
@@ -45,6 +42,9 @@ public class HibernateUtility {
                 configuration.addAnnotatedClass(SanphamEntity.class);
                 configuration.addAnnotatedClass(ViewDonHangEntity.class);
                 configuration.addAnnotatedClass(ViewChiTietDonHangEntity.class);
+                configuration.addAnnotatedClass(KhohangEntity.class);
+                configuration.addAnnotatedClass(DonvigiaohangEntity.class);
+                configuration.addAnnotatedClass(ViewAllOrderEntity.class);
 
                 ServiceRegistry serviceRegistry = new StandardServiceRegistryBuilder()
                         .applySettings(configuration.getProperties()).build();
