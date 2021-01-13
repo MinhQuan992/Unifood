@@ -65,7 +65,7 @@
                 <button id="close-CSS"></button>
             </li>
             <li class="nav-item active"><a class="nav-link" href="index.jsp">      </a></li>
-            <c:if test="${not empty User}">
+            <c:if test='${not User.maNguoiDung.equals("KH0000000")}'>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">${User.hoVaTen}</a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/EditInfo">My Profile</a>
@@ -73,7 +73,7 @@
                         <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
                     </div></li>
             </c:if>
-            <c:if test="${empty User}">
+            <c:if test='${User.maNguoiDung.equals("KH0000000")}'>
                 <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardropp" data-toggle="dropdown"> Sign In - Sign Up </a>
                     <div class="dropdown-menu">
                         <a class="dropdown-item dropdown-item-custom" href="signin.jsp">Sign In</a>
@@ -92,19 +92,20 @@
                     <div class="container">
                         <h2 class="caption" style="text-align: center;">${list.listItemName}</h2>
                         <c:forEach items="${list.itemList}" var="item">
-                            <div class="item col-xs-3 col-lg-3">
-                                <div class="thumnail"><img class="group list-group image" src="${pageContext.request.contextPath}${item.anhMinhHoa}" style="width: 100%; height:200px;">
-                                    <div class="caption">
-                                        <h4 class="group inner list-group-item-heading" style="text-align: center"><strong>${item.tenSanPham}</strong></h4>
-                                        <div class="row">
-                                            <div class="col-xs-12 col-md-6">
-                                                <p class="lead"><strong>${item.donGia}</strong></p>
-                                            </div><br>
-                                            <div class="col-xs-12 col-md-6"><a class="btn btn-success" href="${pageContext.request.contextPath}/Product?ItemCode=${item.maSanPham}">Chi tiết</a> </div>
+                            <a href="${pageContext.request.contextPath}/Product?ItemCode=${item.maSanPham}">
+                                <div class="item col-xs-3 col-lg-3">
+                                    <div class="thumnail"><img class="group list-group image" src="${pageContext.request.contextPath}${item.anhMinhHoa}" style="width: 100%; height:200px;">
+                                        <div class="caption">
+                                            <h4 class="group inner list-group-item-heading" style="text-align: center"><strong>${item.tenSanPham}</strong></h4>
+                                            <div class="row">
+                                                <div class="col-xs-12 col-md-6">
+                                                    <p class="lead"><strong>${item.donGia}</strong></p>
+                                                </div><br>
+                                            </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </a>
                         </c:forEach>
                     </div>
                 </c:forEach>
