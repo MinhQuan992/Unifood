@@ -17,6 +17,9 @@ import com.mvc.entities.SanphamEntity;
 @WebServlet(name = "ManageWarehouseController")
 public class ManageWarehouseController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
 
         Map< KhohangEntity, List<SanphamEntity> > map = new HashMap<>();
         List< KhohangEntity > listKho = ManageWarehouseDao.GetWarehouses();
@@ -36,6 +39,10 @@ public class ManageWarehouseController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
+
         Pattern specialCharsPattern = Pattern.compile("[!@#$%^&*()?\"':{}|<>]");
 
         String type = request.getParameter("Type");

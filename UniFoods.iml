@@ -104,7 +104,6 @@
       </library>
     </orderEntry>
     <orderEntry type="library" name="Maven: javax:javaee-web-api:8.0.1" level="project" />
-    <orderEntry type="library" name="bootstrap" level="application" />
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
@@ -267,5 +266,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="bootstrap" level="application" />
   </component>
 </module>
