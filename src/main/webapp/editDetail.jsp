@@ -1,11 +1,4 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Hương Gấu
-  Date: 12/24/2020
-  Time: 2:47 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
@@ -65,87 +58,89 @@
     </nav>
 
 <form id="procontainer" method="post" action="${pageContext.request.contextPath}/editdetail" style="align: center;">
-    <div class="form-group">
-        <label for="maSanPham">Mã Sản Phẩm: </label>
+    <div class="form-group" align="center">
+        <label for="maSanPham"><b>Mã Sản Phẩm: </b></label>
         <input type="text"
                class="form-control" id="maSanPham"
-               name="maSanPham" value="${maSanPham}">
+               name="maSanPham" style="height: 30px; width: 500px" value="${maSanPham}">
         <p style="color: gray; font-family: Arial"><c:out value="${maSanPhamError}"></c:out></p>
     </div>
 
-    <div class="form-group">
-        <label for="tenSanPham">Tên Sản Phẩm:</label>
+    <div class="form-group" align="center">
+        <label for="tenSanPham"><b>Tên Sản Phẩm:</b></label>
         <input type="text"
                class="form-control" id="tenSanPham"
-               name="tenSanPham" value="${tenSanPham}">
+               name="tenSanPham" style="height: 30px; width: 500px" value="${tenSanPham}">
         <p style="color: gray; font-family: Arial"><c:out value="${tenSanPhamError}"></c:out></p>
     </div>
 
-    <div class="form-group">
-        <label for="donGia">Giá Sản Phẩm:</label>
+    <div class="form-group" align="center">
+        <label for="donGia"><b>Giá Sản Phẩm:</b></label>
         <input type="text"
                class="form-control" id="donGia"
-               name="donGia" value="${donGia}">
+               name="donGia" style="height: 30px; width: 500px" value="${donGia}">
         <p style="color: gray; font-family: Arial"><c:out value="${donGiaError}"></c:out></p>
     </div>
 
-    <div class="form-group">
-    <label for="donViTinh">Đơn Vị Tính của Sản Phẩm:</label>
+    <div class="form-group" align="center">
+        <label for="donViTinh"><b>Đơn Vị Tính của Sản Phẩm:</b></label>
     <input type="text"
            class="form-control" id="donViTinh"
-           name="donViTinh" value="${donViTinh}">
+           name="donViTinh" style="height: 30px; width: 500px" value="${donViTinh}">
     <p style="color: gray; font-family: Arial"><c:out value="${donViTinhError}"></c:out></p>
 </div>
 
-    <div class="form-group">
-        <label for="soLuong">Số Lượng Sản Phẩm:</label>
+    <div class="form-group" align="center">
+        <label for="soLuong"><b>Số Lượng Sản Phẩm:</b></label>
         <input type="text"
                class="form-control" id="soLuong"
-               name="soLuong" value="${soLuong}">
+               name="soLuong" style="height: 30px; width: 500px" value="${soLuong}">
         <p style="color: gray; font-family: Arial"><c:out value="${soLuongError}"></c:out></p>
     </div>
 
-    <div class="form-group">
-        <label for="anhMinhHoa">Hình Ảnh Sản Phẩm:</label>
+    <div class="form-group" align="center">
+        <label for="anhMinhHoa"><b>Hình Ảnh Sản Phẩm:</b></label>
         <input type="text"
                class="form-control" id="anhMinhHoa"
-               name="anhMinhHoa" value="${anhMinhHoa}">
+               name="anhMinhHoa" style="height: 30px; width: 500px" value="${anhMinhHoa}">
         <p style="color: gray; font-family: Arial"><c:out value="${anhMinhHoaError}"></c:out></p>
     </div>
 
-    <div class="form-group">
-        <label for="maNhom">Mã Nhóm của Sản Phẩm:</label>
+    <div class="form-group" align="center">
+        <label for="maNhom"><b>Mã Nhóm của Sản Phẩm:</b></label>
         <input type="text"
                class="form-control" id="maNhom"
-               name="maNhom" value="${maNhom}">
+               name="maNhom" style="height: 30px; width: 500px" value="${maNhom}">
         <p style="color: gray; font-family: Arial"><c:out value="${maNhomError}"></c:out></p>
     </div>
 
-    <div class="form-group">
-        <label for="maKho">Mã Kho của Sản Phẩm:</label>
+    <div class="form-group" align="center">
+        <label for="maKho"><b>Mã Kho của Sản Phẩm:</b></label>
         <input type="text"
                class="form-control" id="maKho"
-               name="maKho" value="${maKho}">
+               name="maKho" style="height: 30px; width: 500px" value="${maKho}">
         <p style="color: gray; font-family: Arial"><c:out value="${maKhoError}"></c:out></p>
     </div>
 
-    <div class="form-group">
-        <label for="moTa">Mô Tả Sản Phẩm:</label>
+    <div class="form-group" align="center">
+        <label for="moTa"><b>Mô Tả Sản Phẩm:</b></label>
         <input type="text"
                class="form-control" id="moTa"
-               name="moTa" value="${moTa}">
+               name="moTa" style="height: 30px; width: 500px" value="${moTa}">
         <p style="color: gray; font-family: Arial"><c:out value="${moTaError}"></c:out></p>
     </div>
 
-    <input type="submit" style="text-align: center; background-color: #60150c; text-decoration-color: white;" value="Xác Nhận">
-
+    <div align="center">
+        <input type="submit" align="center" style="text-align: center; background-color: #9fcdff; text-decoration-color: white; width: 100px; height: 40px" value="Xác Nhận">
+    </div>
 </form>
 
 </div><br>
-
-<form method="post" action="${pageContext.request.contextPath}/getPro">
-    <input type="submit" style="align: center; background-color: #60150c; text-decoration-color: white;" value="Quay lại">
-</form>
+<div align="center">
+    <form method="post" action="${pageContext.request.contextPath}/getPro">
+        <input type="submit" align="center" style="text-align: center; background-color: #9fcdff; text-decoration-color: white; width: 100px; height: 40px" value="Quay lại">
+    </form>
+</div>
 
 <div id="footer">
     <p style="text-align: center">

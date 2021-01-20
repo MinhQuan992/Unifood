@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
-
 <html>
 <head>
     <meta charset="utf-8" />
@@ -41,30 +40,30 @@
                 </div></li>
         </ul>
     </nav>
+</div>
 
-    <form id="editPro" method="post" action="${pageContext.request.contextPath}/getPro">
-        <input type="submit" style="color: #60150c" value="Chỉnh sửa sản phẩm">
-    </form>
+<div id="btncontain" align="center">
+    <br><br><form id="editPro" method="post" action="${pageContext.request.contextPath}/getPro">
+        <input type="submit" style="color: #60150c; height: 40px; width: 200px" value="Chỉnh sửa sản phẩm">
+    </form><br>
 
     <form id="addPro" method="post" action="${pageContext.request.contextPath}/addPro.jsp">
-        <input type="submit" style="color: #60150c" value="Thêm sản phẩm">
-    </form>
+        <input type="submit" style="color: #60150c; height: 40px; width: 200px" value="Thêm sản phẩm">
+    </form><br>
 
     <form id="ManageOder" method="post" action="${pageContext.request.contextPath}/OrderManage">
-        <input type="submit" style="color: #60150c" value="Quản lí đơn hàng">
-    </form>
+        <input type="submit" style="color: #60150c; height: 40px; width: 200px" value="Quản lí đơn hàng">
+    </form><br>
 
     <form id="addMan" method="post" action="${pageContext.request.contextPath}/signup.jsp">
-        <input type="submit" style="color: #60150c" value="Thêm Quản Lý">
-    </form>
-
+        <input type="submit" style="color: #60150c; height: 40px; width: 200px" value="Thêm Quản Lý">
+    </form><br>
 </div>
 
 <div id="footer">
     <p style="text-align: center">
         <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
     </p>
-</div>
 </div>
 </body>
 </html>

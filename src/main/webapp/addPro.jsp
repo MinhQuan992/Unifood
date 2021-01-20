@@ -21,6 +21,10 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
+    <style>
+        table{border: 0px solid darkred}
+        td{border: 20px solid white}
+    </style>
 </head>
 <body>
 <c:if test="${not empty Trangthaithem}">
@@ -42,21 +46,22 @@
         <a href="#"><img class="logo" src="Images/LOGO.png" style="width: auto; height: 50px;"></a>
         <a class="homelogo" href="index.jsp"><img src="Images/homepage_icon.png" style="width: auto; height: 50px;"></a>
         <ul class="navbar-nav">
-            <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/MainPage?">HOME</a></li>
+            <li class="nav-item active"><a class="nav-link" href="${pageContext.request.contextPath}/qlhome.jsp">HOME</a></li>
             <li class="nav-item"><a class="nav-link" href="staffs.jsp">STAFFS</a></li>
         </ul>
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">MANAGER</a>
+            <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">${User.hoVaTen}</a>
                 <div class="dropdown-menu">
                     <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/ManageWarehouse">My Profile</a>
                     <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
                 </div></li>
         </ul>
     </nav>
-<div id="procontainer" style="text-align: center;">
+<div id="procontainer" align="center">
     <form id="addcontainer" method="post" action="${pageContext.request.contextPath}/addPro">
-        <table>
-            <tr>
+        <h1 align="center"><b>THÊM SẢN PHẨM</b></h1>
+        <table border="1" cellpadding="10" style="width:500px;height:100px">
+            <br><tr>
                 <td><b> Mã Sản Phẩm: </b></td>
                 <td>
                 <input type="text" name="maSanPham"
@@ -238,7 +243,7 @@
                 </tr>
         </table>
 
-        <input type="submit" style="text-align: center; background-color: #60150c; text-decoration-color: white" value="Xác nhận">
+        <br><input type="submit" style="text-align: center; background-color: #9fcdff; text-decoration-color: white; width: 100px; height: 30px" value="Xác nhận">
     </form>
 </div>
 
