@@ -24,29 +24,29 @@
           crossorigin="anonymous">
 </head>
 <body>
-<div id="container">
-    <%
-        String userType = (String) request.getSession().getAttribute("userType");
-        if (userType == null)
-        {
-            request.getSession().setAttribute("userType", "Customer");
-        }
-    %>
-    <c:if test="${not empty signupSuccess}">
-        <c:choose>
-            <c:when test="${signupSuccess == true}">
-                <script type="text/javascript">
-                    alert("Thêm quản lí thành công!")
-                </script>
-            </c:when>
+<c:if test="${not empty signupSuccess}">
+    <c:choose>
+        <c:when test="${signupSuccess == true}">
+            <script type="text/javascript">
+                alert("Thêm quản lí thành công!")
+            </script>
+        </c:when>
 
-            <c:otherwise>
-                <script type="text/javascript">
-                    alert("Không thể tạo tài khoản, mời bạn thử lại!")
-                </script>
-            </c:otherwise>
-        </c:choose>
-    </c:if>
+        <c:otherwise>
+            <script type="text/javascript">
+                alert("Không thể tạo tài khoản, mời bạn thử lại!")
+            </script>
+        </c:otherwise>
+    </c:choose>
+</c:if>
+<%
+    String userType = (String) request.getSession().getAttribute("userType");
+    if (userType == null)
+    {
+        request.getSession().setAttribute("userType", "Customer");
+    }
+%>
+<div align="center">
     <h1 id="form-title">ĐĂNG KÝ TÀI KHOẢN</h1>
     <form id="frmSignup" method="post" action="${pageContext.request.contextPath}/signup">
         <table>
@@ -113,15 +113,15 @@
             <tr>
                 <td class="row-name">Địa chỉ:</td>
                 <td class="info">
-                <textarea class="text" name="userAddress" rows="3" cols="50"
-                        <c:if test="${empty userAddress}">
-                            placeholder="Nhập địa chỉ"
-                        </c:if>
+                    <textarea class="text" name="userAddress" rows="3" cols="50"
+                            <c:if test="${empty userAddress}">
+                                placeholder="Nhập địa chỉ"
+                            </c:if>
 
-                <c:if test="${not empty addressError}">
-                    style="border-color: red"
-                </c:if>
-                          required><c:out value="${userAddress}"/></textarea>
+                        <c:if test="${not empty addressError}">
+                            style="border-color: red"
+                        </c:if>
+                              required><c:out value="${userAddress}"/></textarea>
                     <br>
                     <p class="error-message"><c:out value="${addressError}"/></p>
                 </td>
@@ -175,22 +175,24 @@
         </table>
 
         <input id="btnSignup" type="submit" value="ĐĂNG KÝ">
+        <br>
 
         <c:choose>
-            <c:when test="${userType == 'Customer'}">
-                <a href="qlhome.jsp">Quay về trang chủ</a>
+            <c:when test="${userType == 'Manager'}">
+                <a style="color: #007bff;" href="qlhome.jsp">Quay về trang chủ</a>
             </c:when>
 
             <c:otherwise>
-                <a href="Khach.jsp">Quay về trang chủ</a>
+                <a style="color: #007bff;" href="index.jsp">Quay về trang chủ</a>
             </c:otherwise>
         </c:choose>
     </form>
-    <div id="footer">
-        <p style="text-align: center">
-            <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
-        </p>
-    </div>
+</div>
+
+<div id="footer">
+    <p style="text-align: center">
+        <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
+    </p>
 </div>
 </body>
 </html>

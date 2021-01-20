@@ -1,15 +1,8 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Vo Tran Minh Quan
-  Date: 12/17/2020
-  Time: 9:44 AM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Đơn hàng của tôi | Unifood</title><meta name="description" content="Quan Com Online Unifood" />
+    <title>Đơn hàng của tôi | Unifood</title>
     <meta name="author" content="NhomHQNT">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
@@ -103,14 +96,13 @@
                                 <td>Chưa thanh toán</td>
                             </c:otherwise>
                         </c:choose>
-                        <td style="text-align: center"><p><c:out value="${order.tongGiaTri}"/><span> VND</span></p></td>
+                        <td style="text-align: center"><p style="margin-bottom: 0"><c:out value="${order.tongGiaTri}"/><span> VND</span></p></td>
                     </tr>
                 </c:forEach>
                 </tbody>
             </table>
         </c:otherwise>
     </c:choose>
-
     <div id="footer">
         <p style="text-align: center">
             <b> NhomHQNT 2020 - Quan Com Online Unifood </b>

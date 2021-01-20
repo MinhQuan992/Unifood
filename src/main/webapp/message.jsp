@@ -2,7 +2,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Đặt lại mật khẩu | Unifood</title>
+    <title>Đăng ký | Unifood</title>
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
             integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
             crossorigin="anonymous"></script>
@@ -32,15 +32,23 @@
             <li class="nav-item"><a class="nav-link" href="contact.jsp">CONTACTS</a></li>
         </ul>
     </nav>
-<div id="image-container">
-    <img id="image" src="Images/email_check.png">
-</div>
-<div id="message" align="center">
-    <h1><c:out value="${message}"/></h1>
-    <form action="${pageContext.request.contextPath}/signin.jsp">
-        <input id="btnSubmit" type="submit" value="ĐĂNG NHẬP">
-    </form>
-</div>
+
+    <div id="image-container">
+        <img id="image" src="Images/email_check.png">
+    </div>
+
+    <div id="message" align="center">
+        <h1><c:out value="${message}"/></h1>
+        <form action="${pageContext.request.contextPath}/signin.jsp">
+            <input id="btnSubmit" type="submit" value="ĐĂNG NHẬP">
+        </form>
+    </div>
+
+    <div id="footer" style="margin-top: 21%;">
+        <p style="text-align: center">
+            <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
+        </p>
+    </div>
 </div>
 </body>
 </html>

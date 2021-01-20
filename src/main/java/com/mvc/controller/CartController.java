@@ -41,6 +41,7 @@ public class CartController extends HttpServlet {
             session.setAttribute("User",user);
             session.setAttribute("ShoppingCart",cart);
         }
+
         String url = "index.jsp";
         CartDao cartDao = new CartDao();
         ItemDao itemDao = new ItemDao();
@@ -53,6 +54,21 @@ public class CartController extends HttpServlet {
 
         if (confirm!=null && !checkedList.isEmpty())
         {
+            if (user.getMaNguoiDung().equals("KH0000000"))
+            {
+                String user_name = (String) session.getAttribute("User_Name");
+                String user_phone = (String) session.getAttribute("User_Name");
+                String user_address = (String) session.getAttribute("User_Name");
+
+                if (user_name == null || user_phone == null || user_address == null)
+                {
+                    url = "Page/InputInfo.jsp";
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher(url);
+                    requestDispatcher.forward(request,response);
+                    return;
+                }
+            }
+
             GiohangEntity new_cart = cartDao.GetNewCart(user);
             for (DathangEntity order: listOrder)
             {

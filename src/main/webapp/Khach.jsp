@@ -1,10 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@ page import="com.mvc.entities.*"%>
-<%@ page import="org.hibernate.Session" %>
-<%@ page import="java.util.Map" %>
-<%@ page import="java.util.HashMap" %>
-<%@ page import="java.util.List" %>
 <%@ page import="com.mvc.dao.UserDao" %>
 <%@ page import="com.mvc.dao.CartDao" %>
 <%
@@ -83,7 +79,6 @@
         </ul>
     </nav>
 
-
     <div class="contain">
         <h3 style="text-align: center;">SẢN PHẨM NỔI BẬT</h3>
         <div class="well well-sm text-right">
@@ -118,8 +113,5 @@
         <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
     </p>
 </div>
-</div>
-
-
 </body>
 </html>

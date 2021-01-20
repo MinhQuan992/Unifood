@@ -20,6 +20,7 @@
     HashMap <String,Integer> map = (HashMap<String, Integer>) request.getAttribute("ProductQuantity");
     int MainItemQuantity = map.get(item.getMaSanPham());
     System.out.println(MainItemQuantity);
+    GiohangEntity cart = (GiohangEntity) session.getAttribute("ShoppingCart");
 %>
 <html>
 <head>
@@ -31,7 +32,8 @@
 </head>
 <body>
 <div class="main">
-    <form class="PDmain" method="get" action="${pageContext.request.contextPath}/Order">
+    <form class="PDmain" method="post" action="${pageContext.request.contextPath}/Order">
+        <input hidden name="MaGio" value="<%=cart.getMaGio()%>">
         <div class="PDBox" id="PDFoodImageBox">
             <img class="PDFoodImgae" src="${pageContext.request.contextPath}${requestScope.Item.anhMinhHoa}">
         </div>
@@ -61,8 +63,12 @@
             </div>
             <div>
                 <div class="PD-main-menu-form">
-                    <input class="PD-main-menu-submit-button" type="submit" value="ĐẶT HÀNG" name="DatHang" id="Submit-button-1">
+                    <input class="PD-main-menu-submit-button" type="submit" value="ĐẶT HÀNG" name="PayCheck" id="Submit-button-1">
                     <input type="text" style="border: none; height: auto; padding: 0px 0px; font-size: 24px" class="PD-main-menu-total-price" id="PD-main-menu-total-price" value="${requestScope.Item.donGia}">
+                </div>
+                <div class="PD-main-menu-form">
+                    <input class="PD-main-menu-submit-button" type="submit" value="THÊM VÀO GIỎ" name="AddToCart" id="Submit-button-2">
+                    <input type="text" style="border: none; height: auto; padding: 0px 0px; font-size: 24px" class="PD-main-menu-total-price" id="" value="#">
                 </div>
             </div>
         </div>

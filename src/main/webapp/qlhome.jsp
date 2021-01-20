@@ -1,5 +1,4 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
-
 <html>
 <head>
     <meta charset="utf-8" />
@@ -57,14 +56,12 @@
     <form id="addMan" method="post" action="${pageContext.request.contextPath}/signup.jsp">
         <input type="submit" style="color: #60150c" value="Thêm Quản Lý">
     </form>
-
 </div>
 
 <div id="footer">
     <p style="text-align: center">
         <b> NhomHQNT 2020 - Quan Com Online Unifood </b>
     </p>
-</div>
 </div>
 </body>
 </html>
