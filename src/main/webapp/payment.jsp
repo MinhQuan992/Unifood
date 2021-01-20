@@ -1,6 +1,7 @@
 <%@ page import="java.util.List" %>
 <%@ page import="com.mvc.entities.*" %>
 <%@ page import="com.mvc.dao.UserDao" %>
+<%@ page import="com.mvc.dao.PaymentDao" %>
 <%--
   Created by IntelliJ IDEA.
   User: Admin
@@ -91,7 +92,8 @@
     <%
         List<DonvigiaohangEntity> listDV = (List<DonvigiaohangEntity>) request.getAttribute("listDV");
         List<SanphamEntity> listSP = (List<SanphamEntity>) request.getAttribute("listSP");
-        NguoidungEntity user = (NguoidungEntity) request.getSession().getAttribute("User");
+        // NguoidungEntity user = (NguoidungEntity) request.getSession().getAttribute("User");
+        DonhangEntity don = PaymentDao.GetDonHang((int)request.getAttribute("MaDon"));
     %>
     <div class="jumbotron">
         <div class="page-header">
@@ -104,14 +106,14 @@
             <form method="get" action="${pageContext.request.contextPath}/Payment">
                 <h3>Thông tin người nhận hàng: </h3>
 
-                <p><strong>Họ tên: </strong><%= user.getHoVaTen() %>
+                <p><strong>Họ tên: </strong><%= don.getHoVaTen() %>
                 </p>
 
-                <p><strong>Điện thoại: </strong><%= user.getDienThoai() %>
+                <p><strong>Điện thoại: </strong><%= don.getDienThoai() %>
                 </p>
 
                 <p><strong>Địa chỉ nhận hàng: </strong></p>
-                <label class="cont"><%= user.getDiaChi() %>
+                <label class="cont"><%= don.getDiaChi() %>
                     <input type="radio" id="defaultAddress" name="DiaChi" value="default" checked
                            onclick="EnableDisableTB()">
                     <span class="checkmark"></span>
