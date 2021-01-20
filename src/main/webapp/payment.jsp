@@ -120,10 +120,11 @@
                     <input type="radio" id="otherAddress" name="DiaChi" value="other" onclick="EnableDisableTB()">
                     <span class="checkmark"></span>
                 </label>
-                <label>
-                    <input type="text" id="otherAddr" name="DiaChiKhac" disabled="disabled"
+                <div class="form-group">
+                    <label for="otherAddr">Nhập địa chỉ:</label>
+                    <input class="form-control" type="text" id="otherAddr" name="DiaChiKhac" disabled="disabled"
                            placeholder="Địa chỉ khác">
-                </label>
+                </div>
 
                 <h3>Chọn đơn vị giao hàng </h3>
 
@@ -161,7 +162,8 @@
                     <tr>
                         <td class="text-center"><img src="${pageContext.request.contextPath}<%= sp.getAnhMinhHoa()%>"
                                                      width="200px"
-                                                     onerror="this.onerror=null; this.src='./Images/311151.jpg'"></td>
+                                                     onerror="this.onerror=null; this.src='${pageContext.request.contextPath}/Images/311151.jpg'">
+                        </td>
                         <td><%= sp.getTenSanPham() %>
                         </td>
                         <td><%= sp.getSoLuong() %>

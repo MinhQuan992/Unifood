@@ -16,11 +16,19 @@ public class DonhangEntity {
     private Date ngayDat;
     private Date ngayGiaoHang;
     private Date ngayThanhToan;
+    private String maNguoiDung;
+    private String hoVaTen;
+    private String diaChi;
+    private String dienThoai;
 
     @Id
     @Column(name = "MaDon", columnDefinition = "INT")
     public Integer getMaDon() {
         return maDon;
+    }
+
+    public void setMaDon(int maDon) {
+        this.maDon = maDon;
     }
 
     public void setMaDon(Integer maDon) {
@@ -143,5 +151,35 @@ public class DonhangEntity {
         result = 31 * result + (ngayGiaoHang != null ? ngayGiaoHang.hashCode() : 0);
         result = 31 * result + (ngayThanhToan != null ? ngayThanhToan.hashCode() : 0);
         return result;
+    }
+
+    @Basic
+    @Column(name = "HoVaTen", columnDefinition = "NVARCHAR(50)")
+    public String getHoVaTen() {
+        return hoVaTen;
+    }
+
+    public void setHoVaTen(String hoVaTen) {
+        this.hoVaTen = hoVaTen;
+    }
+
+    @Basic
+    @Column(name = "DiaChi", columnDefinition = "NVARCHAR(150)")
+    public String getDiaChi() {
+        return diaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
+    }
+
+    @Basic
+    @Column(name = "DienThoai", columnDefinition = "VARCHAR(10)")
+    public String getDienThoai() {
+        return dienThoai;
+    }
+
+    public void setDienThoai(String dienThoai) {
+        this.dienThoai = dienThoai;
     }
 }
