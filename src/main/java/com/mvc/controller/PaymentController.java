@@ -35,7 +35,9 @@ public class PaymentController extends HttpServlet {
 //            return;
 //        }
 
-        int maGio = Integer.parseInt(request.getParameter("MaGio"));
+        int maGio;
+        String magio = request.getParameter("MaGio");
+        maGio = Integer.parseInt(magio);
 
         List<DonvigiaohangEntity> listDV = PaymentDao.GetDVGiaoHang();
         List<DathangEntity> listDat = PaymentDao.GetDatHang(maGio);

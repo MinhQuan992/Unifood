@@ -24,6 +24,13 @@
         response.sendRedirect("index.jsp");
     }
     GiohangEntity cart = (GiohangEntity) session.getAttribute("ShoppingCart");
+    int MaGio = 0;
+    if (session.getAttribute("MaGio")!=null) {
+        MaGio = (int) session.getAttribute("MaGio");
+        session.setAttribute("MaGio",null);
+    }
+    else
+        MaGio = cart.getMaGio();
 %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -81,7 +88,7 @@
                 <button type="submit" class="btn btn-primary">Xác nhận và tiếp tục đặt hàng</button>
             </div>
 
-            <input name="MaGio" value="<%=cart.getMaGio()%>" hidden>
+            <input name="MaGio" value="<%=MaGio%>" hidden>
 
         </form>
     </div>

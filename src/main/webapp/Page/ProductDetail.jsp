@@ -68,7 +68,7 @@
                 </div>
                 <div class="PD-main-menu-form">
                     <input class="PD-main-menu-submit-button" type="submit" value="THÊM VÀO GIỎ" name="AddToCart" id="Submit-button-2">
-                    <input type="text" style="border: none; height: auto; padding: 0px 0px; font-size: 24px" class="PD-main-menu-total-price" id="" value="#">
+                    <input type="text" style="border: none; height: auto; padding: 0px 0px; font-size: 24px" class="PD-main-menu-total-price" id="" value="">
                 </div>
             </div>
         </div>

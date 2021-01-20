@@ -48,6 +48,7 @@ public class OrderController extends HttpServlet {
                 order.setMaGio(cart_new.getMaGio());
                 orderDao.InsertOrderData(order);
             }
+            session.setAttribute("MaGio",cart.getMaGio());
             session.setAttribute("ShoppingCart",cart_new);
         }
 
@@ -69,9 +70,24 @@ public class OrderController extends HttpServlet {
         // send user to payment
         if (payCheck!=null)
         {
+            if (user.getMaNguoiDung().equals("KH0000000"))
+            {
+                String user_name = (String) session.getAttribute("User_Name");
+                String user_phone = (String) session.getAttribute("User_Name");
+                String user_address = (String) session.getAttribute("User_Name");
+
+                if (user_name == null || user_phone == null || user_address == null)
+                {
+                    url = "Page/InputInfo.jsp";
+                    RequestDispatcher requestDispatcher = request.getRequestDispatcher(url);
+                    requestDispatcher.forward(request,response);
+                    return;
+                }
+            }
             url = "/Payment";
             ServletContext servletContext = this.getServletContext();
             RequestDispatcher requestDispatcher = servletContext.getRequestDispatcher(url);
+            System.out.println("This servlet is being forward you to: " + url);
             requestDispatcher.forward(request,response);
             return;
         }
