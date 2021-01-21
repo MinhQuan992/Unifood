@@ -7,8 +7,6 @@ function numberWithCommas(n) {
     return n;
 }
 
-
-
 function increaseValue()
 {
     var value = parseInt(document.getElementById('number').value, 10);
@@ -116,8 +114,9 @@ function OnCheck(Eid)
 }
 
 function numberWithCommas(n) {
-    var parts=n.toString().split(".");
-    return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "") + " đ";
+    //var parts=n.toString().split(".");
+    //return parts[0].replace(/\B(?=(\d{3})+(?!\d))/g, ",") + (parts[1] ? "." + parts[1] : "") + " đ";
+    return n;sss
 }
 
 function increaseValue()
