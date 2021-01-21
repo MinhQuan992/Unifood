@@ -29,6 +29,14 @@
           href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
           integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
           crossorigin="anonymous">
+    <style>
+        table{border: 4px solid darkred}
+        td{border: 2px solid black}
+        tr:hover{
+            background-color:#ddd;
+            cursor:pointer;
+        }
+    </style>
 </head>
 <body>
 <div id="container">
@@ -47,23 +55,24 @@
                 </div></li>
         </ul>
     </nav>
-    <table id="procontainer" style="align: center;" border="1" cellpadding="2">
-        <thead style="align: center;">
-        <tr bgcolor="#7fffd4">
-            <td>Mã Sản Phẩm</td>
-            <td>Tên Sản Phẩm</td>
-            <td>Đơn Vị Tính</td>
-            <td>Đơn Giá</td>
-            <td>Số Lượng</td>
-            <td>Ảnh Minh Họa</td>
-            <td>Mã Nhóm</td>
-            <td>Mã Kho</td>
-            <td>Mô tả</td>
+    <h1 align="center"><b>CHỈNH SỬA SẢN PHẨM</b></h1>
+    <table id="procontainer" align="center" border="1" cellpadding="10" style="width:100%;height:50px">
+        <thead align="center">
+        <tr bgcolor=#add8e6 >
+            <td><b>Mã Sản Phẩm</b></td>
+            <td><b>Tên Sản Phẩm</b></td>
+            <td><b>Đơn Vị Tính</b></td>
+            <td><b>Đơn Giá</b></td>
+            <td><b>Số Lượng</b></td>
+            <td><b>Ảnh Minh Họa</b></td>
+            <td><b>Mã Nhóm</b></td>
+            <td><b>Mã Kho</b></td>
+            <td><b>Mô tả</b></td>
         </tr>
         </thead>
-        <tbody style="align: center;">
+        <tbody align="center">
         <c:forEach items="${products}" var="product">
-            <tr>
+            <tr style="text-align: center">
                 <td><c:out value="${product.maSanPham}"></c:out></td>
                 <td><c:out value="${product.tenSanPham}"></c:out></td>
                 <td><c:out value="${product.donViTinh}"></c:out></td>
@@ -76,16 +85,16 @@
 
                 <td>
                     <form method="post" action="${pageContext.request.contextPath}/getprodetail">
-                        <input type="hidden" name="maSanPham" value="${product.maSanPham}">
-                        <input type="hidden" name="tenSanPham" value="${product.tenSanPham}">
-                        <input type="hidden" name="donViTinh" value="${product.donViTinh}">
-                        <input type="hidden" name="donGia" value="${product.donGia}">
-                        <input type="hidden" name="soLuong" value="${product.soLuong}">
-                        <input type="hidden" name="anhMinhHoa" value="${product.anhMinhHoa}">
-                        <input type="hidden" name="maNhom" value="${product.maNhom}">
-                        <input type="hidden" name="maKho" value="${product.maKho}">
-                        <input type="hidden" name="moTa" value="${product.moTa}">
-                        <input type="submit" style="text-align: center; background-color: #60150c; text-emphasis-color: white;" value="Chỉnh sửa">
+                        <input type="hidden" style="text-align: center;" name="maSanPham" value="${product.maSanPham}">
+                        <input type="hidden" style="text-align: center;" name="tenSanPham" value="${product.tenSanPham}">
+                        <input type="hidden" style="text-align: center;" name="donViTinh" value="${product.donViTinh}">
+                        <input type="hidden" style="text-align: center;" name="donGia" value="${product.donGia}">
+                        <input type="hidden" style="text-align: center;" name="soLuong" value="${product.soLuong}">
+                        <input type="hidden" style="text-align: center;" name="anhMinhHoa" value="${product.anhMinhHoa}">
+                        <input type="hidden" style="text-align: center;" name="maNhom" value="${product.maNhom}">
+                        <input type="hidden" style="text-align: center;" name="maKho" value="${product.maKho}">
+                        <input type="hidden" style="text-align: center;" name="moTa" value="${product.moTa}">
+                        <input type="submit" style="text-align: center; text-decoration-color: white; height: 40px" value="Chỉnh sửa">
                     </form>
                 </td>
             </tr>

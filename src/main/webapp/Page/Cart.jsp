@@ -29,13 +29,13 @@
     <link href="${pageContext.request.contextPath}/Style/CartStyle.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Oswald:wght@500&display=swap" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/JS/CartScript.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js" type="text/javascript"></script>
+    <%--<script src="https://code.jquery.com/jquery-1.10.2.js"
+            type="text/javascript"></script>--%>
+
     <link rel="stylesheet" href="bootstrap.min.css">
     <meta name="description" content="Quan Com Online Unifood" />
     <meta name="author" content="NhomHQNT">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
     <script
             src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
             integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
@@ -75,7 +75,7 @@
                 <div class="An-Item">
                     <div class="Item-Check">
                         <input type="checkbox" class="Check-Button" style="width: 20px; height: 20px;" <%%> <c:if test="${requestScope.CheckedItemList.contains(order.maSanPham)}">checked</c:if>
-                               name="Check${order.maSanPham}" id="Check${order.maSanPham}" onclick="ButtonClick('CheckedItem','${order.maSanPham}')">
+                               name="Check${order.maSanPham}" id="Check${order.maSanPham}" onclick="Checked('CheckedItem','${order.maSanPham}')">
                     </div>
                     <div class="Item-Image">
                         <img class="Image" src="${pageContext.request.contextPath}${requestScope.ItemMap.get(order.maSanPham).anhMinhHoa}">
@@ -92,7 +92,7 @@
                         <input type="text" disabled="true" name="Note${order.maSanPham}" id="Note${order.maSanPham}" class="Input-text" style="width: 200px; font-size: 14px;" maxlength="300" value="${order.ghiChu}">
                         <input type="button" style="font-size: 14px;" class="Button-Note" name="Take-Items-Note${order.maSanPham}"  id="Take-Items-Note${order.maSanPham}" value="Note" onclick="NoteButtonClick('${order.maSanPham}')">
                             <%--<a style="text-decoration: none" href="${pageContext.request.contextPath}/Cart?DeleteItem=${order.maSanPham}">--%>
-                        <input type="button" style="font-size: 14px;" class="Button-Delete" name="Remove-Items-Button" value="Delete" onclick="OnDelete('DeleteItem','${order.maSanPham}')">
+                        <input type="button" style="font-size: 14px;" class="Button-Delete" name="Remove-Items-Button" value="Delete" onclick="Deleted('DeleteItem','${order.maSanPham}')">
                     </div>
                 </div>
             </c:forEach>
@@ -114,5 +114,14 @@
         </form>
     </div>
 </div>
+<form name="AjaxSendingForm" id="AjaxSendingForm" action="#" method="GET">
+    <input type="hidden" name="ParaName" id="AjaxSendingFormParaName">
+    <input type="hidden" name="KeyValue" id="AjaxSendingFormKeyValue">
+    <input type="hidden" name="Extend" id="AjaxSendingFormExtend">
+</form>
 </body>
 </html>
+<script src="https://code.jquery.com/jquery-1.10.2.js"
+        type="text/javascript"></script>
+<script src="${pageContext.request.contextPath}/JS/NewJS.js"
+        type="text/javascript"></script>

@@ -46,7 +46,7 @@
         </ul>
     </nav>
 
-    <div class="contain" style="text-align: center">
+    <div class="contain" align="center">
         <h3 style="text-align: center;">DANH SÁCH NHÂN VIÊN</h3>
         <div class="well well-sm text-right">
             <div id="product" class="row list-group">
@@ -60,7 +60,6 @@
                                         <div class="col-xs-12 col-md-6">
                                             <p class="lead">18110298</p>
                                         </div><br>
-                                        <div class="col-xs-12 col-md-6"><a class="btn btn-success" href="#">Chi tiết</a> </div>
                                     </div>
                                 </div>
                             </div>
@@ -74,7 +73,6 @@
                                         <div class="col-xs-12 col-md-6">
                                             <p class="lead">18110344</p>
                                         </div><br>
-                                        <div class="col-xs-12 col-md-6"><a class="btn btn-success" href="#">Chi tiết</a> </div>
                                     </div>
                                 </div>
                             </div>
@@ -88,7 +86,6 @@
                                         <div class="col-xs-12 col-md-6">
                                             <p class="lead">18110332</p>
                                         </div><br>
-                                        <div class="col-xs-12 col-md-6"><a class="btn btn-success" href="#">Chi tiết</a> </div>
                                     </div>
                                 </div>
                             </div>
@@ -102,7 +99,6 @@
                                         <div class="col-xs-12 col-md-6">
                                             <p class="lead">18110359</p>
                                         </div><br>
-                                        <div class="col-xs-12 col-md-6"><a class="btn btn-success" href="#">Chi tiết</a> </div>
                                     </div>
                                 </div>
                             </div>

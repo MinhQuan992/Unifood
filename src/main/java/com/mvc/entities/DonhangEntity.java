@@ -15,6 +15,9 @@ public class DonhangEntity {
     private Date ngayDat;
     private Date ngayGiaoHang;
     private Date ngayThanhToan;
+    private String hoVaTen;
+    private String diaChi;
+    private String dienThoai;
 
     @Id
     @Column(name = "MaDon", nullable = false)
@@ -106,6 +109,36 @@ public class DonhangEntity {
         this.ngayThanhToan = ngayThanhToan;
     }
 
+    @Basic
+    @Column(name = "HoVaTen", nullable = true, length = 50)
+    public String getHoVaTen() {
+        return hoVaTen;
+    }
+
+    public void setHoVaTen(String hoVaTen) {
+        this.hoVaTen = hoVaTen;
+    }
+
+    @Basic
+    @Column(name = "DiaChi", nullable = true, length = 150)
+    public String getDiaChi() {
+        return diaChi;
+    }
+
+    public void setDiaChi(String diaChi) {
+        this.diaChi = diaChi;
+    }
+
+    @Basic
+    @Column(name = "DienThoai", nullable = true, length = 10)
+    public String getDienThoai() {
+        return dienThoai;
+    }
+
+    public void setDienThoai(String dienThoai) {
+        this.dienThoai = dienThoai;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -124,6 +157,9 @@ public class DonhangEntity {
         if (ngayGiaoHang != null ? !ngayGiaoHang.equals(that.ngayGiaoHang) : that.ngayGiaoHang != null) return false;
         if (ngayThanhToan != null ? !ngayThanhToan.equals(that.ngayThanhToan) : that.ngayThanhToan != null)
             return false;
+        if (hoVaTen != null ? !hoVaTen.equals(that.hoVaTen) : that.hoVaTen != null) return false;
+        if (diaChi != null ? !diaChi.equals(that.diaChi) : that.diaChi != null) return false;
+        if (dienThoai != null ? !dienThoai.equals(that.dienThoai) : that.dienThoai != null) return false;
 
         return true;
     }
@@ -139,6 +175,9 @@ public class DonhangEntity {
         result = 31 * result + (ngayDat != null ? ngayDat.hashCode() : 0);
         result = 31 * result + (ngayGiaoHang != null ? ngayGiaoHang.hashCode() : 0);
         result = 31 * result + (ngayThanhToan != null ? ngayThanhToan.hashCode() : 0);
+        result = 31 * result + (hoVaTen != null ? hoVaTen.hashCode() : 0);
+        result = 31 * result + (diaChi != null ? diaChi.hashCode() : 0);
+        result = 31 * result + (dienThoai != null ? dienThoai.hashCode() : 0);
         return result;
     }
 }

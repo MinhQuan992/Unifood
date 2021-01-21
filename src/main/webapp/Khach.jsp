@@ -61,21 +61,25 @@
                 <button id="close-CSS"></button>
             </li>
             <li class="nav-item active"><a class="nav-link" href="index.jsp">      </a></li>
-            <c:if test="${not empty User}">
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">${User.hoVaTen}</a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/EditInfo">My Profile</a>
-                        <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/orders">Orders</a>
-                        <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
-                    </div></li>
-            </c:if>
-            <c:if test="${empty User}">
-                <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardropp" data-toggle="dropdown"> Sign In - Sign Up </a>
-                    <div class="dropdown-menu">
-                        <a class="dropdown-item dropdown-item-custom" href="signin.jsp">Sign In</a>
-                        <a class="dropdown-item dropdown-item-custom" href="signup.jsp">Sign Up</a>
-                    </div></li>
-            </c:if>
+            <c:choose>
+                <c:when test="${User.maNguoiDung != 'KH0000000'}">
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">${User.hoVaTen}</a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/EditInfo">My Profile</a>
+                            <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/orders">Orders</a>
+                            <a class="dropdown-item dropdown-item-custom" href="${pageContext.request.contextPath}/signout">Sign Out</a>
+                        </div></li>
+                </c:when>
+
+                <c:otherwise>
+                    <li class="nav-item dropdown"><a class="nav-link dropdown-toggle" href="#" id="navbardropp" data-toggle="dropdown"> Sign In - Sign Up </a>
+                        <div class="dropdown-menu">
+                            <a class="dropdown-item dropdown-item-custom" href="signin.jsp">Sign In</a>
+                            <a class="dropdown-item dropdown-item-custom" href="signup.jsp">Sign Up</a>
+                        </div>
+                    </li>
+                </c:otherwise>
+            </c:choose>
         </ul>
     </nav>
 

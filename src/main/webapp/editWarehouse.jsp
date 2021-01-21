@@ -42,7 +42,7 @@
         <a href="#"><img class="logo" src="Images/LOGO.png" style="width: auto; height: 50px;"></a>
         <a class="homelogo" href="index.jsp"><img src="Images/homepage_icon.png" style="width: auto; height: 50px;"></a>
         <ul class="navbar-nav">
-            <li class="nav-item active"><a class="nav-link" href="qlhome.jsp>HOME</a></li>
+            <li class="nav-item active"><a class="nav-link" href="qlhome.jsp">HOME</a></li>
             <li class="nav-item"><a class="nav-link" href="staffs.jsp">STAFFS</a></li>
         </ul>
         <ul class="navbar-nav ml-auto">

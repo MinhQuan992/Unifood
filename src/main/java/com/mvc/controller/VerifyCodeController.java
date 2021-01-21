@@ -16,8 +16,7 @@ public class VerifyCodeController extends HttpServlet {
 
         if (inputCode.equals(verificationCode))
             url = "/change-password.jsp";
-        else
-        {
+        else {
             request.setAttribute("wrongCode", true);
             url = "/verification.jsp";
         }

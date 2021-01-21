@@ -22,14 +22,20 @@
 <body>
 <div class="jumbotron">
     <c:if test="${not empty authorize}">
-        <c:if test="${empty status}">
-            <h2>Đơn hàng đã được ghi nhận</h2>
-            <p class="text-info">Cập nhật vào: <%= Calendar.getInstance().getTime().toString() %></p>
+        <c:if test="${not empty ErrorID and ErrorID == 1}">
+            <h2>Thiếu thông tin tài khoản</h2>
+            <p class="text-danger">Không thể xem đơn hàng khi không có đầy đủ thông tin địa chỉ và số điện thoại.</p>
         </c:if>
-        <c:if test="${not empty status}">
+        <c:if test="${not empty ErrorID and ErrorID == 2}">
             <h2>Có lỗi khi xác nhận đơn hàng</h2>
             <p class="text-danger"><c:out value="${status}"></c:out></p>
         </c:if>
+
+        <c:if test="${empty status and empty ErrorID}">
+            <h2>Đơn hàng đã được ghi nhận</h2>
+            <p class="text-info">Cập nhật vào: <%= Calendar.getInstance().getTime().toString() %></p>
+        </c:if>
+
     </c:if>
     <p>Trở về <a href="${pageContext.request.contextPath}/index.jsp">trang chủ</a></p>
 </div>

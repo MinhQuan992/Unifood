@@ -17,6 +17,9 @@ import com.mvc.entities.SanphamEntity;
 @WebServlet(name = "ManageWarehouseController")
 public class ManageWarehouseController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
 
         Map< KhohangEntity, List<SanphamEntity> > map = new HashMap<>();
         List< KhohangEntity > listKho = ManageWarehouseDao.GetWarehouses();
@@ -36,6 +39,10 @@ public class ManageWarehouseController extends HttpServlet {
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        response.setContentType("text/html");
+        response.setCharacterEncoding("UTF-8");
+        request.setCharacterEncoding("UTF-8");
+
         Pattern specialCharsPattern = Pattern.compile("[!@#$%^&*()?\"':{}|<>]");
 
         String type = request.getParameter("Type");
@@ -147,16 +154,19 @@ public class ManageWarehouseController extends HttpServlet {
                 } else if (specialCharsPattern.matcher(maSanPham).find()) {
                     errors.put("MaSanPham", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
                 }
+
                 if (tenSanPham.trim().equals("")) {
                     errors.put("TenSanPham", "Không được để trống");
                 } else if (specialCharsPattern.matcher(tenSanPham).find()) {
                     errors.put("TenSanPham", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
                 }
+
                 if (donViTinh.trim().equals("")) {
                     errors.put("DonViTinh", "Không được để trống");
                 } else if (specialCharsPattern.matcher(donViTinh).find()) {
                     errors.put("DonViTinh", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
                 }
+
                 int donGia = 0;
                 try {
                     donGia = Integer.parseInt(donGiaStr);
@@ -182,6 +192,7 @@ public class ManageWarehouseController extends HttpServlet {
                 /*if (specialCharsPattern.matcher(anhMinhHoa).find()) {
                     errors.put("AnhMinhHoa", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
                 }
+
                 short maNhom = 0;
                 try {
                     maNhom = Short.parseShort(maNhomStr);
@@ -189,6 +200,7 @@ public class ManageWarehouseController extends HttpServlet {
                 catch (Exception e) {
                     errors.put("MaNhom", e.getMessage());
                 }
+
                 if (specialCharsPattern.matcher(moTa).find()) {
                     errors.put("AnhMinhHoa", "Phải không chứa ký tự đặc biệt !@#$%^&*()?\"':{}|<>");
                 }*/
