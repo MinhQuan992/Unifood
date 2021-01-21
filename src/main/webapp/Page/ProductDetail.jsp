@@ -28,7 +28,7 @@
     <link href="${pageContext.request.contextPath}/Style/PDstyle.css" rel="stylesheet">
     <link rel="preconnect" href="https://fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css2?family=Lobster&family=Oswald:wght@500&display=swap" rel="stylesheet">
-    <script src="${pageContext.request.contextPath}/JS/ButtonBehave.js"></script>
+    <script src="${pageContext.request.contextPath}/JS/ProductScript.js"></script>
 </head>
 <body>
 <div class="main">

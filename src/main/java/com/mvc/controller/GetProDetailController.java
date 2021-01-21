@@ -24,15 +24,15 @@ public class GetProDetailController extends HttpServlet {
         String maKho = request.getParameter("maKho");
         String moTa = request.getParameter("moTa");
 
-        request.setAttribute("maSanPham", maSanPham);
-        request.setAttribute("tenSanPham", tenSanPham);
-        request.setAttribute("donGia", donGia);
-        request.setAttribute("donViTinh", donViTinh);
-        request.setAttribute("soLuong", soLuong);
-        request.setAttribute("anhMinhHoa", anhMinhHoa);
-        request.setAttribute("maNhom", maNhom);
-        request.setAttribute("maKho", maKho);
-        request.setAttribute("moTa", moTa);
+request.setAttribute("maSanPham", maSanPham);
+request.setAttribute("tenSanPham", tenSanPham);
+request.setAttribute("donGia", donGia);
+request.setAttribute("donViTinh", donViTinh);
+request.setAttribute("soLuong", soLuong);
+request.setAttribute("anhMinhHoa", anhMinhHoa);
+request.setAttribute("maNhom", maNhom);
+request.setAttribute("maKho", maKho);
+request.setAttribute("moTa", moTa);
 
         request.getRequestDispatcher("/editDetail.jsp").forward(request, response);
     }
