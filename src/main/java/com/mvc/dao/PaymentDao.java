@@ -120,7 +120,7 @@ public class PaymentDao {
         return list;
     }
 
-    public static Object GetDonHang(int maDon) {
+    public static DonhangEntity GetDonHang(int maDon) {
         DonhangEntity don = null;
         Transaction transaction = null;
         try (Session session = HibernateUtility.getSessionFactory().openSession()) {
