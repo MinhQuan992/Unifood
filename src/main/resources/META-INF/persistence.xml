@@ -21,7 +21,7 @@
         <properties>
             <property name="hibernate.dialect" value="org.hibernate.dialect.SQLServerDialect"/>
             <property name="javax.persistence.jdbc.driver" value="com.microsoft.sqlserver.jdbc.SQLServerDriver"/>
-            <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://localhost;integratedSecurity=True;databaseName=UNIFOOD"/>
+            <property name="javax.persistence.jdbc.url" value="jdbc:sqlserver://unifoods.cdvtbrr1vblp.us-east-2.rds.amazonaws.com\UNIFOODS:1433;database=UNIFOOD;user=admin;password=Ninh2000"/>
         </properties>
     </persistence-unit>
 </persistence>

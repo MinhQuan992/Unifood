@@ -86,7 +86,7 @@
     <div class="contain">
         <h3 style="text-align: center;">SẢN PHẨM NỔI BẬT</h3>
         <div class="well well-sm text-right">
-            <div id="product" class="row list-group">
+            <div id="product" class="row list-group" style="margin-left: 0px; margin-right: 0px">
                 <c:forEach items="${requestScope.ListItems}" var="list">
                     <div class="container">
                         <h2 class="caption" style="text-align: center;">${list.listItemName}</h2>

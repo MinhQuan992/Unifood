@@ -193,7 +193,7 @@ a.dropdown-item-custom:active{
     background-position: right top;
     background-attachment: fixed;
     overflow: auto;
-    margin: 1.5em auto;
+    margin: 0px 0px;
 }
 /*==Chia cột phần content==*/
 .row {

@@ -9,6 +9,7 @@ public class ViewAllOrderEntity {
     private int maDon;
     private String tenNguoiDung;
     private String diaChi;
+    private String phoneNumber;
     private Integer quantity;
     private String tenDonViGiaoHang;
     private Date ngayDat;
@@ -17,7 +18,6 @@ public class ViewAllOrderEntity {
     private Integer tongGiaTri;
     private String trangThaiDonHang;
     private String trangThaiThanhToan;
-    private String id;
 
     @Id
     @Column(name = "MaDon", nullable = false)
@@ -40,13 +40,23 @@ public class ViewAllOrderEntity {
     }
 
     @Basic
-    @Column(name = "DiaChi", nullable = true, length = 50)
+    @Column(name = "DiaChi", nullable = true, length = 150)
     public String getDiaChi() {
         return diaChi;
     }
 
     public void setDiaChi(String diaChi) {
         this.diaChi = diaChi;
+    }
+
+    @Basic
+    @Column(name = "PhoneNumber", nullable = true, length = 10)
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     @Basic
@@ -139,6 +149,7 @@ public class ViewAllOrderEntity {
         if (maDon != that.maDon) return false;
         if (tenNguoiDung != null ? !tenNguoiDung.equals(that.tenNguoiDung) : that.tenNguoiDung != null) return false;
         if (diaChi != null ? !diaChi.equals(that.diaChi) : that.diaChi != null) return false;
+        if (phoneNumber != null ? !phoneNumber.equals(that.phoneNumber) : that.phoneNumber != null) return false;
         if (quantity != null ? !quantity.equals(that.quantity) : that.quantity != null) return false;
         if (tenDonViGiaoHang != null ? !tenDonViGiaoHang.equals(that.tenDonViGiaoHang) : that.tenDonViGiaoHang != null)
             return false;
@@ -160,6 +171,7 @@ public class ViewAllOrderEntity {
         int result = maDon;
         result = 31 * result + (tenNguoiDung != null ? tenNguoiDung.hashCode() : 0);
         result = 31 * result + (diaChi != null ? diaChi.hashCode() : 0);
+        result = 31 * result + (phoneNumber != null ? phoneNumber.hashCode() : 0);
         result = 31 * result + (quantity != null ? quantity.hashCode() : 0);
         result = 31 * result + (tenDonViGiaoHang != null ? tenDonViGiaoHang.hashCode() : 0);
         result = 31 * result + (ngayDat != null ? ngayDat.hashCode() : 0);
@@ -170,5 +182,4 @@ public class ViewAllOrderEntity {
         result = 31 * result + (trangThaiThanhToan != null ? trangThaiThanhToan.hashCode() : 0);
         return result;
     }
-
 }

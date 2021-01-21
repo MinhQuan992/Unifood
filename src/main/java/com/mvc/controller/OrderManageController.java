@@ -12,12 +12,14 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
+import javax.swing.*;
 import java.io.IOException;
 import java.net.URLDecoder;
 import java.net.URLEncoder;
 import java.sql.Date;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -82,12 +84,15 @@ public class OrderManageController extends HttpServlet {
             List<DonvigiaohangEntity> listShiper = shipingUnitDao.getAllShippingData();
             request.setAttribute("Payment",payment);
             request.setAttribute("ShipperList",listShiper);
+            System.out.println("This servlet is being forward you to: /Page/OderEdit.jsp");
             request.getRequestDispatcher("/Page/OderEdit.jsp").forward(request,response);
+            return;
         }
 
         String cancel = request.getParameter("Cancel");
         String savechange = request.getParameter("Save");
         String orderCode = request.getParameter("OrderCode");
+
         if (savechange!=null)
         {
             String shippingUnit = request.getParameter("ShippingUnit");
@@ -97,21 +102,29 @@ public class OrderManageController extends HttpServlet {
             Boolean payStatus = Boolean.parseBoolean(request.getParameter("Payment"));
             DonhangEntity donhangEntity = paymentDao.getPaymentDataRaw(Integer.parseInt(orderCode));
             donhangEntity.setMaDonViGiaoHang(shippingUnit);
+
             try {
-                donhangEntity.setNgayGiaoHang(new java.sql.Date(
-                        new SimpleDateFormat("yyyy-MM-dd").parse(shippingDate).getTime()));
+                Date ngayGiaoHang = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(shippingDate).getTime());
+                if (donhangEntity.getNgayDat().compareTo(ngayGiaoHang)<=0)
+                    donhangEntity.setNgayGiaoHang(ngayGiaoHang);
+                else
+                    request.setAttribute("AcessAlertMessage","You can't set set delivery time before order placed");
             } catch (ParseException e) {
                 donhangEntity.setNgayGiaoHang(null);
                 e.printStackTrace();
             }
+
             try {
-                donhangEntity.setNgayThanhToan(new java.sql.Date(
-                        new SimpleDateFormat("yyyy-MM-dd").parse(completeDate).getTime()));
+                Date ngayThanhToan = new java.sql.Date(new SimpleDateFormat("yyyy-MM-dd").parse(completeDate).getTime());
+                if (donhangEntity.getNgayGiaoHang()!=null && donhangEntity.getNgayGiaoHang().compareTo(ngayThanhToan)<=0)
+                    donhangEntity.setNgayThanhToan(new java.sql.Date(ngayThanhToan.getTime()));
+                else
+                    request.setAttribute("AcessAlertMessage","You can't set set complete time before order delivered");
             } catch (ParseException e) {
                 donhangEntity.setNgayThanhToan(null);
                 e.printStackTrace();
             }
-            //
+
             donhangEntity.setTtDonHang(orderStatus);
             donhangEntity.setTtThanhToan(payStatus);
 
@@ -137,7 +150,7 @@ public class OrderManageController extends HttpServlet {
                 default:
                     message = "Nothings!";
             }
-            //aymentDao paymentDao1 = new OrderDao();
+
             DonhangEntity DH = (DonhangEntity) paymentDao.GetDonHang(Integer.parseInt(orderCode));
             int CartCode = DH.getMaGio();
             CartDao cartDao = new CartDao();
