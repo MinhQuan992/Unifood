@@ -52,10 +52,6 @@
         <input type="submit" style="color: #60150c; height: 40px; width: 200px" value="Thêm sản phẩm">
     </form><br>
 
-    <form id="manageWarehouse" method="post" action="${pageContext.request.contextPath}/manageWarehouse.jsp">
-        <input type="submit" style="color: #60150c; height: 40px; width: 200px" value="Quản lí kho hàng">
-    </form><br>
-
     <form id="ManageOder" method="post" action="${pageContext.request.contextPath}/OrderManage">
         <input type="submit" style="color: #60150c; height: 40px; width: 200px" value="Quản lí đơn hàng">
     </form><br>
