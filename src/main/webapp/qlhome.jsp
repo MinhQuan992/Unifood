@@ -1,4 +1,25 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page import="com.mvc.dao.CartDao" %>
+<%@ page import="com.mvc.entities.GiohangEntity" %>
+<%@ page import="com.mvc.entities.NguoidungEntity" %>
+<%@ page import="com.mvc.dao.UserDao" %>
+<%@ taglib prefix = "c" uri = "http://java.sun.com/jsp/jstl/core" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    NguoidungEntity user = (NguoidungEntity) session.getAttribute("User");
+    if (user==null)
+    {
+        UserDao userDao = new UserDao();
+        user = userDao.getUserByID("KH0000000");
+        CartDao cartDao = new CartDao();
+        GiohangEntity cart = cartDao.GetNewCart(user);
+        session.setAttribute("User",user);
+        session.setAttribute("ShoppingCart",cart);
+        pageContext.setAttribute("User", user);
+    }
+    if (!user.getMaNguoiDung().startsWith("QL"))
+        request.getRequestDispatcher("index.jsp").forward(request,response);
+%>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -59,6 +80,11 @@
     <form id="addMan" method="post" action="${pageContext.request.contextPath}/signup.jsp">
         <input type="submit" style="color: #60150c; height: 40px; width: 200px" value="Thêm Quản Lý">
     </form><br>
+
+    <form id="ManageWareHouse" method="post" action="${pageContext.request.contextPath}/ManageWarehouse">
+        <input type="submit" style="color: #60150c; height: 40px; width: 200px" value="Quản lí kho hàng">
+    </form><br>
+
 </div>
 
 <div id="footer">

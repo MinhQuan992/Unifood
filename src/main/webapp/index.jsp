@@ -16,6 +16,8 @@
         session.setAttribute("ShoppingCart",cart);
         pageContext.setAttribute("User", user);
     }
+    if (user.getMaNguoiDung().startsWith("QL"))
+        request.getRequestDispatcher("qlhome.jsp").forward(request,response);
 %>
 <html>
 <head>

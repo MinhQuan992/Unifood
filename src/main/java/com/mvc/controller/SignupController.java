@@ -3,6 +3,7 @@ package com.mvc.controller;
 import com.mvc.dao.UserDao;
 import com.mvc.entities.NguoidungEntity;
 import com.mvc.utility.EmailUtility;
+import com.mvc.utility.HibernateUtility;
 import org.apache.commons.lang3.RandomStringUtils;
 import org.hibernate.*;
 
@@ -86,9 +87,9 @@ public class SignupController extends HttpServlet {
             request.setAttribute("fullnameError","Bạn phải nhập họ và tên");
         }
 
-        EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
-        EntityManager entityManager = entityManagerFactory.createEntityManager();
-        Session session = entityManager.unwrap(Session.class);
+        //EntityManagerFactory entityManagerFactory = Persistence.createEntityManagerFactory("default");
+        //EntityManager entityManager = entityManagerFactory.createEntityManager();
+        Session session = HibernateUtility.getSessionFactory().openSession(); //entityManager.unwrap(Session.class);
 
         boolean rightBirthdate = session.doReturningWork(connection -> {
             try (CallableStatement function = connection.prepareCall("{? = CALL func_NgaySinhHopLe(?)}"))
@@ -99,6 +100,7 @@ public class SignupController extends HttpServlet {
                 return function.getBoolean(1);
             }
         });
+
         if (!rightBirthdate)
         {
             hasError = true;

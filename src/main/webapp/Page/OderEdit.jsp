@@ -14,6 +14,26 @@
     NguoidungEntity user = (NguoidungEntity) session.getAttribute("User");
     ViewAllOrderEntity payment =  (ViewAllOrderEntity) request.getAttribute("Payment");
 %>
+<%@ page contentType="text/html;charset=UTF-8" language="java"%>
+<%@ page import="com.mvc.dao.CartDao" %>
+<%@ page import="com.mvc.entities.GiohangEntity" %>
+<%@ page import="com.mvc.entities.NguoidungEntity" %>
+<%@ page import="com.mvc.dao.UserDao" %>
+<%@ page contentType="text/html;charset=UTF-8" language="java" %>
+<%
+    if (user==null)
+    {
+        UserDao userDao = new UserDao();
+        user = userDao.getUserByID("KH0000000");
+        CartDao cartDao = new CartDao();
+        GiohangEntity cart = cartDao.GetNewCart(user);
+        session.setAttribute("User",user);
+        session.setAttribute("ShoppingCart",cart);
+        pageContext.setAttribute("User", user);
+    }
+    if (!user.getMaNguoiDung().startsWith("QL"))
+        request.getRequestDispatcher("index.jsp").forward(request,response);
+%>
 <html>
 <head>
     <title>Manage Order</title>
