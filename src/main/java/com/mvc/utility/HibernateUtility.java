@@ -23,9 +23,9 @@ public class HibernateUtility {
                 // Hibernate settings equivalent to hibernate.cfg.xml's properties
                 Properties settings = new Properties();
                 settings.put(Environment.DRIVER, "com.microsoft.sqlserver.jdbc.SQLServerDriver");
-                settings.put(Environment.URL, "jdbc:sqlserver://unifoods.cdvtbrr1vblp.us-east-2.rds.amazonaws.com\\UNIFOODS:1433;database=UNIFOOD;user=admin;password=Ninh2000");
-                settings.put(Environment.USER, "admin");
-                settings.put(Environment.PASS, "Ninh2000");
+                settings.put(Environment.URL, "jdbc:sqlserver://localhost;integratedSecurity=True;databaseName=UNIFOOD");
+                settings.put(Environment.USER, "root");
+                settings.put(Environment.PASS, "root");
                 settings.put(Environment.DIALECT, "org.hibernate.dialect.SQLServerDialect");
                 settings.put(Environment.SHOW_SQL, "true");
                 settings.put(Environment.CURRENT_SESSION_CONTEXT_CLASS, "thread");

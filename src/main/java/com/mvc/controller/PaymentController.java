@@ -129,6 +129,7 @@ public class PaymentController extends HttpServlet {
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("payment.jsp");
         dispatcher.forward(request, response);
+        return;
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
