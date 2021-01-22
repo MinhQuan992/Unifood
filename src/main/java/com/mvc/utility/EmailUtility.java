@@ -22,29 +22,42 @@ public class EmailUtility {
                                             String recipientEmail, String subject, String message) throws MessagingException, UnsupportedEncodingException {
         //Get properties object
         Properties props = new Properties();
-        props.put("mail.smtp.host", host);
-        props.put("mail.smtp.socketFactory.port", port);
-        props.put("mail.smtp.socketFactory.class", socketFactoryClass);
-        props.put("mail.smtp.auth", auth);
-        props.put("mail.smtp.port", port);
+        props.put("mail.smtp.host", "smtp.gmail.com");
+        //props.put("mail.smtp.socketFactory.port", "587");
+        //props.put("mail.smtp.socketFactory.class", socketFactoryClass);
+        props.put("mail.smtp.auth", "true");
+        props.put("mail.smtp.starttls.enable", "true");
+        props.put("mail.smtp.port", "587");
         //Get Session
+
         Authenticator authenticator = new javax.mail.Authenticator()
         {
             protected PasswordAuthentication getPasswordAuthentication() {
                 return new PasswordAuthentication(senderEmail, password);
             }
         };
-        Session session = Session.getDefaultInstance(props, authenticator);
-        //Create a new e-mail message
-        Message msg = new MimeMessage(session);
-        msg.setHeader("Content-Type", "text/plain; charset=UTF-8");
-        msg.setFrom(new InternetAddress(senderEmail, senderName));
-        msg.addRecipient(Message.RecipientType.TO, new InternetAddress(recipientEmail));
-        msg.setSubject(subject);
-        msg.setSentDate(new Date());
-        msg.setText(message);
-        //Send the e-mail
-        Transport.send(msg);
+
+        Session session = Session.getInstance(props, authenticator);
+
+        try
+        {
+            Message mail = new MimeMessage(session);
+            mail.setFrom(new InternetAddress(senderEmail));
+            mail.setRecipients(
+                    Message.RecipientType.TO,
+                    InternetAddress.parse(recipientEmail)
+            );
+            mail.setSubject(subject);
+            mail.setText(message);
+            mail.setSentDate(new Date());
+            mail.setFrom(new InternetAddress(senderEmail, senderName));
+            Transport.send(mail);
+            System.out.println("Send Email Done!");
+
+        } catch (MessagingException e) {
+            e.printStackTrace();
+        }
+
         return null;
     }
 
