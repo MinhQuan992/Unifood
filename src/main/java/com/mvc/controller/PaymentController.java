@@ -5,9 +5,11 @@ import com.mvc.dao.ManageWarehouseDao;
 import com.mvc.dao.PaymentDao;
 import com.mvc.dao.UserDao;
 import com.mvc.entities.*;
+import com.mvc.utility.EmailUtility;
 import org.hibernate.Session;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -19,6 +21,44 @@ import java.util.*;
 
 @WebServlet(name = "PaymentController")
 public class PaymentController extends HttpServlet {
+
+    private static final long serialVersionUID = 1L;
+
+    private String host;
+    private String port;
+    private String socketFactoryClass;
+    private String auth;
+    private String email;
+    private String name;
+    private String pass;
+
+    public void init() {
+        // reads SMTP server setting from web.xml file
+        ServletContext context = getServletContext();
+        host = context.getInitParameter("host");
+        port = context.getInitParameter("port");
+        socketFactoryClass = context.getInitParameter("socketFactoryClass");
+        auth = context.getInitParameter("auth");
+        email = context.getInitParameter("email");
+        name = context.getInitParameter("name");
+        pass = context.getInitParameter("pass");
+    }
+
+    public void SendEmail(String Message, String recipient)
+    {
+        String subject = "We have received the order from you!";
+        String content = "We send from UNIFOOD\nYour order status was changed to:  " + Message +
+                "\nPlease visit our page to track your order information!\nThanks!\nUnifood Team";
+        try
+        {
+            EmailUtility.sendEmail(host, port, socketFactoryClass, auth, email, name, pass, recipient, subject, content);
+        }
+        catch (Exception ex)
+        {
+            ex.printStackTrace();
+        }
+    }
+
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
         response.setCharacterEncoding("UTF-8");
@@ -89,6 +129,7 @@ public class PaymentController extends HttpServlet {
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("payment.jsp");
         dispatcher.forward(request, response);
+        return;
     }
 
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -113,7 +154,7 @@ public class PaymentController extends HttpServlet {
         // don.setHoVaTen(user.getHoVaTen());
         // don.setDienThoai(user.getDienThoai());
         if (diaChi.equals("default") || diaChiKhac == null) {
-            don.setDiaChi(user.getDiaChi());
+            //don.setDiaChi(diaChi);
         } else {
             don.setDiaChi(diaChiKhac);
         }
@@ -128,8 +169,10 @@ public class PaymentController extends HttpServlet {
         request.setAttribute("authorize", true);
 
         RequestDispatcher dispatcher = request.getRequestDispatcher("payment-message.jsp");
+        SendEmail("Your order was accepted!! and in process!!",user.getEmail());
         dispatcher.forward(request, response);
 
         // response.getWriter().append(String.format("MaGio: %s\nMaGiamGia: %s\nMaDonViGiaoHang: %s\nTongGiaTri: %s", maGioStr, maGiam, maDonViGiaoHang, tongGiaTriStr));
+
     }
 }

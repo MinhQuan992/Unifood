@@ -14,6 +14,10 @@
 <%
     List<ViewAllOrderEntity> listPayments = (List<ViewAllOrderEntity>) request.getAttribute("ListPayments");
     NguoidungEntity user = (NguoidungEntity) session.getAttribute("User");
+    if (!user.getMaNguoiDung().startsWith("QL"))
+    {
+        request.getRequestDispatcher("index.jsp").forward(request,response);
+    }
 %>
 <html>
 <head>
@@ -27,13 +31,15 @@
     <div class="container col-md-8 col-md-offset-3" style="overflow: auto">
     <div class="Main-Form">
     <h1>Trang quản lí đơn hàng</h1>
-    <h3>Chào mừng quản lí (<%=user.getMaNguoiDung()%>): <%=user.getHoVaTen()%></h3>
+    <h4>Chào mừng quản lí (<%=user.getMaNguoiDung()%>): <%=user.getHoVaTen()%></h4>
+        <br/>
         <p>Trở về <a href="${pageContext.request.contextPath}/qlhome.jsp">trang chủ</a></p>
     <table class="table">
         <thead class="thead-dark">
         <tr>
             <th scope="col">OrderCode</th>
             <th scope="col">UserName</th>
+            <th scope="col">User Phone</th>
             <th scope="col">Address</th>
             <th scope="col">Quantity</th>
             <th scope="col">Total</th>
@@ -51,6 +57,7 @@
             <tr>
                 <th scope="row">${payment.maDon}</th>
                 <td>${payment.tenNguoiDung}</td>
+                <td>${payment.phoneNumber}</td>
                 <td>${payment.diaChi}</td>
                 <td>${payment.quantity}</td>
                 <td>${payment.tongGiaTri}</td>

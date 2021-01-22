@@ -16,6 +16,8 @@
         session.setAttribute("ShoppingCart",cart);
         pageContext.setAttribute("User", user);
     }
+    if (user.getMaNguoiDung().startsWith("QL"))
+        request.getRequestDispatcher("qlhome.jsp").forward(request,response);
 %>
 <html>
 <head>
@@ -95,7 +97,7 @@
     </div>
 
     <h1 style="text-align: center; color: #60150c;"><b>ABOUT US</b></h1>
-    <div class="row">
+    <div class="row" style="margin-left: 0px; margin-right: 0px">
         <div id="box1" class="col">
             <h2><b>General</b></h2>
             <img src="Images/gate.jpg" alt="CSS" />

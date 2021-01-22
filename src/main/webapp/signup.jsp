@@ -55,19 +55,19 @@
                 <td>
                     <input class="text textbox" type="text" name="userFullname"
                     <c:choose>
-                        <c:when test="${empty userFullname}">
+                    <c:when test="${empty userFullname}">
                            placeholder="Nhập họ và tên"
-                        </c:when>
+                    </c:when>
 
-                        <c:otherwise>
+                    <c:otherwise>
                            value="<c:out value="${userFullname}"/>"
-                        </c:otherwise>
+                    </c:otherwise>
                     </c:choose>
 
                     <c:if test="${not empty fullnameError}">
-                       style="border-color: red"
+                           style="border-color: red"
                     </c:if>
-                    required>
+                           required>
                     <br>
                     <p class="error-message"><c:out value="${fullnameError}"/></p>
                 </td>
@@ -92,17 +92,17 @@
                 <td>
                     <input class="text datetime" type="date" name="userBirthdate"
                     <c:choose>
-                        <c:when test="${not empty userBirthdate}">
+                    <c:when test="${not empty userBirthdate}">
                            value="<c:out value="${userBirthdate}"/>"
-                        </c:when>
+                    </c:when>
 
-                        <c:otherwise>
+                    <c:otherwise>
                            value="2000-01-01"
-                        </c:otherwise>
+                    </c:otherwise>
                     </c:choose>
 
                     <c:if test="${not empty birthdateError}">
-                       style="border-color: red"
+                           style="border-color: red"
                     </c:if>
                     >
                     <br>
@@ -114,14 +114,14 @@
                 <td class="row-name">Địa chỉ:</td>
                 <td class="info">
                     <textarea class="text" name="userAddress" rows="3" cols="50"
-                        <c:if test="${empty userAddress}">
-                            placeholder="Nhập địa chỉ"
-                        </c:if>
+                            <c:if test="${empty userAddress}">
+                                placeholder="Nhập địa chỉ"
+                            </c:if>
 
                         <c:if test="${not empty addressError}">
                             style="border-color: red"
                         </c:if>
-                    required><c:out value="${userAddress}"/></textarea>
+                              required><c:out value="${userAddress}"/></textarea>
                     <br>
                     <p class="error-message"><c:out value="${addressError}"/></p>
                 </td>
@@ -132,19 +132,19 @@
                 <td class="info">
                     <input class="text textbox" type="text" name="userPhone"
                     <c:choose>
-                        <c:when test="${empty userPhone}">
+                    <c:when test="${empty userPhone}">
                            placeholder="Nhập số điện thoại"
-                        </c:when>
+                    </c:when>
 
-                        <c:otherwise>
+                    <c:otherwise>
                            value="<c:out value="${userPhone}"/>"
-                        </c:otherwise>
+                    </c:otherwise>
                     </c:choose>
 
                     <c:if test="${not empty phoneError}">
-                       style="border-color: red"
+                           style="border-color: red"
                     </c:if>
-                    required>
+                           required>
                     <br>
                     <p class="error-message"><c:out value="${phoneError}"/></p>
                 </td>
@@ -155,19 +155,19 @@
                 <td class="info">
                     <input class="text textbox" type="email" name="userEmail"
                     <c:choose>
-                        <c:when test="${empty userEmail}">
-                            placeholder="Nhập địa chỉ email"
-                        </c:when>
+                    <c:when test="${empty userEmail}">
+                           placeholder="Nhập địa chỉ email"
+                    </c:when>
 
-                        <c:otherwise>
+                    <c:otherwise>
                            value="<c:out value="${userEmail}"/>"
-                        </c:otherwise>
+                    </c:otherwise>
                     </c:choose>
 
                     <c:if test="${not empty emailError}">
-                       style="border-color: red"
+                           style="border-color: red"
                     </c:if>
-                    required>
+                           required>
                     <br>
                     <p class="error-message"><c:out value="${emailError}"/></p>
                 </td>
